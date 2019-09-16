@@ -1,0 +1,32 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{Abstract}{\es@scroman {i}}{chapter*.1}% 
+\contentsline {chapter}{\IeC {\'I}ndice}{\es@scroman {iii}}{section*.2}% 
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{3}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Descripci\IeC {\'o}n general de la propuesta}{3}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Motivaci\IeC {\'o}n}{4}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Objetivos}{4}{section.1.3}% 
+\contentsline {section}{\numberline {1.4}Tareas y planificaci\IeC {\'o}n}{5}{section.1.4}% 
+\contentsline {section}{\numberline {1.5}Estructura del documento}{7}{section.1.5}% 
+\contentsline {chapter}{\numberline {2}Estado del Arte}{9}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Procesamiento de lenguaje natural}{9}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Historia}{9}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Aplicaciones}{10}{subsection.2.1.2}% 
+\contentsline {subsection}{\numberline {2.1.3}Modelizaci\IeC {\'o}n de topics}{11}{subsection.2.1.3}% 
+\contentsline {section}{\numberline {2.2}Deep Learning y aplicaci\IeC {\'o}n al NLP}{12}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Aprendizaje supervisado}{12}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Deep Learning}{13}{subsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.2.3}Redes neuronales en NLP}{13}{subsection.2.2.3}% 
+\contentsline {section}{\numberline {2.3}BigData y Fast Data}{14}{section.2.3}% 
+\contentsline {chapter}{\numberline {3}Arquitectura y tecnolog\IeC {\'\i }as}{17}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Arquitectura}{17}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}Capa Batch}{18}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}Capa Real-Time}{18}{subsection.3.1.2}% 
+\contentsline {subsection}{\numberline {3.1.3}Capa de Servicio}{19}{subsection.3.1.3}% 
+\contentsline {section}{\numberline {3.2}Integraci\IeC {\'o}n y Despliegue Continuos}{19}{section.3.2}% 
+\contentsline {section}{\numberline {3.3}Tecnolog\IeC {\'\i }as}{19}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.3.1}Capa batch}{20}{subsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.3.2}Capa Real-Time}{20}{subsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.3.3}Capa Servicio}{21}{subsection.3.3.3}% 
+\contentsline {subsection}{\numberline {3.3.4}Integraci\IeC {\'o}n y Despliegue Continuo}{21}{subsection.3.3.4}% 
+\contentsline {chapter}{\numberline {4}Conjunto de datos}{23}{chapter.4}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{23}{chapter.4}% 
