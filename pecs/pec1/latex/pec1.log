@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.23)  19 SEP 2019 13:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.23)  19 SEP 2019 13:55
 entering extended mode
-**./TFM.tex
-(TFM.tex
+**./pec1.tex
+(pec1.tex
 LaTeX2e <2018-12-01>
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\book.cls"
 Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
@@ -370,11 +370,11 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 )
 Package hyperref Info: Option `linktocpage' set `true' on input line 26.
 Package hyperref Info: Option `colorlinks' set `true' on input line 26.
- (TFM.aux
+ (pec1.aux
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
 )
-\openout1 = `TFM.aux'.
+\openout1 = `pec1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
 LaTeX Font Info:    ... okay on input line 50.
@@ -390,7 +390,6 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
 LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
 LaTeX Font Info:    ... okay on input line 50.
-
 ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count128
@@ -434,12 +433,12 @@ LaTeX Info: Redefining \ref on input line 50.
 LaTeX Info: Redefining \pageref on input line 50.
 LaTeX Info: Redefining \nameref on input line 50.
 
-(TFM.out) (TFM.out)
+(pec1.out) (pec1.out)
 \@outlinefile=\write3
-\openout3 = `TFM.out'.
+\openout3 = `pec1.out'.
 
  (0_titulo.tex
-<images/UOC-logo.png, id=126, 671.6292pt x 173.448pt>
+<images/UOC-logo.png, id=35, 671.6292pt x 173.448pt>
 File: images/UOC-logo.png Graphic file (type png)
 <use images/UOC-logo.png>
 Package pdftex.def Info: images/UOC-logo.png  used on input line 8.
@@ -447,7 +446,8 @@ Package pdftex.def Info: images/UOC-logo.png  used on input line 8.
  [1
 
 {C:/Users/t152098/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/
-UOC-logo.png>]) [2] (chapters/0_resumen.tex) [1
+UOC-logo.png>]) [2]
+(chapters/0_resumen.tex) [1
 
 ]
 
@@ -460,17 +460,13 @@ Package spanish Warning: Replacing `OT1/cmr/bx/sc' by
 
 [2
 
-] (TFM.toc
+] (pec1.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 
 
 Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
 (spanish)                faked small caps on input line 2.
-
-
-Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
-(spanish)                faked small caps on input line 3.
 
 LaTeX Font Info:    Try loading font information for U+msa on input line 5.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
@@ -480,11 +476,9 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 5.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3
-
-])
+))
 \tf@toc=\write4
-\openout4 = `TFM.toc'.
+\openout4 = `pec1.toc'.
 
 
 (chapters/1_introduccion.texpdfTeX warning (ext4): destination with the same id
@@ -492,7 +486,9 @@ entifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1 \chapter
-            {Introducción} [1]
+            {Introducción} [1
+
+]
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
@@ -508,7 +504,7 @@ Cap\'{\i }tulo 1.
 LaTeX Info: Redefining \. on input line 49.
 LaTeX Info: Redefining \% on input line 49.
  [4]
-<images/intro/gantt.png, id=208, 941.01563pt x 292.84406pt>
+<images/intro/gantt.png, id=89, 941.01563pt x 292.84406pt>
 File: images/intro/gantt.png Graphic file (type png)
 <use images/intro/gantt.png>
 Package pdftex.def Info: images/intro/gantt.png  used on input line 62.
@@ -522,12 +518,12 @@ LaTeX Info: Redefining \% on input line 74.
                                                   \fi \fi 
 l.74 	
        <./images/intro/gantt.png>]
-<images/intro/crispdm.png, id=215, 769.87625pt x 769.87625pt>
+<images/intro/crispdm.png, id=96, 769.87625pt x 769.87625pt>
 File: images/intro/crispdm.png Graphic file (type png)
 <use images/intro/crispdm.png>
 Package pdftex.def Info: images/intro/crispdm.png  used on input line 85.
 (pdftex.def)             Requested size: 304.73137pt x 304.73802pt.
-) (chapters/2_estadoarte.tex
+) (pec1.bbl
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [6]
@@ -538,122 +534,50 @@ LaTeX Info: Redefining \% on input line 1.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1 \chapter
-            {Estado del Arte} <./images/intro/crispdm.png (PNG copy)>]
+l.1 \begin{thebibliography}{10}
+                                <./images/intro/crispdm.png (PNG copy)>]
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [8
 
-]
-Cap\'{\i }tulo 2.
-[9]
-LaTeX Info: Redefining \. on input line 36.
-LaTeX Info: Redefining \% on input line 36.
+[8
+
+] [9])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 107.
+LaTeX Info: Redefining \. on input line 107.
+LaTeX Info: Redefining \% on input line 107.
  [10]
-LaTeX Info: Redefining \. on input line 58.
-LaTeX Info: Redefining \% on input line 58.
- [11]
-LaTeX Info: Redefining \. on input line 72.
-LaTeX Info: Redefining \% on input line 72.
- [12]
-LaTeX Info: Redefining \. on input line 89.
-LaTeX Info: Redefining \% on input line 89.
- [13]
-LaTeX Info: Redefining \. on input line 112.
-LaTeX Info: Redefining \% on input line 112.
- [14]) (chapters/3_arquitectura.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [15]
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [16
-
-]
-Cap\'{\i }tulo 3.
-<images/arqu/lambda.png, id=297, 606.01407pt x 284.56313pt>
-File: images/arqu/lambda.png Graphic file (type png)
-<use images/arqu/lambda.png>
-Package pdftex.def Info: images/arqu/lambda.png  used on input line 9.
-(pdftex.def)             Requested size: 483.69684pt x 227.12975pt.
-[17pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.20 E
-      n líneas generales, podemos ver la arquitectura de nuestro sistema co...
- <./images/arqu/lambda.png>]
-LaTeX Info: Redefining \. on input line 45.
-LaTeX Info: Redefining \% on input line 45.
- [18]
-LaTeX Info: Redefining \. on input line 71.
-LaTeX Info: Redefining \% on input line 71.
- [19]
-LaTeX Info: Redefining \. on input line 88.
-LaTeX Info: Redefining \% on input line 88.
- [20]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 88.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 88.
-)
-(chapters/4_dataset.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [21]
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [22
-
-]
-Cap\'{\i }tulo 4.
-) (TFM.bbl [23]
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [24
-
-] [25])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
-LaTeX Info: Redefining \. on input line 106.
-LaTeX Info: Redefining \% on input line 106.
- [26]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
- (TFM.aux
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 107.
+ (pec1.aux
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
-Package rerunfilecheck Info: File `TFM.out' has not changed.
-(rerunfilecheck)             Checksum: C31B01872733E12B86D144761BD8F1E4;2079.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 107.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 107.
+Package rerunfilecheck Info: File `pec1.out' has not changed.
+(rerunfilecheck)             Checksum: C1900BD7B51D5A1E3BA687BE5AB4E363;467.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
  ) 
 Here is how much of TeX's memory you used:
- 8554 strings out of 492895
- 120939 string characters out of 3133491
- 230095 words of memory out of 3000000
- 12221 multiletter control sequences out of 15000+200000
- 12327 words of font info for 45 fonts, out of 3000000 for 9000
+ 8454 strings out of 492895
+ 119360 string characters out of 3133491
+ 228858 words of memory out of 3000000
+ 12175 multiletter control sequences out of 15000+200000
+ 12029 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,13n,43p,1236b,717s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,13n,43p,624b,535s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmti12.pfb>
-Output written on TFM.pdf (31 pages, 350294 bytes).
+pe1/public/amsfonts/cm/cmti12.pfb>
+Output written on pec1.pdf (14 pages, 266553 bytes).
 PDF statistics:
- 389 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
- 269 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 170 PDF objects out of 1000 (max. 8388607)
+ 40 named destinations out of 1000 (max. 500000)
+ 80 words of extra memory for PDF output out of 10000 (max. 10000000)
 
