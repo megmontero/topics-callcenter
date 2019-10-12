@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{temariodeeplearning}
+Toni Lozano~Bagén Anna Bosch~Rué, Jordi Casas~Roma.
+\newblock {\em Deep Learning Principios y Fundamentos}.
+\newblock 2018.
+
 \bibitem{Blei_HTM}
 David~M. Blei, Michael~I. Jordan, Thomas~L. Griffiths, and Joshua~B. Tenenbaum.
 \newblock Hierarchical topic models and the nested chinese restaurant process.
