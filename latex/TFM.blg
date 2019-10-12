@@ -1,10 +1,9 @@
-This is BibTeX, Version 0.99d (TeX Live 2019/Arch Linux)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: TFM.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: TFM.aux
 The style file: plain.bst
 Database file #1: referencias.bib
 Warning--empty publisher in temariodeeplearning
 Warning--empty publisher in Mahmood2013LiteratureSO
+<<<<<<< HEAD
 You've used 17 entries,
             2118 wiz_defined-function locations,
             613 strings with 6936 characters,
@@ -47,3 +46,6 @@ while$ -- 60
 width$ -- 19
 write$ -- 200
 (There were 2 warnings)
+=======
+(There was 1 warning)
+>>>>>>> b3c11a1e0c3de045814e08e83defc1bf5451afc8
