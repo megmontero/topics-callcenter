@@ -15,39 +15,21 @@
 \contentsline {section}{\numberline {2.2}Deep Learning y aplicaci\IeC {\'o}n al PLN}{12}{section.2.2}% 
 \contentsline {subsection}{\numberline {2.2.1}Aprendizaje supervisado}{12}{subsection.2.2.1}% 
 \contentsline {subsection}{\numberline {2.2.2}Deep Learning}{13}{subsection.2.2.2}% 
-<<<<<<< HEAD
-\contentsline {subsection}{\numberline {2.2.3}Redes neuronales en NLP}{13}{subsection.2.2.3}% 
-\contentsline {subsection}{\numberline {2.2.4}Arquitecturas especializadas}{14}{subsection.2.2.4}% 
-\contentsline {subsubsection}{\numberline {2.2.4.1}Redes neuronales convolucionales}{14}{subsubsection.2.2.4.1}% 
-\contentsline {subsubsection}{\numberline {2.2.4.2}Redes neuronales recurrentes}{15}{subsubsection.2.2.4.2}% 
-\contentsline {section}{\numberline {2.3}BigData y Fast Data}{16}{section.2.3}% 
-\contentsline {chapter}{\numberline {3}Arquitectura y tecnolog\IeC {\'\i }as}{19}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Arquitectura}{19}{section.3.1}% 
-\contentsline {subsection}{\numberline {3.1.1}Capa Batch}{20}{subsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.1.2}Capa Real-Time}{20}{subsection.3.1.2}% 
-\contentsline {subsection}{\numberline {3.1.3}Capa de Servicio}{21}{subsection.3.1.3}% 
-\contentsline {section}{\numberline {3.2}Integraci\IeC {\'o}n y Despliegue Continuos}{21}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}Tecnolog\IeC {\'\i }as}{21}{section.3.3}% 
-\contentsline {subsection}{\numberline {3.3.1}Capa batch}{22}{subsection.3.3.1}% 
-\contentsline {subsection}{\numberline {3.3.2}Capa Real-Time}{22}{subsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.3.3}Capa Servicio}{23}{subsection.3.3.3}% 
-\contentsline {subsection}{\numberline {3.3.4}Integraci\IeC {\'o}n y Despliegue Continuo}{23}{subsection.3.3.4}% 
-\contentsline {chapter}{\numberline {4}Conjunto de datos}{25}{chapter.4}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{25}{chapter.4}% 
-=======
-\contentsline {subsection}{\numberline {2.2.3}Redes neuronales en PLN}{13}{subsection.2.2.3}% 
-\contentsline {section}{\numberline {2.3}BigData y Fast Data}{14}{section.2.3}% 
-\contentsline {chapter}{\numberline {3}Arquitectura y tecnolog\IeC {\'\i }as}{17}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Arquitectura}{17}{section.3.1}% 
-\contentsline {subsection}{\numberline {3.1.1}Capa Batch}{18}{subsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.1.2}Capa Real-Time}{18}{subsection.3.1.2}% 
-\contentsline {subsection}{\numberline {3.1.3}Capa de Servicio}{19}{subsection.3.1.3}% 
-\contentsline {section}{\numberline {3.2}Integraci\IeC {\'o}n y Despliegue Continuos}{19}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}Tecnolog\IeC {\'\i }as}{19}{section.3.3}% 
-\contentsline {subsection}{\numberline {3.3.1}Capa batch}{20}{subsection.3.3.1}% 
-\contentsline {subsection}{\numberline {3.3.2}Capa Real-Time}{20}{subsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.3.3}Capa Servicio}{21}{subsection.3.3.3}% 
-\contentsline {subsection}{\numberline {3.3.4}Integraci\IeC {\'o}n y Despliegue Continuo}{21}{subsection.3.3.4}% 
-\contentsline {chapter}{\numberline {4}Conjunto de datos}{23}{chapter.4}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{23}{chapter.4}% 
->>>>>>> b3c11a1e0c3de045814e08e83defc1bf5451afc8
+\contentsline {subsection}{\numberline {2.2.3}Representaci\IeC {\'o}n de palabras en PLN}{14}{subsection.2.2.3}% 
+\contentsline {subsection}{\numberline {2.2.4}Arquitecturas especializadas}{15}{subsection.2.2.4}% 
+\contentsline {subsubsection}{\numberline {2.2.4.1}Redes neuronales convolucionales}{15}{subsubsection.2.2.4.1}% 
+\contentsline {subsubsection}{\numberline {2.2.4.2}Redes neuronales recurrentes}{19}{subsubsection.2.2.4.2}% 
+\contentsline {section}{\numberline {2.3}BigData y Fast Data}{23}{section.2.3}% 
+\contentsline {chapter}{\numberline {3}Arquitectura y tecnolog\IeC {\'\i }as}{25}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Arquitectura}{25}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}Capa Batch}{26}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}Capa Real-Time}{26}{subsection.3.1.2}% 
+\contentsline {subsection}{\numberline {3.1.3}Capa de Servicio}{27}{subsection.3.1.3}% 
+\contentsline {section}{\numberline {3.2}Integraci\IeC {\'o}n y Despliegue Continuos}{27}{section.3.2}% 
+\contentsline {section}{\numberline {3.3}Tecnolog\IeC {\'\i }as}{27}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.3.1}Capa batch}{28}{subsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.3.2}Capa Real-Time}{28}{subsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.3.3}Capa Servicio}{29}{subsection.3.3.3}% 
+\contentsline {subsection}{\numberline {3.3.4}Integraci\IeC {\'o}n y Despliegue Continuo}{29}{subsection.3.3.4}% 
+\contentsline {chapter}{\numberline {4}Conjunto de datos}{31}{chapter.4}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{31}{chapter.4}% 

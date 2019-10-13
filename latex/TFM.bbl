@@ -34,7 +34,7 @@ David~M. Blei, Andrew~Y. Ng, and Michael~I. Jordan.
 Pete Chapman, Julian Clinton, Randy Kerber, Thomas Khabaza, Thomas Reinartz,
   Colin Shearer, and Rudiger Wirth.
 \newblock Crisp-dm 1.0 step-by-step data mining guide.
-\newblock Technical report, The CRISP-DM consortium, August 2000.
+\newblock Technical report, The CRISP-DM consortium, Agosto 2000.
 
 \bibitem{Cox_1997}
 Michael Cox and David Ellsworth.
@@ -49,6 +49,14 @@ Jeffrey Dean and Sanjay Ghemawat.
 \newblock In {\em Proceedings of the 6th Conference on Symposium on Operating
   Systems Design \& Implementation - Volume 6}, OSDI'04, pages 10--10,
   Berkeley, CA, USA, 2004. USENIX Association.
+
+\bibitem{lambdakappa}
+Jesús Domínguez.
+\newblock De lambda a kappa: evolución de las arquitecturas big data.
+\newblock
+  \url{https://www.paradigmadigital.com/techbiz/de-lambda-a-kappa-evolucion-de-las-arquitecturas-big-data/},
+  Abril 2018.
+\newblock Último acceso 2019-10-13.
 
 \bibitem{wordnet}
 Christine Fellbaum.
@@ -65,6 +73,11 @@ Yoav Goldberg.
 \newblock {\em Neural network methods in natural language processing}.
 \newblock Morgan \& Claypool publishers, 2017.
 
+\bibitem{hope_lieder_resheff_2017}
+Tom Hope, Itay Lieder, and Yehezkel~S. Resheff.
+\newblock {\em Learning TensorFlow: a guide to building deep learning systems}.
+\newblock OReilly Media, 2017.
+
 \bibitem{laneay_2013}
 Douglas Laney.
 \newblock {3D} data management: Controlling data volume, velocity, and variety.
@@ -76,12 +89,31 @@ A.~S. M.~Ashique Mahmood.
 \newblock 2013.
 
 \bibitem{word2vec}
-Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg~S Corrado, and Jeff Dean.
-\newblock Distributed representations of words and phrases and their
-  compositionality.
-\newblock In C.~J.~C. Burges, L.~Bottou, M.~Welling, Z.~Ghahramani, and K.~Q.
-  Weinberger, editors, {\em Advances in Neural Information Processing Systems
-  26}, pages 3111--3119. Curran Associates, Inc., 2013.
+Tomas Mikolov, Kai Chen, Greg~S. Corrado, and Jeffrey Dean.
+\newblock Efficient estimation of word representations in vector space, 2013.
+
+\bibitem{lstmgru}
+Michael Nguyen.
+\newblock Illustrated guide to lstm's and gru's: A step by step explanation.
+\newblock
+  \url{https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21},
+  Septiembre 2018.
+\newblock Último acceso 2019-10-13.
+
+\bibitem{colahblog}
+Christopher Olah.
+\newblock Understanding lstm networks -- colah's blog.
+\newblock \url{https://colah.github.io/posts/2015-08-Understanding-LSTMs/},
+  Agosto 2015.
+\newblock Último acceso 2019-10-13.
+
+\bibitem{mlp}
+Stacey Ronaghan.
+\newblock Deep learning: Common architectures.
+\newblock
+  \url{https://medium.com/@srnghn/deep-learning-common-architectures-6071d47cb383},
+  Agosto 2018.
+\newblock Último acceso 2019-10-13.
 
 \bibitem{Rosen-Zvi_AMA_2010}
 Michal Rosen-Zvi, Thomas Griffiths, Mark Steyvers, and Padhraic Smyth.

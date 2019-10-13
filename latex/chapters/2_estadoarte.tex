@@ -77,18 +77,47 @@ A partir de entonces, y motivado en parte por el aumento en las capacidades de c
 \subsection{Deep Learning}
 Dentro del \textit{Machine Learning} y usualmente relacionado con el aprendizaje supervisado, nos encontramos con un sub-campo denominado \textbf{Deep Learning} que utiliza las redes neuronales para la creación de modelos. Como su nombre indica las redes neuronales consisten en unidades de cómputo llamadas neuronas que están interconectadas entre sí. Una neurona es una unidad de cómputo que posee múltiples  entradas y una  salida, esta neurona multiplica cada entrada por un peso para posteriormente realizar una suma y, por último, aplicar una función de salida no lineal. Si los pesos se establecen correctamente y tenemos un número suficiente de neuronas, una red neuronal puede aproximar a un conjunto muy amplio de funciones matemáticas. 
 
-En las redes neuronales, las neuronas suelen organizarse por capas que se encuentran conectadas entre sí. Mientras más capas tengamos más características podremos extraer de nuestros datos de entrada y podremos aproximar un mayor número de funciones (sin perder de vista el sobrentrenamiento). Hablamos que una red es profunda cuando contiene un gran número de capas, por ello el término de \textit{Deep Learning}. 
+En las redes neuronales, las neuronas suelen organizarse por capas que se encuentran conectadas entre sí. Mientras más capas tengamos más características podremos extraer de nuestros datos de entrada y podremos aproximar un mayor número de funciones (sin perder de vista el sobrentrenamiento). 
+
+
+El primero y más simple de los tipos de redes neuronales es el denominado \textit{Feed Forward Neural Network} (\textbf{FFNN}), este tipo de redes recibe este nombre porque no existen ciclos entre sus neuronas y las conexiones se realizan siempre desde las capas anteriores a las capas posteriores. 
+
+
+Una de las arquitectura más comunes de FFNN es el preceptrón multicapa (en inglés multilayer perceptron o \textbf{MLP}). Esta arquitectura contiene tres o más capas de neuronas totalmente conectadas, es decir, la salida de una neurona de una capa se encuentra conectada a la entrada de todas las neuronas de la siguiente capa. Las capas de una arquitectura MLP son:
+
+\begin{itemize}
+	\item \textbf{Capa de entrada}: Se trata de la capa en la que introduciremos los datos en la red. Esta capa carece de procesamiento.
+	\item \textbf{Capas ocultas}: Son las capas intermedias, cuyo número puede variar, tienen como entrada la salida de las neuronas de la capa anterior y su salida alimenta a las neuronas de la capa posterior.  
+	\item \textbf{Capa de salida}: Los valores de salida de las neuronas de esta capa se corresponden con la salida de la red.
+\end{itemize}
+ 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.65\textwidth]{images/arte/mlp}
+	\caption{Ejemplo de arquitectura MLP. Fuente \cite{mlp}}
+	\label{fig:mlp}
+\end{figure}
 
 
 
+Hablamos que una red es profunda cuando contiene un gran número de capas, por ello el término de \textit{Deep Learning}. En la figura \ref{fig:mlp} observamos un ejemplo de arquitectura MLP y como la denominamos \textit{Deep Learning} al crecer el número de capas ocultas.
 
-\subsection{Redes neuronales en PLN}% Podemos llamarle embedding o representación de palabras
 
-Es usual, en el ámbito del reconocimiento de imágenes, utilizar información acerca de la dimensionalidad de las mismas. Este tipo de información nos permite extraer características  teniendo en cuenta los píxeles vecinos. Tradicionalmente, en el ámbito del procesamiento del lenguaje natural, esto no se ha llevado a cabo debido a que cada palabra (o n-grama) se trataba como una entidad aislada. 
+\subsection{Representación de palabras en PLN}% Podemos llamarle embedding o representación de palabras
 
-En cambio, existe otro método de representar las palabras en el lenguaje natural que sí es capaz de captar la ``dimensionalidad'' de una forma similar a como lo realizamos en las imágenes. Este modo deja de tratar la palabra como un ente aislado y  es capaz de captar el significado de la misma, esta representación se denomina distribuida y consiste en convertir las palabras en vectores en los que cada dimensión capte características diferentes de las palabras. Este tipo de representaciones dará lugar a vectores similares para palabras semánticamente parecidas. 
+Es usual, en el ámbito del reconocimiento de imágenes, utilizar información acerca de la dimensionalidad de las mismas. Este tipo de información nos permite extraer características  teniendo en cuenta los píxeles vecinos. Tradicionalmente, en el ámbito del procesamiento del lenguaje natural, esto no se ha llevado a cabo debido a que cada palabra (o n-grama) se trataba como una entidad aislada utilizando una codificación de las palabra denominada \textbf{one-hot encoding}. 
 
-Una de las soluciones más populares que nos permiten convertir una palabra a un vector (\textit{word2vec}) que contenga información de la palabra en función del contexto se detallan en el artículo \cite{word2vec} . Aquí se presentaron dos modelos llamados Skip-Gram y CBOW. Estos modelos utilizan redes neuronales para predecir una palabra en función de su contexto o el contexto en función de una palabra, el vector que se utiliza para representar la palabra es el vector de pesos de la capa oculta. 
+En cambio, existe otro método de representar las palabras en el lenguaje natural que sí es capaz de captar la ``dimensionalidad'' de una forma similar a como lo realizamos en las imágenes. Este modo, conocido como \textit{\textbf{word embedding}}, deja de tratar la palabra como un ente aislado y  es capaz de captar el significado de la misma, esta representación se denomina distribuida y consiste en convertir las palabras en vectores en los que cada dimensión capte características diferentes de las palabras. Este tipo de representaciones dará lugar a vectores similares para palabras semánticamente parecidas. 
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/arte/word2vec}
+	\caption{Arquitecturas CBOW y Skip-gram. Fuente \cite{word2vec}}
+	\label{fig:wor2vec}
+\end{figure}
+
+Una de las soluciones más populares que nos permiten convertir una palabra a un vector (\textit{word2vec}) que contenga información de la palabra en función del contexto se detallan en el artículo \cite{word2vec} . Aquí se presentaron dos modelos llamados \textbf{Skip-Gram} y \textbf{CBOW} cuya arquitectura podemos ver en la figura \ref{fig:wor2vec}. Estos modelos utilizan redes neuronales para predecir una palabra en función de su contexto o el contexto en función de una palabra, el vector que se utiliza para representar la palabra es el vector de pesos de la capa oculta. 
 
 
 
@@ -101,7 +130,7 @@ Los dos tipos de redes neuronales que comentaremos son las redes neuronales conv
 
 \subsubsection{Redes neuronales convolucionales}
 
-Las redes neuronales convolucionales (llamadas usualmente CNN, por su nombre en inglés \textit{\textbf{C}onvolutional \textbf{N}eural \textbf{N}etworks}) son un tipo de redes neuronales que deben su nombre a la operación matématica de convolución que realizan. Esta operación consiste en aplicar a una matriz de entrada multidimensional, un filtro o kernel también multidimensional y obtener una salida, también denominada mapa de características. En la figura \ref{fig:cnn1} podemos ver una representación gráfica de esta operación para un ejemplo de 2 dimensiones.
+Las redes neuronales convolucionales (llamadas usualmente CNN, por su nombre en inglés \textit{\textbf{C}onvolutional \textbf{N}eural \textbf{N}etworks}) son un tipo de redes neuronales que deben su nombre a la operación matemática de convolución que realizan. Esta operación consiste en aplicar a una matriz de entrada multidimensional, un filtro o kernel también multidimensional y obtener una salida, también denominada mapa de características. En la figura \ref{fig:cnn1} podemos ver una representación gráfica de esta operación para un ejemplo de 2 dimensiones. 
 
 \begin{figure}[!ht]
 	\centering
@@ -110,35 +139,152 @@ Las redes neuronales convolucionales (llamadas usualmente CNN, por su nombre en 
 	\label{fig:cnn1}
 \end{figure}
 
+Es usual en las redes convolucionales  utilizar diferentes kernels sobre una misma entrada, obteniendo diferentes salidas que permitan reconocer distintos patrones. Los pesos del kernel junto con el sesgo son los parámetros que serán necesarios calcular en el entrenamiento y en el caso de las redes convolucionales se denominan mapas de características.
 
-TODO Reduccion dimensión padding...
+Aunque la convolución simple que comentamos es la operación básica en las redes convolucionales es usual añadirle algunas variantes (o configurarla con algunos parámetros), que nos permiten variar la dimensión de salida una vez hemos aplicado la convolución, algunas de estas variaciones más comunes son el \textbf{\textit{zero padding}} y la \textbf{convolución por pasos}.
+
+Como observamos en la figura \ref{fig:cnn1}, al aplicar el kernel a los datos de  entrada estamos reduciendo la dimensionalidad de la salida, a menudo es posible que esto no nos interese y queramos mantener la dimensionalidad en la salida; para ello recurrimos a un método denominado \textit{zero padding} que consiste en añadir 0s en los bordes de nuestra entrada con el objetivo de preservar la dimensionalidad en la salida. En la figura \ref{fig:padding} podemos ver un ejemplo de aplicación de \textit{zero padding}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/arte/padding}
+	\caption{Ejemplo de aplicación de \textit{zero padding} para mantener la dimensionalidad. Fuente \cite{temariodeeplearning}}
+	\label{fig:padding}
+\end{figure}
+
+
+Por otro lado, es también posible que queramos reducir aún la dimensión de salida, principalmente por un tema de eficiencia y reducción de los tiempos de ejecución a costa de perder información de algunas características en la salida. Para ello podemos utilizar la convolución por pasos (o \textit{strided} por su nombre en inglés), este método consiste en aplicar el kernel realizando saltos en lugar de hacerlo sobre celdas consecutivas tal y como podemos ver en la figura \ref{fig:strided}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/arte/strided}
+	\caption{Ejemplo de aplicación de \textit{zero padding} para mantener la dimensionalidad. Fuente \cite{temariodeeplearning}}
+	\label{fig:strided}
+\end{figure}
+
+
 
 El proceso explicado anteriormente correspondería con una capa convolucional, que son el corazón de las redes neuronales convolucionales, sin embargo, en una red neuronal convolucional estas capas coexisten con otro tipo de capas que nos ayudaran a mejorar nuestros modelos. Las más usuales son:
 
 \begin{itemize}
-	\item Capa de agrupamiento (\textit{polling} en inglés): El objetivo de esta capa es agrupar un conjunto de salidas para obtener un único valor, al conjunto de valores de entrada (seleccionado de nuevo con un filtro) se le aplica una función para obtener un único valor. Aunque se pueden utilizar diferentes funciones, como puede ser la media, lo más usual es aplicar la función de máximo (\textit{max-polling}). Es habitual, intuir que usando esta función nos estamos quedando con las características más relevantes de cada cuadrante (del tamaño del filtro) de la entrada.
-	\item Capa totalmente conectada: Hemos visto ejemplos de capas totalmente conectada al introducir las redes neuronales, esta capas usualmente se usan al final de nuestra red para tareas de clasificación, teniendo la última capa un número de neuronas igual al número de clases que pretendemos clasificar.
+	\item Capa de agrupamiento (\textit{polling} en inglés): El objetivo de esta capa es agrupar un conjunto de salidas para obtener un único valor, al conjunto de valores de entrada (seleccionado de nuevo con un filtro) se le aplica una función para obtener un único valor. Aunque se pueden utilizar diferentes funciones, como puede ser la media, lo más usual es aplicar la función de máximo (\textit{max-polling}). Es habitual, intuir que usando esta función nos estamos quedando con las características más relevantes de cada cuadrante (del tamaño del filtro) de la entrada. En la figura \ref{fig:pooling} podemos ver un ejemplo de agrupamiento utilizando la función de máximo. 
+	\item Capa totalmente conectada: Hemos visto ejemplos de capas totalmente conectada al introducir las redes neuronales, esta capas usualmente se usan al final de nuestra red para tareas de clasificación, teniendo la última capa un número de neuronas igual al número de clases que pretendemos clasificar. 
 	\item Capa RELU: Si observamos la descripción de la operación de convolución nos damos cuenta de que se trata de una operación totalmente lineal, es por ello que después de cada capa de convolución es usual agregar una capa no lineal (también llamada capa de activación). Aunque se pueden utilizar otras funciones como la tangente o la función sigmoide, lo más usual es utilizar la función RELU.
 	
-	\item Capa de Dropout: 
+	\item Capa de Dropout: Esta capa tiene como funcionalidad prevenir el sobreentrenamiento en las redes neuronales, desactivando un número aleatorio de entradas de la capa forzando a la red a ser redundante y permitir dar una clasificación correcta sin tener todas las entradas activas. 
 	
 \end{itemize}
 
-En una red neuronal convolucional normalmente coexisten otro tipo de
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/arte/pooling}
+	\caption{Ejemplo de aplicación de \textit{max-pooling}. Fuente \cite{temariodeeplearning}}
+	\label{fig:pooling}
+\end{figure}
+
+
+Tras esta visión general sobre las redes neuronales generales podemos enumerar las ventajas que conllevan: 
+
+\begin{itemize}
+	\item Por un lado, aunque no hemos entrado en detalles sobre el proceso de entrenamiento de las redes convolucionales, se puede intuir que el aplicar un mismo kernel sobre toda la entrada provoca que el número de parámetros a aprender (los valores del kernel) con respecto a una red totalmente conectada será mucho menor. Esto provoca una \textbf{reducción del tiempo de entrenamiento necesario}. 
+	\item Por otro lado, el hecho de compartir el kernel provoca que podamos \textbf{capturar una misma característica en la entrada a pesar de su traslación}. Por ejemplo, si estamos detectando un objeto en una imagen un modelo convolucional podrá detectar ese objeto a pesar de su movimiento por la imagen. 
+\end{itemize}
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/arte/traditionalvscnn}
+	\caption{Comparación capa tradicional totalmente conectada con capa convolucional. Fuente \cite{hope_lieder_resheff_2017}}
+	\label{fig:tradvscnn}
+\end{figure}
 
 
 
-TODO seguir con pooling ...
-
-Encontramos una explicación más profunda sobre las redes convolucionales y su uso general en \cite{temariodeeplearning}. Nosotros nos centraremos en tener una visión general de su aplicación al Procesamiento del Lenguaje Natural, que también puede ampliarse en \cite{goldberg_2017}.
+Sin embargo, las redes neuronales convolucionales deben usarse en datos que contengan coherencia local ya que esa es su fortaleza. \textbf{En datos sin coherencia local las redes neuronales convolucionales no lograrían obtener un buen rendimiento} como las redes neuronales tradicionales vistas anteriormente. Si observamos la figura \ref{fig:tradvscnn} podemos ver la diferencia entre las capas de ambas tipos de redes y como la capa convolucional se centra más en las estructuras locales.
 
 
-TODO palabras
+
+
+Encontramos una explicación más profunda sobre las redes convolucionales y su uso general en \cite{temariodeeplearning}. Aunque, como podemos imaginar, el uso más extendido de este tipo de redes es para el tratamiento de imágenes, nosotros nos centraremos en tener una breve visión de su aplicación al Procesamiento del Lenguaje Natural, que también puede ampliarse en \cite{goldberg_2017}.
+
+
+
+Al aplicar las redes tradicionales al PLN solemos ignorar el orden en el que las palabras aparecen en las frases, o las frases en el documento, siguiendo una aproximación CBOW;  esto suele ser problemático a la hora de realizar, por ejemplo, un análisis de sentimientos ya que no es lo mismo encontrar la palabra ``malo'' aislada que el bigrama ``no malo''. Aunque el uso de bi-gramas y N-gramas de mayor orden puede mejorar esta situación el coste puede volverse inasumible. 
+
+Es en este ámbito dónde las redes neuronales convolucionales pueden ser de gran ayuda, ya que gracias a la capacidad comentada para detectar estructuras locales serían capaces de identificar estos N-gramas de forma automática para ser usados posteriormente en tareas predictivas. 
+
+
+
 
 \subsubsection{Redes neuronales recurrentes}
+Otro de los modelos usualmente usados en tareas de Procesamiento del Lenguaje Natural son las redes neuronales recurrentes, (llamadas usualmente RNN, por su nombre en inglés \textit{\textbf{R}ecurrent \textbf{N}eural \textbf{N}etworks}). Hasta ahora todos los modelos de redes neuronales que hemos citado funcionaban siempre en una dirección, las neuronas de una capa anterior producían una salida que era la encargada de activar las neuronas de la capa posterior; en las redes recurrentes veremos que las salidas de una neurona en una capa posterior pueden tener una conexión con una neurona de una capa anterior. Esto crea una especie de \textbf{memoria} que nos permite modificar la respuesta de la red en función de los datos que se hayan procesado anteriormente (incluso reaccionar con datos que lleguen posteriormente).
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.32\textwidth]{images/arte/rnn}
+	\caption{Ejemplo RNN. Fuente \cite{colahblog}}
+	\label{fig:rnn}
+\end{figure}
+
+Las conexiones en una red neuronal recurrente pueden tener muchas variaciones por lo que es usual hablar del concepto de \textbf{celda}. Una celda suele tener como entrada los valores de la secuencia y el estado de la red neuronal en el paso anterior; y como salida la respuesta de la red neuronal a dicha entrada y el estado de la red neuronal en el paso actual. 
 
 
-TODO explicación pros y contras
+
+En la figura \ref{fig:rnn} observamos un ejemplo de red neuronal recurrente en el que tenemos como entrada el valor de la secuencia $x_{t}$ y la el estado de la red en el paso anterior (conexión en bucle); y producimos una respuesta $h_{t}$ y un estado (conexión en bucle). Sin embargo posiblemente esta representación sea algo más confusa para comprender su funcionamiento que si procedemos a ``desenrollar'' la red neuronal haciéndola más similar a los modelos vistos hasta ahora, en la figura \ref{fig:rnn2} podemos ver el resultado de ``desenrollar'' la red; hay que tener en cuenta con esta representación que los parámetros usados por cada celda son exactamente los mismos.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.65\textwidth]{images/arte/rnn2}
+	\caption{Ejemplo RNN ``desenrollada''. Fuente \cite{colahblog}}
+	\label{fig:rnn2}
+\end{figure}
+
+
+
+Aunque no entraremos en detalles sobre el entrenamiento de redes neuronales es importante saber que existen dos problemas diferentes provocados ambos por usar los mismos parámetros en todas las celdas que provocan la inestabilidad durante el proceso de entrenamiento. Estos problemas son la \textbf{desaparición del gradiente}, que ocurre al multiplicar el gradiente consigo mismo múltiples veces cuando este es menor que 1, y la \textbf{explosión del gradiente}, que ocurre por el mismo motivo cuando este es mayor que 1. 
+
+Para mitigar estos problemas es importante el diseño de las celdas, a continuación veremos de manera resumida los dos tipos de celdas más usados en las redes neuronales recurrentes. Las celdas que comentaremos están compuestas por diferentes mecanismos internos, denominados puertas, que gestionan el flujo de información a lo largo de la misma. 
+
+
+El primer tipo de celdas  son las celdas Long Short Term Memory (\textbf{LSTM}). Este tipo de celdas se comportan bien en situaciones que queremos encontrar patrones entre registros que se encuentran separados en la secuencia, esto es algo muy usual, por ejemplo, en el caso de PLN cuando en una misma frase una palabra hace referencia a otra que apareció a una distancia de varias palabras. 
+	
+Para conseguir este objetivo, parece evidente que es importante controlar la memoria en cada una de las celdas. Una celda LSTM realiza esta tarea con las siguientes puertas: 
+	\begin{itemize}
+		\item Puerta de entrada: Controla que información se añade a la memoria de la red. 
+		\item Puerta de olvido: Controla, a partir de la memoria del paso anterior y de la entrada, que información debe conservarse en la memoria. 
+		\item Puerta de salida:  Es la encargada de calcular la salida de la red, $h_{t}$, en el paso actual. 
+	\end{itemize}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/arte/lstmvsgru}
+	\caption{Arquitectura celdas LSTM y GRU. Fuente \cite{lstmgru}}
+	\label{fig:lstmvsgru}
+\end{figure}
+
+
+
+Debido al éxito de las celdas LSTM, y al constante esfuerzo de optimización de las mismas, han surgido diferentes variantes. La más conocida de todas son las Gated Recurrent Unit (\textbf{GRU}) introducidas en 2014. La celda GRU es una simplificación de la celda LSTM y produce unos rendimientos bastante similares con un menor coste. De manera muy resumida una celda GRU se compone de: 
+\begin{itemize}
+	\item Puerta de reset: Permite seleccionar que información de la memoria va a ser utilizada en un paso concreto. 
+	\item Puerta de actualización: Realiza la función de las puertas de olvido y de entrada que hemos visto en las celdas LSTM.
+\end{itemize}
+
+Aunque no hemos entrado en el detalle del funcionamiento de cada una de las puertas, en la figura \ref{fig:lstmvsgru} podemos ver la arquitectura completa de ambos tipos, y observar la mayor simplicidad de las celdas GRU frente a las LSTM. 
+
+
+Como podemos imaginar las redes neuronales recurrentes son ampliamente usadas en el mundo del Procesamiento del Lenguaje Natural, debido a que una palabra no es otra cosa que una secuencia de letras, una frase a su vez se trata de una secuencia de palabras y un documento una secuencia de frases. Alguno de los usos de las RNN en este ámbito son: 
+
+\begin{itemize}
+	\item \textbf{Análisis de sentimientos}: Detectar el sentimiento positivo o negativo de un texto utilizando únicamente la última salida de la red.
+	\item \textbf{Generador de texto}: Predecir la siguiente palabra de una secuencia, utilizando la salida de cada una de las celdas. 
+	\item \textbf{Traductores}: Traducir textos entre idiomas, en este caso es usual utilizar redes recurrentes bidirecionales.
+\end{itemize}
+
+
+
+Una vez analizadas, de manera global, las redes neuronales recurrentes podemos ver que nos ofrecen \textbf{numerosas ventajas al trabajar con secuencias} como hacemos en el ámbito del PLN. Entre ellas podemos ver, que vamos incluso más haya que con las CNN analizando la relación entre las diferentes palabras, fundamentalmente con las celdas LSTM y GRU, pudiendo detectarlas entre palabras que estén alejadas entre sí y no ceñirnos al tamaño del kernel. Sin embargo, como hemos visto, y aunque sean mitigados por el uso de celdas LSTM y GRU, las redes neuronales recurrentes presentan \textbf{problemas durante el entrenamiento} tanto de desvanecimiento como de explosión del gradiente.
+
 
 \section{BigData y Fast Data}
 
@@ -155,10 +301,24 @@ Google, como es obvio, también  se enfrentó a un importante problema a la hora
 
 Sin embargo, estas aportaciones no empezaron a tomar una repercusión relevante fuera de Google hasta el nacimiento del \textit{framework} Hadoop en 2006, un ecosistema con una gran cantidad de servicios pero cuya base fue Map Reduce y HDFS (basado en GFS). La complejidad del ecosistema \textit{Hadoop} hizo que éste no empezara a aparecer en las mayoría de las empresas hasta la creación de la compañía \textit{Cloudera} en 2009, que empezó a empaquetar los diferentes componentes del ecosistema \textit{Hadoop}, ofreciendo distribuciones estables y soporte para sus clientes. 
 
-Durante estos 10 años la popularidad de \textit{Hadoop} ha crecido exponencialmente y junto con las BBDD NoSQL, nacidas también a partir de Google con su BigTable, forman lo que hoy conocemos como Big Data. 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.90\textwidth]{images/arte/bigdatatime}
+	\caption{Evolución del \textit{Big Data}. Fuente \cite{lambdakappa}}
+	\label{fig:bigdatatime}
+\end{figure}
+
+
+Durante estos 10 años la popularidad de \textit{Hadoop} ha crecido exponencialmente y junto con las BBDD NoSQL, nacidas también a partir de Google con su BigTable, forman lo que hoy conocemos como Big Data. En la figura \ref{fig:bigdatatime} observamos esta evolución en el mundo del \textit{Big Data} con los hitos de aparición de algunas tecnologías representativas.
 
 
 
-El auge del \textbf{Big Data} ha llevado a algunas empresas a tener verdadera obsesión por el almacenamiento de todos los datos de sus clientes y las operaciones realizadas, creando inmensos \textit{datalakes} donde tener enormes históricos de todos sus datos, este ``síndrome de Diógenes digital'' creado por falsas expectativas, por la imposibilidad de extraer valor de los datos o por la dimensión cambiante de las empresas actuales, en la que los datos de años atrás pueden no ser relevantes en el presente, es uno de los posibles motivos por lo que el tratamiento de los datos esta cambiando. Otro de los motivos para el cambio de rumbo del \textit{Big Data} está relacionado con la \textit{V} de Velocidad, hoy en día no solo es importante la capacidad de ingestar rápidamente los datos, sino la capacidad de poder procesar y obtener decisiones o actuar en tiempo real a partir de los datos, aportando valor al negocio. En este escenario se vuelve más importante la velocidad que el volumen de datos, esto es lo que se denomina \textit{Fast Data}. 
+El auge del \textbf{Big Data} ha llevado a algunas empresas a tener verdadera obsesión por el almacenamiento de todos los datos de sus clientes y las operaciones realizadas, creando inmensos \textit{datalakes} donde tener enormes históricos de todos sus datos. Este ``síndrome de Diógenes digital'' creado por falsas expectativas, por la imposibilidad de extraer valor de los datos o por la dimensión cambiante de las empresas actuales (en la que los datos de años atrás pueden no ser relevantes en el presente) es uno de los posibles motivos por lo que el tratamiento de los datos esta cambiando. Otro de los motivos para el cambio de rumbo del \textit{Big Data} está relacionado con la \textit{V} de Velocidad, hoy en día no solo es importante la capacidad de ingestar rápidamente los datos, sino la capacidad de poder procesar y obtener decisiones o actuar en tiempo real a partir de los datos, aportando valor al negocio. En este escenario se vuelve más importante la velocidad que el volumen de datos, esto es lo que se denomina \textit{Fast Data}. 
 
-Dentro del \textit{Fast Data} es habitual el uso de BBDD \textit{in-memory}, de buses de eventos y de tecnologías de procesamiento capaces de procesar los eventos en tiempo real. Como veremos posteriormente al desarrollar nuestra arquitectura, el \textit{Fast Data} será una parte fundamental en nuestro proyecto en el que tendremos que clasificar las llamadas en tiempo real y tomar decisiones (o alarmar) en función de las mismas.
+
+
+Dentro del \textit{Fast Data} es habitual el uso de BBDD \textit{in-memory}, de buses de eventos y de tecnologías de procesamiento capaces de procesar los eventos en tiempo real. Como veremos posteriormente al desarrollar nuestra arquitectura, el \textit{Fast Data} será una parte fundamental en nuestro proyecto en el que tendremos que clasificar las llamadas en tiempo real y tomar decisiones (o alarmar) en función de las mismas. 
+
+Observando de nuevo la figura \ref{fig:bigdatatime} podemos ver este cambio en la tendencia hacia el \textit{Fast Data} a partir del 2012 cuando aparece la tecnología Kafka y en los años posteriores con la incorporación de diferentes herramientas para el procesamiento de eventos como son \textit{Spark Streaming} o \textit{Flink}.
+
