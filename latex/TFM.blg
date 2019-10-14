@@ -1,6 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2019/Arch Linux)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: TFM.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: TFM.aux
 The style file: plain.bst
 Database file #1: referencias.bib
 Warning--entry type for "colahblog" isn't style-file defined
@@ -11,47 +9,12 @@ Warning--entry type for "mlp" isn't style-file defined
 --line 206 of file referencias.bib
 Warning--entry type for "lambdakappa" isn't style-file defined
 --line 216 of file referencias.bib
+Warning--entry type for "lambda" isn't style-file defined
+--line 226 of file referencias.bib
+Warning--entry type for "cap" isn't style-file defined
+--line 236 of file referencias.bib
+Warning--entry type for "kappa" isn't style-file defined
+--line 245 of file referencias.bib
 Warning--empty publisher in temariodeeplearning
 Warning--empty publisher in Mahmood2013LiteratureSO
-You've used 22 entries,
-            2118 wiz_defined-function locations,
-            634 strings with 7589 characters,
-and the built_in function-call counts, 6966 in all, are:
-= -- 701
-> -- 296
-< -- 6
-+ -- 120
-- -- 96
-* -- 405
-:= -- 1142
-add.period$ -- 75
-call.type$ -- 22
-change.case$ -- 109
-chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 291
-empty$ -- 575
-format.name$ -- 96
-if$ -- 1511
-int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 22
-newline$ -- 116
-num.names$ -- 44
-pop$ -- 159
-preamble$ -- 1
-purify$ -- 92
-quote$ -- 0
-skip$ -- 210
-stack$ -- 0
-substring$ -- 335
-swap$ -- 70
-text.length$ -- 6
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 74
-warning$ -- 2
-while$ -- 66
-width$ -- 24
-write$ -- 254
-(There were 6 warnings)
+(There were 9 warnings)

@@ -17,16 +17,18 @@
 \BOOKMARK [2][-]{subsection.2.2.3}{Representaci\363n de palabras en PLN}{section.2.2}% 17
 \BOOKMARK [2][-]{subsection.2.2.4}{Arquitecturas especializadas}{section.2.2}% 18
 \BOOKMARK [1][-]{section.2.3}{BigData y Fast Data}{chapter.2}% 19
-\BOOKMARK [0][-]{chapter.3}{Arquitectura y tecnolog\355as}{}% 20
-\BOOKMARK [1][-]{section.3.1}{Arquitectura}{chapter.3}% 21
-\BOOKMARK [2][-]{subsection.3.1.1}{Capa Batch}{section.3.1}% 22
-\BOOKMARK [2][-]{subsection.3.1.2}{Capa Real-Time}{section.3.1}% 23
-\BOOKMARK [2][-]{subsection.3.1.3}{Capa de Servicio}{section.3.1}% 24
-\BOOKMARK [1][-]{section.3.2}{Integraci\363n y Despliegue Continuos}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.3}{Tecnolog\355as}{chapter.3}% 26
-\BOOKMARK [2][-]{subsection.3.3.1}{Capa batch}{section.3.3}% 27
-\BOOKMARK [2][-]{subsection.3.3.2}{Capa Real-Time}{section.3.3}% 28
-\BOOKMARK [2][-]{subsection.3.3.3}{Capa Servicio}{section.3.3}% 29
-\BOOKMARK [2][-]{subsection.3.3.4}{Integraci\363n y Despliegue Continuo}{section.3.3}% 30
-\BOOKMARK [0][-]{chapter.4}{Conjunto de datos}{}% 31
-\BOOKMARK [0][-]{chapter.4}{Bibliograf\355a}{}% 32
+\BOOKMARK [2][-]{subsection.2.3.1}{Evoluci\363n: del Big Data al Fast Data}{section.2.3}% 20
+\BOOKMARK [2][-]{subsection.2.3.2}{Arquitecturas RealTime}{section.2.3}% 21
+\BOOKMARK [0][-]{chapter.3}{Arquitectura y tecnolog\355as}{}% 22
+\BOOKMARK [1][-]{section.3.1}{Arquitectura}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.1.1}{Capa Batch}{section.3.1}% 24
+\BOOKMARK [2][-]{subsection.3.1.2}{Capa Real-Time}{section.3.1}% 25
+\BOOKMARK [2][-]{subsection.3.1.3}{Capa de Servicio}{section.3.1}% 26
+\BOOKMARK [1][-]{section.3.2}{Integraci\363n y Despliegue Continuos}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.3}{Tecnolog\355as}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.3.1}{Capa batch}{section.3.3}% 29
+\BOOKMARK [2][-]{subsection.3.3.2}{Capa Real-Time}{section.3.3}% 30
+\BOOKMARK [2][-]{subsection.3.3.3}{Capa Servicio}{section.3.3}% 31
+\BOOKMARK [2][-]{subsection.3.3.4}{Integraci\363n y Despliegue Continuo}{section.3.3}% 32
+\BOOKMARK [0][-]{chapter.4}{Conjunto de datos}{}% 33
+\BOOKMARK [0][-]{chapter.4}{Bibliograf\355a}{}% 34

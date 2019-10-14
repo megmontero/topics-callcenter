@@ -4,12 +4,13 @@
 
 El objetivo de este apartado es hacer un recorrido por el estado del arte relacionado con el proyecto, este recorrido lo enfocaremos desde tres puntos de vista diferentes:
 \begin{itemize}
-	\item \textbf{Procesamiento del Lenguaje Natural}: En este apartado nos centraremos en el procesamiento del lenguaje natural y su evolución a lo largo del tiempo. 
-	\item \textbf{\textit{Deep Learning} y aplicación al Procesamiento del Lenguaje Natural}: En la segunda parte pondremos foco en el \textit{Deep Learning}, sus ventajas y cómo se están aplicando estos métodos al procesamiento de lenguaje natural. 
-	\item \textbf{\textit{Big Data} y \textit{Fast Data}}: Por último, haremos un repaso a la evolución del \textit{Big Data} y cómo la tendencia actual es realizar el procesamiento en tiempo real mediante \textit{Fast Data}.
+	\item \textbf{Procesamiento del Lenguaje Natural}: En la sección \ref{section:arte:pln}  nos centraremos en el procesamiento del lenguaje natural y su evolución a lo largo del tiempo. 
+	\item \textbf{\textit{Deep Learning} y aplicación al Procesamiento del Lenguaje Natural}: En la sección \ref{section:arte:deep}  pondremos foco en el \textit{Deep Learning}, sus ventajas y cómo se están aplicando estos métodos al procesamiento de lenguaje natural. 
+	\item \textbf{\textit{Big Data} y \textit{Fast Data}}: Por último, en la sección \ref{section:arte:big}, haremos un repaso a la evolución del \textit{Big Data} y cómo la tendencia actual es realizar el procesamiento en tiempo real mediante \textit{Fast Data}.
 \end{itemize}
 
 \section{Procesamiento de lenguaje natural}
+\label{section:arte:pln}
 
 \subsection{Historia}
 
@@ -17,14 +18,14 @@ Para hablar de los orígenes del Procesamiento del Lenguaje Natural (a partir de
 
 
 
-A partir de los avances de Turing y hasta los 80 el crecimiento en el campo del PLN se produjo principalmente con la creación de complejos sistemas basados en reglas escritas a mano. Fue en esta década cuando empezamos a vivir la incorporación de algoritmos de \textit{machine learning} enfocados al procesamiento del lenguaje natural. Este hecho se vio motivado principalmente por el increíble avance en la capacidad de cómputo, ya predicho por la ley de Moore, y por la aplicación de teorías ya existentes como los trabajos de Chomsky. 
+A partir de los avances de Turing y hasta los años 80 el crecimiento en el campo del PLN se produjo principalmente con la creación de complejos sistemas basados en reglas escritas a mano. Fue en esta década cuando empezamos a vivir la incorporación de algoritmos de \textit{machine learning} enfocados al procesamiento del lenguaje natural. Este hecho se vio motivado principalmente por el increíble avance en la capacidad de cómputo, ya predicho por la ley de Moore, y por la aplicación de teorías ya existentes como los trabajos de Chomsky. 
 
 
 Desde el comienzo de la aplicación de modelos de \textit{machine learning}, y de nuevo motivados por el crecimiento de la capacidad computacional de los sistemas actuales, se ha pasado de utilizar árboles de decisión, que creaban de manera automática reglas similares a las que se venían creando manualmente, a los modelos de \textit{deep learning} que están en auge en la última década. 
 
 \subsection{Aplicaciones}
 
-En el apartado anterior hicimos referencia a ``\textit{The Imitation Game}'' como inicio de lo que hoy conocemos como procesamiento de lenguaje natural, sin embargo, las aplicaciones en este campo han crecido de forma vertiginosa en estos 70 años, principalmente en las últimas décadas. Hoy en día, si tuviéramos que contestar a la pregunta: ``¿son capaces de pensar las máquinas?'', implicaría algo más que superar el test de Turing. Mirando a nuestro alrededor nos encontraríamos con asistentes de voz como Alexa o Siri que no solo contestan a nuestras preguntas, si no que realizan un trabajo de pasar nuestra voz a texto (\textit{Speech to Text}) y de nuevo el texto resultante a voz (\textit{Text to Speech}). Nos encontraríamos también con sistemas capaces de realizar traducciones simultáneas, otros capaces de autocompletar textos, de identificar preguntas y respuestas, de clasificar textos de acuerdo a temas o autores, incluso de analizar sentimientos positivos o negativos teniendo como entrada un texto u opinión... 
+En el apartado anterior hicimos referencia a ``\textit{The Imitation Game}'' como inicio de lo que hoy conocemos como procesamiento de lenguaje natural, sin embargo, las aplicaciones en este campo han crecido de forma vertiginosa en estos 70 años, principalmente en las últimas décadas. Hoy en día, si tuviéramos que contestar a la pregunta: ``¿son capaces de pensar las máquinas?'', implicaría algo más que superar el test de Turing. Mirando a nuestro alrededor nos encontraríamos con asistentes de voz como Alexa o Siri que, no solo contestan a nuestras preguntas, si no que realizan un trabajo de pasar nuestra voz a texto (\textit{Speech to Text}) y de nuevo el texto resultante a voz (\textit{Text to Speech}). Nos encontraríamos también con sistemas capaces de realizar traducciones simultáneas, otros capaces de autocompletar textos, de identificar preguntas y respuestas, de clasificar textos de acuerdo a temas o autores, incluso de analizar sentimientos positivos o negativos teniendo como entrada un texto u opinión... 
 
 
 Según \cite{goldberg_2017} todos estos problemas tan diversos podríamos clasificarlos según en el punto del análisis que nos centremos: 
@@ -63,6 +64,8 @@ A partir de LDA surgieron numerosas variantes que repasaremos de forma breve, po
 Podemos encontrar un resumen más completo del estado del arte en cuanto a la modelización de \textit{topics} en el artículo \cite{Mahmood2013LiteratureSO}. 
 
 \section{Deep Learning  y aplicación al PLN}
+\label{section:arte:deep}
+
 El objetivo de esta sesión es entender el concepto de \textit{Deep Learning} y analizar el estado del arte del \textit{Deep Learning} aplicado al Procesamiento del Lenguaje Natural. Para poder entender el \textit{Deep Learning} es conveniente entender los modelos de aprendizaje supervisados y saber qué provoca su aparición y popularidad de los últimos años. Posteriormente nos centraremos en los fundamentos del \textit{Deep Learning} para finalizar con las aplicaciones actuales en el ámbito del Procesamiento del Lenguaje Natural y que nos sirvan de apoyo para la ejecución del proyecto.
 
 
@@ -75,9 +78,11 @@ A partir de entonces, y motivado en parte por el aumento en las capacidades de c
 
 
 \subsection{Deep Learning}
-Dentro del \textit{Machine Learning} y usualmente relacionado con el aprendizaje supervisado, nos encontramos con un sub-campo denominado \textbf{Deep Learning} que utiliza las redes neuronales para la creación de modelos. Como su nombre indica las redes neuronales consisten en unidades de cómputo llamadas neuronas que están interconectadas entre sí. Una neurona es una unidad de cómputo que posee múltiples  entradas y una  salida, esta neurona multiplica cada entrada por un peso para posteriormente realizar una suma y, por último, aplicar una función de salida no lineal. Si los pesos se establecen correctamente y tenemos un número suficiente de neuronas, una red neuronal puede aproximar a un conjunto muy amplio de funciones matemáticas. 
+Dentro del \textit{Machine Learning} y usualmente relacionado con el aprendizaje supervisado, nos encontramos con un sub-campo denominado \textbf{Deep Learning} que utiliza las redes neuronales para la creación de modelos. 
 
-En las redes neuronales, las neuronas suelen organizarse por capas que se encuentran conectadas entre sí. Mientras más capas tengamos más características podremos extraer de nuestros datos de entrada y podremos aproximar un mayor número de funciones (sin perder de vista el sobrentrenamiento). 
+Como su nombre indica las redes neuronales consisten en unidades de cómputo llamadas neuronas que están interconectadas entre sí. Una neurona es una unidad de cómputo que posee múltiples  entradas y una  salida, esta neurona multiplica cada entrada por un peso para posteriormente realizar una suma y, por último, aplicar una función de salida no lineal. Si los pesos se establecen correctamente y tenemos un número suficiente de neuronas, una red neuronal puede aproximar a un conjunto muy amplio de funciones matemáticas. 
+
+En las redes neuronales, las neuronas suelen organizarse por capas que se encuentran conectadas entre sí. Mientras más capas tengamos, más características podremos extraer de nuestros datos de entrada y podremos aproximar un mayor número de funciones (sin perder de vista el sobrentrenamiento). 
 
 
 El primero y más simple de los tipos de redes neuronales es el denominado \textit{Feed Forward Neural Network} (\textbf{FFNN}), este tipo de redes recibe este nombre porque no existen ciclos entre sus neuronas y las conexiones se realizan siempre desde las capas anteriores a las capas posteriores. 
@@ -105,7 +110,7 @@ Hablamos que una red es profunda cuando contiene un gran número de capas, por e
 
 \subsection{Representación de palabras en PLN}% Podemos llamarle embedding o representación de palabras
 
-Es usual, en el ámbito del reconocimiento de imágenes, utilizar información acerca de la dimensionalidad de las mismas. Este tipo de información nos permite extraer características  teniendo en cuenta los píxeles vecinos. Tradicionalmente, en el ámbito del procesamiento del lenguaje natural, esto no se ha llevado a cabo debido a que cada palabra (o n-grama) se trataba como una entidad aislada utilizando una codificación de las palabra denominada \textbf{one-hot encoding}. 
+Es usual, en el ámbito del reconocimiento de imágenes, utilizar información acerca de la dimensionalidad de las mismas. Este tipo de información nos permite extraer características  teniendo en cuenta los píxeles vecinos. Tradicionalmente, en el ámbito del Procesamiento del Lenguaje Natural, esto no se ha llevado a cabo debido a que cada palabra (o n-grama) se trataba como una entidad aislada utilizando una codificación de las palabra denominada \textbf{one-hot encoding}. 
 
 En cambio, existe otro método de representar las palabras en el lenguaje natural que sí es capaz de captar la ``dimensionalidad'' de una forma similar a como lo realizamos en las imágenes. Este modo, conocido como \textit{\textbf{word embedding}}, deja de tratar la palabra como un ente aislado y  es capaz de captar el significado de la misma, esta representación se denomina distribuida y consiste en convertir las palabras en vectores en los que cada dimensión capte características diferentes de las palabras. Este tipo de representaciones dará lugar a vectores similares para palabras semánticamente parecidas. 
 
@@ -141,9 +146,7 @@ Las redes neuronales convolucionales (llamadas usualmente CNN, por su nombre en 
 
 Es usual en las redes convolucionales  utilizar diferentes kernels sobre una misma entrada, obteniendo diferentes salidas que permitan reconocer distintos patrones. Los pesos del kernel junto con el sesgo son los parámetros que serán necesarios calcular en el entrenamiento y en el caso de las redes convolucionales se denominan mapas de características.
 
-Aunque la convolución simple que comentamos es la operación básica en las redes convolucionales es usual añadirle algunas variantes (o configurarla con algunos parámetros), que nos permiten variar la dimensión de salida una vez hemos aplicado la convolución, algunas de estas variaciones más comunes son el \textbf{\textit{zero padding}} y la \textbf{convolución por pasos}.
-
-Como observamos en la figura \ref{fig:cnn1}, al aplicar el kernel a los datos de  entrada estamos reduciendo la dimensionalidad de la salida, a menudo es posible que esto no nos interese y queramos mantener la dimensionalidad en la salida; para ello recurrimos a un método denominado \textit{zero padding} que consiste en añadir 0s en los bordes de nuestra entrada con el objetivo de preservar la dimensionalidad en la salida. En la figura \ref{fig:padding} podemos ver un ejemplo de aplicación de \textit{zero padding}.
+Aunque la convolución simple que comentamos es la operación básica en las redes convolucionales es usual añadirle algunas variantes (o configurarla con algunos parámetros) que nos permitan variar la dimensión de salida una vez hemos aplicado la convolución, algunas de estas variaciones más comunes son el \textbf{\textit{zero padding}} y la \textbf{convolución por pasos}.
 
 \begin{figure}[!ht]
 	\centering
@@ -152,13 +155,17 @@ Como observamos en la figura \ref{fig:cnn1}, al aplicar el kernel a los datos de
 	\label{fig:padding}
 \end{figure}
 
+Como observamos en la figura \ref{fig:cnn1}, al aplicar el kernel a los datos de  entrada estamos reduciendo la dimensionalidad de la salida, a menudo es posible que esto no nos interese y queramos mantener la dimensionalidad en la salida; para ello recurrimos a un método denominado \textit{zero padding} que consiste en añadir '0s' en los bordes de nuestra entrada con el objetivo de preservar la dimensionalidad en la salida. En la figura \ref{fig:padding} podemos ver un ejemplo de aplicación de \textit{zero padding}.
 
-Por otro lado, es también posible que queramos reducir aún la dimensión de salida, principalmente por un tema de eficiencia y reducción de los tiempos de ejecución a costa de perder información de algunas características en la salida. Para ello podemos utilizar la convolución por pasos (o \textit{strided} por su nombre en inglés), este método consiste en aplicar el kernel realizando saltos en lugar de hacerlo sobre celdas consecutivas tal y como podemos ver en la figura \ref{fig:strided}.
+
+
+
+Por otro lado, es también posible que queramos reducir aún más la dimensión de salida, principalmente por un tema de eficiencia y reducción de los tiempos de ejecución, a costa de perder información de algunas características en la salida. Para ello podemos utilizar la convolución por pasos (o \textit{strided} por su nombre en inglés), este método consiste en aplicar el kernel realizando saltos en lugar de hacerlo sobre celdas consecutivas,  tal y como podemos ver en la figura \ref{fig:strided}.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/arte/strided}
-	\caption{Ejemplo de aplicación de \textit{zero padding} para mantener la dimensionalidad. Fuente \cite{temariodeeplearning}}
+	\caption{Ejemplo de aplicación de convolución por pasos para reducir la dimensionalidad. Fuente \cite{temariodeeplearning}}
 	\label{fig:strided}
 \end{figure}
 
@@ -287,8 +294,12 @@ Una vez analizadas, de manera global, las redes neuronales recurrentes podemos v
 
 
 \section{BigData y Fast Data}
+\label{section:arte:big}
+A lo largo de esta sección intentaremos tener una visión general del \textit{Big Data} y su evolución a lo largo del tiempo hasta llegar al \textit{Fast Data}. Posteriormente veremos las arquitecturas más usadas en el mundo del \textit{Big Data}. 
 
-El primer uso del término  \textit{Big Data}  se da en un artículo de Michael Cox y David Ellsworth de la NASA publicado en 1997 (\cite{Cox_1997}), donde hacen referencia a la dificultad de procesar grandes volúmenes de datos con los métodos de la época. Sin embargo, fue en 2001 cuando encontramos la definición más conocida y aceptada de \textit{Big Data} hecha por el analista Laney Douglas en su artículo ``3D Data Management: Controlling Data Volume, Velocity y Variety''(\cite{laneay_2013}) en el que se hacía referencia a las ya ``famosas'' tres \textit{V}s:
+\subsection{Evolución: del Big Data al Fast Data}
+
+El primer uso del término  \textit{Big Data}  se da en un artículo de Michael Cox y David Ellsworth de la NASA publicado en 1997 \cite{Cox_1997}, donde hacen referencia a la dificultad de procesar grandes volúmenes de datos con los métodos de la época. Sin embargo, fue en 2001 cuando encontramos la definición más conocida y aceptada de \textit{Big Data} hecha por el analista Laney Douglas en su artículo ``3D Data Management: Controlling Data Volume, Velocity y Variety'' \cite{laneay_2013} en el que se hacía referencia a las ya ``famosas'' tres \textit{V}s:
 
 \begin{itemize}
 	\item \textbf{V}olumen:  Cada vez los volúmenes de datos son mayores.
@@ -322,3 +333,65 @@ Dentro del \textit{Fast Data} es habitual el uso de BBDD \textit{in-memory}, de 
 
 Observando de nuevo la figura \ref{fig:bigdatatime} podemos ver este cambio en la tendencia hacia el \textit{Fast Data} a partir del 2012 cuando aparece la tecnología Kafka y en los años posteriores con la incorporación de diferentes herramientas para el procesamiento de eventos como son \textit{Spark Streaming} o \textit{Flink}.
 
+\subsection{Arquitecturas \textit{RealTime}}
+La evolución que hemos visto en el apartado anterior,  con la explosión del \textit{Big Data} y la irrupción del \textit{Fast Data}, hace necesaria la incorporación en las empresas de arquitecturas de procesamiento de datos en tiempo real que, como cualquier otra arquitectura de datos, sean capaces de ingestar, procesar y permitir la explotación y análisis de los datos. La diferencia fundamental en las arquitecturas \textit{RealTime} y las arquitecturas de datos tradicionales son el\textbf{ volumen de los datos a tratar} y la \textbf{capacidad para hacerlo en tiempo real}.
+
+Como veremos, no existe una arquitectura que se adapte a todos los casos de uso (\textit{one-size-fits-all}) y, según la necesidad, será necesario aplicar una u otra.
+
+\subsubsection{Arquitectura Lambda $\lambda$}
+La arquitectura lambda, representada por la letra griega $\lambda$, fue presentada en 2011 por Nathan Marz en un artículo publicado en su blog titulado ``\textit{How to beat the CAP theorem}'' \cite{lambda}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.55\textwidth]{images/arte/cap}
+	\caption{Teorema CAP. Fuente \cite{cap}}
+	\label{fig:cap}
+\end{figure}
+
+El propósito de Nathan Marz cuando crea su arquitectura, como indica el título del artículo, es batir el teorema CAP popularizado por la irrupción de las bases de datos NoSQL. Este teorema, ilustrado en la figura \ref{fig:cap}, viene a decir que si queremos tener tolerancia a particiones (imprescindible para bases de datos distribuidas necesarias para el \textit{Big Data}) tenemos que optar entre consistencia, asegurar que el dato que leemos es el último que hemos escrito, o disponibilidad, que la base de datos se encuentra siempre lista.
+
+
+
+El método propuesto para conseguir este objetivos con grandes cantidades de datos se basa en los siguientes principios:
+
+\begin{itemize}
+	\item Una capa \textit{batch} eventualmente consistente de una manera extrema, en la que las escrituras tardan siempre unas pocas horas en estar disponibles. Eliminando algunos problemas complejos con los que tratar como  la concurrencia o las reparaciones de lectura. 
+	\item Reducir las operaciones CRUD (\textit{\textbf{C}reated, \textbf{R}ead, \textbf{U}pdate, \textbf{D}elete}) en la capa \textit{batch} por únicamente CR, tratando los datos como objetos inmutables. Esto nos soluciona el problema de la consistencia, ya que de este modo un dato existe o no existe, pero no puede tener varias versiones. 
+	\item Una capa \textit{realtime} que se encarga de los datos de las últimas horas (los que no están disponibles en la capa \textit{batch})
+	\item Las querys atacan a ambas capas de forma simultanea realizando un \textit{merge} de los datos.
+	
+\end{itemize}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.70\textwidth]{images/arte/lambda}
+	\caption{Arquitectura Lambda definida por   Nathan Marz. Fuente \cite{lambdakappa}}
+	\label{fig:lambda}
+\end{figure}
+
+
+Podemos ver un esquema de la arquitectura en la figura \ref{fig:lambda}. Esta arquitectura, aparte de resolver los problemas de consistencia y disponibilidad, tiene algunas ventajas:
+
+\begin{itemize}
+	
+	\item Disponer de todos los datos en un único punto (capa \textit{batch}) pudiendo realizar cualquier tipo de consulta sobre los mismos. 
+	\item Al utilizar los datos como un ente inmutable facilita las auditorias. 
+	\item Según Marz, evita el error humano en la capa \textit{batch} (en parte también por usar datos inmutables), y cualquier error en la capa \textit{realtime} sería subsanado en pocas horas en la capa \textit{batch}.
+
+\end{itemize}
+
+
+\subsubsection{Arquitectura Kappa $\kappa$}  
+En su artículo ``Questioning the Lambda Architecture''\cite{kappa}, Jay Kreps cuestiona la arquitectura Lambda propuesta por Nathan Marz y propone una simplificación de la misma, basada en su experiencia en LinkedIn trabajando con Kafka y Samza. Esta simplificación se denomina arquitectura Kappa y viene representada por la letra griega $\kappa$.
+
+
+Kreps describe la complejidad que supone en una arquitectura Lambda mantener idénticos procesos en \textit{realtime} y \textit{batch}. También expone que se menosprecia la capacidad de la capa \textit{realtime} (probablemente por la madurez del procesamiento \textit{realtime} con respecto al \textit{bacth}) y opina que es posible realizar el mismo procesamiento, incluso reprocesar el histórico de datos, en la capa \textit{realtime}. 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.70\textwidth]{images/arte/kappa}
+	\caption{Arquitectura Kappa definida por Jay Kreps. Fuente \cite{lambdakappa}}
+	\label{fig:kappa}
+\end{figure}
+
+Con esta premisa, en el artículo se presenta la arquitectura que observamos en la figura \ref{fig:kappa}, en la que existe un único flujo de procesamiento \textit{realtime} para todo el modelo. La simplicidad de Kappa con respecto a Lambda es tal que el propio Kreps afirma que puede ser una idea demasiado simple para merecer una letra griega.

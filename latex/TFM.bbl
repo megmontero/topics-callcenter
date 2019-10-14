@@ -78,6 +78,14 @@ Tom Hope, Itay Lieder, and Yehezkel~S. Resheff.
 \newblock {\em Learning TensorFlow: a guide to building deep learning systems}.
 \newblock OReilly Media, 2017.
 
+\bibitem{kappa}
+Jay Kreps.
+\newblock Questioning the lambda architecture.
+\newblock
+  \url{https://towardsdatascience.com/cap-theorem-and-distributed-database-management-systems-5c2be977950e},
+  Julio 2014.
+\newblock Último acceso 2019-10-14.
+
 \bibitem{laneay_2013}
 Douglas Laney.
 \newblock {3D} data management: Controlling data volume, velocity, and variety.
@@ -88,9 +96,24 @@ A.~S. M.~Ashique Mahmood.
 \newblock {\em Literature Survey on Topic Modeling}.
 \newblock 2013.
 
+\bibitem{lambda}
+Nathan Marz.
+\newblock How to beat the cap theorem.
+\newblock \url{http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html},
+  Octubre 2011.
+\newblock Último acceso 2019-10-14.
+
 \bibitem{word2vec}
 Tomas Mikolov, Kai Chen, Greg~S. Corrado, and Jeffrey Dean.
 \newblock Efficient estimation of word representations in vector space, 2013.
+
+\bibitem{cap}
+Syed~Sadat Nazrul.
+\newblock Cap theorem and distributed database management systems.
+\newblock
+  \url{https://towardsdatascience.com/cap-theorem-and-distributed-database-management-systems-5c2be977950e},
+  Abril 2018.
+\newblock Último acceso 2019-10-14.
 
 \bibitem{lstmgru}
 Michael Nguyen.
