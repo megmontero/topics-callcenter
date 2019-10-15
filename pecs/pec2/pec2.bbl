@@ -1,0 +1,158 @@
+\begin{thebibliography}{10}
+
+\bibitem{temariodeeplearning}
+Toni Lozano~Bagén Anna Bosch~Rué, Jordi Casas~Roma.
+\newblock {\em Deep Learning Principios y Fundamentos}.
+\newblock 2018.
+
+\bibitem{Blei_HTM}
+David~M. Blei, Michael~I. Jordan, Thomas~L. Griffiths, and Joshua~B. Tenenbaum.
+\newblock Hierarchical topic models and the nested chinese restaurant process.
+\newblock In {\em Proceedings of the 16th International Conference on Neural
+  Information Processing Systems}, NIPS'03, pages 17--24, Cambridge, MA, USA,
+  2003. MIT Press.
+
+\bibitem{Blei_CTM}
+David~M. Blei and John~D. Lafferty.
+\newblock Correlated topic models.
+\newblock In {\em Proceedings of the 18th International Conference on Neural
+  Information Processing Systems}, NIPS'05, pages 147--154, Cambridge, MA, USA,
+  2005. MIT Press.
+
+\bibitem{Blei_DTM}
+David~M. Blei and John~D. Lafferty.
+\newblock Dynamic topic models.
+\newblock In {\em Proceedings of the 23rd International Conference on Machine
+  Learning}, ICML '06, pages 113--120, New York, NY, USA, 2006. ACM.
+
+\bibitem{Blei_LDA}
+David~M. Blei, Andrew~Y. Ng, and Michael~I. Jordan.
+\newblock Latent dirichlet allocation.
+\newblock {\em J. Mach. Learn. Res.}, 3:993--1022, 2003.
+
+\bibitem{crispdm}
+Pete Chapman, Julian Clinton, Randy Kerber, Thomas Khabaza, Thomas Reinartz,
+  Colin Shearer, and Rudiger Wirth.
+\newblock Crisp-dm 1.0 step-by-step data mining guide.
+\newblock Technical report, The CRISP-DM consortium, Agosto 2000.
+
+\bibitem{Cox_1997}
+Michael Cox and David Ellsworth.
+\newblock Application-controlled demand paging for out-of-core visualization.
+\newblock In {\em Proceedings of the 8th Conference on Visualization '97}, VIS
+  '97, pages 235--ff., Los Alamitos, CA, USA, 1997. IEEE Computer Society
+  Press.
+
+\bibitem{MapReduce}
+Jeffrey Dean and Sanjay Ghemawat.
+\newblock Mapreduce: Simplified data processing on large clusters.
+\newblock In {\em Proceedings of the 6th Conference on Symposium on Operating
+  Systems Design \& Implementation - Volume 6}, OSDI'04, pages 10--10,
+  Berkeley, CA, USA, 2004. USENIX Association.
+
+\bibitem{lambdakappa}
+Jesús Domínguez.
+\newblock De lambda a kappa: evolución de las arquitecturas big data.
+\newblock
+  \url{https://www.paradigmadigital.com/techbiz/de-lambda-a-kappa-evolucion-de-las-arquitecturas-big-data/},
+  Abril 2018.
+\newblock Último acceso 2019-10-13.
+
+\bibitem{wordnet}
+Christine Fellbaum.
+\newblock {\em WordNet: an electronic lexical database}.
+\newblock MIT Press, 1998.
+
+\bibitem{GFS}
+Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung.
+\newblock The google file system.
+\newblock {\em SIGOPS Oper. Syst. Rev.}, 37(5):29--43, October 2003.
+
+\bibitem{goldberg_2017}
+Yoav Goldberg.
+\newblock {\em Neural network methods in natural language processing}.
+\newblock Morgan \& Claypool publishers, 2017.
+
+\bibitem{hope_lieder_resheff_2017}
+Tom Hope, Itay Lieder, and Yehezkel~S. Resheff.
+\newblock {\em Learning TensorFlow: a guide to building deep learning systems}.
+\newblock OReilly Media, 2017.
+
+\bibitem{kappa}
+Jay Kreps.
+\newblock Questioning the lambda architecture.
+\newblock
+  \url{https://towardsdatascience.com/cap-theorem-and-distributed-database-management-systems-5c2be977950e},
+  Julio 2014.
+\newblock Último acceso 2019-10-14.
+
+\bibitem{laneay_2013}
+Douglas Laney.
+\newblock {3D} data management: Controlling data volume, velocity, and variety.
+\newblock Technical report, META Group, February 2001.
+
+\bibitem{Mahmood2013LiteratureSO}
+A.~S. M.~Ashique Mahmood.
+\newblock {\em Literature Survey on Topic Modeling}.
+\newblock 2013.
+
+\bibitem{lambda}
+Nathan Marz.
+\newblock How to beat the cap theorem.
+\newblock \url{http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html},
+  Octubre 2011.
+\newblock Último acceso 2019-10-14.
+
+\bibitem{word2vec}
+Tomas Mikolov, Kai Chen, Greg~S. Corrado, and Jeffrey Dean.
+\newblock Efficient estimation of word representations in vector space, 2013.
+
+\bibitem{cap}
+Syed~Sadat Nazrul.
+\newblock Cap theorem and distributed database management systems.
+\newblock
+  \url{https://towardsdatascience.com/cap-theorem-and-distributed-database-management-systems-5c2be977950e},
+  Abril 2018.
+\newblock Último acceso 2019-10-14.
+
+\bibitem{lstmgru}
+Michael Nguyen.
+\newblock Illustrated guide to lstm's and gru's: A step by step explanation.
+\newblock
+  \url{https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21},
+  Septiembre 2018.
+\newblock Último acceso 2019-10-13.
+
+\bibitem{colahblog}
+Christopher Olah.
+\newblock Understanding lstm networks -- colah's blog.
+\newblock \url{https://colah.github.io/posts/2015-08-Understanding-LSTMs/},
+  Agosto 2015.
+\newblock Último acceso 2019-10-13.
+
+\bibitem{mlp}
+Stacey Ronaghan.
+\newblock Deep learning: Common architectures.
+\newblock
+  \url{https://medium.com/@srnghn/deep-learning-common-architectures-6071d47cb383},
+  Agosto 2018.
+\newblock Último acceso 2019-10-13.
+
+\bibitem{Rosen-Zvi_AMA_2010}
+Michal Rosen-Zvi, Thomas Griffiths, Mark Steyvers, and Padhraic Smyth.
+\newblock The author-topic model for authors and documents.
+\newblock In {\em Proceedings of the 20th Conference on Uncertainty in
+  Artificial Intelligence}, UAI '04, pages 487--494, Arlington, Virginia,
+  United States, 2004. AUAI Press.
+
+\bibitem{turing_1950}
+A.~M. Turing.
+\newblock {\em Computing machinery and intelligence}.
+\newblock Blackwell for the Mind Association, 1950.
+
+\bibitem{turing}
+Kevin Warwick and Huma Shah.
+\newblock {\em Turings imitation game: conversations with the unknown}.
+\newblock Cambridge Univeristy Press, 2016.
+
+\end{thebibliography}
