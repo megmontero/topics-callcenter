@@ -1,6 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2019/Arch Linux)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: pec2.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: pec2.aux
 The style file: plain.bst
 Database file #1: referencias.bib
 Warning--entry type for "colahblog" isn't style-file defined
@@ -19,45 +17,4 @@ Warning--entry type for "kappa" isn't style-file defined
 --line 245 of file referencias.bib
 Warning--empty publisher in temariodeeplearning
 Warning--empty publisher in Mahmood2013LiteratureSO
-You've used 25 entries,
-            2118 wiz_defined-function locations,
-            650 strings with 7974 characters,
-and the built_in function-call counts, 7623 in all, are:
-= -- 767
-> -- 317
-< -- 6
-+ -- 129
-- -- 102
-* -- 429
-:= -- 1253
-add.period$ -- 87
-call.type$ -- 25
-change.case$ -- 121
-chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 312
-empty$ -- 641
-format.name$ -- 102
-if$ -- 1655
-int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 22
-newline$ -- 134
-num.names$ -- 50
-pop$ -- 183
-preamble$ -- 1
-purify$ -- 101
-quote$ -- 0
-skip$ -- 228
-stack$ -- 0
-substring$ -- 350
-swap$ -- 73
-text.length$ -- 6
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 86
-warning$ -- 2
-while$ -- 72
-width$ -- 27
-write$ -- 290
 (There were 9 warnings)

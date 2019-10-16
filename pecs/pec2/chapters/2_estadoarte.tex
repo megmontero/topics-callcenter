@@ -9,6 +9,8 @@ El objetivo de este apartado es hacer un recorrido por el estado del arte relaci
 	\item \textbf{\textit{Big Data} y \textit{Fast Data}}: Por último, en la sección \ref{section:arte:big}, haremos un repaso a la evolución del \textit{Big Data} y cómo la tendencia actual es realizar el procesamiento en tiempo real mediante \textit{Fast Data}.
 \end{itemize}
 
+Por último, una vez analizados los diferentes puntos de vista, en la sección \ref{section:arte:ant} enumeraremos trabajos anteriores relacionados con nuestro proyecto. Estos trabajos nos serán de utilidad para justificar la realización de nuestro proyecto y su viabilidad. 
+
 \section{Procesamiento de lenguaje natural}
 \label{section:arte:pln}
 
@@ -98,7 +100,7 @@ Una de las arquitectura más comunes de FFNN es el preceptrón multicapa (en ing
  
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.65\textwidth]{images/arte/mlp}
+	\includegraphics[width=0.68\textwidth]{images/arte/mlp}
 	\caption{Ejemplo de arquitectura MLP. Fuente \cite{mlp}}
 	\label{fig:mlp}
 \end{figure}
@@ -264,7 +266,7 @@ Para conseguir este objetivo, parece evidente que es importante controlar la mem
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/arte/lstmvsgru}
+	\includegraphics[width=0.84\textwidth]{images/arte/lstmvsgru}
 	\caption{Arquitectura celdas LSTM y GRU. Fuente \cite{lstmgru}}
 	\label{fig:lstmvsgru}
 \end{figure}
@@ -283,9 +285,9 @@ Aunque no hemos entrado en el detalle del funcionamiento de cada una de las puer
 Como podemos imaginar, las redes neuronales recurrentes son ampliamente usadas en el mundo del Procesamiento del Lenguaje Natural, debido a que una palabra no es otra cosa que una secuencia de letras, una frase a su vez se trata de una secuencia de palabras y un documento una secuencia de frases. Alguno de los usos de las RNN en este ámbito son: 
 
 \begin{itemize}
-	\item \textbf{Análisis de sentimientos}: Detectar el sentimiento positivo o negativo de un texto utilizando únicamente la última salida de la red.
-	\item \textbf{Generador de texto}: Predecir la siguiente palabra de una secuencia, utilizando la salida de cada una de las celdas. 
-	\item \textbf{Traductores}: Traducir textos entre idiomas, en este caso es usual utilizar redes recurrentes bidirecionales.
+	\item \textbf{Análisis de sentimientos}: Detectar el sentimiento positivo o negativo de un texto utilizando únicamente la última salida de la red. En \cite{rnnej1} tenemos un ejemplo de análisis de sentimientos utilizando redes recurrentes con LSTM sobre los datos de una red social China.
+	\item \textbf{Generador de texto}: Predecir la siguiente palabra de una secuencia, utilizando la salida de cada una de las celdas. Podemos ver una comparación de métodos para generar textos de diferentes temáticas para poder entrenar posteriormente modelos \textit{Deep Learning} en \cite{rnnej2}. Entre los métodos de la comparación se encuentran las redes neuronales recurrentes con celdas GRU y con celdas LSTM.
+	\item \textbf{Traductores}: Traducción automática de textos entre idiomas, llamado \textit{Neural Machine Translation} (NMT) cuando se utilizan redes neuronales.  Quizás el mayor caso de éxito en este punto es el \textit{Google's Neural Machine Translation System} \cite{rnnej3} cuya base es una red neuronal profunda construida con celdas LSTM.
 \end{itemize}
 
 
@@ -315,7 +317,7 @@ Sin embargo, estas aportaciones no empezaron a tomar una repercusión relevante 
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.90\textwidth]{images/arte/bigdatatime}
+	\includegraphics[width=0.94\textwidth]{images/arte/bigdatatime}
 	\caption{Evolución del \textit{Big Data}. Fuente \cite{lambdakappa}}
 	\label{fig:bigdatatime}
 \end{figure}
@@ -399,29 +401,27 @@ Con esta premisa, en el artículo se presenta la arquitectura que observamos en 
 
 
 \section{Trabajos anteriores}
+\label{section:arte:ant}
+
 
 Una vez abordado el estado del arte desde diferentes puntos de vista, es importante tener una visión de los trabajos anteriores que se han realizado con objetivos similares y sus resultados. De esto modo entenderemos si existe una justificación para nuestro trabajo, los problemas a los que podemos enfrentarnos y las expectativas que podemos gestionar.
 
-Por un lado, si nos centramos en la aplicación de técnicas de Procesamiento del Lenguaje Natural a un \textit{Call Center}, encontramos varios artículos interesantes que 
+En este apartado nos vamos a  centrar en la aplicación de técnicas de Procesamiento del Lenguaje Natural a un \textit{Call Center}, encontramos varios artículos interesantes que hacen hincapié en el valor de la información y el conocimiento que puede extraerse de un \textit{Call Center} ya que se trata de un intermediario importante entre el cliente y la empresa. Entre estos trabajos podemos destacar: 
+
+\begin{itemize}
+	\item ``Metodología para estimar el impacto que generan las llamadas realizadas en un call center en la fuga de los clientes utilizando técnicas de text mining'' \cite{call1}: Que como su nombre indica, investiga si existe relación entre los las llamadas realizadas al \textit{Call Center} y la pérdida de clientes. El trabajo, al igual que el proyecto que intentamos abordar, parte del  las llamadas transcritas a texto y, aunque utiliza como base para la modelización de temas LDA, se apoya en etiquetas existentes en las llamadas para validar los resultados.
+	
+	\item ``Customer voice sensor: A comprehensive opinion mining system for call center conversation'' \cite{call2}: Se trata de un trabajo más basado en el análisis de sentimientos, pero se encuentra realizado con llamadas de los clientes a una operadora de telecomunicaciones (en este caso China Telecom) al igual que nuestra fuente de información.
+	
+	\item ``Topic mining for call centers based on A‐LDA and distributed computing'' \cite{call3}: En este caso, se realiza una modelización de temas sobre  los datos del \textit{Call Center} de \textit{China Central Television}. En este proceso de modelización se utiliza  una mejora del modelo LDA llamada A-LDA que utiliza no solo el corpus de las llamada, si no también algunas propiedades externas como el tiempo de llamada o el número de origen.
+	
+	\item ``Author-topic based representation of call-center conversations'' \cite{call4}: Este último artículo que comentamos, parte también de los datos generados a través de un \textit{Performance of Automatic Speech Recognition} (ASR), el trabajo pone de manifiesto la pobre calidad de estas transcripciones automáticas. Por este motivo, propone una modificación de LDA basada en el modelo \textit{Author Topic} utilizando además del corpus del texto información del tema de la conversación.
+\end{itemize}
 
 
-https://www.google.com/search?sxsrf=ACYBGNS9uRTQUbeZ69ag_YCFupMQGK-RTw%3A1571159081257&ei=KfylXbSxD-KOlwTVmq_YAg&q=topic+modelling+applications&oq=topic+modelling+applic&gs_l=psy-ab.3.0.0i203j0i22i30.293319.294334..295100...0.0..0.99.596.7......0....1..gws-wiz.......35i39j0.YT7x-SY-1SA
+Probablemente, dentro de las empresas, existen muchos más trabajos destinados a la explotación de esta información y que no se encuentren publicados, por lo que podemos concluir que es un campo que despierta interés y que se trata de una información con potencial que nos permita, entre otros objetivos, comprender las necesidades de los clientes de una compañía.
 
-https://scholar.google.es/scholar?start=10&q=LDA+%22call+center%22&hl=es&as_sdt=0,5&as_vis=1
+Por otro lado, observamos que en la mayoría de los casos, aunque la base de la modelización sea el uso LDA, debido al ruido o a otros factores como la ausencia de información semántica, se utilizan modificaciones del modelo que incorporan etiquetas o propiedades externas al corpus para mejorar la clasificación.
 
+Por último, pensamos que, aún con estos antecedentes, existe la necesidad de abordar este proyecto, debido a la diferencia entre unos datos y otros, por factores como el idioma o a las distintas necesidades de cada empresa. Además nuestro proyecto tiene como objetivo final, la integración de este modelo en un proceso de la compañía que sea capaz de aplicarlo en tiempo real y alertar en caso de anomalías para poder tomar decisiones.
 
-http://repositorio.uchile.cl/handle/2250/135070
-
-http://repositorio.uchile.cl/bitstream/handle/2250/135070/Metodologia-para-estimar-el-impacto-que%20generan-las%20llamadas%20realizadas....pdf?sequence=1&isAllowed=y
-
-https://ieeexplore.ieee.org/abstract/document/7529578
-
-https://www.nowpublishers.com/article/Details/INR-030
-
-https://ieeexplore.ieee.org/abstract/document/7050858/metrics#metrics
-
-https://journals.sagepub.com/doi/abs/10.1177/0165551514538744
-
-https://aaltodoc.aalto.fi/handle/123456789/37152
-
-http://users.umiacs.umd.edu/~jbg/docs/nips2009-rtl.pdf 
