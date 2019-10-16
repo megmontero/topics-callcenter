@@ -5,7 +5,7 @@
 El objetivo de este apartado es hacer un recorrido por el estado del arte relacionado con el proyecto, este recorrido lo enfocaremos desde tres puntos de vista diferentes:
 \begin{itemize}
 	\item \textbf{Procesamiento del Lenguaje Natural}: En la sección \ref{section:arte:pln}  nos centraremos en el procesamiento del lenguaje natural y su evolución a lo largo del tiempo. 
-	\item \textbf{\textit{Deep Learning} y aplicación al Procesamiento del Lenguaje Natural}: En la sección \ref{section:arte:deep}  pondremos foco en el \textit{Deep Learning}, sus ventajas y cómo se están aplicando estos métodos al procesamiento de lenguaje natural. 
+	\item \textbf{\textit{Deep Learning} y aplicación al Procesamiento del Lenguaje Natural}: En la sección \ref{section:arte:deep}  pondremos foco en el \textit{Deep Learning}, sus ventajas y cómo se están aplicando estos métodos al procesamiento del lenguaje natural. 
 	\item \textbf{\textit{Big Data} y \textit{Fast Data}}: Por último, en la sección \ref{section:arte:big}, haremos un repaso a la evolución del \textit{Big Data} y cómo la tendencia actual es realizar el procesamiento en tiempo real mediante \textit{Fast Data}.
 \end{itemize}
 
@@ -25,7 +25,7 @@ Desde el comienzo de la aplicación de modelos de \textit{machine learning}, y d
 
 \subsection{Aplicaciones}
 
-En el apartado anterior hicimos referencia a ``\textit{The Imitation Game}'' como inicio de lo que hoy conocemos como procesamiento de lenguaje natural, sin embargo, las aplicaciones en este campo han crecido de forma vertiginosa en estos 70 años, principalmente en las últimas décadas. Hoy en día, si tuviéramos que contestar a la pregunta: ``¿son capaces de pensar las máquinas?'', implicaría algo más que superar el test de Turing. Mirando a nuestro alrededor nos encontraríamos con asistentes de voz como Alexa o Siri que, no solo contestan a nuestras preguntas, si no que realizan un trabajo de pasar nuestra voz a texto (\textit{Speech to Text}) y de nuevo el texto resultante a voz (\textit{Text to Speech}). Nos encontraríamos también con sistemas capaces de realizar traducciones simultáneas, otros capaces de autocompletar textos, de identificar preguntas y respuestas, de clasificar textos de acuerdo a temas o autores, incluso de analizar sentimientos positivos o negativos teniendo como entrada un texto u opinión... 
+En el apartado anterior hicimos referencia a ``\textit{The Imitation Game}'' como inicio de lo que hoy conocemos como procesamiento del lenguaje natural, sin embargo, las aplicaciones en este campo han crecido de forma vertiginosa en estos 70 años, principalmente en las últimas décadas. Hoy en día, si tuviéramos que contestar a la pregunta: ``¿son capaces de pensar las máquinas?'', implicaría algo más que superar el test de Turing. Mirando a nuestro alrededor nos encontraríamos con asistentes de voz como Alexa o Siri que, no solo contestan a nuestras preguntas, si no que realizan un trabajo de pasar nuestra voz a texto (\textit{Speech to Text}) y de nuevo el texto resultante a voz (\textit{Text to Speech}). Nos encontraríamos también con sistemas capaces de realizar traducciones simultáneas, otros capaces de autocompletar textos, de identificar preguntas y respuestas, de clasificar textos de acuerdo a temas o autores, incluso de analizar sentimientos positivos o negativos teniendo como entrada un texto u opinión... 
 
 
 Según \cite{goldberg_2017} todos estos problemas tan diversos podríamos clasificarlos según en el punto del análisis que nos centremos: 
@@ -33,7 +33,7 @@ Según \cite{goldberg_2017} todos estos problemas tan diversos podríamos clasif
 \begin{itemize}
 	\item \textbf{Análisis de palabras}: En este tipo de problemas se pone foco en las palabras, como pueden ser ``perro'', ``hablar'', ``piedra'' y necesitamos decir algo sobre ellas. Por ejemplo: ``¿estamos hablando de un ser vivo?'', ``¿a qué lenguaje pertenece?'', ``¿cuáles son sus sinónimos o antónimos?''. Actualmente este tipo de problemas son menos frecuentes, ya que normalmente no pretendemos analizar palabras aisladas sino que es preferible basarse en un contexto. 
 	
-	\item \textbf{Análisis de textos}:  En este tipo de problemas no trabajamos solo con palabras aisladas, sino que disponemos de una pieza de texto que puede ser una frase, un párrafo o un documento completo y tenemos que decir algo sobre él. Por ejemplo: ``¿se trata de spam?'', ``¿qué tipo de texto es?'', ``¿el tono es positivo o negativo?'', ``¿quién es su autor?''.Este tipo de problemas son muy comunes y nos vamos a referir a ellos como \textbf{problemas de clasificación de documentos}.   
+	\item \textbf{Análisis de textos}:  En este tipo de problemas no trabajamos solo con palabras aisladas, sino que disponemos de una pieza de texto que puede ser una frase, un párrafo o un documento completo y tenemos que decir algo sobre él. Por ejemplo: ``¿se trata de spam?'', ``¿qué tipo de texto es?'', ``¿el tono es positivo o negativo?'', ``¿quién es su autor?''. Este tipo de problemas son muy comunes y nos vamos a referir a ellos como \textbf{problemas de clasificación de documentos}.   
 	
 	\item \textbf{Análisis de textos pareados}: En esta clase de análisis disponemos de  dos textos (también podrían ser palabras aisladas) y tenemos que decir algo sobre ellos. Por ejemplo, ``¿los textos son del mismo autor?'', ``¿son pregunta y respuesta?'', ``¿son sinónimos?'' (para el caso de palabras aisladas).
 	
@@ -66,13 +66,13 @@ Podemos encontrar un resumen más completo del estado del arte en cuanto a la mo
 \section{Deep Learning  y aplicación al PLN}
 \label{section:arte:deep}
 
-El objetivo de esta sesión es entender el concepto de \textit{Deep Learning} y analizar el estado del arte del \textit{Deep Learning} aplicado al Procesamiento del Lenguaje Natural. Para poder entender el \textit{Deep Learning} es conveniente entender los modelos de aprendizaje supervisados y saber qué provoca su aparición y popularidad de los últimos años. Posteriormente nos centraremos en los fundamentos del \textit{Deep Learning} para finalizar con las aplicaciones actuales en el ámbito del Procesamiento del Lenguaje Natural y que nos sirvan de apoyo para la ejecución del proyecto.
+El objetivo de esta sesión es entender el concepto de \textit{Deep Learning} y analizar el estado del arte del \textit{Deep Learning} aplicado al Procesamiento del Lenguaje Natural. Para poder entender el \textit{Deep Learning} es conveniente entender los modelos de aprendizaje supervisados y saber qué provoca su aparición y popularidad de los últimos años. Posteriormente nos centraremos en los fundamentos del \textit{Deep Learning} y cómo es utilizado en la representación de palabras. Por último, comentaremos algunas arquitecturas especializadas y su aplicación en el ámbito del Procesamiento del Lenguaje Natural.
 
 
 \subsection{Aprendizaje supervisado}
-El aprendizaje supervisado consiste en aprender una función a través de un conjunto de datos, llamados de entrenamiento, mediante la cual podamos obtener una salida a partir de una determinada entrada. Se espera que esta función, una vez realizado el entrenamiento, sea capaz de producir una salida correcta incluso para datos nunca vistos. Es muy habitual el uso de estos tipos de algoritmos para casos de clasificación y/o predicción. 
+El aprendizaje supervisado consiste en aprender una función a través de un conjunto de datos llamados de entrenamiento, mediante la cual podamos obtener una salida a partir de una determinada entrada. Se espera que esta función, una vez realizado el entrenamiento, sea capaz de producir una salida correcta incluso para datos nunca vistos. Es muy habitual el uso de estos tipos de algoritmos para casos de clasificación y/o predicción. 
 
-Buscar entre todas las posibles infinitas funciones posibles para encontrar la función que mejor se adapte a nuestro conjunto de datos es un trabajo inviable, es por ello que normalmente se realiza la búsqueda entre un conjunto de funciones limitadas. En un primer lugar, y hasta hace aproximadamente una década, los modelos más populares de aprendizaje supervisado fueron los modelos lineales, provenientes del mundo de la estadística, estos modelos son fáciles de entrenar, fáciles de interpretar y muy efectivos en la práctica. 
+Buscar entre todas las posibles infinitas funciones para encontrar la que mejor se adapte a nuestro conjunto de datos es un trabajo inviable, es por ello que normalmente se realiza la búsqueda entre un conjunto de funciones limitadas. En un primer lugar, y hasta hace aproximadamente una década, los modelos más populares de aprendizaje supervisado fueron los modelos lineales, provenientes del mundo de la estadística, estos modelos son fáciles de entrenar, fáciles de interpretar y muy efectivos en la práctica. 
 
 A partir de entonces, y motivado en parte por el aumento en las capacidades de cómputo, surgen otros modelos como las máquinas de vectores de soportes (\textit{Support Vector Machines}, SVMs) o las redes neuronales, en las que nos centraremos en el siguiente apartado.
 
@@ -110,7 +110,7 @@ Hablamos que una red es profunda cuando contiene un gran número de capas, por e
 
 \subsection{Representación de palabras en PLN}% Podemos llamarle embedding o representación de palabras
 
-Es usual, en el ámbito del reconocimiento de imágenes, utilizar información acerca de la dimensionalidad de las mismas. Este tipo de información nos permite extraer características  teniendo en cuenta los píxeles vecinos. Tradicionalmente, en el ámbito del Procesamiento del Lenguaje Natural, esto no se ha llevado a cabo debido a que cada palabra (o n-grama) se trataba como una entidad aislada utilizando una codificación de las palabra denominada \textbf{one-hot encoding}. 
+Es usual, en el ámbito del reconocimiento de imágenes, utilizar información acerca de la dimensionalidad de las mismas. Este tipo de información nos permite extraer características  teniendo en cuenta los píxeles vecinos. Tradicionalmente, en el ámbito del Procesamiento del Lenguaje Natural, esto no se ha llevado a cabo debido a que cada palabra (o n-grama) se trataba como una entidad aislada utilizando una codificación de las palabras denominada \textbf{one-hot encoding}. 
 
 En cambio, existe otro método de representar las palabras en el lenguaje natural que sí es capaz de captar la ``dimensionalidad'' de una forma similar a como lo realizamos en las imágenes. Este modo, conocido como \textit{\textbf{word embedding}}, deja de tratar la palabra como un ente aislado y  es capaz de captar el significado de la misma, esta representación se denomina distribuida y consiste en convertir las palabras en vectores en los que cada dimensión capte características diferentes de las palabras. Este tipo de representaciones dará lugar a vectores similares para palabras semánticamente parecidas. 
 
@@ -130,7 +130,7 @@ Una de las soluciones más populares que nos permiten convertir una palabra a un
 
 Después de introducir las redes neuronales y el modo en el que podemos representar las palabras, frases o documentos para ser usados como entrada en nuestro modelo; vamos a centrarnos en comentar dos tipos de redes neuronales que se usan de manera tradicional en tareas de Procesamiento de Lenguaje Natural. 
 
-Los dos tipos de redes neuronales que comentaremos son las redes neuronales convolucionales y las redes neuronales recurrentes. Haremos una introducción a cada una de ellas, comentaremos sus aplicaciones al PLN y sus ventajas y convenientes con respecto a otro tipo de métodos. 
+Los dos tipos de redes neuronales que comentaremos son las redes neuronales convolucionales y las redes neuronales recurrentes. Haremos una introducción a cada una de ellas, comentaremos sus aplicaciones al PLN y sus ventajas e inconvenientes con respecto a otro tipo de métodos. 
 
 
 \subsubsection{Redes neuronales convolucionales}
@@ -144,9 +144,9 @@ Las redes neuronales convolucionales (llamadas usualmente CNN, por su nombre en 
 	\label{fig:cnn1}
 \end{figure}
 
-Es usual en las redes convolucionales  utilizar diferentes kernels sobre una misma entrada, obteniendo diferentes salidas que permitan reconocer distintos patrones. Los pesos del kernel junto con el sesgo son los parámetros que serán necesarios calcular en el entrenamiento y en el caso de las redes convolucionales se denominan mapas de características.
+Es usual en las redes convolucionales  utilizar diferentes kernels sobre una misma entrada, obteniendo diferentes salidas que permitan reconocer distintos patrones. Los pesos del kernel junto con el sesgo, son los parámetros que serán necesarios calcular en el entrenamiento y en el caso de las redes convolucionales, se denominan mapas de características.
 
-Aunque la convolución simple que comentamos es la operación básica en las redes convolucionales es usual añadirle algunas variantes (o configurarla con algunos parámetros) que nos permitan variar la dimensión de salida una vez hemos aplicado la convolución, algunas de estas variaciones más comunes son el \textbf{\textit{zero padding}} y la \textbf{convolución por pasos}.
+Aunque la convolución simple que comentamos es la operación básica en las redes convolucionales, es usual añadirle algunas variantes (o configurarla con algunos parámetros) que nos permitan variar la dimensión de salida una vez hemos aplicado la convolución; algunas de estas variaciones más comunes son el \textbf{\textit{zero padding}} y la \textbf{convolución por pasos}.
 
 \begin{figure}[!ht]
 	\centering
@@ -155,12 +155,12 @@ Aunque la convolución simple que comentamos es la operación básica en las red
 	\label{fig:padding}
 \end{figure}
 
-Como observamos en la figura \ref{fig:cnn1}, al aplicar el kernel a los datos de  entrada estamos reduciendo la dimensionalidad de la salida, a menudo es posible que esto no nos interese y queramos mantener la dimensionalidad en la salida; para ello recurrimos a un método denominado \textit{zero padding} que consiste en añadir '0s' en los bordes de nuestra entrada con el objetivo de preservar la dimensionalidad en la salida. En la figura \ref{fig:padding} podemos ver un ejemplo de aplicación de \textit{zero padding}.
+Como observamos en la figura \ref{fig:cnn1}, al aplicar el kernel a los datos de  entrada estamos reduciendo la dimensionalidad de la salida. A menudo es posible que esto no nos interese y queramos mantener la dimensionalidad en la salida; para ello recurrimos a un método denominado \textit{zero padding} que consiste en añadir '0s' en los bordes de nuestra entrada con el objetivo de preservar la dimensionalidad en la salida. En la figura \ref{fig:padding} podemos ver un ejemplo de aplicación de \textit{zero padding}.
 
 
 
 
-Por otro lado, es también posible que queramos reducir aún más la dimensión de salida, principalmente por un tema de eficiencia y reducción de los tiempos de ejecución, a costa de perder información de algunas características en la salida. Para ello podemos utilizar la convolución por pasos (o \textit{strided} por su nombre en inglés), este método consiste en aplicar el kernel realizando saltos en lugar de hacerlo sobre celdas consecutivas,  tal y como podemos ver en la figura \ref{fig:strided}.
+Por otro lado, es también posible que queramos reducir aún más la dimensión de salida, principalmente por un tema de eficiencia y reducción de los tiempos de ejecución, a costa de perder información de algunas características en la salida. Para ello podemos utilizar la convolución por pasos (o \textit{strided} por su nombre en inglés). Este método consiste en aplicar el kernel realizando saltos en lugar de hacerlo sobre celdas consecutivas,  tal y como podemos ver en la figura \ref{fig:strided}.
 
 \begin{figure}[!ht]
 	\centering
@@ -174,11 +174,11 @@ Por otro lado, es también posible que queramos reducir aún más la dimensión 
 El proceso explicado anteriormente correspondería con una capa convolucional, que son el corazón de las redes neuronales convolucionales, sin embargo, en una red neuronal convolucional estas capas coexisten con otro tipo de capas que nos ayudaran a mejorar nuestros modelos. Las más usuales son:
 
 \begin{itemize}
-	\item Capa de agrupamiento (\textit{polling} en inglés): El objetivo de esta capa es agrupar un conjunto de salidas para obtener un único valor, al conjunto de valores de entrada (seleccionado de nuevo con un filtro) se le aplica una función para obtener un único valor. Aunque se pueden utilizar diferentes funciones, como puede ser la media, lo más usual es aplicar la función de máximo (\textit{max-polling}). Es habitual, intuir que usando esta función nos estamos quedando con las características más relevantes de cada cuadrante (del tamaño del filtro) de la entrada. En la figura \ref{fig:pooling} podemos ver un ejemplo de agrupamiento utilizando la función de máximo. 
-	\item Capa totalmente conectada: Hemos visto ejemplos de capas totalmente conectada al introducir las redes neuronales, esta capas usualmente se usan al final de nuestra red para tareas de clasificación, teniendo la última capa un número de neuronas igual al número de clases que pretendemos clasificar. 
+	\item Capa de agrupamiento (\textit{polling} en inglés): El objetivo de esta capa es agrupar un conjunto de salidas para obtener un único valor. Al conjunto de valores de entrada (seleccionado de nuevo con un filtro) se le aplica una función para obtener un único valor. Aunque se pueden utilizar diferentes funciones, como puede ser la media, lo más usual es aplicar la función de máximo (\textit{max-polling}). Es habitual, intuir que usando esta función nos estamos quedando con las características más relevantes de cada cuadrante (del tamaño del filtro) de la entrada. En la figura \ref{fig:pooling} podemos ver un ejemplo de agrupamiento utilizando la función de máximo. 
+	\item Capa totalmente conectada: Hemos visto ejemplos de capas totalmente conectadas al introducir las redes neuronales, esta capas usualmente se usan al final de nuestra red para tareas de clasificación, teniendo la última capa un número de neuronas igual al número de clases que pretendemos clasificar. 
 	\item Capa RELU: Si observamos la descripción de la operación de convolución nos damos cuenta de que se trata de una operación totalmente lineal, es por ello que después de cada capa de convolución es usual agregar una capa no lineal (también llamada capa de activación). Aunque se pueden utilizar otras funciones como la tangente o la función sigmoide, lo más usual es utilizar la función RELU.
 	
-	\item Capa de Dropout: Esta capa tiene como funcionalidad prevenir el sobreentrenamiento en las redes neuronales, desactivando un número aleatorio de entradas de la capa forzando a la red a ser redundante y permitir dar una clasificación correcta sin tener todas las entradas activas. 
+	\item Capa de Dropout: Esta capa tiene como funcionalidad prevenir el sobreentrenamiento en las redes neuronales, desactivando un número aleatorio de entradas de la capa, forzando a la red a ser redundante y permitiendo dar una clasificación correcta sin tener todas las entradas activas. 
 	
 \end{itemize}
 
@@ -190,7 +190,7 @@ El proceso explicado anteriormente correspondería con una capa convolucional, q
 \end{figure}
 
 
-Tras esta visión general sobre las redes neuronales generales podemos enumerar las ventajas que conllevan: 
+Tras esta visión general sobre las redes neuronales generales, podemos enumerar las ventajas que conllevan: 
 
 \begin{itemize}
 	\item Por un lado, aunque no hemos entrado en detalles sobre el proceso de entrenamiento de las redes convolucionales, se puede intuir que el aplicar un mismo kernel sobre toda la entrada provoca que el número de parámetros a aprender (los valores del kernel) con respecto a una red totalmente conectada será mucho menor. Esto provoca una \textbf{reducción del tiempo de entrenamiento necesario}. 
@@ -207,7 +207,7 @@ Tras esta visión general sobre las redes neuronales generales podemos enumerar 
 
 
 
-Sin embargo, las redes neuronales convolucionales deben usarse en datos que contengan coherencia local ya que esa es su fortaleza. \textbf{En datos sin coherencia local las redes neuronales convolucionales no lograrían obtener un buen rendimiento} como las redes neuronales tradicionales vistas anteriormente. Si observamos la figura \ref{fig:tradvscnn} podemos ver la diferencia entre las capas de ambas tipos de redes y como la capa convolucional se centra más en las estructuras locales.
+Sin embargo, las redes neuronales convolucionales deben usarse en datos que contengan coherencia local ya que esa es su fortaleza. \textbf{En datos sin coherencia local las redes neuronales convolucionales no lograrían obtener un buen rendimiento} como las redes neuronales tradicionales vistas anteriormente. Si observamos la figura \ref{fig:tradvscnn} podemos ver la diferencia entre las capas de ambos tipos de redes y cómo la capa convolucional se centra más en las estructuras locales.
 
 
 
@@ -216,7 +216,7 @@ Encontramos una explicación más profunda sobre las redes convolucionales y su 
 
 
 
-Al aplicar las redes tradicionales al PLN solemos ignorar el orden en el que las palabras aparecen en las frases, o las frases en el documento, siguiendo una aproximación CBOW;  esto suele ser problemático a la hora de realizar, por ejemplo, un análisis de sentimientos ya que no es lo mismo encontrar la palabra ``malo'' aislada que el bigrama ``no malo''. Aunque el uso de bi-gramas y N-gramas de mayor orden puede mejorar esta situación el coste puede volverse inasumible. 
+Al aplicar las redes tradicionales al PLN, solemos ignorar el orden en el que las palabras aparecen en las frases, o las frases en el documento, siguiendo una aproximación CBOW;  esto suele ser problemático a la hora de realizar, por ejemplo, un análisis de sentimientos ya que no es lo mismo encontrar la palabra ``malo'' aislada que el bigrama ``no malo''. Aunque el uso de bi-gramas y N-gramas de mayor orden puede mejorar esta situación el coste puede volverse inasumible. 
 
 Es en este ámbito dónde las redes neuronales convolucionales pueden ser de gran ayuda, ya que gracias a la capacidad comentada para detectar estructuras locales serían capaces de identificar estos N-gramas de forma automática para ser usados posteriormente en tareas predictivas. 
 
@@ -224,7 +224,7 @@ Es en este ámbito dónde las redes neuronales convolucionales pueden ser de gra
 
 
 \subsubsection{Redes neuronales recurrentes}
-Otro de los modelos usualmente usados en tareas de Procesamiento del Lenguaje Natural son las redes neuronales recurrentes, (llamadas usualmente RNN, por su nombre en inglés \textit{\textbf{R}ecurrent \textbf{N}eural \textbf{N}etworks}). Hasta ahora todos los modelos de redes neuronales que hemos citado funcionaban siempre en una dirección, las neuronas de una capa anterior producían una salida que era la encargada de activar las neuronas de la capa posterior; en las redes recurrentes veremos que las salidas de una neurona en una capa posterior pueden tener una conexión con una neurona de una capa anterior. Esto crea una especie de \textbf{memoria} que nos permite modificar la respuesta de la red en función de los datos que se hayan procesado anteriormente (incluso reaccionar con datos que lleguen posteriormente).
+Otro de los modelos usualmente usados en tareas de Procesamiento del Lenguaje Natural son las redes neuronales recurrentes, (llamadas usualmente RNN, por su nombre en inglés \textit{\textbf{R}ecurrent \textbf{N}eural \textbf{N}etworks}). Hasta ahora todos los modelos de redes neuronales que hemos citado funcionaban siempre en una dirección, las neuronas de una capa anterior producían una salida que era la encargada de activar las neuronas de la capa posterior. En las redes recurrentes veremos que las salidas de una neurona en una capa posterior pueden tener una conexión con una neurona de una capa anterior. Esto crea una especie de \textbf{memoria} que nos permite modificar la respuesta de la red en función de los datos que se hayan procesado anteriormente (incluso reaccionar con datos que lleguen posteriormente).
 
 \begin{figure}[!ht]
 	\centering
@@ -237,7 +237,7 @@ Las conexiones en una red neuronal recurrente pueden tener muchas variaciones po
 
 
 
-En la figura \ref{fig:rnn} observamos un ejemplo de red neuronal recurrente en el que tenemos como entrada el valor de la secuencia $x_{t}$ y la el estado de la red en el paso anterior (conexión en bucle); y producimos una respuesta $h_{t}$ y un estado (conexión en bucle). Sin embargo posiblemente esta representación sea algo más confusa para comprender su funcionamiento que si procedemos a ``desenrollar'' la red neuronal haciéndola más similar a los modelos vistos hasta ahora, en la figura \ref{fig:rnn2} podemos ver el resultado de ``desenrollar'' la red; hay que tener en cuenta con esta representación que los parámetros usados por cada celda son exactamente los mismos.
+En la figura \ref{fig:rnn} observamos un ejemplo de red neuronal recurrente en el que tenemos como entrada el valor de la secuencia $x_{t}$ y el estado de la red en el paso anterior (conexión en bucle). Producimos una respuesta $h_{t}$ y un estado (conexión en bucle). Sin embargo, posiblemente esta representación sea algo más confusa para comprender su funcionamiento que si procedemos a ``desenrollar'' la red neuronal haciéndola más similar a los modelos vistos hasta ahora. En la figura \ref{fig:rnn2} podemos ver el resultado de ``desenrollar'' la red; hay que tener en cuenta con esta representación que los parámetros usados por cada celda son exactamente los mismos.
 
 \begin{figure}[!ht]
 	\centering
@@ -248,7 +248,7 @@ En la figura \ref{fig:rnn} observamos un ejemplo de red neuronal recurrente en e
 
 
 
-Aunque no entraremos en detalles sobre el entrenamiento de redes neuronales es importante saber que existen dos problemas diferentes provocados ambos por usar los mismos parámetros en todas las celdas que provocan la inestabilidad durante el proceso de entrenamiento. Estos problemas son la \textbf{desaparición del gradiente}, que ocurre al multiplicar el gradiente consigo mismo múltiples veces cuando este es menor que 1, y la \textbf{explosión del gradiente}, que ocurre por el mismo motivo cuando este es mayor que 1. 
+Aunque no entraremos en detalles sobre el entrenamiento de redes neuronales, es importante saber que existen dos problemas diferentes provocados ambos por usar los mismos parámetros en todas las celdas que provocan la inestabilidad durante el proceso de entrenamiento. Estos problemas son la \textbf{desaparición del gradiente}, que ocurre al multiplicar el gradiente consigo mismo múltiples veces cuando este es menor que 1, y la \textbf{explosión del gradiente}, que ocurre por el mismo motivo cuando este es mayor que 1. 
 
 Para mitigar estos problemas es importante el diseño de las celdas, a continuación veremos de manera resumida los dos tipos de celdas más usados en las redes neuronales recurrentes. Las celdas que comentaremos están compuestas por diferentes mecanismos internos, denominados puertas, que gestionan el flujo de información a lo largo de la misma. 
 
@@ -258,7 +258,7 @@ El primer tipo de celdas  son las celdas Long Short Term Memory (\textbf{LSTM}).
 Para conseguir este objetivo, parece evidente que es importante controlar la memoria en cada una de las celdas. Una celda LSTM realiza esta tarea con las siguientes puertas: 
 	\begin{itemize}
 		\item Puerta de entrada: Controla que información se añade a la memoria de la red. 
-		\item Puerta de olvido: Controla, a partir de la memoria del paso anterior y de la entrada, que información debe conservarse en la memoria. 
+		\item Puerta de olvido: Controla, a partir de la memoria del paso anterior y de la entrada, qué información debe conservarse en la memoria. 
 		\item Puerta de salida:  Es la encargada de calcular la salida de la red, $h_{t}$, en el paso actual. 
 	\end{itemize}
 
@@ -280,7 +280,7 @@ Debido al éxito de las celdas LSTM, y al constante esfuerzo de optimización de
 Aunque no hemos entrado en el detalle del funcionamiento de cada una de las puertas, en la figura \ref{fig:lstmvsgru} podemos ver la arquitectura completa de ambos tipos, y observar la mayor simplicidad de las celdas GRU frente a las LSTM. 
 
 
-Como podemos imaginar las redes neuronales recurrentes son ampliamente usadas en el mundo del Procesamiento del Lenguaje Natural, debido a que una palabra no es otra cosa que una secuencia de letras, una frase a su vez se trata de una secuencia de palabras y un documento una secuencia de frases. Alguno de los usos de las RNN en este ámbito son: 
+Como podemos imaginar, las redes neuronales recurrentes son ampliamente usadas en el mundo del Procesamiento del Lenguaje Natural, debido a que una palabra no es otra cosa que una secuencia de letras, una frase a su vez se trata de una secuencia de palabras y un documento una secuencia de frases. Alguno de los usos de las RNN en este ámbito son: 
 
 \begin{itemize}
 	\item \textbf{Análisis de sentimientos}: Detectar el sentimiento positivo o negativo de un texto utilizando únicamente la última salida de la red.
@@ -290,7 +290,7 @@ Como podemos imaginar las redes neuronales recurrentes son ampliamente usadas en
 
 
 
-Una vez analizadas, de manera global, las redes neuronales recurrentes podemos ver que nos ofrecen \textbf{numerosas ventajas al trabajar con secuencias} como hacemos en el ámbito del PLN. Entre ellas podemos ver, que vamos incluso más haya que con las CNN analizando la relación entre las diferentes palabras, fundamentalmente con las celdas LSTM y GRU, pudiendo detectarlas entre palabras que estén alejadas entre sí y no ceñirnos al tamaño del kernel. Sin embargo, como hemos visto, y aunque sean mitigados por el uso de celdas LSTM y GRU, las redes neuronales recurrentes presentan \textbf{problemas durante el entrenamiento} tanto de desvanecimiento como de explosión del gradiente.
+Una vez analizadas, de manera global, las redes neuronales recurrentes podemos ver que nos ofrecen \textbf{numerosas ventajas al trabajar con secuencias} como hacemos en el ámbito del PLN. Entre ellas podemos ver, que vamos incluso más allá que con las CNN analizando la relación entre las diferentes palabras, fundamentalmente con las celdas LSTM y GRU, pudiendo detectarlas entre palabras que estén alejadas entre sí y no ceñirnos al tamaño del kernel. Sin embargo, como hemos visto, y aunque sean mitigados por el uso de celdas LSTM y GRU, las redes neuronales recurrentes presentan \textbf{problemas durante el entrenamiento} tanto de desvanecimiento como de explosión del gradiente.
 
 
 \section{BigData y Fast Data}
@@ -310,7 +310,7 @@ El primer uso del término  \textit{Big Data}  se da en un artículo de Michael 
 
 Google, como es obvio, también  se enfrentó a un importante problema a la hora de procesar la ingente cantidad de datos que generaba día a día y que no podían ser procesados de manera eficiente con el \textit{software} existente, es por ello que en el año 2003 presenta en \cite{GFS} su  \textit{``Google File System''} (GFS) y un año después \textit{Map Reduce} \cite{MapReduce}, estas dos capas de almacenamiento y procesamiento distribuido dieron lugar al nacimiento de lo que hoy conocemos como \textit{\textbf{Big Data}}.
 
-Sin embargo, estas aportaciones no empezaron a tomar una repercusión relevante fuera de Google hasta el nacimiento del \textit{framework} Hadoop en 2006, un ecosistema con una gran cantidad de servicios pero cuya base fue Map Reduce y HDFS (basado en GFS). La complejidad del ecosistema \textit{Hadoop} hizo que éste no empezara a aparecer en las mayoría de las empresas hasta la creación de la compañía \textit{Cloudera} en 2009, que empezó a empaquetar los diferentes componentes del ecosistema \textit{Hadoop}, ofreciendo distribuciones estables y soporte para sus clientes. 
+Sin embargo, estas aportaciones no empezaron a tomar una repercusión relevante fuera de Google hasta el nacimiento del \textit{framework} Hadoop en 2006, un ecosistema con una gran cantidad de servicios pero cuya base fue Map Reduce y HDFS (basado en GFS). La complejidad del ecosistema \textit{Hadoop} hizo que éste no empezara a aparecer en la mayoría de las empresas hasta la creación de la compañía \textit{Cloudera} en 2009, que empezó a empaquetar los diferentes componentes del ecosistema \textit{Hadoop}, ofreciendo distribuciones estables y soporte para sus clientes. 
 
 
 \begin{figure}[!ht]
@@ -325,7 +325,7 @@ Durante estos 10 años la popularidad de \textit{Hadoop} ha crecido exponencialm
 
 
 
-El auge del \textbf{Big Data} ha llevado a algunas empresas a tener verdadera obsesión por el almacenamiento de todos los datos de sus clientes y las operaciones realizadas, creando inmensos \textit{datalakes} donde tener enormes históricos de todos sus datos. Este ``síndrome de Diógenes digital'' creado por falsas expectativas, por la imposibilidad de extraer valor de los datos o por la dimensión cambiante de las empresas actuales (en la que los datos de años atrás pueden no ser relevantes en el presente) es uno de los posibles motivos por lo que el tratamiento de los datos esta cambiando. Otro de los motivos para el cambio de rumbo del \textit{Big Data} está relacionado con la \textit{V} de Velocidad, hoy en día no solo es importante la capacidad de ingestar rápidamente los datos, sino la capacidad de poder procesar y obtener decisiones o actuar en tiempo real a partir de los datos, aportando valor al negocio. En este escenario se vuelve más importante la velocidad que el volumen de datos, esto es lo que se denomina \textit{Fast Data}. 
+El auge del \textbf{Big Data} ha llevado a algunas empresas a tener verdadera obsesión por el almacenamiento de todos los datos de sus clientes y las operaciones realizadas, creando inmensos \textit{datalakes} donde tener enormes históricos de todos sus datos. Este ``síndrome de Diógenes digital'' creado por falsas expectativas, por la imposibilidad de extraer valor de los datos o por la dimensión cambiante de las empresas actuales (en la que los datos de años atrás pueden no ser relevantes en el presente), es uno de los posibles motivos por lo que el tratamiento de los datos esta cambiando. Otro de los motivos para el cambio de rumbo del \textit{Big Data} está relacionado con la \textit{V} de Velocidad, hoy en día no solo es importante la capacidad de ingestar rápidamente los datos, sino la capacidad de poder procesar y obtener decisiones o actuar en tiempo real a partir de los datos, aportando valor al negocio. En este escenario se vuelve más importante la velocidad que el volumen de datos, esto es lo que se denomina \textit{Fast Data}. 
 
 
 
@@ -348,11 +348,11 @@ La arquitectura lambda, representada por la letra griega $\lambda$, fue presenta
 	\label{fig:cap}
 \end{figure}
 
-El propósito de Nathan Marz cuando crea su arquitectura, como indica el título del artículo, es batir el teorema CAP popularizado por la irrupción de las bases de datos NoSQL. Este teorema, ilustrado en la figura \ref{fig:cap}, viene a decir que si queremos tener tolerancia a particiones (imprescindible para bases de datos distribuidas necesarias para el \textit{Big Data}) tenemos que optar entre consistencia, asegurar que el dato que leemos es el último que hemos escrito, o disponibilidad, que la base de datos se encuentra siempre lista.
+El propósito de Nathan Marz cuando crea su arquitectura, como indica el título del artículo, es batir el teorema CAP popularizado por la irrupción de las bases de datos NoSQL. Este teorema, ilustrado en la figura \ref{fig:cap}, viene a decir que si queremos tener tolerancia a particiones (imprescindible para bases de datos distribuidas necesarias para el \textit{Big Data}), tenemos que optar entre consistencia, asegurar que el dato que leemos es el último que hemos escrito, o disponibilidad, que la base de datos se encuentra siempre lista.
 
 
 
-El método propuesto para conseguir este objetivos con grandes cantidades de datos se basa en los siguientes principios:
+El método propuesto para conseguir este objetivo con grandes cantidades de datos se basa en los siguientes principios:
 
 \begin{itemize}
 	\item Una capa \textit{batch} eventualmente consistente de una manera extrema, en la que las escrituras tardan siempre unas pocas horas en estar disponibles. Eliminando algunos problemas complejos con los que tratar como  la concurrencia o las reparaciones de lectura. 

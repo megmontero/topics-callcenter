@@ -1,6 +1,7 @@
 \babel@toc {spanish}{}
 \contentsline {chapter}{Abstract}{\es@scroman {i}}{chapter*.1}% 
 \contentsline {chapter}{\IeC {\'I}ndice}{\es@scroman {iii}}{section*.2}% 
+\contentsline {chapter}{Llistado de Figuras}{1}{section*.4}% 
 \contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{3}{chapter.1}% 
 \contentsline {section}{\numberline {1.1}Descripci\IeC {\'o}n general de la propuesta}{3}{section.1.1}% 
 \contentsline {section}{\numberline {1.2}Motivaci\IeC {\'o}n}{4}{section.1.2}% 
