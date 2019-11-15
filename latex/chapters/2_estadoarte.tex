@@ -9,6 +9,8 @@ El objetivo de este apartado es hacer un recorrido por el estado del arte relaci
 	\item \textbf{\textit{Big Data} y \textit{Fast Data}}: Por último, en la sección \ref{section:arte:big}, haremos un repaso a la evolución del \textit{Big Data} y cómo la tendencia actual es realizar el procesamiento en tiempo real mediante \textit{Fast Data}.
 \end{itemize}
 
+Por último, una vez analizados los diferentes puntos de vista, en la sección \ref{section:arte:ant} enumeraremos trabajos anteriores relacionados con nuestro proyecto. Estos trabajos nos serán de utilidad para justificar la realización de nuestro proyecto y su viabilidad. 
+
 \section{Procesamiento de lenguaje natural}
 \label{section:arte:pln}
 
@@ -18,14 +20,14 @@ Para hablar de los orígenes del Procesamiento del Lenguaje Natural (a partir de
 
 
 
-A partir de los avances de Turing y hasta los años 80 el crecimiento en el campo del PLN se produjo principalmente con la creación de complejos sistemas basados en reglas escritas a mano. Fue en esta década cuando empezamos a vivir la incorporación de algoritmos de \textit{machine learning} enfocados al procesamiento del lenguaje natural. Este hecho se vio motivado principalmente por el increíble avance en la capacidad de cómputo, ya predicho por la ley de Moore, y por la aplicación de teorías ya existentes como los trabajos de Chomsky. 
+A partir de los avances de Turing y hasta los años 80 el crecimiento en el campo del PLN se produjo principalmente con la creación de complejos sistemas basados en reglas escritas a mano. Fue en esta década cuando empezamos a vivir la incorporación de algoritmos de \textit{Machine Learning} enfocados al procesamiento del lenguaje natural. Este hecho se vio motivado principalmente por el increíble avance en la capacidad de cómputo, ya predicho por la ley de Moore, y por la aplicación de teorías ya existentes como los trabajos de Chomsky. 
 
 
-Desde el comienzo de la aplicación de modelos de \textit{machine learning}, y de nuevo motivados por el crecimiento de la capacidad computacional de los sistemas actuales, se ha pasado de utilizar árboles de decisión, que creaban de manera automática reglas similares a las que se venían creando manualmente, a los modelos de \textit{deep learning} que están en auge en la última década. 
+Desde el comienzo de la aplicación de modelos de \textit{Machine Learning}, y de nuevo motivados por el crecimiento de la capacidad computacional de los sistemas actuales, se ha pasado de utilizar árboles de decisión, que creaban de manera automática reglas similares a las que se venían creando manualmente, a los modelos de \textit{deep learning} que están en auge en la última década. 
 
 \subsection{Aplicaciones}
 
-En el apartado anterior hicimos referencia a ``\textit{The Imitation Game}'' como inicio de lo que hoy conocemos como procesamiento del lenguaje natural, sin embargo, las aplicaciones en este campo han crecido de forma vertiginosa en estos 70 años, principalmente en las últimas décadas. Hoy en día, si tuviéramos que contestar a la pregunta: ``¿son capaces de pensar las máquinas?'', implicaría algo más que superar el test de Turing. Mirando a nuestro alrededor nos encontraríamos con asistentes de voz como Alexa o Siri que, no solo contestan a nuestras preguntas, si no que realizan un trabajo de pasar nuestra voz a texto (\textit{Speech to Text}) y de nuevo el texto resultante a voz (\textit{Text to Speech}). Nos encontraríamos también con sistemas capaces de realizar traducciones simultáneas, otros capaces de autocompletar textos, de identificar preguntas y respuestas, de clasificar textos de acuerdo a temas o autores, incluso de analizar sentimientos positivos o negativos teniendo como entrada un texto u opinión... 
+En el apartado anterior hicimos referencia a ``\textit{The Imitation Game}'' como inicio de lo que hoy conocemos como procesamiento del lenguaje natural, sin embargo, las aplicaciones en este campo han crecido de forma vertiginosa en estos 70 años, principalmente en las últimas décadas. Hoy en día, si tuviéramos que contestar a la pregunta: ``¿son capaces de pensar las máquinas?'', implicaría algo más que superar el test de Turing. Mirando a nuestro alrededor nos encontraríamos con asistentes de voz como Alexa o Siri que, no solo contestan a nuestras preguntas, si no que realizan un trabajo de pasar nuestra voz a texto (\textit{Speech to Text}) y de nuevo el texto resultante a voz (\textit{Text to Speech}). Nos encontraríamos también con sistemas capaces de realizar traducciones simultáneas, otros capaces de autocompletar textos, de identificar preguntas y respuestas, de clasificar textos de acuerdo a temas o autores, incluso de analizar sentimientos positivos o negativos teniendo como entrada un texto u opinión.
 
 
 Según \cite{goldberg_2017} todos estos problemas tan diversos podríamos clasificarlos según en el punto del análisis que nos centremos: 
@@ -43,7 +45,7 @@ Según \cite{goldberg_2017} todos estos problemas tan diversos podríamos clasif
 	
 \end{itemize}
 
-Dependiendo del problema que queramos abordar usaremos un tipo de características del lenguaje u otro, por ejemplo, es usual que si estamos analizando palabras aisladas nos centremos en las letras de una palabra, sus prefijos o sufijos, su longitud, la información léxica extraída de diccionarios como \textit{WordNet} \cite{wordnet}, etc. En cambio, si estamos trabajando con texto, lo normal es que nos fijemos en otros conceptos estadísticos como el histograma de las palabras dentro del texto, ratio de palabras cortas vs largas, número de veces que aparece una palabra en un texto comparado con el resto de textos...  
+Dependiendo del problema que queramos abordar usaremos un tipo de características del lenguaje u otro, por ejemplo, es usual que si estamos analizando palabras aisladas nos centremos en las letras de una palabra, sus prefijos o sufijos, su longitud, la información léxica extraída de diccionarios como \textit{WordNet} \cite{wordnet}, etc. En cambio, si estamos trabajando con texto, lo normal es que nos fijemos en otros conceptos estadísticos como el histograma de las palabras dentro del texto, ratio de palabras cortas vs largas, número de veces que aparece una palabra en un texto comparado con el resto de textos, etc.
 
 El proyecto que se presenta en este documento está centrado en el análisis de textos, concretamente en extraer los temas de un documento (o llamada). Este tipo de problemas se conoce como modelización de \textit{topics}. 
 
@@ -51,14 +53,14 @@ En el siguiente punto de este apartado nos centraremos en algunos modelos y avan
 
 
 \subsection{Modelización de temas}
-La modelización de topics hace referencia a un grupo de algoritmos de \textit{machine learning} que infieren la estructura latente existente en un grupo de documentos. 
+La modelización de topics hace referencia a un grupo de algoritmos de \textit{Machine Learning} que infieren la estructura latente existente en un grupo de documentos. 
 
 Aunque la mayoría de los algoritmos de modelización son no supervisados, al igual que los algoritmos tradicionales de \textit{clustering}, existen también algunas variantes supervisadas que necesitan disponer de documentos etiquetados. 
 
 Quizás el algoritmo más conocido para la modelización de topics sea el \textit{Latent Dirichlet Allocation} (normalmente conocido por su acrónimo, LDA). LDA fué presentado en 2003 en el artículo \cite{Blei_LDA}. Este algoritmo no supervisado asume que cada documento es una distribución probabilística de \textit{topics} y cada \textit{topic}, a su vez, es una distribución de palabras del documento. LDA usa una aproximación llamada ``\textit{bag of words}'', en la que cada documento es tratado como un vector con el conteo de las palabras que aparecen en el mismo. La principal característica de LDA es que la colección de documentos comparten los mismos topics, pero cada documento contiene esos topics en una proporción diferente. 
 
 
-A partir de LDA surgieron numerosas variantes que repasaremos de forma breve, por ejemplo, en el mismo año de la creación de LDA y también presentado por los mismos autores en \cite{Blei_HTM}, surgió una \textbf{variante jerárquica} que permitía representar los \textit{topics} jerarquicamente. En 2006 en \cite{Blei_DTM} se desarrolla un modelo LDA dinámico denominado DTM (\textit{Dinamic Topic Model}), en el que se introduce la variable temporal y los \textit{topics} pueden ir cambiando a lo largo del tiempo. En el artículo \cite{Blei_CTM} nos encontramos con otra variante de LDA llamada CTM (\textit{Correlated topic model}) que nos permite encontrar correlaciones entre \textit{topics}, ya que algunos temas es probable que sean más similares entre sí. Por último, nos encontramos con una variante de LDA denominada ATM (\textit{Author-Topic Model}) propuesta  por	Michal Rosen-Zvi en su artículo \cite{Rosen-Zvi_AMA_2010}  y desarrollada por el mismo en 2010, en la que los documentos son una distribución probabilística tanto de autores como de \textit{topics}.    
+A partir de LDA surgieron numerosas variantes que repasaremos de forma breve, por ejemplo, en el mismo año de la creación de LDA y también presentado por los mismos autores en \cite{Blei_HTM}, surgió una \textbf{variante jerárquica} que permitía representar los \textit{topics} jerárquicamente. En 2006 en \cite{Blei_DTM} se desarrolla un modelo LDA dinámico denominado DTM (\textit{Dinamic Topic Model}), en el que se introduce la variable temporal y los \textit{topics} pueden ir cambiando a lo largo del tiempo. En el artículo \cite{Blei_CTM} nos encontramos con otra variante de LDA llamada CTM (\textit{Correlated topic model}) que nos permite encontrar correlaciones entre \textit{topics}, ya que algunos temas es probable que sean más similares entre sí. Por último, nos encontramos con una variante de LDA denominada ATM (\textit{Author-Topic Model}) propuesta  por	Michal Rosen-Zvi en su artículo \cite{Rosen-Zvi_AMA_2010}  y desarrollada por el mismo en 2010, en la que los documentos son una distribución probabilística tanto de autores como de \textit{topics}.    
 
 
 Podemos encontrar un resumen más completo del estado del arte en cuanto a la modelización de \textit{topics} en el artículo \cite{Mahmood2013LiteratureSO}. 
@@ -98,14 +100,14 @@ Una de las arquitectura más comunes de FFNN es el preceptrón multicapa (en ing
  
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.65\textwidth]{images/arte/mlp}
+	\includegraphics[width=0.68\textwidth]{images/arte/mlp}
 	\caption{Ejemplo de arquitectura MLP. Fuente \cite{mlp}}
 	\label{fig:mlp}
 \end{figure}
 
 
 
-Hablamos que una red es profunda cuando contiene un gran número de capas, por ello el término de \textit{Deep Learning}. En la figura \ref{fig:mlp} observamos un ejemplo de arquitectura MLP y como la denominamos \textit{Deep Learning} al crecer el número de capas ocultas.
+Hablamos que una red es profunda cuando contiene un gran número de capas, por ello el término de \textit{Deep Learning}. En la Figura \ref{fig:mlp} observamos un ejemplo de arquitectura MLP y como la denominamos \textit{Deep Learning} al crecer el número de capas ocultas.
 
 
 \subsection{Representación de palabras en PLN}% Podemos llamarle embedding o representación de palabras
@@ -122,7 +124,7 @@ En cambio, existe otro método de representar las palabras en el lenguaje natura
 	\label{fig:wor2vec}
 \end{figure}
 
-Una de las soluciones más populares que nos permiten convertir una palabra a un vector (\textit{word2vec}) que contenga información de la palabra en función del contexto se detallan en el artículo \cite{word2vec} . Aquí se presentaron dos modelos llamados \textbf{Skip-Gram} y \textbf{CBOW} cuya arquitectura podemos ver en la figura \ref{fig:wor2vec}. Estos modelos utilizan redes neuronales para predecir una palabra en función de su contexto o el contexto en función de una palabra, el vector que se utiliza para representar la palabra es el vector de pesos de la capa oculta. 
+Una de las soluciones más populares que nos permiten convertir una palabra a un vector (\textit{word2vec}) que contenga información de la palabra en función del contexto se detallan en el artículo \cite{word2vec} . Aquí se presentaron dos modelos llamados \textbf{Skip-Gram} y \textbf{CBOW} cuya arquitectura podemos ver en la Figura \ref{fig:wor2vec}. Estos modelos utilizan redes neuronales para predecir una palabra en función de su contexto o el contexto en función de una palabra, el vector que se utiliza para representar la palabra es el vector de pesos de la capa oculta. 
 
 
 
@@ -135,7 +137,7 @@ Los dos tipos de redes neuronales que comentaremos son las redes neuronales conv
 
 \subsubsection{Redes neuronales convolucionales}
 
-Las redes neuronales convolucionales (llamadas usualmente CNN, por su nombre en inglés \textit{\textbf{C}onvolutional \textbf{N}eural \textbf{N}etworks}) son un tipo de redes neuronales que deben su nombre a la operación matemática de convolución que realizan. Esta operación consiste en aplicar a una matriz de entrada multidimensional, un filtro o kernel también multidimensional y obtener una salida, también denominada mapa de características. En la figura \ref{fig:cnn1} podemos ver una representación gráfica de esta operación para un ejemplo de 2 dimensiones. 
+Las redes neuronales convolucionales (llamadas usualmente CNN, por su nombre en inglés \textit{\textbf{C}onvolutional \textbf{N}eural \textbf{N}etworks}) son un tipo de redes neuronales que deben su nombre a la operación matemática de convolución que realizan. Esta operación consiste en aplicar a una matriz de entrada multidimensional, un filtro o kernel también multidimensional y obtener una salida, también denominada mapa de características. En la Figura \ref{fig:cnn1} podemos ver una representación gráfica de esta operación para un ejemplo de 2 dimensiones. 
 
 \begin{figure}[!ht]
 	\centering
@@ -155,12 +157,12 @@ Aunque la convolución simple que comentamos es la operación básica en las red
 	\label{fig:padding}
 \end{figure}
 
-Como observamos en la figura \ref{fig:cnn1}, al aplicar el kernel a los datos de  entrada estamos reduciendo la dimensionalidad de la salida. A menudo es posible que esto no nos interese y queramos mantener la dimensionalidad en la salida; para ello recurrimos a un método denominado \textit{zero padding} que consiste en añadir '0s' en los bordes de nuestra entrada con el objetivo de preservar la dimensionalidad en la salida. En la figura \ref{fig:padding} podemos ver un ejemplo de aplicación de \textit{zero padding}.
+Como observamos en la Figura \ref{fig:cnn1}, al aplicar el kernel a los datos de  entrada estamos reduciendo la dimensionalidad de la salida. A menudo es posible que esto no nos interese y queramos mantener la dimensionalidad en la salida; para ello recurrimos a un método denominado \textit{zero padding} que consiste en añadir '0s' en los bordes de nuestra entrada con el objetivo de preservar la dimensionalidad en la salida. En la Figura \ref{fig:padding} podemos ver un ejemplo de aplicación de \textit{zero padding}.
 
 
 
 
-Por otro lado, es también posible que queramos reducir aún más la dimensión de salida, principalmente por un tema de eficiencia y reducción de los tiempos de ejecución, a costa de perder información de algunas características en la salida. Para ello podemos utilizar la convolución por pasos (o \textit{strided} por su nombre en inglés). Este método consiste en aplicar el kernel realizando saltos en lugar de hacerlo sobre celdas consecutivas,  tal y como podemos ver en la figura \ref{fig:strided}.
+Por otro lado, es también posible que queramos reducir aún más la dimensión de salida, principalmente por un tema de eficiencia y reducción de los tiempos de ejecución, a costa de perder información de algunas características en la salida. Para ello podemos utilizar la convolución por pasos (o \textit{strided} por su nombre en inglés). Este método consiste en aplicar el kernel realizando saltos en lugar de hacerlo sobre celdas consecutivas,  tal y como podemos ver en la Figura \ref{fig:strided}.
 
 \begin{figure}[!ht]
 	\centering
@@ -174,7 +176,7 @@ Por otro lado, es también posible que queramos reducir aún más la dimensión 
 El proceso explicado anteriormente correspondería con una capa convolucional, que son el corazón de las redes neuronales convolucionales, sin embargo, en una red neuronal convolucional estas capas coexisten con otro tipo de capas que nos ayudaran a mejorar nuestros modelos. Las más usuales son:
 
 \begin{itemize}
-	\item Capa de agrupamiento (\textit{polling} en inglés): El objetivo de esta capa es agrupar un conjunto de salidas para obtener un único valor. Al conjunto de valores de entrada (seleccionado de nuevo con un filtro) se le aplica una función para obtener un único valor. Aunque se pueden utilizar diferentes funciones, como puede ser la media, lo más usual es aplicar la función de máximo (\textit{max-polling}). Es habitual, intuir que usando esta función nos estamos quedando con las características más relevantes de cada cuadrante (del tamaño del filtro) de la entrada. En la figura \ref{fig:pooling} podemos ver un ejemplo de agrupamiento utilizando la función de máximo. 
+	\item Capa de agrupamiento (\textit{polling} en inglés): El objetivo de esta capa es agrupar un conjunto de salidas para obtener un único valor. Al conjunto de valores de entrada (seleccionado de nuevo con un filtro) se le aplica una función para obtener un único valor. Aunque se pueden utilizar diferentes funciones, como puede ser la media, lo más usual es aplicar la función de máximo (\textit{max-polling}). Es habitual, intuir que usando esta función nos estamos quedando con las características más relevantes de cada cuadrante (del tamaño del filtro) de la entrada. En la Figura \ref{fig:pooling} podemos ver un ejemplo de agrupamiento utilizando la función de máximo. 
 	\item Capa totalmente conectada: Hemos visto ejemplos de capas totalmente conectadas al introducir las redes neuronales, esta capas usualmente se usan al final de nuestra red para tareas de clasificación, teniendo la última capa un número de neuronas igual al número de clases que pretendemos clasificar. 
 	\item Capa RELU: Si observamos la descripción de la operación de convolución nos damos cuenta de que se trata de una operación totalmente lineal, es por ello que después de cada capa de convolución es usual agregar una capa no lineal (también llamada capa de activación). Aunque se pueden utilizar otras funciones como la tangente o la función sigmoide, lo más usual es utilizar la función RELU.
 	
@@ -207,7 +209,7 @@ Tras esta visión general sobre las redes neuronales generales, podemos enumerar
 
 
 
-Sin embargo, las redes neuronales convolucionales deben usarse en datos que contengan coherencia local ya que esa es su fortaleza. \textbf{En datos sin coherencia local las redes neuronales convolucionales no lograrían obtener un buen rendimiento} como las redes neuronales tradicionales vistas anteriormente. Si observamos la figura \ref{fig:tradvscnn} podemos ver la diferencia entre las capas de ambos tipos de redes y cómo la capa convolucional se centra más en las estructuras locales.
+Sin embargo, las redes neuronales convolucionales deben usarse en datos que contengan coherencia local ya que esa es su fortaleza. \textbf{En datos sin coherencia local las redes neuronales convolucionales no lograrían obtener un buen rendimiento} como las redes neuronales tradicionales vistas anteriormente. Si observamos la Figura \ref{fig:tradvscnn} podemos ver la diferencia entre las capas de ambos tipos de redes y cómo la capa convolucional se centra más en las estructuras locales.
 
 
 
@@ -237,7 +239,7 @@ Las conexiones en una red neuronal recurrente pueden tener muchas variaciones po
 
 
 
-En la figura \ref{fig:rnn} observamos un ejemplo de red neuronal recurrente en el que tenemos como entrada el valor de la secuencia $x_{t}$ y el estado de la red en el paso anterior (conexión en bucle). Producimos una respuesta $h_{t}$ y un estado (conexión en bucle). Sin embargo, posiblemente esta representación sea algo más confusa para comprender su funcionamiento que si procedemos a ``desenrollar'' la red neuronal haciéndola más similar a los modelos vistos hasta ahora. En la figura \ref{fig:rnn2} podemos ver el resultado de ``desenrollar'' la red; hay que tener en cuenta con esta representación que los parámetros usados por cada celda son exactamente los mismos.
+En la Figura \ref{fig:rnn} observamos un ejemplo de red neuronal recurrente en el que tenemos como entrada el valor de la secuencia $x_{t}$ y el estado de la red en el paso anterior (conexión en bucle). Producimos una respuesta $h_{t}$ y un estado (conexión en bucle). Sin embargo, posiblemente esta representación sea algo más confusa para comprender su funcionamiento que si procedemos a ``desenrollar'' la red neuronal haciéndola más similar a los modelos vistos hasta ahora. En la Figura \ref{fig:rnn2} podemos ver el resultado de ``desenrollar'' la red; hay que tener en cuenta con esta representación que los parámetros usados por cada celda son exactamente los mismos.
 
 \begin{figure}[!ht]
 	\centering
@@ -253,7 +255,7 @@ Aunque no entraremos en detalles sobre el entrenamiento de redes neuronales, es 
 Para mitigar estos problemas es importante el diseño de las celdas, a continuación veremos de manera resumida los dos tipos de celdas más usados en las redes neuronales recurrentes. Las celdas que comentaremos están compuestas por diferentes mecanismos internos, denominados puertas, que gestionan el flujo de información a lo largo de la misma. 
 
 
-El primer tipo de celdas  son las celdas Long Short Term Memory (\textbf{LSTM}). Este tipo de celdas se comportan bien en situaciones que queremos encontrar patrones entre registros que se encuentran separados en la secuencia, esto es algo muy usual, por ejemplo, en el caso de PLN cuando en una misma frase una palabra hace referencia a otra que apareció a una distancia de varias palabras. 
+El primer tipo de celdas  son las celdas \textit{Long Short Term Memory} (\textbf{LSTM}). Este tipo de celdas se comportan bien en situaciones que queremos encontrar patrones entre registros que se encuentran separados en la secuencia, esto es algo muy usual, por ejemplo, en el caso de PLN cuando en una misma frase una palabra hace referencia a otra que apareció a una distancia de varias palabras. 
 	
 Para conseguir este objetivo, parece evidente que es importante controlar la memoria en cada una de las celdas. Una celda LSTM realiza esta tarea con las siguientes puertas: 
 	\begin{itemize}
@@ -264,28 +266,28 @@ Para conseguir este objetivo, parece evidente que es importante controlar la mem
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/arte/lstmvsgru}
+	\includegraphics[width=0.84\textwidth]{images/arte/lstmvsgru}
 	\caption{Arquitectura celdas LSTM y GRU. Fuente \cite{lstmgru}}
 	\label{fig:lstmvsgru}
 \end{figure}
 
 
 
-Debido al éxito de las celdas LSTM, y al constante esfuerzo de optimización de las mismas, han surgido diferentes variantes. La más conocida de todas son las Gated Recurrent Unit (\textbf{GRU}) introducidas en 2014. La celda GRU es una simplificación de la celda LSTM y produce unos rendimientos bastante similares con un menor coste. De manera muy resumida una celda GRU se compone de: 
+Debido al éxito de las celdas LSTM, y al constante esfuerzo de optimización de las mismas, han surgido diferentes variantes. La más conocida de todas son las \textit{Gated Recurrent Unit} (\textbf{GRU}) introducidas en 2014. La celda GRU es una simplificación de la celda LSTM y produce unos rendimientos bastante similares con un menor coste. De manera muy resumida una celda GRU se compone de: 
 \begin{itemize}
 	\item Puerta de reset: Permite seleccionar que información de la memoria va a ser utilizada en un paso concreto. 
 	\item Puerta de actualización: Realiza la función de las puertas de olvido y de entrada que hemos visto en las celdas LSTM.
 \end{itemize}
 
-Aunque no hemos entrado en el detalle del funcionamiento de cada una de las puertas, en la figura \ref{fig:lstmvsgru} podemos ver la arquitectura completa de ambos tipos, y observar la mayor simplicidad de las celdas GRU frente a las LSTM. 
+Aunque no hemos entrado en el detalle del funcionamiento de cada una de las puertas, en la Figura \ref{fig:lstmvsgru} podemos ver la arquitectura completa de ambos tipos, y observar la mayor simplicidad de las celdas GRU frente a las LSTM. 
 
 
 Como podemos imaginar, las redes neuronales recurrentes son ampliamente usadas en el mundo del Procesamiento del Lenguaje Natural, debido a que una palabra no es otra cosa que una secuencia de letras, una frase a su vez se trata de una secuencia de palabras y un documento una secuencia de frases. Alguno de los usos de las RNN en este ámbito son: 
 
 \begin{itemize}
-	\item \textbf{Análisis de sentimientos}: Detectar el sentimiento positivo o negativo de un texto utilizando únicamente la última salida de la red.
-	\item \textbf{Generador de texto}: Predecir la siguiente palabra de una secuencia, utilizando la salida de cada una de las celdas. 
-	\item \textbf{Traductores}: Traducir textos entre idiomas, en este caso es usual utilizar redes recurrentes bidirecionales.
+	\item \textbf{Análisis de sentimientos}: Detectar el sentimiento positivo o negativo de un texto utilizando únicamente la última salida de la red. En \cite{rnnej1} tenemos un ejemplo de análisis de sentimientos utilizando redes recurrentes con LSTM sobre los datos de una red social China.
+	\item \textbf{Generador de texto}: Predecir la siguiente palabra de una secuencia, utilizando la salida de cada una de las celdas. Podemos ver una comparación de métodos para generar textos de diferentes temáticas para poder entrenar posteriormente modelos \textit{Deep Learning} en \cite{rnnej2}. Entre los métodos de la comparación se encuentran las redes neuronales recurrentes con celdas GRU y con celdas LSTM.
+	\item \textbf{Traductores}: Traducción automática de textos entre idiomas, llamado \textit{Neural Machine Translation} (NMT) cuando se utilizan redes neuronales.  Quizás el mayor caso de éxito en este punto es el \textit{Google's Neural Machine Translation System} \cite{rnnej3} cuya base es una red neuronal profunda construida con celdas LSTM.
 \end{itemize}
 
 
@@ -293,13 +295,13 @@ Como podemos imaginar, las redes neuronales recurrentes son ampliamente usadas e
 Una vez analizadas, de manera global, las redes neuronales recurrentes podemos ver que nos ofrecen \textbf{numerosas ventajas al trabajar con secuencias} como hacemos en el ámbito del PLN. Entre ellas podemos ver, que vamos incluso más allá que con las CNN analizando la relación entre las diferentes palabras, fundamentalmente con las celdas LSTM y GRU, pudiendo detectarlas entre palabras que estén alejadas entre sí y no ceñirnos al tamaño del kernel. Sin embargo, como hemos visto, y aunque sean mitigados por el uso de celdas LSTM y GRU, las redes neuronales recurrentes presentan \textbf{problemas durante el entrenamiento} tanto de desvanecimiento como de explosión del gradiente.
 
 
-\section{BigData y Fast Data}
+\section{\textit{BigData} y \textit{Fast Data}}
 \label{section:arte:big}
 A lo largo de esta sección intentaremos tener una visión general del \textit{Big Data} y su evolución a lo largo del tiempo hasta llegar al \textit{Fast Data}. Posteriormente veremos las arquitecturas más usadas en el mundo del \textit{Big Data}. 
 
-\subsection{Evolución: del Big Data al Fast Data}
+\subsection{Evolución: del \textit{Big Data} al \textit{Fast Data}}
 
-El primer uso del término  \textit{Big Data}  se da en un artículo de Michael Cox y David Ellsworth de la NASA publicado en 1997 \cite{Cox_1997}, donde hacen referencia a la dificultad de procesar grandes volúmenes de datos con los métodos de la época. Sin embargo, fue en 2001 cuando encontramos la definición más conocida y aceptada de \textit{Big Data} hecha por el analista Laney Douglas en su artículo ``3D Data Management: Controlling Data Volume, Velocity y Variety'' \cite{laneay_2013} en el que se hacía referencia a las ya ``famosas'' tres \textit{V}s:
+El primer uso del término  \textit{Big Data}  se da en un artículo de Michael Cox y David Ellsworth de la NASA publicado en 1997 \cite{Cox_1997}, donde hacen referencia a la dificultad de procesar grandes volúmenes de datos con los métodos de la época. Sin embargo, fue en 2001 cuando encontramos la definición más conocida y aceptada de \textit{Big Data} hecha por el analista Laney Douglas en su artículo ``\textit{3D Data Management: Controlling Data Volume, Velocity y Variety}'' \cite{laneay_2013} en el que se hacía referencia a las ya ``famosas'' tres \textit{V}s:
 
 \begin{itemize}
 	\item \textbf{V}olumen:  Cada vez los volúmenes de datos son mayores.
@@ -315,13 +317,13 @@ Sin embargo, estas aportaciones no empezaron a tomar una repercusión relevante 
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.90\textwidth]{images/arte/bigdatatime}
+	\includegraphics[width=0.94\textwidth]{images/arte/bigdatatime}
 	\caption{Evolución del \textit{Big Data}. Fuente \cite{lambdakappa}}
 	\label{fig:bigdatatime}
 \end{figure}
 
 
-Durante estos 10 años la popularidad de \textit{Hadoop} ha crecido exponencialmente y junto con las BBDD NoSQL, nacidas también a partir de Google con su BigTable, forman lo que hoy conocemos como Big Data. En la figura \ref{fig:bigdatatime} observamos esta evolución en el mundo del \textit{Big Data} con los hitos de aparición de algunas tecnologías representativas.
+Durante estos 10 años la popularidad de \textit{Hadoop} ha crecido exponencialmente y junto con las BBDD NoSQL, nacidas también a partir de Google con su BigTable, forman lo que hoy conocemos como Big Data. En la Figura \ref{fig:bigdatatime} observamos esta evolución en el mundo del \textit{Big Data} con los hitos de aparición de algunas tecnologías representativas.
 
 
 
@@ -331,7 +333,7 @@ El auge del \textbf{Big Data} ha llevado a algunas empresas a tener verdadera ob
 
 Dentro del \textit{Fast Data} es habitual el uso de BBDD \textit{in-memory}, de buses de eventos y de tecnologías de procesamiento capaces de procesar los eventos en tiempo real. Como veremos posteriormente al desarrollar nuestra arquitectura, el \textit{Fast Data} será una parte fundamental en nuestro proyecto en el que tendremos que clasificar las llamadas en tiempo real y tomar decisiones (o alarmar) en función de las mismas. 
 
-Observando de nuevo la figura \ref{fig:bigdatatime} podemos ver este cambio en la tendencia hacia el \textit{Fast Data} a partir del 2012 cuando aparece la tecnología Kafka y en los años posteriores con la incorporación de diferentes herramientas para el procesamiento de eventos como son \textit{Spark Streaming} o \textit{Flink}.
+Observando de nuevo la Figura \ref{fig:bigdatatime} podemos ver este cambio en la tendencia hacia el \textit{Fast Data} a partir del 2012 cuando aparece la tecnología Kafka y en los años posteriores con la incorporación de diferentes herramientas para el procesamiento de eventos como son \textit{Spark Streaming} o \textit{Flink}.
 
 \subsection{Arquitecturas \textit{RealTime}}
 La evolución que hemos visto en el apartado anterior,  con la explosión del \textit{Big Data} y la irrupción del \textit{Fast Data}, hace necesaria la incorporación en las empresas de arquitecturas de procesamiento de datos en tiempo real que, como cualquier otra arquitectura de datos, sean capaces de ingestar, procesar y permitir la explotación y análisis de los datos. La diferencia fundamental en las arquitecturas \textit{RealTime} y las arquitecturas de datos tradicionales son el\textbf{ volumen de los datos a tratar} y la \textbf{capacidad para hacerlo en tiempo real}.
@@ -348,7 +350,7 @@ La arquitectura lambda, representada por la letra griega $\lambda$, fue presenta
 	\label{fig:cap}
 \end{figure}
 
-El propósito de Nathan Marz cuando crea su arquitectura, como indica el título del artículo, es batir el teorema CAP popularizado por la irrupción de las bases de datos NoSQL. Este teorema, ilustrado en la figura \ref{fig:cap}, viene a decir que si queremos tener tolerancia a particiones (imprescindible para bases de datos distribuidas necesarias para el \textit{Big Data}), tenemos que optar entre consistencia, asegurar que el dato que leemos es el último que hemos escrito, o disponibilidad, que la base de datos se encuentra siempre lista.
+El propósito de Nathan Marz cuando crea su arquitectura, como indica el título del artículo, es batir el teorema CAP popularizado por la irrupción de las bases de datos NoSQL. Este teorema, ilustrado en la Figura \ref{fig:cap}, viene a decir que si queremos tener tolerancia a particiones (imprescindible para bases de datos distribuidas necesarias para el \textit{Big Data}), tenemos que optar entre consistencia, asegurar que el dato que leemos es el último que hemos escrito, o disponibilidad, que la base de datos se encuentra siempre lista.
 
 
 
@@ -370,7 +372,7 @@ El método propuesto para conseguir este objetivo con grandes cantidades de dato
 \end{figure}
 
 
-Podemos ver un esquema de la arquitectura en la figura \ref{fig:lambda}. Esta arquitectura, aparte de resolver los problemas de consistencia y disponibilidad, tiene algunas ventajas:
+Podemos ver un esquema de la arquitectura en la Figura \ref{fig:lambda}. Esta arquitectura, aparte de resolver los problemas de consistencia y disponibilidad, tiene algunas ventajas:
 
 \begin{itemize}
 	
@@ -394,4 +396,32 @@ Kreps describe la complejidad que supone en una arquitectura Lambda mantener id�
 	\label{fig:kappa}
 \end{figure}
 
-Con esta premisa, en el artículo se presenta la arquitectura que observamos en la figura \ref{fig:kappa}, en la que existe un único flujo de procesamiento \textit{realtime} para todo el modelo. La simplicidad de Kappa con respecto a Lambda es tal que el propio Kreps afirma que puede ser una idea demasiado simple para merecer una letra griega.
+Con esta premisa, en el artículo se presenta la arquitectura que observamos en la Figura \ref{fig:kappa}, en la que existe un único flujo de procesamiento \textit{realtime} para todo el modelo. La simplicidad de Kappa con respecto a Lambda es tal que el propio Kreps afirma que puede ser una idea demasiado simple para merecer una letra griega.
+
+
+
+\section{Trabajos anteriores}
+\label{section:arte:ant}
+
+
+Una vez abordado el estado del arte desde diferentes puntos de vista, es importante tener una visión de los trabajos anteriores que se han realizado con objetivos similares y sus resultados. De este modo entenderemos si existe una justificación para nuestro trabajo, los problemas a los que podemos enfrentarnos y las expectativas que podemos gestionar.
+
+En este apartado nos vamos a  centrar en la aplicación de técnicas de Procesamiento del Lenguaje Natural a un \textit{Call Center}. Encontramos varios artículos interesantes que hacen hincapié en el valor de la información y el conocimiento que puede extraerse de un \textit{Call Center}, ya que se trata de un intermediario importante entre el cliente y la empresa. Entre estos trabajos podemos destacar: 
+
+\begin{itemize}
+	\item ``Metodología para estimar el impacto que generan las llamadas realizadas en un call center en la fuga de los clientes utilizando técnicas de text mining'' \cite{call1}: Que como su nombre indica, investiga si existe relación entre las llamadas realizadas al \textit{Call Center} y la pérdida de clientes. El trabajo, al igual que el proyecto que intentamos abordar, parte de las llamadas transcritas a texto y, aunque se utiliza como base para la modelización de temas LDA, se apoya en etiquetas existentes en las llamadas para validar los resultados.
+	
+	\item ``Customer voice sensor: A comprehensive opinion mining system for call center conversation'' \cite{call2}: Se trata de un trabajo más basado en el análisis de sentimientos, pero se encuentra realizado con llamadas de los clientes a una operadora de telecomunicaciones (en este caso China Telecom) al igual que nuestra fuente de información.
+	
+	\item ``Topic mining for call centers based on A‐LDA and distributed computing'' \cite{call3}: En este caso, se realiza una modelización de temas sobre  los datos del \textit{Call Center} de \textit{China Central Television}. En este proceso de modelización se utiliza  una mejora del modelo LDA llamada A-LDA que utiliza no solo el corpus de la llamada, si no también algunas propiedades externas como el tiempo de llamada o el número de origen.
+	
+	\item ``Author-topic based representation of call-center conversations'' \cite{call4}: Este último artículo que comentamos, parte también de los datos generados a través de un \textit{Performance of Automatic Speech Recognition} (ASR), el trabajo pone de manifiesto la pobre calidad de estas transcripciones automáticas. Por este motivo, propone una modificación de LDA basada en el modelo \textit{Author Topic}, utilizando además del corpus del texto información del tema de la conversación.
+\end{itemize}
+
+
+Probablemente, dentro de las empresas, existen muchos más trabajos destinados a la explotación de esta información y que no se encuentren publicados, por lo que podemos concluir que es un campo que despierta interés y que se trata de una información con potencial que nos permita, entre otros objetivos, comprender las necesidades de los clientes de una compañía.
+
+Por otro lado, observamos que en la mayoría de los casos, aunque la base de la modelización sea el uso de LDA, debido al ruido o a otros factores como la ausencia de información semántica, se utilizan modificaciones del modelo que incorporan etiquetas o propiedades externas al corpus para mejorar la clasificación.
+
+Por último, pensamos que, aún con estos antecedentes, existe la necesidad de abordar este proyecto, debido a la diferencia entre unos datos y otros, por factores como el idioma o las distintas necesidades de cada empresa. Además nuestro proyecto tiene como objetivo final la integración de este modelo en un proceso de la compañía que sea capaz de aplicarlo en tiempo real y alertar en caso de anomalías para poder tomar decisiones.
+
