@@ -1,0 +1,562 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Módulo mgmtfm &#8212; documentación de mgmtfm - 1.0.0</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="modulo-mgmtfm">
+<h1>Módulo mgmtfm<a class="headerlink" href="#modulo-mgmtfm" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="indice">
+<h2>Índice<a class="headerlink" href="#indice" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></li>
+</ul>
+</div>
+<div class="section" id="module-mgmtfm.clean">
+<span id="clean"></span><h2>Clean<a class="headerlink" href="#module-mgmtfm.clean" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="mgmtfm.clean.Clean">
+<em class="property">class </em><code class="descclassname">mgmtfm.clean.</code><code class="descname">Clean</code><a class="headerlink" href="#mgmtfm.clean.Clean" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Clase para el preprocesamiento de documentos que se destinaran al PLN.</p>
+<dl class="method">
+<dt id="mgmtfm.clean.Clean.balancing">
+<code class="descname">balancing</code><span class="sig-paren">(</span><em>x=None</em>, <em>class_binary=None</em>, <em>balancing_types=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.clean.Clean.balancing" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Balancear los datos para que todas las clases que se usen en el entrenamiento tengan el mismo número de elementos. Y realizar un shuffle entre ellos.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">x (DataFrame): Dataframe que se va a proceder a balancear. Se balanceará en función 
+del campo «tipo». Si fuera None usará los tokens actuales.</p>
+<p>class_binary (str): Establecer si estamos en un caso de clasificación binaria y queremos 
+balancear entre esa clase y el resto.</p>
+<p class="last">balancing_types (list&lt;str&gt;): Realiza lo mismo que en el caso anterior, pero con una 
+lista de clases realizando el balanceado entre esta lista y el resto.</p>
+</dd>
+<dt>Returns:</dt>
+<dd>DataFrame: Dataframe balanceado.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.clean.Clean.get_combined_and_distribution">
+<code class="descname">get_combined_and_distribution</code><span class="sig-paren">(</span><em>calls</em>, <em>types</em>, <em>ivr=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.clean.Clean.get_combined_and_distribution" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Combinar el dataframe de llamadas con el dataframe de tipos correspondiente.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">verint (dataframe): Dataframe de Verint con las transcripciones de las llamadas.</p>
+<p>tipos (dataframe): Dataframe con los tipos.</p>
+<p class="last">ivr (boolean): Si es True el dataframe de tipos será el de IVR, de no ser así será el de monitorizaciones.</p>
+</dd>
+<dt>Returns: </dt>
+<dd>dataframe: Join de ambos dataframes.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.clean.Clean.get_set_data">
+<code class="descname">get_set_data</code><span class="sig-paren">(</span><em>test_size=0.33</em>, <em>seed=2019</em>, <em>class_binary=None</em>, <em>sequence=True</em>, <em>shuffle=True</em>, <em>max_seq_len=None</em>, <em>balancing_types=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.clean.Clean.get_set_data" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Obtener conjuntos de datos de test y de entrenamiento, realizar el etiquetado de los conjuntos en 
+el caso que sea binario o haya balanceo. Realizar el padding si tratamos con secuencias.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">test_size (float): Porcentaje de datos de entrenamiento. Puede ser 0 para obtener los datos en un solo conjunto 
+y en el mismo orden (sin <em>shuffle</em>).</p>
+<p>seed (int): Semilla para reproducir los resultados aleatorios.</p>
+<p>class_binary (str): Válido para el etiquetado. Asigna un 1 a la clase binaria y un 0 al resto.</p>
+<p>sequence (bool): Si se esta trabajando con secuencias o no. Se realiza  padding en el caso de que se active. <em>True</em> por defecto.</p>
+<p>shuffle (bool): Coger los datos en orden aleatorio(True) o secuencial (False). No afecta con test_size=0.</p>
+<p>max_seq_len (int): En el caso de usar secuencias la longitud máxima para el <em>padding</em>.</p>
+<p class="last">balancing_types (list): Tipos que se van a usar para clasificar. El resto de tipos se etiquetaran como «Resto».</p>
+</dd>
+<dt>Returns:</dt>
+<dd>(array, array, array, array): Conjunto de entrenamiento, etiquetas de entrenamiento, conjunto de test y etiquetas de test.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.clean.Clean.load_tokens">
+<code class="descname">load_tokens</code><span class="sig-paren">(</span><em>file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.clean.Clean.load_tokens" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Cargar los tokens desde un fichero. Además carga las variables «combined», 
+«distribucion_tipos» y «word_index».</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.clean.Clean.one_hot_ys">
+<code class="descname">one_hot_ys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.clean.Clean.one_hot_ys" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Realizar la conversión de las etiquetas de entrenamiento y test al formato one_hot.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>(array, array): Tupla de arrays en formato one_hot.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.clean.Clean.pad_Xs">
+<code class="descname">pad_Xs</code><span class="sig-paren">(</span><em>maxlen</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.clean.Clean.pad_Xs" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Realizar el padding de los conjuntos de entrenamiento y test.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>maxlen (int): Longitud máxima para el padding.</dd>
+<dt>Returns:</dt>
+<dd>tuple (&lt;Dataframe, Dataframe&gt;): conjunto de entrenamiento y de test tras el padding.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.clean.Clean.quit_class">
+<code class="descname">quit_class</code><span class="sig-paren">(</span><em>delete</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.clean.Clean.quit_class" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Eliminar una clase de los tokens actuales.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>delete (str): Clase que se eliminará.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.clean.Clean.save_tokens">
+<code class="descname">save_tokens</code><span class="sig-paren">(</span><em>file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.clean.Clean.save_tokens" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Guardar los tokens en un fichero (pickle).</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>file_name (str): nombre del fichero en el que se almacenaran los tokens.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.clean.Clean.tokenize">
+<code class="descname">tokenize</code><span class="sig-paren">(</span><em>quit_commons=True</em>, <em>limit=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.clean.Clean.tokenize" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Tokenizar el «plaintext» del <em>dataframe</em> «combined» utilizando el método privado <em>_tokenize</em>.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">quit_commons (bool): Eliminar palabras comunes al tokenizar.</p>
+<p class="last">limit (int): Si se establece tokeniza unicamente este número de llamadas.</p>
+</dd>
+<dt>Returns: </dt>
+<dd>dataframe: Dataframe con los tokens. Tambien se almacenan en self.tokens.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mgmtfm.embedding">
+<span id="embedding"></span><h2>Embedding<a class="headerlink" href="#module-mgmtfm.embedding" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="mgmtfm.embedding.Embedding">
+<em class="property">class </em><code class="descclassname">mgmtfm.embedding.</code><code class="descname">Embedding</code><span class="sig-paren">(</span><em>train_data</em>, <em>word_index</em>, <em>num_words=20000</em>, <em>train_from_verint=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.embedding.Embedding" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Clase encargada de realizar y gestionar los embedding. Actualmente existen 
+las opciones de Word2Vec (CBOW y Skip-Gram) o Doc2VEC.</p>
+<dl class="method">
+<dt id="mgmtfm.embedding.Embedding.doc2vec_infer">
+<code class="descname">doc2vec_infer</code><span class="sig-paren">(</span><em>doc</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.embedding.Embedding.doc2vec_infer" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Inferir el vector Doc2Vec de un documento.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd>doc (str): Documento de texto a inferir.</dd>
+<dt>Returns:</dt>
+<dd>Array: Vector Doc2Vec.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.embedding.Embedding.get_embedding_matrix">
+<code class="descname">get_embedding_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.embedding.Embedding.get_embedding_matrix" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Obtener la matriz de embeddings.</p>
+<dl class="docutils">
+<dt>Returns: </dt>
+<dd>array&lt;array&gt;: Matriz de embeddings.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.embedding.Embedding.load_embedding">
+<code class="descname">load_embedding</code><span class="sig-paren">(</span><em>path</em>, <em>type=1</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.embedding.Embedding.load_embedding" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Cargar embedding desde un fichero.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>path (str): Ruta de la que cargar el embedding. 
+type (int): 0-&gt; CBOW 1-&gt; SKIP-GRAM (default) 2-&gt; Doc2Vec</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.embedding.Embedding.save_embedding">
+<code class="descname">save_embedding</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.embedding.Embedding.save_embedding" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Almacenar el embedding (tras el entrenamiento).</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>path (str): Ruta del fichero.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.embedding.Embedding.train_embedding">
+<code class="descname">train_embedding</code><span class="sig-paren">(</span><em>min_count=1</em>, <em>size=100</em>, <em>workers=16</em>, <em>window=5</em>, <em>type=1</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.embedding.Embedding.train_embedding" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Entrenar el embedding para word2vec o doc2vec.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>min_count (int): Número mínimo de veces que debe aparecer una palabra para ser tenida en cuenta.
+size (int): Dimension del vector de embedding.
+workers (int): Número de workers usados en el entrenamiento.
+window (int):  Tamaño de la ventana de palabras para el entrenamiento. 
+type(int): 0-&gt; CBOW 1-&gt; SKIP-GRAM (default) 2-&gt; Doc2Vec</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mgmtfm.models">
+<span id="models"></span><h2>Models<a class="headerlink" href="#module-mgmtfm.models" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="mgmtfm.models.Models">
+<em class="property">class </em><code class="descclassname">mgmtfm.models.</code><code class="descname">Models</code><span class="sig-paren">(</span><em>nclasses=1</em>, <em>sequence_length=None</em>, <em>embedding_dim=None</em>, <em>vocabulary_size=None</em>, <em>embedding_matrix=None</em>, <em>load=False</em>, <em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Clase para implementar diferentes modelos orientados a PLN.</p>
+<dl class="method">
+<dt id="mgmtfm.models.Models.compile_and_train">
+<code class="descname">compile_and_train</code><span class="sig-paren">(</span><em>X_train, y_train, batch_size=50, epochs=10, verbose=1, lr=0.001, decay=1e-06, validation_data=None, metrics=['acc'], callbacks=None, loss='categorical_crossentropy'</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.compile_and_train" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Compilar y entrenar el modelo definido.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">X_train (array): Conjunto de entrenamiento.</p>
+<p>y_train (array): Etiquetas de entrenamiento.</p>
+<p>batch_size (int): Tamaño de batch para el entrenamiento.</p>
+<p>epochs (int): Número de epochs para el entrenamiento.</p>
+<p>verbose (int): Tipo de verbose usado en el entrenamiento.</p>
+<p>lr (float): Tasa de aprendizaje del entrenamiento.</p>
+<p class="last">decay (float): Pesos decayentes para las redes neuronales.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.get_best_model">
+<code class="descname">get_best_model</code><span class="sig-paren">(</span><em>name</em>, <em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.get_best_model" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Devolver un modelo a partir del nombre y los parámetros.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd><p class="first">name (str): Nombre del modelo.</p>
+<p class="last">params (dict): Parámetros del modelo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.get_confusion_matrix">
+<code class="descname">get_confusion_matrix</code><span class="sig-paren">(</span><em>X_test</em>, <em>y_test</em>, <em>binary=False</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.get_confusion_matrix" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Obtener la matriz de confusión. </dt>
+<dd><dl class="first last docutils">
+<dt>Args:</dt>
+<dd><p class="first">X_test (array): Conjunto de test.</p>
+<p>y_test (array): Etiquetas de test.</p>
+<p class="last">binary (bool): Si se trata de una clasificación binaria.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.load_model">
+<code class="descname">load_model</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.load_model" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Cargar un modelo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>path (str): Ruta desde donde cargar el modelo.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.load_weights">
+<code class="descname">load_weights</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.load_weights" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Cargar pesos de un modelo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>path (str): Ruta desde donde cargar los pesos del modelo.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.model_cnn_1">
+<code class="descname">model_cnn_1</code><span class="sig-paren">(</span><em>filter_sizes=[3, 4, 5], drop=0.3, num_filters=100, regl2=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.model_cnn_1" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Crear un modelo de redes neuronales convolucional con diferentes capas.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd><p class="first">filter_sizes (list): Lista con los tamaños de los kernel de las capas convolucionales. 
+La longitud de la lista determinará las capas convolucionales de la red.</p>
+<p>drop (float): Dropout.</p>
+<p>num_filters (int): Número de filtros a usar en cada capa.</p>
+<p class="last">regl2 (float): Regularizador de pesos nivel 2.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.model_cnn_1_bin">
+<code class="descname">model_cnn_1_bin</code><span class="sig-paren">(</span><em>filter_sizes=[3, 4, 5], drop=0.3, num_filters=100, regl2=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.model_cnn_1_bin" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Crear un modelo de redes neuronales convolucional con diferentes capas para clasificación 
+binaria.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd><p class="first">filter_sizes (list): Lista con los tamaños de los kernel de las capas convolucionales. 
+La longitud de la lista determinará las capas convolucionales de la red.</p>
+<p>drop (float): Dropout.</p>
+<p>num_filters (int): Número de filtros a usar en cada capa.</p>
+<p class="last">regl2 (float): Regularizador de pesos nivel 2.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.model_dense_1">
+<code class="descname">model_dense_1</code><span class="sig-paren">(</span><em>sizes=[500, 300, 200, 150, 100, 50, 20, 1], drop=0.2</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.model_dense_1" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Crear un modelo de redes neuronales con capas totalmente conectadas.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd><p class="first">sizes (list): Lista con los tamaños de las capas. 
+La longitud de la lista determinará las capas de la red.
+La primera capa debe coincidir con el tamaño del input y la última 
+con la salida (si es 1 será una clasificación binaria).</p>
+<p class="last">drop (float): Dropout.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.model_rnn_1">
+<code class="descname">model_rnn_1</code><span class="sig-paren">(</span><em>memory_units=200</em>, <em>cell=1</em>, <em>drop=0.2</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.model_rnn_1" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Crear un modelo de redes neuronales recurrentes.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd><p class="first">memory_units (int): Número de celdas.</p>
+<p>cell (int): Tipo de celda. 0-&gt; LSTM 1-&gt;GRU</p>
+<p class="last">drop (float): Dropout</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.model_rnn_2">
+<code class="descname">model_rnn_2</code><span class="sig-paren">(</span><em>memory_units=200</em>, <em>cell=1</em>, <em>drop=0.2</em>, <em>filters=32</em>, <em>kernel_size=3</em>, <em>pool_size=2</em>, <em>padding='same'</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.model_rnn_2" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Crear un modelo combinando redes neuronales recurrentes con una capa convolucional.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd><p class="first">memory_units (int): Número de celdas.</p>
+<p>cell (int): Tipo de celda. 0-&gt; LSTM 1-&gt;GRU</p>
+<p>drop (float): Dropout</p>
+<p>filters (int): Número de filtros de la capa convolucional.</p>
+<p>kernel_size (int): Tamaño de kernel de la capa convolucional.</p>
+<p>pool_size (int): Tamaño del poolin.</p>
+<p class="last">padding (str): Tipo de padding a realizar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.predict" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Predecir usando un modelo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>X (array): Conjunto de datos del que realizar la predicción.</dd>
+<dt>Returns:</dt>
+<dd>array: Array de predicciones.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.save_model">
+<code class="descname">save_model</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.save_model" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Guardar un modelo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>path (str): Ruta donde guardar el modelo.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.models.Models.summary_model">
+<code class="descname">summary_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.models.Models.summary_model" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Presentar un resumen del modelo actual.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mgmtfm.optimize">
+<span id="optimize"></span><h2>Optimize<a class="headerlink" href="#module-mgmtfm.optimize" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="mgmtfm.optimize.Optimize">
+<em class="property">class </em><code class="descclassname">mgmtfm.optimize.</code><code class="descname">Optimize</code><span class="sig-paren">(</span><em>project='dummy'</em>, <em>project_db='mgm_optuna'</em>, <em>user_db='postgres'</em>, <em>pass_db='postgres'</em>, <em>host_db='10.148.172.147'</em>, <em>direction='maximize'</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.optimize.Optimize" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Clase creada para utilizar optkeras (basado en Optuna) para bucar los mejores 
+hiperparámetros de un modelo.</p>
+<dl class="method">
+<dt id="mgmtfm.optimize.Optimize.delete_study">
+<code class="descname">delete_study</code><span class="sig-paren">(</span><em>study</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.optimize.Optimize.delete_study" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Eliminar un estudio y sus trials de la base de datos.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>study (str): Nombre del estudio a eliminar.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.optimize.Optimize.get_best_acc">
+<code class="descname">get_best_acc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.optimize.Optimize.get_best_acc" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Obtener la mejor precisión de un estudio.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.optimize.Optimize.get_best_params">
+<code class="descname">get_best_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.optimize.Optimize.get_best_params" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Obtener los mejores parámetros de un estudio.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.optimize.Optimize.get_best_trial">
+<code class="descname">get_best_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.optimize.Optimize.get_best_trial" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Obtener el id del mejor trial de un estudio.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.optimize.Optimize.get_studies">
+<code class="descname">get_studies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.optimize.Optimize.get_studies" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Obtener los estudios realizados.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>dataframe: Dataframe con los datos de todos los estudios.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.optimize.Optimize.rename_study">
+<code class="descname">rename_study</code><span class="sig-paren">(</span><em>study</em>, <em>new_name</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.optimize.Optimize.rename_study" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Renombrar estudio.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">study (str): Nombre original del estudio.</p>
+<p class="last">new_name (str): Nuevo nombre del estudio.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="mgmtfm.optimize.Optimize.run_optuna">
+<code class="descname">run_optuna</code><span class="sig-paren">(</span><em>function</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.optimize.Optimize.run_optuna" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Correr el proceso de optuna.</p>
+<p>Args:</p>
+<blockquote>
+<div><p>function (function): Función a maximizar o minimizar.</p>
+<p>timeout(int): Número de segundos de ejecución.</p>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mgmtfm.plot_utils">
+<span id="plot-utils"></span><h2>Plot Utils<a class="headerlink" href="#module-mgmtfm.plot_utils" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Modulo con diferentes funciones de utilidad</p>
+<dl class="function">
+<dt id="mgmtfm.plot_utils.plot_confusion_matrix">
+<code class="descclassname">mgmtfm.plot_utils.</code><code class="descname">plot_confusion_matrix</code><span class="sig-paren">(</span><em>cm</em>, <em>target_names</em>, <em>title='Confusion matrix'</em>, <em>cmap=None</em>, <em>normalize=True</em><span class="sig-paren">)</span><a class="headerlink" href="#mgmtfm.plot_utils.plot_confusion_matrix" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Realizar una visualización dada una matriz de confusión.</p>
+<p>Args:</p>
+<blockquote>
+<div><p>cm (matrix): Matriz de confusión de sklearn.metrics.confusion_matrix</p>
+<p>target_names (list): Etiquetas de clasificación.</p>
+<p>title (str): Texto para mostrar en la parte superior.</p>
+<p>cmap (cmap): El gradiente para mostrar en la matriz. Ver <a class="reference external" href="http://matplotlib.org/examples/color/colormaps_reference.html">http://matplotlib.org/examples/color/colormaps_reference.html</a></p>
+<p>normalize (bool):   Si utiliza o no medidas normalizadas.</p>
+</div></blockquote>
+<p>Citations:</p>
+<blockquote>
+<div><a class="reference external" href="http://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html">http://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html</a></div></blockquote>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="#"/a>Índice</h3>
+<ul>
+<li><a class="reference internal" href="#">Módulo mgmtfm</a><ul>
+<li><a class="reference internal" href="#indice">Índice</a></li>
+<li><a class="reference internal" href="#module-mgmtfm.clean">Clean</a></li>
+<li><a class="reference internal" href="#module-mgmtfm.embedding">Embedding</a></li>
+<li><a class="reference internal" href="#module-mgmtfm.models">Models</a></li>
+<li><a class="reference internal" href="#module-mgmtfm.optimize">Optimize</a></li>
+<li><a class="reference internal" href="#module-mgmtfm.plot_utils">Plot Utils</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Manuel Gómez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
