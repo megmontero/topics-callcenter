@@ -1,0 +1,63 @@
+\chapter{Explotación}
+En los anteriores capítulos hemos descrito el proceso completo que hemos realizado con los datos: Los hemos localizado, los hemos limpiado, hemos creado diferentes modelos de minería de datos y hemos repetido estos pasos de manera iterativa. En este capítulo comentaremos el camino seguido para llevar los modelos construidos a un entorno productivo real.
+
+Este paso ``del laboratorio a la fábrica'' nos permitirá  cumplir el segundo objetivo planteado en la sección \ref{section:intro:objetivos} del documento: \textbf{extraer esta temática para nuevas llamadas en tiempo real}. Además como veremos en la sección \ref{section:prod:req} será necesaria para cumplir con otros requisitos propios de un sistema productivo.
+
+El sistema que vamos a construir tendrá que ser capaz tras recibir las llamadas en tiempo real, 
+
+
+
+\section{Requisitos del sistema productivo}
+\label{section:prod:req}
+
+En esta primera sección vamos a recapitular los requisitos que deberá cumplir el sistema encargado de clasificar las llamadas recibidad al \textit{call center} en tiempo de real. 
+
+\begin{itemize}
+	\item \textbf{Tiempo real}: El sistema debe ser capaz de clasificar las llamadas en tiempo real con una latencia máxima del orden de segundos. 
+	\item \textbf{Escalabilidad}: El sistema debe poder escalar horizontalmente de modo que pueda responder en un futuro a un número de llamadas mayor. 
+	\item \textbf{Alta disponibilidad}: El sistema debe estar siempre disponible sin que exista en el mismo un punto único de fallo (SPOF).
+	\item \textbf{Integración y despliegue continuos}: La integración y el despliegue del sistema deben ser continuos. Esto significa que una vez subido el código a un gestor de versiones debe poder realizarse de manera automática las pruebas necesarias, la compilación y el despliegue del sistema.
+	
+\end{itemize}
+
+A lo largo del capítulo veremos como la aplicación cumple con los tres primeros puntos: tiempo real, escalabilidad y alta disponibilidad. El cuarto punto referente a la integración y el despliegue continuo se tratará de manera individual en el capítulo \ref{}
+
+\section{Arquitectura del sistema}
+
+
+
+\section{Inyector: simulador de tiempo real}
+Como ya hemos comentado en anteriores capítulos actualmente las transcripciones de las llamadas no se encuentran disponible en tiempo real, es por ello que se ha diseñado un inyector de llamadas.
+
+Este inyector, realizado en \textit{Python} utiliza como fuente la transcripción de las llamadas realizadas en batch. Y a partir de la misma cumplirá los siguientes objetivos: 
+
+\begin{itemize}
+	\item \textbf{ Extraer la frecuencia de llamadas por hora}. De este modo simularemos el comportamiento real de un \textit{call-center} inyectando más llamadas a las horas de mayor actividad.
+	\item \textbf{Multiplicar el número de llamadas}. Teniendo en cuenta que actualmente solo se transcriben un 4\% del total de las llamadas, el inyector multiplicará por 25 el número de llamadas recibidas en un día para simular el comportamiento real de un sistema que transcriba el 100\% de las llamadas.
+	\item \textbf{Introducir datos de control}: El inyector insertará en un porcentaje de llamadas los datos reales de clasificación con el fin de poder verificar el comportamiento del modelo. En un entorno real se podrían insertar periódicamente un número de llamadas de control que nos permitan este objetivo.
+	
+\end{itemize}
+
+Una vez realizadas estas tareas, el inyector publicará todas las llamadas al bus, simulando un comportamiento real. De este modo las llamadas estarán disponibibles en tiempo real para cualquier consumidor que las necesite.
+
+
+
+\section{Microservicios}
+
+\subsection{Tokenizer}
+\subsection{Sequencer}
+\subsection{Predicter}
+
+
+\subsection{Modelo}
+
+
+
+\section{Monitorización}
+
+
+\section{Despliegue en contenedores}
+
+
+
+

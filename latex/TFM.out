@@ -33,8 +33,25 @@
 \BOOKMARK [2][-]{subsection.3.3.2}{Capa Real-Time}{section.3.3}% 33
 \BOOKMARK [2][-]{subsection.3.3.3}{Capa Servicio}{section.3.3}% 34
 \BOOKMARK [2][-]{subsection.3.3.4}{Integraci\363n y Despliegue Continuo}{section.3.3}% 35
-\BOOKMARK [0][-]{chapter.4}{Conjunto de datos}{part.1}% 36
-\BOOKMARK [-1][-]{part.2}{II Modelado: datos, modelos y optimizaciones}{}% 37
+\BOOKMARK [-1][-]{part.2}{II Modelado: datos, modelos y optimizaciones}{}% 36
+\BOOKMARK [0][-]{chapter.4}{Conjunto de datos}{part.2}% 37
 \BOOKMARK [-1][-]{part.3}{III Explotaci\363n: procesamiento, visualizaci\363n y alarmados}{}% 38
-\BOOKMARK [-1][-]{part.4}{IV Conclusiones: mantenimiento y futuros trabajos }{}% 39
-\BOOKMARK [0][-]{section*.6}{Bibliograf\355a}{part.4}% 40
+\BOOKMARK [0][-]{chapter.5}{Explotaci\363n}{part.3}% 39
+\BOOKMARK [1][-]{section.5.1}{Requisitos del sistema productivo}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.2}{Arquitectura del sistema}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.3}{Inyector: simulador de tiempo real}{chapter.5}% 42
+\BOOKMARK [1][-]{section.5.4}{Microservicios}{chapter.5}% 43
+\BOOKMARK [2][-]{subsection.5.4.1}{Tokenizer}{section.5.4}% 44
+\BOOKMARK [2][-]{subsection.5.4.2}{Sequencer}{section.5.4}% 45
+\BOOKMARK [2][-]{subsection.5.4.3}{Predicter}{section.5.4}% 46
+\BOOKMARK [2][-]{subsection.5.4.4}{Modelo}{section.5.4}% 47
+\BOOKMARK [1][-]{section.5.5}{Monitorizaci\363n}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.6}{Despliegue en contenedores}{chapter.5}% 49
+\BOOKMARK [0][-]{chapter.6}{Capa de servicio}{part.3}% 50
+\BOOKMARK [1][-]{section.6.1}{Carga y modelo}{chapter.6}% 51
+\BOOKMARK [1][-]{section.6.2}{Visualizaciones}{chapter.6}% 52
+\BOOKMARK [2][-]{subsection.6.2.1}{Monitorizaci\363n}{section.6.2}% 53
+\BOOKMARK [2][-]{subsection.6.2.2}{Sistema}{section.6.2}% 54
+\BOOKMARK [1][-]{section.6.3}{Alarmado}{chapter.6}% 55
+\BOOKMARK [-1][-]{part.4}{IV Conclusiones: mantenimiento y futuros trabajos }{}% 56
+\BOOKMARK [0][-]{section*.6}{Bibliograf\355a}{part.4}% 57
