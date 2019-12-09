@@ -17,6 +17,10 @@ Warning--entry type for "cap" isn't style-file defined
 --line 236 of file referencias.bib
 Warning--entry type for "kappa" isn't style-file defined
 --line 245 of file referencias.bib
+You're missing a field name---line 254 of file referencias.bib
+ : @book{kafka, 
+ :              , title={Designing Event-Driven Systems}, publisher={O'Reilly}, author={Ben Stopford}, year={2018}}
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "rnnej1"
 Warning--I didn't find a database entry for "rnnej2"
 Warning--I didn't find a database entry for "rnnej3"
@@ -24,11 +28,14 @@ Warning--I didn't find a database entry for "call1"
 Warning--I didn't find a database entry for "call2"
 Warning--I didn't find a database entry for "call3"
 Warning--I didn't find a database entry for "call4"
+Warning--I didn't find a database entry for "serving"
+Warning--I didn't find a database entry for "kstreammonitoring"
+Warning--I didn't find a database entry for "apendi:contenedores"
 Warning--empty publisher in temariodeeplearning
 Warning--empty publisher in Mahmood2013LiteratureSO
 You've used 25 entries,
             2118 wiz_defined-function locations,
-            657 strings with 8010 characters,
+            660 strings with 8053 characters,
 and the built_in function-call counts, 7623 in all, are:
 = -- 767
 > -- 317
@@ -67,4 +74,4 @@ warning$ -- 2
 while$ -- 72
 width$ -- 27
 write$ -- 290
-(There were 16 warnings)
+(There was 1 error message)

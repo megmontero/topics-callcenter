@@ -1,4 +1,5 @@
 \documentclass[12pt,a4paper,twoside]{book}
+\usepackage{minted}
 \usepackage{graphicx}
 \usepackage{setspace}	%double spacing for text, single for captions, footnotes, etc.
 %\usepackage{hypernat} 	%substitut de cite que permet fer hyperlinks
@@ -16,6 +17,7 @@
 \usepackage{epsfig, amsmath}
 \usepackage{algorithm}
 \usepackage{algorithmic}
+
 
 % general settings
 \hypersetup{
@@ -71,8 +73,10 @@
 % listado de figuras
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{Llistado de Figuras}
+\addcontentsline{toc}{chapter}{Listado de Figuras}
 \listoffigures
+\cleardoublepage
+\phantomsection
 % listado de tablas
 %\cleardoublepage
 %\phantomsection
@@ -110,6 +114,7 @@
 \part{Explotación: procesamiento, visualización y alarmados}
 \input{chapters/6_produccion.tex}
 \input{chapters/7_servicio.tex}
+\input{chapters/8_contenedores.tex}
 
 
 \part{Conclusiones: mantenimiento y futuros trabajos }

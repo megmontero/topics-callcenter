@@ -1,4 +1,6 @@
 \chapter{Explotación}
+\label{chapter:prod}
+
 En los anteriores capítulos hemos descrito el proceso completo que hemos realizado con los datos: Los hemos localizado, los hemos limpiado, hemos creado diferentes modelos de minería de datos y hemos repetido estos pasos de manera iterativa. En este capítulo comentaremos el camino seguido para llevar los modelos construidos a un entorno productivo real.
 
 Este paso ``del laboratorio a la fábrica'' nos permitirá  cumplir el segundo objetivo planteado en la sección \ref{section:intro:objetivos} del documento: \textbf{extraer esta temática para nuevas llamadas en tiempo real}. Además como veremos en la sección \ref{section:prod:req} será necesaria para cumplir con otros requisitos propios de un sistema productivo.
@@ -25,6 +27,158 @@ A lo largo del capítulo veremos como la aplicación cumple con los tres primero
 \section{Arquitectura del sistema}
 
 
+Al abordar la construcción del sistema hemos decidido usar una \textbf{arquitectura de microservicios}, cada uno de los cuales ejecute una parte del proceso. A la hora de diseñar estos microservicios hemos tenido en cuenta que cada uno ejecute una unidad de \textit{software} que tenga sentido por si misma y que pueda ser actualizada, sustituida o utilizada por terceros de una forma independiente. 
+
+Una idea fundamental que subyace detrás de toda arquitectura de microservicios, es que cada microservicio desempeñe su tarea lo más aisladamente del resto y su comunicación con otros microservicios se realice usando protocolos simples y agnósticos a cualquier tecnología, usualmente el protocolo \textit{HTTP} mediante \textit{API REST}. 
+
+Sin embargo el uso del protocolo \textit{HTTP} tiene una serie de implicaciones que pueden no ser muy ventajosas para un sistema que requiere un procesamiento en tiempo real y que busca la simplicidad como son la sincronía y y el acoplamiento con otros microservicios. La sincronía nos lleva a tener que ``preguntar'' constantemente a un microservicio sobre la existencia de nuevos datos y, desde el punto de vista del rendimiento, implica que el \textit{thread} encargo del procesamiento deba esperar la respuesta \textit{HTTP} antes de seguir con el procesamiento (esta perdida de rendimiento variará en función del tiempo de procesamiento necesario del microservicio llamado y de la latencia de la red).  Por otro lado, una arquitectura en la que los microservicios se comuniquen mediante \textit{REST} implica un mínimo de acoplamiento, ya que los microservicios deben conocer la existencia unos de otros, esto implica una mayor complejidad a la hora de la orquestación de los mismos. 
+
+
+Es por ello que una solución más optima para nuestro sistema consiste en combinar los beneficios de las arquitecturas \textit{event-driven} con los beneficios de los microservicios utilizando una \textbf{arquitectura de microservicios  \textit{event-driven} (EDM)}. Para desarrollar la arquitectura propuesta, necesitaremos un sistema de mensajería o \textit{streaming} por el que ``viajen'' los eventos y gracias al cual los microservicios puedan comunicarse entre sí. En nuestro caso hemos optado por utilizar \textbf{Apache Kafka como bus central de eventos}. 
+
+El uso de Kafka solventa los inconvenientes planteados por la arquitectura \textit{REST} eliminando la sincronía y el acoplamiento. Por un lado, los microservicios que tienen como origen un bus de mensajería son por naturaleza asíncronos, lo que implica que realizarán el procesamiento de los eventos en el momento que estos sean publicados en el bus eliminando la necesidad de tener que ``preguntar'' por nuevos eventoes y aumentando el rendimiento. Por otro lado, el uso de Kafka hace que los microservicios estén totalmente desacoplados entre sí, eliminando la necesidad de que conozcan siquiera la existencia del resto. 
+
+Además la arquitectura propuesta nos aporta otras características ventajosas para nuestro proyecto:
+
+\begin{itemize}
+	\item \textbf{Reprocesamiento}: Gracias a la capacidad de retención del bus, tenemos la posibilidad de reprocesar los mensajes pasados de ser necesario (p.e. para solventar errores de código).  
+	\item \textbf{Alta disponibilidad}. El sistema es tolerante a fallos. Los datos se encuentran en el bus con un número de réplicas que evita la pérdida de los mismos ante caídas de nodos.
+	\item \textbf{Escalabilidad}: \textit{Apache Kafka} nos da la posibilidad de dividir nuestros \textit{topics} en particiones que pueden ubicarse en diferentes nodos. Esto nos proporciona escalabilidad horizontal tanto desde el punto de vista del almacenamiento como del cómputo.
+	\item\textbf{ Soportar picos de carga}: Al existir una retención en el bus, en el caso de que ocurriese un pico en el número de eventos recibido que no puedan ser abordados por los procesadores, estos podrán ir procesando la información según su capacidad.
+	\item \textbf{Evento en el centro}: Este tipo de arquitectura hace que diseñemos nuestras aplicaciones situando al evento, al dato, en el centro de nuestro sistema.
+\end{itemize}
+
+
+Sin embargo, aunque el uso de este tipo de microservicios  \textit{event-driven} (EDM) posea todas estas ventajas, es cierto que también hay que asumir que el uso de \textit{REST} está muy implementado actualmente y muchas aplicaciones poseen un \textit{Api REST} \textit{out-of-the-box}. Esto nos llevará como veremos en el siguiente apartado a incorporar microservicios \textit{REST} en nuestro modelo \textit{event driven}, creando en cierto modo una arquitectura híbrida.
+
+
+
+
+
+\section{Microservicios}
+En la sección anterior decidimos el modelo de arquitectura que vamos a utilizar para construir nuestro sistema, en esta sección nos centraremos en los microservicios que compondrán esa arquitectura.  
+
+\subsection{Tecnología}
+En el apartado \ref{section:arqu:tecn} hicimos un repaso por las tecnologías usadas en el proyecto, en este punto queremos tratar de profundizar con un poco más de detalle en las tecnologías que nos permitirán desarrollar y desplegar nuestros microservicios. Estas tecnologías son \textit{Kafka Streams} y \textit{Tensorflow Serving}.
+
+\subsubsection{\textit{Kafka Streams}}
+
+El núcleo de nuestra capa de \textit{Streaming} estará compuesto por microservicios desarrollados mediante 
+ \textit{Kafka Streams}.
+\subsubsection{\textit{Tensorflow Serving}}
+
+
+
+
+\subsection{Microservicios}
+
+Una vez visto determinada la arquitectura del sistema y las tecnologías escogidas para su implementación es el momento de diseñar los microservicios necesarios para nuestro caso de uso.
+
+El primer paso es localizar las funciones básicas que queremos que realice nuestro sistema agrupadas en dos grandes etapas: preprocesamiento y predicción. La etapa de preprocesamiento será la encargada de preparar las llamadas para que puedan convertirse en la entrada de nuestro modelo, mientras que la etapa de predicción será la encargada de aplicar el modelo. 
+
+Dentro de la etapa de preprocesamiento es necesario, en un primer lugar, la extracción de los \textit{tokens} de la transcripción de llamada, de esto se encargará un microservicio que hemos denominado \textit{\textbf{Tokenizer}}. Una vez obtenidos los \textit{Tokens} también será necesario, para que puedan convertirse en entrada del modelo, transformarlos en una secuencia numérica; esto será realizado por otro microservicio denominado \textit{\textbf{Sequencer}}.
+
+Por último en la capa de predicción son necesarios otros dos pasos: por un lado aplicar el modelo obtenido obteniendo una probabilidad de pertenencia a cada clase, de esto se encargará un microservicio denominado \textbf{\textit{tf-BajaFactura}} y, por otro lado, enriquecer estas predicciones con las etiquetas necesarias y enriquecer la salida del microservicio anterior; esto será responsabilidad de un microservicio denominado \textbf{\textit{Predicter}}. Como podemos imaginar por la definición, existirá un ligero acoplamiento entre estos dos microservicios, que comentaremos a lo largo de esta sección.
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/exp/micro-arch}
+	\caption{Arquitectura microservicios}
+	\label{fig:micro-arch}
+\end{figure}
+
+
+En la figura \ref{fig:micro-arch} podemos ver como los microservicios propuestos interactúan entre sí a través del bus, con excepción del microservicio  \textbf{\textit{tf-BajaFactura}}. Estos microservicios conforman la parte capa de \textit{streaming} de nuestro sistema. En el capítulo siguiente veremos como la salida de esta capa de \textit{streaming} alimentará la capa de servicio.
+
+
+A continuación, en los siguiente subapartados describiremos uno a uno los diferentes microservicios. 
+
+
+\subsection{Tokenizer}
+
+Este microservicio tiene como entrada las llamadas transcritas que llegan al bus en tiempo real. A partir del texto de las mismas el sistema inicia un proceso de \textit{tokenizacion} eliminando \textit{stopwords}, carácteres especiales (signos de puntuación, 'ñ's, acentos...), palabras comunes, números, nombres propios y pasando a minúscula cada uno de los tokens.  El proceso de \textit{tokenización} pretende ser lo más fiel posible al proceso realizado en \textit{Python} durante la etapa de entrenamiento del modelo.
+
+Una vez obtenida la lista de \textit{tokens} esta se vuelve a disponibilizar en el bus en un nuevo \textit{topic}. Este nuevo \textit{topic} con las llamadas \textit{tokenizadas} puede ser de utilidad no solo para nuestro sistema, si no también para cualquier otro sistema de análisis de texto que necesite partir de los datos \textit{tokenizados}.
+
+\subsection{Sequencer}
+Este microservicio toma como entrada la salida del microservicio anterior y a partir de la lista de \textit{tokens} devuelve una secuencia de tamaño fijo determinado $T$. Para ello, utiliza un diccionario en el que cada \textit{token} se corresponde con un número, utilizando el $0$ para \textit{tokens} que no existan en este diccionario. Esta secuencia esta limitada a un tamaño determinado $T$ por lo que llamadas con un número mayor de $tokens$ son recortadas y se utiliza \textit{padding} por la izquierda para completar la secuencia de llamadas con un tamaño menor a $T$.
+
+El diccionario ha sido calculado en conjunto de entrenamiento y contiene el vocabulario del modelo, este diccionario contiene como clave todos los \textit{tokens} posibles y como valores el identificador usado para cada \textit{token}. La lectura del mismo se realiza desde el mismo bus, utilizando un topic compacto sin límite de retención.
+
+Una vez obtenida la secuencia de caracteres, esta se disponibiliza en un nuvo \textit{topic} del bus. Además de por nuestro sistema, este valor puede ser consumido por otros microservicios o sistemas que tengan como objetivo aplicar diferentes modelos a las secuencias obtenidas.
+
+
+\subsection{tf-BajaFactura}
+\textit{\textbf{tf-BajaFactura}} quizás sea el microservicio más tradicional y discordante de los que vamos a utilizar en nuestro sistema debido a que este microservicio se encuentra totalmente desacoplado del bus y del resto de microservicios. Mediante un \textit{API REST} aplica nuestro modelo de \textit{TensorFlow} a una o varias secuencia de entradas y, para cada secuencia, devuelve la probabilidad de pertenencia a las clases: ``Baja'', ``Factura'' y ``Resto''.
+
+El motivo principal para usar \textit{API REST} en este microservicio se debe al uso de \textit{Tensorflow Serving} que nos permite con mucha facilidad desplegar nuevos modelos y algoritmos manteniendo la misma estructura en el servidor y la misma \textit{API}. Además su integración es automática con los modelos generados con \textit{TensorFlow} (con o sin \textit{Keras}). Esta decisión permite a los \textit{data-scientist} desplegar nuevas versiones de sus modelos ya sea por degradación o por mejora, mientras el resto del flujo permanece inalterable. 
+
+
+\subsection{Predicter}
+Este último microservicio tiene como entrada el \textit{topic} generado por \textit{\textbf{Sequencer}} y a partir del mismo realiza una llamada a \textit{\textbf{tf-BajaFactura}}. Una vez obtenidas las predicciones, las enriquece con las etiquetas necesarias. Además en el caso de existir un atributo de control comprueba si la predicción ha sido correcta, esto nos servirá para validar la eficiencia del modelo a lo largo del tiempo. 
+
+Como podemos observar, es el único microservicio que tiene una dependencia con otro (\textit{tf-BajaFactura}), sin embargo la API de un modelo implementado con \textit{Tensorflow Serving}\cite{serving} es siempre idéntica por lo que la llamada no varía aunque cambie el modelo y el número de clases y las etiquetas de las mismas son configurables en \textit{\textbf{Predicter}} por lo que puede reutilizarse para cualquier servicio predictivo desplegado con  \textit{Tensorflow Serving}.
+
+La salida de este microservicio es publicada en un nuevo \textit{topic} en el bus, esta información puede ser de utilidad para diversos sistemas que quieran realizar analítica en función de la temática de las llamadas o que quieran visualizarla. Nosotros la usaremos en nuestra capa de servicio que describiremos en el siguiente capítulo.
+
+
+\section{Monitorización de Microservicios}
+
+Si bien es cierto que el hecho de utilizar una arquitectura orientada a eventos, aparte de la sencillez intrínseca de nuestro sistema, nos simplifica en cierto modo la orquestación de nuestro servicios y nos permite prescindir de herramientas de APM (\textit{Application Performance Monitoring}); una monitorización del desempeño de nuestros microservicios es siempre necesaria, tanto para garantizar el correcto funcionamiento de los mismos y poder detectar posibles puntos de fallos como para detectar pérdidas de rendimiento en cualquier punto del sistema. 
+
+En esta sección veremos los métodos utilizados para monitorizar los microservicios dependiendo de su tecnología. 
+
+
+\subsection{Servicios \textit{Kafka Streams}}
+
+Los servicios de Kafka Streams corren sobre la máquina virtual de Java lo que nos permite tener acceso a sus métricas por medio de la \textit{JMX}(\textit{Java Management Console}). Ademas \textit{Confluent} posee una documentación de los \textit{MBeans} y de las métricas que contienen en su documentación oficial \cite{Kafka Streamsmonitoring}. 
+
+
+El inconveniente de estas métricas es que tienen que extraerse por medio de protocolos \textit{RMI}(\textit{Java Remote Method Invocation}) lo que complica su explotación, sin embargo a partir de la versión 6 del \textit{JDK} (\textit{Java Development Kit}) tenemos la posibilidad de exportar estas métricas de \textit{JMX} directamente mediante \textit{API REST}. Esto nos da la posibilidad de poder recolectar las métricas directamente mediante una llamada \textit{HTTP}.
+
+Para recolectar estás métricas utilizaremos los \textit{Beats} de  \textit{Elastic}, concretamente \textit{Metricbeat}. Este será el encargado de recolectar las métricas necesarias y enviarlas a \textit{Logstash} para su posterior almacenamiento en \textit{Elasticsearch}. El flujo de \textit{Logstash} a \textit{Elasticsearch} lo trataremos con más detalle en el próximo capítulo en el que veremos la capa de servicio, ya que las métricas de monitorización seguirán el mismo recorrido que los datos de clasificación. 
+
+
+De todas las métricas disponibles de Confluent, nosotros extraeremos con una frecuencia de un minuto las siguientes métricas:
+
+\begin{itemize}
+	\item \textit{mbean 'java.lang:type=Runtime'} : Métrica \textit{Uptime}.
+	
+	\item \textit{mbean 'kafka.streams:type=stream-metrics'}: Métricas \textit{process-latency-avg}, \textit{process-latency-max} y \textit{process-rate}.
+\end{itemize}
+
+
+
+Esto nos permitirá para cada microservicio tener información del tiempo de servicio del mismo, de la latencia máxima y media de procesamiento de los eventos y de la tasa de procesamiento. 
+
+
+
+
+
+\subsection{Servicios \textit{Tensorflow Serving}}
+
+En el caso de la monitorización del servicio \textit{tf-BajaFactura}, habilitaremos la monitorización de \textit{Prometheus} de \textit{Tensorflow Serving} para que las métricas sean accesibles mediante \textit{API REST}, pero en lugar de utilizar \textit{Prometheus} (para no incluir complejidad en nuestro sistema), usaremos directamente el \textit{Input} \textit{Http\_poller} de \textit{Logstash}.
+
+De todas las métricas disponibles en \textit{Tensorflow Serving} nos quedaremos unicamente con: 
+
+\begin{itemize}
+\item \textbf{Estado}: Que nos dará información sobre si el modelo está operativo.  
+
+\item \textbf{Total peticiones}: Total de peticiones resueltas por el modelo.
+
+\item \textbf{Total nanosegundos del grafo}: El total de tiempo que el modelo ha dedicado en procesar todas las peticiones. Utilizaremos el total de peticiones para extraer la latencia media y lo expresaremos en milisegundos. 
+
+\end{itemize}
+
+
+
+
+Una vez recolectadas las métricas en \textit{Logstash}, seguirán el mismo flujo descrito en el apartado anterior que veremos en más detalle en el apartado siguiente. 
+
+Además de las métricas recolectadas, la monitorización del microservicio \textit{\textbf{predicter}} nos dará información combinada de ambos ya que internamente realiza una llamada a \textit{tf-BajaFactura}.
+
+
 
 \section{Inyector: simulador de tiempo real}
 Como ya hemos comentado en anteriores capítulos actualmente las transcripciones de las llamadas no se encuentran disponible en tiempo real, es por ello que se ha diseñado un inyector de llamadas.
@@ -38,26 +192,7 @@ Este inyector, realizado en \textit{Python} utiliza como fuente la transcripció
 	
 \end{itemize}
 
-Una vez realizadas estas tareas, el inyector publicará todas las llamadas al bus, simulando un comportamiento real. De este modo las llamadas estarán disponibibles en tiempo real para cualquier consumidor que las necesite.
+Una vez realizadas estas tareas, el inyector publicará todas las llamadas al bus, simulando un comportamiento real. De este modo las llamadas estarán disponibles en tiempo real para cualquier consumidor que las necesite.
 
-
-
-\section{Microservicios}
-
-\subsection{Tokenizer}
-\subsection{Sequencer}
-\subsection{Predicter}
-
-
-\subsection{Modelo}
-
-
-
-\section{Monitorización}
-
-
-\section{Despliegue en contenedores}
-
-
-
+Aunque el inyector podría verse como un microservicio más, hemos preferido dejarlo fuera del sistema a lo largo de todo el apartado, debido a que lo consideramos una pieza auxiliar que nos permite simular el comportamiento real del sistema sin disponer de los datos en este momento.
 
