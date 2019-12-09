@@ -1,6 +1,6 @@
 \BOOKMARK [0][-]{chapter*.1}{Abstract}{}% 1
 \BOOKMARK [0][-]{section*.2}{\315ndice}{}% 2
-\BOOKMARK [0][-]{section*.4}{Llistado de Figuras}{}% 3
+\BOOKMARK [0][-]{section*.4}{Listado de Figuras}{}% 3
 \BOOKMARK [-1][-]{part.1}{I Introduci\363n: objetivos, estado del arte y arquitectura global}{}% 4
 \BOOKMARK [0][-]{chapter.1}{Introducci\363n}{part.1}% 5
 \BOOKMARK [1][-]{section.1.1}{Descripci\363n general de la propuesta}{chapter.1}% 6
@@ -39,19 +39,31 @@
 \BOOKMARK [0][-]{chapter.5}{Explotaci\363n}{part.3}% 39
 \BOOKMARK [1][-]{section.5.1}{Requisitos del sistema productivo}{chapter.5}% 40
 \BOOKMARK [1][-]{section.5.2}{Arquitectura del sistema}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.3}{Inyector: simulador de tiempo real}{chapter.5}% 42
-\BOOKMARK [1][-]{section.5.4}{Microservicios}{chapter.5}% 43
-\BOOKMARK [2][-]{subsection.5.4.1}{Tokenizer}{section.5.4}% 44
-\BOOKMARK [2][-]{subsection.5.4.2}{Sequencer}{section.5.4}% 45
-\BOOKMARK [2][-]{subsection.5.4.3}{Predicter}{section.5.4}% 46
-\BOOKMARK [2][-]{subsection.5.4.4}{Modelo}{section.5.4}% 47
-\BOOKMARK [1][-]{section.5.5}{Monitorizaci\363n}{chapter.5}% 48
-\BOOKMARK [1][-]{section.5.6}{Despliegue en contenedores}{chapter.5}% 49
-\BOOKMARK [0][-]{chapter.6}{Capa de servicio}{part.3}% 50
-\BOOKMARK [1][-]{section.6.1}{Carga y modelo}{chapter.6}% 51
-\BOOKMARK [1][-]{section.6.2}{Visualizaciones}{chapter.6}% 52
-\BOOKMARK [2][-]{subsection.6.2.1}{Monitorizaci\363n}{section.6.2}% 53
-\BOOKMARK [2][-]{subsection.6.2.2}{Sistema}{section.6.2}% 54
-\BOOKMARK [1][-]{section.6.3}{Alarmado}{chapter.6}% 55
-\BOOKMARK [-1][-]{part.4}{IV Conclusiones: mantenimiento y futuros trabajos }{}% 56
-\BOOKMARK [0][-]{section*.6}{Bibliograf\355a}{part.4}% 57
+\BOOKMARK [1][-]{section.5.3}{Microservicios}{chapter.5}% 42
+\BOOKMARK [2][-]{subsection.5.3.1}{Tecnolog\355a}{section.5.3}% 43
+\BOOKMARK [2][-]{subsection.5.3.2}{Microservicios}{section.5.3}% 44
+\BOOKMARK [2][-]{subsection.5.3.3}{Tokenizer}{section.5.3}% 45
+\BOOKMARK [2][-]{subsection.5.3.4}{Sequencer}{section.5.3}% 46
+\BOOKMARK [2][-]{subsection.5.3.5}{tf-BajaFactura}{section.5.3}% 47
+\BOOKMARK [2][-]{subsection.5.3.6}{Predicter}{section.5.3}% 48
+\BOOKMARK [1][-]{section.5.4}{Monitorizaci\363n de Microservicios}{chapter.5}% 49
+\BOOKMARK [2][-]{subsection.5.4.1}{Servicios Kafka Streams}{section.5.4}% 50
+\BOOKMARK [2][-]{subsection.5.4.2}{Servicios Tensorflow Serving}{section.5.4}% 51
+\BOOKMARK [1][-]{section.5.5}{Inyector: simulador de tiempo real}{chapter.5}% 52
+\BOOKMARK [0][-]{chapter.6}{Capa de servicio}{part.3}% 53
+\BOOKMARK [1][-]{section.6.1}{Carga y modelo}{chapter.6}% 54
+\BOOKMARK [1][-]{section.6.2}{Visualizaciones}{chapter.6}% 55
+\BOOKMARK [2][-]{subsection.6.2.1}{Monitorizaci\363n}{section.6.2}% 56
+\BOOKMARK [2][-]{subsection.6.2.2}{Sistema}{section.6.2}% 57
+\BOOKMARK [1][-]{section.6.3}{Alarmado}{chapter.6}% 58
+\BOOKMARK [0][-]{chapter.7}{Despliegue en contenedores}{part.3}% 59
+\BOOKMARK [1][-]{section.7.1}{Servicios Kafka Streams}{chapter.7}% 60
+\BOOKMARK [1][-]{section.7.2}{Servicios Tensorflow Serving}{chapter.7}% 61
+\BOOKMARK [1][-]{section.7.3}{Monitorizaci\363n}{chapter.7}% 62
+\BOOKMARK [2][-]{subsection.7.3.1}{Logstash}{section.7.3}% 63
+\BOOKMARK [2][-]{subsection.7.3.2}{Metricbeat}{section.7.3}% 64
+\BOOKMARK [1][-]{section.7.4}{S2I}{chapter.7}% 65
+\BOOKMARK [2][-]{subsection.7.4.1}{Kafka Streams}{section.7.4}% 66
+\BOOKMARK [2][-]{subsection.7.4.2}{Tensorflow Serving}{section.7.4}% 67
+\BOOKMARK [-1][-]{part.4}{IV Conclusiones: mantenimiento y futuros trabajos }{}% 68
+\BOOKMARK [0][-]{section*.7}{Bibliograf\355a}{part.4}% 69

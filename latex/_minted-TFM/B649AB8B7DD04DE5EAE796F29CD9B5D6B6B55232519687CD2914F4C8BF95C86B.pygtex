@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{apiVersion}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{v1}
+\PYG{n+nt}{kind}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{Service}
+\PYG{n+nt}{metadata}\PYG{p}{:}
+  \PYG{n+nt}{labels}\PYG{p}{:}
+    \PYG{n+nt}{app}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{tfm\PYGZhy{}mgm}
+  \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{stream\PYGZhy{}predicter}
+  \PYG{n+nt}{namespace}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{nbia\PYGZhy{}prod}
+\PYG{n+nt}{spec}\PYG{p}{:}
+  \PYG{n+nt}{ports}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{8778\PYGZhy{}tcp}
+      \PYG{n+nt}{port}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{8778}
+      \PYG{n+nt}{protocol}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{TCP}
+      \PYG{n+nt}{targetPort}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{8778}
+  \PYG{n+nt}{selector}\PYG{p}{:}
+    \PYG{n+nt}{deploymentconfig}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{stream\PYGZhy{}predicter}
+  \PYG{n+nt}{sessionAffinity}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{None}
+  \PYG{n+nt}{type}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{ClusterIP}
+\end{Verbatim}
