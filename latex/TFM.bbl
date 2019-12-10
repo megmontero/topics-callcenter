@@ -145,6 +145,16 @@ Michal Rosen-Zvi, Thomas Griffiths, Mark Steyvers, and Padhraic Smyth.
   Artificial Intelligence}, UAI '04, pages 487--494, Arlington, Virginia,
   United States, 2004. AUAI Press.
 
+\bibitem{tfserving}
+Tensorflow Serving.
+\newblock \url{https://www.tensorflow.org/tfx/guide/serving}.
+\newblock Último acceso 2019-12-10.
+
+\bibitem{kstreams}
+Apache Kafka.~Kafka Streams.
+\newblock \url{https://kafka.apache.org/documentation/streams/}.
+\newblock Último acceso 2019-12-10.
+
 \bibitem{turing_1950}
 A.~M. Turing.
 \newblock {\em Computing machinery and intelligence}.

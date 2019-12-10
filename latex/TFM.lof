@@ -20,8 +20,12 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Arquitectura Lambda propuesta}}{31}{figure.3.1}% 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Primeros datos: \textit {wordcloud} inicial}}{41}{figure.4.1}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Primeros datos: \textit {wordcloud} filtrado}}{43}{figure.4.2}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Arquitectura microservicios}}{47}{figure.5.1}% 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Streaming Layer}}{49}{figure.6.1}% 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Arquitectura microservicios}}{54}{figure.6.2}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{56}{figure.7.1}% 
+\contentsline {figure}{\numberline {8.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{64}{figure.8.1}% 
