@@ -3,16 +3,24 @@
 
 En los anteriores capítulos hemos descrito el proceso completo que hemos realizado con los datos: Los hemos localizado, los hemos limpiado, hemos creado diferentes modelos de minería de datos y hemos repetido estos pasos de manera iterativa. En este capítulo comentaremos el camino seguido para llevar los modelos construidos a un entorno productivo real.
 
-Este paso ``del laboratorio a la fábrica'' nos permitirá  cumplir el segundo objetivo planteado en la sección \ref{section:intro:objetivos} del documento: \textbf{extraer esta temática para nuevas llamadas en tiempo real}. Además como veremos en la sección \ref{section:prod:req} será necesaria para cumplir con otros requisitos propios de un sistema productivo.
+Este paso que relata el viaje ``del laboratorio a la fábrica'', nos permitirá  cumplir el segundo objetivo planteado en la sección \ref{section:intro:objetivos} del documento: \textbf{extraer esta temática para nuevas llamadas en tiempo real}. Además como veremos en la sección \ref{section:prod:req} será necesaria para cumplir con otros requisitos propios de un sistema productivo.
 
-El sistema que vamos a construir tendrá que ser capaz tras recibir las llamadas en tiempo real, 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/exp/serving}
+	\caption{Streaming Layer}
+	\label{fig:streamlayer}
+\end{figure}
+
+
+En la figura \ref{fig:streamlayer} 
 
 
 
 \section{Requisitos del sistema productivo}
 \label{section:prod:req}
 
-En esta primera sección vamos a recapitular los requisitos que deberá cumplir el sistema encargado de clasificar las llamadas recibidad al \textit{call center} en tiempo de real. 
+En esta primera sección, antes de empezar con la definición de la capa de \textit{streaming}, vamos a recapitular los requisitos que deberá cumplir el sistema encargado de clasificar las llamadas recibidas del \textit{call center} en tiempo de real. 
 
 \begin{itemize}
 	\item \textbf{Tiempo real}: El sistema debe ser capaz de clasificar las llamadas en tiempo real con una latencia máxima del orden de segundos. 
@@ -22,7 +30,7 @@ En esta primera sección vamos a recapitular los requisitos que deberá cumplir 
 	
 \end{itemize}
 
-A lo largo del capítulo veremos como la aplicación cumple con los tres primeros puntos: tiempo real, escalabilidad y alta disponibilidad. El cuarto punto referente a la integración y el despliegue continuo se tratará de manera individual en el capítulo \ref{}
+A lo largo del capítulo veremos como la aplicación cumple con los tres primeros puntos: tiempo real, escalabilidad y alta disponibilidad. El cuarto punto referente a la integración y el despliegue continuo se tratará de manera individual en el capítulo \ref{}.
 
 \section{Arquitectura del sistema}
 
@@ -31,12 +39,12 @@ Al abordar la construcción del sistema hemos decidido usar una \textbf{arquitec
 
 Una idea fundamental que subyace detrás de toda arquitectura de microservicios, es que cada microservicio desempeñe su tarea lo más aisladamente del resto y su comunicación con otros microservicios se realice usando protocolos simples y agnósticos a cualquier tecnología, usualmente el protocolo \textit{HTTP} mediante \textit{API REST}. 
 
-Sin embargo el uso del protocolo \textit{HTTP} tiene una serie de implicaciones que pueden no ser muy ventajosas para un sistema que requiere un procesamiento en tiempo real y que busca la simplicidad como son la sincronía y y el acoplamiento con otros microservicios. La sincronía nos lleva a tener que ``preguntar'' constantemente a un microservicio sobre la existencia de nuevos datos y, desde el punto de vista del rendimiento, implica que el \textit{thread} encargo del procesamiento deba esperar la respuesta \textit{HTTP} antes de seguir con el procesamiento (esta perdida de rendimiento variará en función del tiempo de procesamiento necesario del microservicio llamado y de la latencia de la red).  Por otro lado, una arquitectura en la que los microservicios se comuniquen mediante \textit{REST} implica un mínimo de acoplamiento, ya que los microservicios deben conocer la existencia unos de otros, esto implica una mayor complejidad a la hora de la orquestación de los mismos. 
+Sin embargo el uso del protocolo \textit{HTTP} tiene una serie de implicaciones que pueden no ser muy ventajosas para un sistema que requiere un procesamiento en tiempo real y que busca la simplicidad, como son la sincronía y y el acoplamiento con otros microservicios. La sincronía nos lleva a tener que ``preguntar'' constantemente a un microservicio sobre la existencia de nuevos datos, lo que, desde el punto de vista del rendimiento, implica que el \textit{thread} encargado del procesamiento deba esperar la respuesta \textit{HTTP} antes de seguir con el procesamiento (esta perdida de rendimiento variará en función del tiempo de procesamiento necesario del microservicio llamado y de la latencia de la red).  Por otro lado, una arquitectura en la que los microservicios se comuniquen mediante \textit{REST} implica un mínimo de acoplamiento, debido a que los microservicios deben conocer la existencia unos de otros, traduciéndose en una mayor complejidad a la hora de la orquestación de los mismos. 
 
 
-Es por ello que una solución más optima para nuestro sistema consiste en combinar los beneficios de las arquitecturas \textit{event-driven} con los beneficios de los microservicios utilizando una \textbf{arquitectura de microservicios  \textit{event-driven} (EDM)}. Para desarrollar la arquitectura propuesta, necesitaremos un sistema de mensajería o \textit{streaming} por el que ``viajen'' los eventos y gracias al cual los microservicios puedan comunicarse entre sí. En nuestro caso hemos optado por utilizar \textbf{Apache Kafka como bus central de eventos}. 
+Es por ello que una solución más optima para nuestro sistema consiste en combinar los beneficios de las arquitecturas \textit{event-driven} con los beneficios de los microservicios utilizando una \textbf{arquitectura de microservicios  \textit{event-driven} (EDM)}. Para desarrollar la arquitectura propuesta, necesitaremos un sistema de mensajería o \textit{streaming} por el que ``viajen'' los eventos y gracias al cual los microservicios puedan comunicarse entre sí. En nuestro caso hemos optado por utilizar \textbf{\textit{Apache Kafka} como bus central de eventos}. 
 
-El uso de Kafka solventa los inconvenientes planteados por la arquitectura \textit{REST} eliminando la sincronía y el acoplamiento. Por un lado, los microservicios que tienen como origen un bus de mensajería son por naturaleza asíncronos, lo que implica que realizarán el procesamiento de los eventos en el momento que estos sean publicados en el bus eliminando la necesidad de tener que ``preguntar'' por nuevos eventoes y aumentando el rendimiento. Por otro lado, el uso de Kafka hace que los microservicios estén totalmente desacoplados entre sí, eliminando la necesidad de que conozcan siquiera la existencia del resto. 
+El uso de \textit{Kafka} solventa los inconvenientes planteados por la arquitectura \textit{REST} eliminando la sincronía y el acoplamiento. Por un lado, los microservicios que tienen como origen un bus de mensajería son por naturaleza asíncronos, lo que implica que realizarán el procesamiento de los eventos en el momento que estos sean publicados en el bus; eliminando la necesidad de tener que ``preguntar'' por nuevos eventos y aumentando el rendimiento. Por otro lado, el uso de \textit{Kafka} hace que los microservicios estén totalmente desacoplados entre sí, eliminando la necesidad de que un microservicio conozca siquiera la existencia del resto. 
 
 Además la arquitectura propuesta nos aporta otras características ventajosas para nuestro proyecto:
 
@@ -64,8 +72,25 @@ En el apartado \ref{section:arqu:tecn} hicimos un repaso por las tecnologías us
 \subsubsection{\textit{Kafka Streams}}
 
 El núcleo de nuestra capa de \textit{Streaming} estará compuesto por microservicios desarrollados mediante 
- \textit{Kafka Streams}.
+ \textit{Kafka Streams}. \textit{Kafka Streams} \cite{kstreams} es una librería cliente que nos permite desarrollar aplicaciones y microservicios  cuya entrada y salida sea un bus \textit{Kafka}. 
+ 
+ \textit{Kafka Streams} nos permite desarrollar aplicaciones en \textit{Java} (el lenguaje que usaremos) o \textit{Scala} de una manera sencilla e intuitiva, además, a diferencia de otros \textit{frameworks} de procesamiento en tiempo real, como puede ser \textit{Spark Streaming}, no tiene necesidad de disponer de un clúster aparte (usa el mismo bus \textit{Kafka}) lo que simplifica bastante nuestra arquitectura. Además \textit{Kafka Streams} nos permitirá \textbf{garantizar la escalabilidad y la tolerancia a fallos} de nuestros despliegues. 
+ 
+ \textit{Kafka Streams} posee dos \textit{APIs} diferentes \textit{Processor API} y  \textit{Streams DSL}.  \textit{Processor API} nos proporciona una capacidad a muy bajo nivel para definir la lógica de nuestro proceso \textit{streaming}; en cambio \textit{DSL}, que esta construido sobre  \textit{Processor API}, nos permite de una manera sencilla, con un lenguaje declarativo, realizar la mayoría de operaciones posibles en un proceso de \textit{streaming}. Es por ello que en nuestros servicios utilizaremos  \textit{\textbf{Streams DSL}}.
+ 
+Una característica interesante de \textit{Streams DSL} es la existencia de las denominadas \textit{KTables} que nos permiten usar el Bus como si de una BBDD NoSQL Clave-Valor se tratara. Las \textit{Ktables} utilizan un \textit{topic} de \textit{Kafka}, pero al acceder a ellas solo accedemos al último registro disponible para cada clave. Esta característica suele usarse sobre \textit{topics} compactos sin límite de retención, que son aquellos que periódicamente  borran las versiones antiguas de cada clave y retienen, de forma ilimitada, las versiones más recientes. Esta posibilidad nos permitirá cargar en el bus las tablas de \textit{lookup} necesarias para enriquecer registros en nuestro procesamiento y eliminará las dependencias de nuestro flujo con BBDD externas. 
+
+
+ 
+ 
 \subsubsection{\textit{Tensorflow Serving}}
+
+\textit{Tensorflow Serving} \cite{tfserving} está pensado para llevar a producción los modelos que hemos creado con \textit{Tensor Flow}, pudiéndose adaptar también para otros modelos. \textit{Tensorflow Serving} nos permite desplegar nuestros modelos y algoritmos manteniendo intacta la \textit{API} de consulta, esto lo hace ideal para entornos en los que queremos ir actualizando las versiones de nuestros modelos sin modificar el resto del sistema.
+
+Los modelos desplegados con \textit{Tensorflow Serving} pueden consultarse a través de un \textit{API} en \textit{C++} o mediante un \textit{\textbf{API REST}} que es la opción escogida por nosotros debido a que, por la simplicidad del protocola, es la que más encaja con nuestra arquitectura de microservicios. 
+
+Una característica interesante de \textit{Tensorflow Serving}  es el \textbf{versionado}, ya que nos permite servir en paralelo varias versiones de un modelo, algo que puede ser muy interesante para, por ejemplo, realizar un test A/B.
+
 
 
 
@@ -95,24 +120,73 @@ En la figura \ref{fig:micro-arch} podemos ver como los microservicios propuestos
 A continuación, en los siguiente subapartados describiremos uno a uno los diferentes microservicios. 
 
 
-\subsection{Tokenizer}
+\subsection{\textit{Tokenizer}}
 
 Este microservicio tiene como entrada las llamadas transcritas que llegan al bus en tiempo real. A partir del texto de las mismas el sistema inicia un proceso de \textit{tokenizacion} eliminando \textit{stopwords}, carácteres especiales (signos de puntuación, 'ñ's, acentos...), palabras comunes, números, nombres propios y pasando a minúscula cada uno de los tokens.  El proceso de \textit{tokenización} pretende ser lo más fiel posible al proceso realizado en \textit{Python} durante la etapa de entrenamiento del modelo.
 
 Una vez obtenida la lista de \textit{tokens} esta se vuelve a disponibilizar en el bus en un nuevo \textit{topic}. Este nuevo \textit{topic} con las llamadas \textit{tokenizadas} puede ser de utilidad no solo para nuestro sistema, si no también para cualquier otro sistema de análisis de texto que necesite partir de los datos \textit{tokenizados}.
 
-\subsection{Sequencer}
+El \textit{topic} de entrada del microservicio  \textit{Tokenizer}, llamado \textit{CALLS}, tendrá como clave el código de la llamada y como cuerpo un objeto \textit{json} con los siguientes campos:
+
+\begin{itemize}
+		\item \textbf{\textit{co\_verint}} : Código de la llamada. 
+		\item  \textbf{\textit{call\_text}} : Texto de la llamada. 
+		\item  \textbf{\textit{call\_timestamp}}: Hora de la llamada.
+        \item \textbf{\textit{province}}: Provincia desde la que se ha realizado la llamada. 
+        \item \textbf{\textit{co\_province}}: Código de provincia desde la que se ha realizado la llamada. 
+        \item \textbf{\textit{duration}}: Duración en segundos de la llamada. 
+        \item \textbf{\textit{control\_type}}: De existir, tipo de llamada (usado para el proceso de verificación). 
+\end{itemize} 
+
+Como salida escribirá en un \textit{topic}  llamado \textit{TOKENS.CALLS} un evento cuya clave será el código de la llamada y cuyo cuerpo un objeto \textit{json} con los siguientes campos:
+
+\begin{itemize}
+		\item \textbf{\textit{co\_verint}} : Código de la llamada. 
+		\item  \textbf{\textit{call\_text}} : Texto de la llamada. 
+		\item  \textbf{\textit{call\_timestamp}}: Hora de la llamada.
+        \item \textbf{\textit{province}}: Provincia desde la que se ha realizado la llamada. 
+        \item \textbf{\textit{co\_province}}: Código de provincia desde la que se ha realizado la llamada. 
+        \item \textbf{\textit{duration}}: Duración en segundos de la llamada. 
+        \item \textbf{\textit{control\_type}}: De existir, tipo de llamada (usado para el proceso de verificación).  
+        \item \textbf{\textit{tokens}}: Lista de tokens extraída de \textit{call\_text}. 
+\end{itemize} 
+
+
+
+\subsection{\textit{Sequencer}}
 Este microservicio toma como entrada la salida del microservicio anterior y a partir de la lista de \textit{tokens} devuelve una secuencia de tamaño fijo determinado $T$. Para ello, utiliza un diccionario en el que cada \textit{token} se corresponde con un número, utilizando el $0$ para \textit{tokens} que no existan en este diccionario. Esta secuencia esta limitada a un tamaño determinado $T$ por lo que llamadas con un número mayor de $tokens$ son recortadas y se utiliza \textit{padding} por la izquierda para completar la secuencia de llamadas con un tamaño menor a $T$.
 
-El diccionario ha sido calculado en conjunto de entrenamiento y contiene el vocabulario del modelo, este diccionario contiene como clave todos los \textit{tokens} posibles y como valores el identificador usado para cada \textit{token}. La lectura del mismo se realiza desde el mismo bus, utilizando un topic compacto sin límite de retención.
+El diccionario ha sido calculado en conjunto de entrenamiento y contiene el vocabulario del modelo, este diccionario contiene como clave todos los \textit{tokens} posibles y como valores el identificador usado para cada \textit{token}. La lectura del mismo se realiza desde el mismo bus, utilizando la funcionalidad \textit{KTable} de \textit{Kafka Streams}.
+
 
 Una vez obtenida la secuencia de caracteres, esta se disponibiliza en un nuvo \textit{topic} del bus. Además de por nuestro sistema, este valor puede ser consumido por otros microservicios o sistemas que tengan como objetivo aplicar diferentes modelos a las secuencias obtenidas.
 
+El \textit{topic} de entrada del microservicio \textit{Sequencer} será el topic  \textit{TOKENS.CALLS} descrito en el apartado anterior. 
 
-\subsection{tf-BajaFactura}
+un topic compacto sin límite de retención. Como salida escribirá en un \textit{topic}  llamado \textit{SEQUENCES.CALLS} un evento cuya clave será el código de la llamada y cuyo cuerpo un objeto \textit{json} con los siguientes campos:
+
+\begin{itemize}
+		\item \textbf{\textit{co\_verint}} : Código de la llamada. 
+		\item  \textbf{\textit{call\_text}} : Texto de la llamada. 
+		\item  \textbf{\textit{call\_timestamp}}: Hora de la llamada.
+        \item \textbf{\textit{province}}: Provincia desde la que se ha realizado la llamada. 
+        \item \textbf{\textit{co\_province}}: Código de provincia desde la que se ha realizado la llamada. 
+        \item \textbf{\textit{duration}}: Duración en segundos de la llamada. 
+        \item \textbf{\textit{control\_type}}: De existir, tipo de llamada (usado para el proceso de verificación).  
+        \item \textbf{\textit{sequence}}: Lista de 866 enteros en el que cada uno representa el identificador de un \textit{token}. La secuencia se completa con ceros en caso de ser necesario.
+\end{itemize} 
+
+
+Además se apoyará en un topic compacto sin límite de retención, denominado \newline \textit{TBL.VOCABULARY.CALLS}, que tendrá como clave los \textit{tokens} existentes en el vocabulario y,  como valor, un identificador para cada uno de ellos.
+
+\subsection{\textit{tf-BajaFactura}}
 \textit{\textbf{tf-BajaFactura}} quizás sea el microservicio más tradicional y discordante de los que vamos a utilizar en nuestro sistema debido a que este microservicio se encuentra totalmente desacoplado del bus y del resto de microservicios. Mediante un \textit{API REST} aplica nuestro modelo de \textit{TensorFlow} a una o varias secuencia de entradas y, para cada secuencia, devuelve la probabilidad de pertenencia a las clases: ``Baja'', ``Factura'' y ``Resto''.
 
-El motivo principal para usar \textit{API REST} en este microservicio se debe al uso de \textit{Tensorflow Serving} que nos permite con mucha facilidad desplegar nuevos modelos y algoritmos manteniendo la misma estructura en el servidor y la misma \textit{API}. Además su integración es automática con los modelos generados con \textit{TensorFlow} (con o sin \textit{Keras}). Esta decisión permite a los \textit{data-scientist} desplegar nuevas versiones de sus modelos ya sea por degradación o por mejora, mientras el resto del flujo permanece inalterable. 
+El motivo principal para usar \textit{API REST} en este microservicio se debe al uso de la tecnología  \textit{Tensorflow Serving} comentada en el capítulo anterior y que nos permite con mucha facilidad desplegar nuevos modelos y algoritmos, manteniendo la misma estructura en el servidor y la misma \textit{API}. Además su integración es automática con los modelos generados con \textit{TensorFlow} (con o sin \textit{Keras}). Esta decisión permite a los \textit{data-scientist} desplegar nuevas versiones de sus modelos ya sea por degradación o por mejora, mientras el resto del flujo permanece inalterable. 
+
+La entrada del modelo \textit{tf-BajaFactura} será un documento \textit{json} que contenga el campo \textit{instances} compuesto por una lista de secuencias. En nuestro caso una sola secuencia, ya que el modelo será llamado con cada evento recibido. La salida será también en \textit{json} y contendrá una lista de predicciones, en cada predicción tendremos la probabilidad de pertenencia a cada clase.
+
+
 
 
 \subsection{Predicter}
@@ -121,6 +195,26 @@ Este último microservicio tiene como entrada el \textit{topic} generado por \te
 Como podemos observar, es el único microservicio que tiene una dependencia con otro (\textit{tf-BajaFactura}), sin embargo la API de un modelo implementado con \textit{Tensorflow Serving}\cite{serving} es siempre idéntica por lo que la llamada no varía aunque cambie el modelo y el número de clases y las etiquetas de las mismas son configurables en \textit{\textbf{Predicter}} por lo que puede reutilizarse para cualquier servicio predictivo desplegado con  \textit{Tensorflow Serving}.
 
 La salida de este microservicio es publicada en un nuevo \textit{topic} en el bus, esta información puede ser de utilidad para diversos sistemas que quieran realizar analítica en función de la temática de las llamadas o que quieran visualizarla. Nosotros la usaremos en nuestra capa de servicio que describiremos en el siguiente capítulo.
+
+El \textit{topic} de entrada del microservicio \textit{Sequencer} será el topic  \textit{SEQUENCES.CALLS} descrito en el servicio \textit{Sequencer}. 
+
+
+Como salida escribirá en un \textit{topic}  llamado \textit{TOPICS.CALLS} un evento cuya clave será el código de la llamada y cuyo cuerpo un objeto \textit{json} con los siguientes campos:
+
+\begin{itemize}
+		\item \textbf{\textit{co\_verint}} : Código de la llamada. 
+		\item  \textbf{\textit{call\_text}} : Texto de la llamada. 
+		\item  \textbf{\textit{call\_timestamp}}: Hora de la llamada.
+        \item \textbf{\textit{province}}: Provincia desde la que se ha realizado la llamada. 
+        \item \textbf{\textit{co\_province}}: Código de provincia desde la que se ha realizado la llamada. 
+        \item \textbf{\textit{duration}}: Duración en segundos de la llamada. 
+        \item \textbf{\textit{control\_type}}: De existir, tipo de llamada (usado para el proceso de verificación).  
+        \item  \textbf{\textit{predictions}}: Lista con las predicciones devueltas por el servicio  \textit{tf-BajaFactura}. 
+        \item  \textbf{\textit{error}}: De producirse, contendrá el error devuelto por el  servicio  \textit{tf-BajaFactura} o el error de conexión con el mismo.      
+         \item  \textbf{\textit{model}}: ID del modelo aplicado, en nuestro caso siembre será BajaFactura.
+         \item  \textbf{\textit{pred\_type}}: Etiqueta de la clase más probable según la predicción.
+         \item  \textbf{\textit{control\_success}}: En el caso de existir el campo \textit{control\_type}, \textit{Booleano} que nos indica si la predicción ha sido correcta.
+\end{itemize} 
 
 
 \section{Monitorización de Microservicios}

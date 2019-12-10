@@ -5,3 +5,192 @@ El primer paso cuando nos enfrentamos a un problema de minería de datos es comp
 En este apartado haremos un recorrido 
 
 
+
+\section{Evolución del \textit{dataset}}
+
+\subsection{Las llamadas}
+
+Durante este apartado hemos realizado un análisis del conjunto de datos más completo que teníamos hasta la fecha, no obstante, el proceso para conseguir y entender este conjunto de datos no ha sido una tarea trivial sino que se ha tratado de un proceso iterativo en el que ha sido necesario involucrar a varias áreas y extraer información de diversas fuentes de datos de la compañía. Estos datos, como veremos de nuevo en el siguiente capítulo, nos han llevado a crear modelos poco eficientes que nos han situado otra vez en el punto de partida. 
+
+Aunque el hecho de volver a la fase de recopilación y entendimiento de los datos es algo que ya preveíamos cuando presentamos el estándar \textbf{\textit{CRISP-DM}} (apartado \ref{section:intro:planificacion}) vamos a utilizar esta sección una breve muestra de los análisis iniciales para que pueda compararse con el análisis final y quede patente la evolución de los datos.
+
+
+
+Este análisis fue realizado en \textit{PySpark} y el primer paso, como es obvio, fue cargar los datos en un \textit{dataframe} y comprobar la estructura del mismo: 
+
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{domo\PYZus{}dataset} \PY{o}{=} \PY{n}{sqlContext}\PY{o}{.}\PY{n}{read}\PY{o}{.}\PY{n}{parquet}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dataset/domo\PYZus{}dataset.parquet}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{domo\PYZus{}dataset}
+\end{Verbatim}
+\end{tcolorbox}
+
+ \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+DataFrame[co\_llamada\_verint: string, id\_descarga:string,nu\_telefono\_actuacion:string, it\_llamada: timestamp, nu\_llamada\_ic: string, co\_grabacion: string,raw\_verint:array<string>, \_\_index\_level\_0\_\_: bigint]
+\end{Verbatim}
+\end{tcolorbox}
+
+
+De los campos listados unicamente es factible extraer información del texto de la llamada (``raw\_verint''). El siguiente paso fue comprobar el número de llamadas que no contenían una transcripción nula. Además reparticionamos los datos y los dejamos en caché para realizar un análisis más eficiente: 
+
+\vspace{0.5cm}
+
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{raw\PYZus{}verint} \PY{o}{=} \PY{n}{domo\PYZus{}dataset}\PY{o}{.}\PY{n}{select}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{raw\PYZus{}verint}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{rdd}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{raw\PYZus{}verint}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o+ow}{is} \PY{o+ow}{not} \PY{k+kc}{None}\PY{p}{)}\PYZbs{}
+    \PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{y}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PYZbs{}
+    \PY{o}{.}\PY{n}{repartition}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{)}
+\PY{n}{raw\PYZus{}verint}\PY{o}{.}\PY{n}{cache}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Llamadas disponibles : }\PY{l+s+si}{\PYZob{}:,\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(} \PY{n}{raw\PYZus{}verint}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}  
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Llamadas disponibles : 185,109
+    \end{Verbatim}
+    
+    
+ A través de todas las llamadas obtuvimos una lista de palabras: 
+    \vspace{0.5cm}
+    
+        \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{3}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{raw\PYZus{}list\PYZus{}word} \PY{o}{=} \PY{n}{raw\PYZus{}verint}\PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{document}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PYZbs{}
+                    \PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{document}\PY{p}{)}\PY{p}{)}
+    
+    \PY{n}{raw\PYZus{}list\PYZus{}word}\PY{o}{.}\PY{n}{take}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+    \end{Verbatim}
+    \end{tcolorbox}
+    
+    
+    
+Y eliminamos las \textit{Stopwords} en español usando el paquete \textit{ntlk}.
+
+\vspace{0.5cm}
+    
+        \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{4}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{StopWords} \PY{o}{=} \PY{n}{stopwords}\PY{o}{.}\PY{n}{words}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{spanish}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    
+    \PY{n}{raw\PYZus{}no\PYZus{}stop} \PY{o}{=} \PY{n}{raw\PYZus{}verint}\PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{document}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PYZbs{}
+    	\PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{document}\PY{p}{)}\PY{p}{)} \PYZbs{}
+        \PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{word}\PY{p}{:} \PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{word} \PY{k}{if} \PY{n}{x} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{StopWords}\PY{p}{]}\PY{p}{)}
+    \PY{n}{raw\PYZus{}no\PYZus{}stop}\PY{o}{.}\PY{n}{take}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+    \end{Verbatim}
+    \end{tcolorbox}
+    
+       Volvemos a unir las palabras de la lista (ahora sin las \textit{stopwords}) para mostrar una nube de  palabras más frecuentes
+    
+        \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{5}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{list\PYZus{}words} \PY{o}{=} \PY{n}{raw\PYZus{}no\PYZus{}stop}\PY{o}{.}\PY{n}{reduce}\PY{p}{(}\PY{k}{lambda} \PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{:} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{a}\PY{o}{+}\PY{n}{b}\PY{p}{)}\PY{p}{)}\PY{p}{)}  
+    \PY{n}{wordcloud} \PY{o}{=} \PY{n}{WordCloud}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{generate}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{list\PYZus{}words}\PY{p}{)}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{wordcloud}\PY{p}{,} \PY{n}{interpolation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bilinear}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{off}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+    \end{Verbatim}
+    \end{tcolorbox}
+    
+      \begin{figure}[!ht]
+                    	\centering
+                    	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/data/malo_wordclod1}
+                    	\caption{Primeros datos: \textit{wordcloud} inicial}
+                    	\label{fig:wordcloudmalo1}
+                    \end{figure}
+              
+              
+Como podemos observar en la nube de palabras obtenida, el resultado no fue el esperado. Las llamadas que aparecían no eran significante y entre ellas existían muchas malas  transcripciones. A partir de aquí intentamos abordar distintas aproximaciones que nos permitieran poder extraer algo de valor de los datos.
+
+Un ejemplo de estas aproximaciones fue \textit{taggear} las palabras en  función de su categoría gramatical para quedarnos solo con una lista de candidatos. Para hacerlo de un modo eficiente de manera distribuida en promer lugar creamos un diccionario con las categorías y la raíz de las palabras: 
+
+          
+\vspace{0.5cm}
+          
+              \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+          \prompt{In}{incolor}{6}{\boxspacing}
+          \begin{Verbatim}[commandchars=\\\{\}]
+          \PY{n}{tagger} \PY{o}{=} \PY{n}{treetaggerwrapper}\PY{o}{.}\PY{n}{TreeTagger}\PY{p}{(}\PY{n}{TAGLANG}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{es}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{TAGPARFILE}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/tmp/tree/spanish.par}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{TAGDIR}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/tmp/tree/tree\PYZhy{}tagger\PYZhy{}3.2.1/}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}          
+          \PY{n}{vocabulary} \PY{o}{=}  \PY{n}{raw\PYZus{}no\PYZus{}stop}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{)} \PYZbs{}
+              \PY{o}{.}\PY{n}{flatMap}\PY{p}{(}\PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{document}\PY{p}{)} \PYZbs{}
+              \PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{word}\PY{p}{:} \PY{p}{(}\PY{n}{word}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PYZbs{}
+              \PY{o}{.}\PY{n}{reduceByKey}\PY{p}{(} \PY{k}{lambda} \PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{:} \PY{n}{x} \PY{o}{+} \PY{n}{y}\PY{p}{)}   \PYZbs{}
+              \PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n+nb}{tuple}\PY{p}{:} \PY{n+nb}{tuple}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} 
+          \PY{n}{vocabulary}\PY{o}{.}\PY{n}{cache}\PY{p}{(}\PY{p}{)}
+          \PY{n}{vocabulary}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+          \PY{n}{vocabulary\PYZus{}tags} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{el}\PY{p}{:} \PY{p}{(}\PY{n}{el}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{(}\PY{n}{el}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{el}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)} \PY{p}{)} \PY{p}{,}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{y}\PY{p}{:} \PY{n}{y}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}\PY{n+nb}{list}\PY{p}{(}\PY{n}{tagger}\PY{o}{.}\PY{n}{tag\PYZus{}text}\PY{p}{(}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{vocabulary}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+          \PY{n}{tags\PYZus{}dict} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{broadcast}\PY{p}{(}\PY{p}{\PYZob{}}\PY{n}{key}\PY{p}{:} \PY{n}{value} \PY{k}{for} \PY{p}{(}\PY{n}{key}\PY{p}{,} \PY{n}{value}\PY{p}{)} \PY{o+ow}{in} \PY{n}{vocabulary\PYZus{}tags}\PY{p}{\PYZcb{}}\PY{p}{)}
+          \end{Verbatim}
+          \end{tcolorbox}
+          
+             Una vez que hemos filtrado nos quedamos unicamente con la raíz de las palabras que sean
+          verbos o nombres.
+          
+          \vspace{0.5cm}
+          
+              \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+          \prompt{In}{incolor}{7}{\boxspacing}
+          \begin{Verbatim}[commandchars=\\\{\}]
+          \PY{k}{def} \PY{n+nf}{get\PYZus{}stem\PYZus{}of\PYZus{}candidates}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+              \PY{n}{good} \PY{o}{=} \PY{p}{[}\PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VLinf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+              \PY{n}{candidates} \PY{o}{=}  \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{word}\PY{p}{:} \PY{n}{word} \PY{o+ow}{in} \PY{n}{tags\PYZus{}dict}\PY{o}{.}\PY{n}{value} \PY{o+ow}{and} \PY{n}{tags\PYZus{}dict}\PY{o}{.}\PY{n}{value}\PY{p}{[}\PY{n}{word}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o+ow}{in} \PY{n}{good}  \PY{p}{,}\PY{n}{x}\PY{p}{)}\PY{p}{)}
+              \PY{n}{stem} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{word}\PY{p}{:} \PY{n}{tags\PYZus{}dict}\PY{o}{.}\PY{n}{value}\PY{p}{[}\PY{n}{word}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{candidates}\PY{p}{)}\PY{p}{)}
+              \PY{k}{return} \PY{n}{stem}
+              
+          \PY{n}{stemmed\PYZus{}candidates} \PY{o}{=} \PY{n}{raw\PYZus{}no\PYZus{}stop}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{get\PYZus{}stem\PYZus{}of\PYZus{}candidates}\PY{p}{)}    
+          \PY{n}{stemmed\PYZus{}candidates}\PY{o}{.}\PY{n}{cache}\PY{p}{(}\PY{p}{)}
+          \end{Verbatim}
+          \end{tcolorbox}
+         
+         Con estos resultado volvemos a crear la nube de palabras.  
+         
+         \vspace{0.5cm}
+
+                  
+              \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+          \prompt{In}{incolor}{8}{\boxspacing}
+          \begin{Verbatim}[commandchars=\\\{\}]
+          \PY{n}{list\PYZus{}stemmed\PYZus{}words} \PY{o}{=} \PY{n}{stemmed\PYZus{}candidates}\PY{o}{.}\PY{n}{reduce}\PY{p}{(}\PY{k}{lambda} \PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{:} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{a}\PY{o}{+}\PY{n}{b}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{wordcloud} \PY{o}{=} \PY{n}{WordCloud}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{generate}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{list\PYZus{}stemmed\PYZus{}words}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} Display the generated image:}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{wordcloud}\PY{p}{,} \PY{n}{interpolation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bilinear}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{off}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+          \end{Verbatim}
+          \end{tcolorbox}
+          
+     
+              
+              \begin{figure}[!ht]
+              	\centering
+              	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/data/malo_wordclod2}
+                    	\caption{Primeros datos: \textit{wordcloud} filtrado}
+                    	\label{fig:wordcloudmalo2}
+              \end{figure}
+              
+              
+              
+              
+ Observando que los resultados no mejoran con esta propuesta, tampoco lo hicieron con la obtención de N-Gramas, y en el capítulo siguiente veremos que la creación de los modelos sobre este conjunto de datos nos llevó a volver a buscar y entender nuevos datos.
+ 
+ 
+ \subsection{Las etiquetas}
+ 
+ Tras ver la pobre calidad de los datos iniciales, intentamos encontrar algún dato que nos sirviera para etiquetar las llamadas pensando que podrían ser de utilidad para un modelo supervisado. Una posibilidad era revisar e etiquetar llamadas manualmente, pero dado la cantidad de datos que podían ser necesarios para entrenar un modelo supervisado convertía esta posibilidad en inviable. 
+ 
+ 
