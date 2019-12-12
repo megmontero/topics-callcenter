@@ -96,6 +96,7 @@
 \citation{temariodeeplearning}
 \citation{temariodeeplearning}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4.1}Redes neuronales convolucionales}{16}{subsubsection.2.2.4.1}\protected@file@percent }
+\newlabel{section:arte:arqu:cnn}{{2.2.4.1}{16}{Redes neuronales convolucionales}{subsubsection.2.2.4.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Ejemplo de una convoluci\IeC {\'o}n de dos dimensiones. Fuente \cite  {temariodeeplearning}}}{16}{figure.2.3}\protected@file@percent }
 \newlabel{fig:cnn1}{{2.3}{16}{Ejemplo de una convolución de dos dimensiones. Fuente \cite {temariodeeplearning}}{figure.2.3}{}}
 \citation{temariodeeplearning}
@@ -116,6 +117,7 @@
 \citation{colahblog}
 \citation{colahblog}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4.2}Redes neuronales recurrentes}{20}{subsubsection.2.2.4.2}\protected@file@percent }
+\newlabel{section:arte:arqu:rnn}{{2.2.4.2}{20}{Redes neuronales recurrentes}{subsubsection.2.2.4.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Ejemplo RNN. Fuente \cite  {colahblog}}}{20}{figure.2.8}\protected@file@percent }
 \newlabel{fig:rnn}{{2.8}{20}{Ejemplo RNN. Fuente \cite {colahblog}}{figure.2.8}{}}
 \citation{lstmgru}
@@ -178,76 +180,159 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{chapter:dataset}{{4}{39}{Conjunto de datos}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Evoluci\IeC {\'o}n del \textit  {dataset}}{39}{section.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Las llamadas}{39}{subsection.4.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Primeros datos: \textit  {wordcloud} inicial}}{41}{figure.4.1}\protected@file@percent }
-\newlabel{fig:wordcloudmalo1}{{4.1}{41}{Primeros datos: \textit {wordcloud} inicial}{figure.4.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Primeros datos: \textit  {wordcloud} filtrado}}{43}{figure.4.2}\protected@file@percent }
-\newlabel{fig:wordcloudmalo2}{{4.2}{43}{Primeros datos: \textit {wordcloud} filtrado}{figure.4.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Las etiquetas}{43}{subsection.4.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Modelos Miner\IeC {\'\i }a de datos}{45}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}An\IeC {\'a}lisis del conjunto de datos}{39}{section.4.1}\protected@file@percent }
+\newlabel{section:data:ana}{{4.1}{39}{Análisis del conjunto de datos}{section.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Imports}{40}{subsection.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Carga de datos}{40}{subsection.4.1.2}\protected@file@percent }
+\newlabel{carga-de-datos}{{4.1.2}{40}{Carga de datos}{subsection.4.1.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2.1}Monitorizaciones}{42}{subsubsection.4.1.2.1}\protected@file@percent }
+\newlabel{monitorizaciones}{{4.1.2.1}{42}{Monitorizaciones}{subsubsection.4.1.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2.2}IVR}{44}{subsubsection.4.1.2.2}\protected@file@percent }
+\newlabel{ivr}{{4.1.2.2}{44}{IVR}{subsubsection.4.1.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}An\IeC {\'a}lisis preliminar}{46}{subsection.4.1.3}\protected@file@percent }
+\newlabel{anuxe1lisis-preliminar}{{4.1.3}{46}{Análisis preliminar}{subsection.4.1.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3.1}Monitorizaciones}{46}{subsubsection.4.1.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Distribuci\IeC {\'o}n de llamadas por monitorizaciones}}{47}{figure.4.1}\protected@file@percent }
+\newlabel{fig:distmoni}{{4.1}{47}{Distribución de llamadas por monitorizaciones}{figure.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Nube de palabras a partir de transcripciones monitorizadas}}{48}{figure.4.2}\protected@file@percent }
+\newlabel{fig:cloudmoni}{{4.2}{48}{Nube de palabras a partir de transcripciones monitorizadas}{figure.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3.2}IVR}{48}{subsubsection.4.1.3.2}\protected@file@percent }
+\newlabel{ivr}{{4.1.3.2}{48}{IVR}{subsubsection.4.1.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a consulta de las monitorizaciones}}{49}{figure.4.3}\protected@file@percent }
+\newlabel{fig:cloudmoni_consulta}{{4.3}{49}{Nube de palabras para la categoría consulta de las monitorizaciones}{figure.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a contratar de las monitorizaciones}}{49}{figure.4.4}\protected@file@percent }
+\newlabel{fig:cloudmoni_contratar}{{4.4}{49}{Nube de palabras para la categoría contratar de las monitorizaciones}{figure.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a informacion de las monitorizaciones}}{50}{figure.4.5}\protected@file@percent }
+\newlabel{fig:cloudmoni_info}{{4.5}{50}{Nube de palabras para la categoría informacion de las monitorizaciones}{figure.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a queja de las monitorizaciones}}{50}{figure.4.6}\protected@file@percent }
+\newlabel{fig:cloudmoni_queja}{{4.6}{50}{Nube de palabras para la categoría queja de las monitorizaciones}{figure.4.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a tr\IeC {\'a}mite de las monitorizaciones}}{51}{figure.4.7}\protected@file@percent }
+\newlabel{fig:cloudmoni_tram}{{4.7}{51}{Nube de palabras para la categoría trámite de las monitorizaciones}{figure.4.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Distribuci\IeC {\'o}n de llamadas por \textit  {IVR}}}{52}{figure.4.8}\protected@file@percent }
+\newlabel{fig:distivr}{{4.8}{52}{Distribución de llamadas por \textit {IVR}}{figure.4.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Nube de palabras a partir de transcripciones con \textit  {IVR}}}{52}{figure.4.9}\protected@file@percent }
+\newlabel{fig:cloudivr}{{4.9}{52}{Nube de palabras a partir de transcripciones con \textit {IVR}}{figure.4.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a aver\IeC {\'\i }a de \textit  {IVR}}}{53}{figure.4.10}\protected@file@percent }
+\newlabel{fig:cloudivr_ave}{{4.10}{53}{Nube de palabras de la categoría avería de \textit {IVR}}{figure.4.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a baja de \textit  {IVR}}}{54}{figure.4.11}\protected@file@percent }
+\newlabel{fig:cloudivr_baja}{{4.11}{54}{Nube de palabras de la categoría baja de \textit {IVR}}{figure.4.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a comercial de \textit  {IVR}}}{54}{figure.4.12}\protected@file@percent }
+\newlabel{fig:cloudivr_comercial}{{4.12}{54}{Nube de palabras de la categoría comercial de \textit {IVR}}{figure.4.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a factura de \textit  {IVR}}}{55}{figure.4.13}\protected@file@percent }
+\newlabel{fig:cloudivr_factura}{{4.13}{55}{Nube de palabras de la categoría factura de \textit {IVR}}{figure.4.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a ``no reconocido'' de \textit  {IVR}}}{55}{figure.4.14}\protected@file@percent }
+\newlabel{fig:cloudivr_nrec}{{4.14}{55}{Nube de palabras de la categoría ``no reconocido'' de \textit {IVR}}{figure.4.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a reclamaci\IeC {\'o}n de \textit  {IVR}}}{56}{figure.4.15}\protected@file@percent }
+\newlabel{fig:cloudivr_recl}{{4.15}{56}{Nube de palabras de la categoría reclamación de \textit {IVR}}{figure.4.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a resto de \textit  {IVR}}}{56}{figure.4.16}\protected@file@percent }
+\newlabel{fig:cloudivr_resto}{{4.16}{56}{Nube de palabras de la categoría resto de \textit {IVR}}{figure.4.16}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Representaci\IeC {\'o}n de transcripciones}{57}{section.4.2}\protected@file@percent }
+\newlabel{section:data:repr}{{4.2}{57}{Representación de transcripciones}{section.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Word2vec}{57}{subsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Doc2vec}{58}{subsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Evoluci\IeC {\'o}n del conjunto de datos}{58}{section.4.3}\protected@file@percent }
+\newlabel{section:data:evol}{{4.3}{58}{Evolución del conjunto de datos}{section.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Las llamadas}{58}{subsection.4.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces Primeros datos: \textit  {wordcloud} inicial}}{60}{figure.4.17}\protected@file@percent }
+\newlabel{fig:wordcloudmalo1}{{4.17}{60}{Primeros datos: \textit {wordcloud} inicial}{figure.4.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.18}{\ignorespaces Primeros datos: \textit  {wordcloud} filtrado}}{62}{figure.4.18}\protected@file@percent }
+\newlabel{fig:wordcloudmalo2}{{4.18}{62}{Primeros datos: \textit {wordcloud} filtrado}{figure.4.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Las etiquetas}{62}{subsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Aprendizaje supervisado}{65}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chapter:modelos}{{5}{45}{Modelos Minería de datos}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Entorno de ejecuci\IeC {\'o}n}{45}{section.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Plataformas}{45}{subsection.5.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Tecnolog\IeC {\'\i }as}{45}{subsection.5.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Preprocesado y representaci\IeC {\'o}n de palabras}{45}{section.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}No supervisados}{45}{section.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}supervisados}{45}{section.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {part}{III\hspace  {1em}Explotaci\IeC {\'o}n: procesamiento, visualizaci\IeC {\'o}n y alarmados}{47}{part.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Explotaci\IeC {\'o}n}{49}{chapter.6}\protected@file@percent }
+\newlabel{chapter:super}{{5}{65}{Aprendizaje supervisado}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Arquitecturas}{65}{section.5.1}\protected@file@percent }
+\newlabel{section:super:arq}{{5.1}{65}{Arquitecturas}{section.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Red neuronal convolucional}{65}{subsection.5.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Arquitectura CNN}}{66}{figure.5.1}\protected@file@percent }
+\newlabel{fig:arqcnn}{{5.1}{66}{Arquitectura CNN}{figure.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Red neuronal recurrente}{67}{subsection.5.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Arquitectura RNN}}{68}{figure.5.2}\protected@file@percent }
+\newlabel{fig:arqrnn1}{{5.2}{68}{Arquitectura RNN}{figure.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Red neuronal ``h\IeC {\'\i }brida'' convolucional/recurrente}{69}{subsection.5.1.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Arquitectura ``H\IeC {\'\i }brida'' CNN/RNN}}{70}{figure.5.3}\protected@file@percent }
+\newlabel{fig:arqrnn2}{{5.3}{70}{Arquitectura ``Híbrida'' CNN/RNN}{figure.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.4}MLP}{71}{subsection.5.1.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Arquitectura con capas totalmente conectadas}}{72}{figure.5.4}\protected@file@percent }
+\newlabel{fig:arqdense}{{5.4}{72}{Arquitectura con capas totalmente conectadas}{figure.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.5}Combinaci\IeC {\'o}n de modelos}{72}{subsection.5.1.5}\protected@file@percent }
+\newlabel{section:super:mod:stack}{{5.1.5}{72}{Combinación de modelos}{subsection.5.1.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Arquitectura con capas totalmente conectadas}}{73}{figure.5.5}\protected@file@percent }
+\newlabel{fig:arqstack}{{5.5}{73}{Arquitectura con capas totalmente conectadas}{figure.5.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Evaluaci\IeC {\'o}n y optimizaci\IeC {\'o}n}{74}{section.5.2}\protected@file@percent }
+\newlabel{section:super:opt}{{5.2}{74}{Evaluación y optimización}{section.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Modelos \textit  {CNN} binarios}{75}{subsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Modelos \textit  {RNN} Binarios}{76}{subsection.5.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes convolucionales}}{77}{figure.5.6}\protected@file@percent }
+\newlabel{fig:opt_cnn}{{5.6}{77}{Optimización de modelos binarios con redes convolucionales}{figure.5.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Modelos totalmente conectados}{77}{subsection.5.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes recurrentes}}{78}{figure.5.7}\protected@file@percent }
+\newlabel{fig:opt_rnn}{{5.7}{78}{Optimización de modelos binarios con redes recurrentes}{figure.5.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con \textit  {MLP}}}{78}{figure.5.8}\protected@file@percent }
+\newlabel{fig:opt_dense}{{5.8}{78}{Optimización de modelos binarios con \textit {MLP}}{figure.5.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.4}Modelos multiclase}{78}{subsection.5.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Optimizaci\IeC {\'o}n de modelos multiclase}}{79}{figure.5.9}\protected@file@percent }
+\newlabel{fig:opt_multi}{{5.9}{79}{Optimización de modelos multiclase}{figure.5.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Modelo M\IeC {\'\i }nimo Viable}{79}{section.5.3}\protected@file@percent }
+\newlabel{section:super:mvm}{{5.3}{79}{Modelo Mínimo Viable}{section.5.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Matriz de confusi\IeC {\'o}n datos balanceados}}{80}{figure.5.10}\protected@file@percent }
+\newlabel{fig:mvp_mat1}{{5.10}{80}{Matriz de confusión datos balanceados}{figure.5.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Matriz de confusi\IeC {\'o}n datos no balanceados}}{81}{figure.5.11}\protected@file@percent }
+\newlabel{fig:mvp_mat2}{{5.11}{81}{Matriz de confusión datos no balanceados}{figure.5.11}{}}
+\@writefile{toc}{\contentsline {part}{III\hspace  {1em}Explotaci\IeC {\'o}n: procesamiento, visualizaci\IeC {\'o}n y alarmados}{83}{part.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Explotaci\IeC {\'o}n}{85}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chapter:prod}{{6}{49}{Explotación}{chapter.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Streaming Layer}}{49}{figure.6.1}\protected@file@percent }
-\newlabel{fig:streamlayer}{{6.1}{49}{Streaming Layer}{figure.6.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Requisitos del sistema productivo}{50}{section.6.1}\protected@file@percent }
-\newlabel{section:prod:req}{{6.1}{50}{Requisitos del sistema productivo}{section.6.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Arquitectura del sistema}{50}{section.6.2}\protected@file@percent }
+\newlabel{chapter:prod}{{6}{85}{Explotación}{chapter.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Streaming Layer}}{85}{figure.6.1}\protected@file@percent }
+\newlabel{fig:streamlayer}{{6.1}{85}{Streaming Layer}{figure.6.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Requisitos del sistema productivo}{86}{section.6.1}\protected@file@percent }
+\newlabel{section:prod:req}{{6.1}{86}{Requisitos del sistema productivo}{section.6.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Arquitectura del sistema}{86}{section.6.2}\protected@file@percent }
 \citation{kstreams}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Microservicios}{52}{section.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Tecnolog\IeC {\'\i }a}{52}{subsection.6.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.1.1}\textit  {Kafka Streams}}{52}{subsubsection.6.3.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Microservicios}{88}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Tecnolog\IeC {\'\i }a}{88}{subsection.6.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.1.1}\textit  {Kafka Streams}}{88}{subsubsection.6.3.1.1}\protected@file@percent }
 \citation{tfserving}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.1.2}\textit  {Tensorflow Serving}}{53}{subsubsection.6.3.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Microservicios}{53}{subsection.6.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Arquitectura microservicios}}{54}{figure.6.2}\protected@file@percent }
-\newlabel{fig:micro-arch}{{6.2}{54}{Arquitectura microservicios}{figure.6.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}\textit  {Tokenizer}}{54}{subsection.6.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.4}\textit  {Sequencer}}{56}{subsection.6.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.1.2}\textit  {Tensorflow Serving}}{89}{subsubsection.6.3.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Microservicios}{89}{subsection.6.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Arquitectura microservicios}}{90}{figure.6.2}\protected@file@percent }
+\newlabel{fig:micro-arch}{{6.2}{90}{Arquitectura microservicios}{figure.6.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}\textit  {Tokenizer}}{90}{subsection.6.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.4}\textit  {Sequencer}}{92}{subsection.6.3.4}\protected@file@percent }
 \citation{serving}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.5}\textit  {tf-BajaFactura}}{57}{subsection.6.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.6}Predicter}{57}{subsection.6.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.5}\textit  {tf-BajaFactura}}{93}{subsection.6.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.6}Predicter}{93}{subsection.6.3.6}\protected@file@percent }
 \citation{Kafka Streamsmonitoring}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Monitorizaci\IeC {\'o}n de Microservicios}{58}{section.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Servicios \textit  {Kafka Streams}}{59}{subsection.6.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Servicios \textit  {Tensorflow Serving}}{59}{subsection.6.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Inyector: simulador de tiempo real}{60}{section.6.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Capa de servicio}{61}{chapter.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Monitorizaci\IeC {\'o}n de Microservicios}{94}{section.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Servicios \textit  {Kafka Streams}}{95}{subsection.6.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Servicios \textit  {Tensorflow Serving}}{95}{subsection.6.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Inyector: simulador de tiempo real}{96}{section.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Capa de servicio}{97}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Carga y modelo}{61}{section.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Visualizaciones}{61}{section.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Monitorizaci\IeC {\'o}n}{61}{subsection.7.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Sistema}{61}{subsection.7.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Alarmado}{61}{section.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Despliegue en contenedores}{63}{chapter.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Carga y modelo}{97}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Visualizaciones}{97}{section.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Monitorizaci\IeC {\'o}n}{97}{subsection.7.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Sistema}{97}{subsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Alarmado}{97}{section.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Despliegue en contenedores}{99}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{64}{figure.8.1}\protected@file@percent }
-\newlabel{fig:ocp-overview}{{8.1}{64}{configuración de despliegue y recursos usados en OCP}{figure.8.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{100}{figure.8.1}\protected@file@percent }
+\newlabel{fig:ocp-overview}{{8.1}{100}{configuración de despliegue y recursos usados en OCP}{figure.8.1}{}}
 \citation{apendi:contenedores}
 \citation{apendi:contenedores}
-\@writefile{toc}{\contentsline {section}{\numberline {8.1}Servicios \textit  {Kafka Streams}}{65}{section.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.2}Servicios \textit  {Tensorflow Serving}}{69}{section.8.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.3}Monitorizaci\IeC {\'o}n}{73}{section.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.1}Logstash}{73}{subsection.8.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.2}Metricbeat}{77}{subsection.8.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.4}S2I}{79}{section.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}\textit  {Kafka Streams}}{80}{subsection.8.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}\textit  {Tensorflow Serving}}{81}{subsection.8.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {part}{IV\hspace  {1em}Conclusiones: mantenimiento y futuros trabajos }{83}{part.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Servicios \textit  {Kafka Streams}}{101}{section.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Servicios \textit  {Tensorflow Serving}}{105}{section.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Monitorizaci\IeC {\'o}n}{109}{section.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.1}Logstash}{109}{subsection.8.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.2}Metricbeat}{113}{subsection.8.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.4}S2I}{115}{section.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}\textit  {Kafka Streams}}{116}{subsection.8.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}\textit  {Tensorflow Serving}}{117}{subsection.8.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{IV\hspace  {1em}Conclusiones: mantenimiento y futuros trabajos }{119}{part.4}\protected@file@percent }
 \bibstyle{plain}
 \bibdata{referencias}
 \bibcite{temariodeeplearning}{{1}{}{{}}{{}}}
@@ -259,7 +344,7 @@
 \bibcite{Cox_1997}{{7}{}{{}}{{}}}
 \bibcite{MapReduce}{{8}{}{{}}{{}}}
 \bibcite{lambdakappa}{{9}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{85}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{121}{section*.7}\protected@file@percent }
 \bibcite{wordnet}{{10}{}{{}}{{}}}
 \bibcite{GFS}{{11}{}{{}}{{}}}
 \bibcite{goldberg_2017}{{12}{}{{}}{{}}}
