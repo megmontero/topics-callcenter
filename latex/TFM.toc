@@ -40,47 +40,64 @@
 \contentsline {subsection}{\numberline {3.3.4}Integraci\IeC {\'o}n y Despliegue Continuo}{35}{subsection.3.3.4}% 
 \contentsline {part}{II\hspace {1em}Modelado: datos, modelos y optimizaciones}{37}{part.2}% 
 \contentsline {chapter}{\numberline {4}Conjunto de datos}{39}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Evoluci\IeC {\'o}n del \textit {dataset}}{39}{section.4.1}% 
-\contentsline {subsection}{\numberline {4.1.1}Las llamadas}{39}{subsection.4.1.1}% 
-\contentsline {subsection}{\numberline {4.1.2}Las etiquetas}{43}{subsection.4.1.2}% 
-\contentsline {chapter}{\numberline {5}Modelos Miner\IeC {\'\i }a de datos}{45}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Entorno de ejecuci\IeC {\'o}n}{45}{section.5.1}% 
-\contentsline {subsection}{\numberline {5.1.1}Plataformas}{45}{subsection.5.1.1}% 
-\contentsline {subsection}{\numberline {5.1.2}Tecnolog\IeC {\'\i }as}{45}{subsection.5.1.2}% 
-\contentsline {section}{\numberline {5.2}Preprocesado y representaci\IeC {\'o}n de palabras}{45}{section.5.2}% 
-\contentsline {section}{\numberline {5.3}No supervisados}{45}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}supervisados}{45}{section.5.4}% 
-\contentsline {part}{III\hspace {1em}Explotaci\IeC {\'o}n: procesamiento, visualizaci\IeC {\'o}n y alarmados}{47}{part.3}% 
-\contentsline {chapter}{\numberline {6}Explotaci\IeC {\'o}n}{49}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Requisitos del sistema productivo}{50}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Arquitectura del sistema}{50}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}Microservicios}{52}{section.6.3}% 
-\contentsline {subsection}{\numberline {6.3.1}Tecnolog\IeC {\'\i }a}{52}{subsection.6.3.1}% 
-\contentsline {subsubsection}{\numberline {6.3.1.1}\textit {Kafka Streams}}{52}{subsubsection.6.3.1.1}% 
-\contentsline {subsubsection}{\numberline {6.3.1.2}\textit {Tensorflow Serving}}{53}{subsubsection.6.3.1.2}% 
-\contentsline {subsection}{\numberline {6.3.2}Microservicios}{53}{subsection.6.3.2}% 
-\contentsline {subsection}{\numberline {6.3.3}\textit {Tokenizer}}{54}{subsection.6.3.3}% 
-\contentsline {subsection}{\numberline {6.3.4}\textit {Sequencer}}{56}{subsection.6.3.4}% 
-\contentsline {subsection}{\numberline {6.3.5}\textit {tf-BajaFactura}}{57}{subsection.6.3.5}% 
-\contentsline {subsection}{\numberline {6.3.6}Predicter}{57}{subsection.6.3.6}% 
-\contentsline {section}{\numberline {6.4}Monitorizaci\IeC {\'o}n de Microservicios}{58}{section.6.4}% 
-\contentsline {subsection}{\numberline {6.4.1}Servicios \textit {Kafka Streams}}{59}{subsection.6.4.1}% 
-\contentsline {subsection}{\numberline {6.4.2}Servicios \textit {Tensorflow Serving}}{59}{subsection.6.4.2}% 
-\contentsline {section}{\numberline {6.5}Inyector: simulador de tiempo real}{60}{section.6.5}% 
-\contentsline {chapter}{\numberline {7}Capa de servicio}{61}{chapter.7}% 
-\contentsline {section}{\numberline {7.1}Carga y modelo}{61}{section.7.1}% 
-\contentsline {section}{\numberline {7.2}Visualizaciones}{61}{section.7.2}% 
-\contentsline {subsection}{\numberline {7.2.1}Monitorizaci\IeC {\'o}n}{61}{subsection.7.2.1}% 
-\contentsline {subsection}{\numberline {7.2.2}Sistema}{61}{subsection.7.2.2}% 
-\contentsline {section}{\numberline {7.3}Alarmado}{61}{section.7.3}% 
-\contentsline {chapter}{\numberline {8}Despliegue en contenedores}{63}{chapter.8}% 
-\contentsline {section}{\numberline {8.1}Servicios \textit {Kafka Streams}}{65}{section.8.1}% 
-\contentsline {section}{\numberline {8.2}Servicios \textit {Tensorflow Serving}}{69}{section.8.2}% 
-\contentsline {section}{\numberline {8.3}Monitorizaci\IeC {\'o}n}{73}{section.8.3}% 
-\contentsline {subsection}{\numberline {8.3.1}Logstash}{73}{subsection.8.3.1}% 
-\contentsline {subsection}{\numberline {8.3.2}Metricbeat}{77}{subsection.8.3.2}% 
-\contentsline {section}{\numberline {8.4}S2I}{79}{section.8.4}% 
-\contentsline {subsection}{\numberline {8.4.1}\textit {Kafka Streams}}{80}{subsection.8.4.1}% 
-\contentsline {subsection}{\numberline {8.4.2}\textit {Tensorflow Serving}}{81}{subsection.8.4.2}% 
-\contentsline {part}{IV\hspace {1em}Conclusiones: mantenimiento y futuros trabajos }{83}{part.4}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{85}{section*.7}% 
+\contentsline {section}{\numberline {4.1}An\IeC {\'a}lisis del conjunto de datos}{39}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Imports}{40}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}Carga de datos}{40}{subsection.4.1.2}% 
+\contentsline {subsubsection}{\numberline {4.1.2.1}Monitorizaciones}{42}{subsubsection.4.1.2.1}% 
+\contentsline {subsubsection}{\numberline {4.1.2.2}IVR}{44}{subsubsection.4.1.2.2}% 
+\contentsline {subsection}{\numberline {4.1.3}An\IeC {\'a}lisis preliminar}{46}{subsection.4.1.3}% 
+\contentsline {subsubsection}{\numberline {4.1.3.1}Monitorizaciones}{46}{subsubsection.4.1.3.1}% 
+\contentsline {subsubsection}{\numberline {4.1.3.2}IVR}{48}{subsubsection.4.1.3.2}% 
+\contentsline {section}{\numberline {4.2}Representaci\IeC {\'o}n de transcripciones}{57}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Word2vec}{57}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Doc2vec}{58}{subsection.4.2.2}% 
+\contentsline {section}{\numberline {4.3}Evoluci\IeC {\'o}n del conjunto de datos}{58}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}Las llamadas}{58}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}Las etiquetas}{62}{subsection.4.3.2}% 
+\contentsline {chapter}{\numberline {5}Aprendizaje supervisado}{65}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Arquitecturas}{65}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Red neuronal convolucional}{65}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}Red neuronal recurrente}{67}{subsection.5.1.2}% 
+\contentsline {subsection}{\numberline {5.1.3}Red neuronal ``h\IeC {\'\i }brida'' convolucional/recurrente}{69}{subsection.5.1.3}% 
+\contentsline {subsection}{\numberline {5.1.4}MLP}{71}{subsection.5.1.4}% 
+\contentsline {subsection}{\numberline {5.1.5}Combinaci\IeC {\'o}n de modelos}{72}{subsection.5.1.5}% 
+\contentsline {section}{\numberline {5.2}Evaluaci\IeC {\'o}n y optimizaci\IeC {\'o}n}{74}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}Modelos \textit {CNN} binarios}{75}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}Modelos \textit {RNN} Binarios}{76}{subsection.5.2.2}% 
+\contentsline {subsection}{\numberline {5.2.3}Modelos totalmente conectados}{77}{subsection.5.2.3}% 
+\contentsline {subsection}{\numberline {5.2.4}Modelos multiclase}{78}{subsection.5.2.4}% 
+\contentsline {section}{\numberline {5.3}Modelo M\IeC {\'\i }nimo Viable}{79}{section.5.3}% 
+\contentsline {part}{III\hspace {1em}Explotaci\IeC {\'o}n: procesamiento, visualizaci\IeC {\'o}n y alarmados}{83}{part.3}% 
+\contentsline {chapter}{\numberline {6}Explotaci\IeC {\'o}n}{85}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Requisitos del sistema productivo}{86}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Arquitectura del sistema}{86}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Microservicios}{88}{section.6.3}% 
+\contentsline {subsection}{\numberline {6.3.1}Tecnolog\IeC {\'\i }a}{88}{subsection.6.3.1}% 
+\contentsline {subsubsection}{\numberline {6.3.1.1}\textit {Kafka Streams}}{88}{subsubsection.6.3.1.1}% 
+\contentsline {subsubsection}{\numberline {6.3.1.2}\textit {Tensorflow Serving}}{89}{subsubsection.6.3.1.2}% 
+\contentsline {subsection}{\numberline {6.3.2}Microservicios}{89}{subsection.6.3.2}% 
+\contentsline {subsection}{\numberline {6.3.3}\textit {Tokenizer}}{90}{subsection.6.3.3}% 
+\contentsline {subsection}{\numberline {6.3.4}\textit {Sequencer}}{92}{subsection.6.3.4}% 
+\contentsline {subsection}{\numberline {6.3.5}\textit {tf-BajaFactura}}{93}{subsection.6.3.5}% 
+\contentsline {subsection}{\numberline {6.3.6}Predicter}{93}{subsection.6.3.6}% 
+\contentsline {section}{\numberline {6.4}Monitorizaci\IeC {\'o}n de Microservicios}{94}{section.6.4}% 
+\contentsline {subsection}{\numberline {6.4.1}Servicios \textit {Kafka Streams}}{95}{subsection.6.4.1}% 
+\contentsline {subsection}{\numberline {6.4.2}Servicios \textit {Tensorflow Serving}}{95}{subsection.6.4.2}% 
+\contentsline {section}{\numberline {6.5}Inyector: simulador de tiempo real}{96}{section.6.5}% 
+\contentsline {chapter}{\numberline {7}Capa de servicio}{97}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Carga y modelo}{97}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}Visualizaciones}{97}{section.7.2}% 
+\contentsline {subsection}{\numberline {7.2.1}Monitorizaci\IeC {\'o}n}{97}{subsection.7.2.1}% 
+\contentsline {subsection}{\numberline {7.2.2}Sistema}{97}{subsection.7.2.2}% 
+\contentsline {section}{\numberline {7.3}Alarmado}{97}{section.7.3}% 
+\contentsline {chapter}{\numberline {8}Despliegue en contenedores}{99}{chapter.8}% 
+\contentsline {section}{\numberline {8.1}Servicios \textit {Kafka Streams}}{101}{section.8.1}% 
+\contentsline {section}{\numberline {8.2}Servicios \textit {Tensorflow Serving}}{105}{section.8.2}% 
+\contentsline {section}{\numberline {8.3}Monitorizaci\IeC {\'o}n}{109}{section.8.3}% 
+\contentsline {subsection}{\numberline {8.3.1}Logstash}{109}{subsection.8.3.1}% 
+\contentsline {subsection}{\numberline {8.3.2}Metricbeat}{113}{subsection.8.3.2}% 
+\contentsline {section}{\numberline {8.4}S2I}{115}{section.8.4}% 
+\contentsline {subsection}{\numberline {8.4.1}\textit {Kafka Streams}}{116}{subsection.8.4.1}% 
+\contentsline {subsection}{\numberline {8.4.2}\textit {Tensorflow Serving}}{117}{subsection.8.4.2}% 
+\contentsline {part}{IV\hspace {1em}Conclusiones: mantenimiento y futuros trabajos }{119}{part.4}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{121}{section*.7}% 

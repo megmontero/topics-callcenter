@@ -20,12 +20,39 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Arquitectura Lambda propuesta}}{31}{figure.3.1}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Primeros datos: \textit {wordcloud} inicial}}{41}{figure.4.1}% 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Primeros datos: \textit {wordcloud} filtrado}}{43}{figure.4.2}% 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Distribuci\IeC {\'o}n de llamadas por monitorizaciones}}{47}{figure.4.1}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Nube de palabras a partir de transcripciones monitorizadas}}{48}{figure.4.2}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a consulta de las monitorizaciones}}{49}{figure.4.3}% 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a contratar de las monitorizaciones}}{49}{figure.4.4}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a informacion de las monitorizaciones}}{50}{figure.4.5}% 
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a queja de las monitorizaciones}}{50}{figure.4.6}% 
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a tr\IeC {\'a}mite de las monitorizaciones}}{51}{figure.4.7}% 
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Distribuci\IeC {\'o}n de llamadas por \textit {IVR}}}{52}{figure.4.8}% 
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Nube de palabras a partir de transcripciones con \textit {IVR}}}{52}{figure.4.9}% 
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a aver\IeC {\'\i }a de \textit {IVR}}}{53}{figure.4.10}% 
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a baja de \textit {IVR}}}{54}{figure.4.11}% 
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a comercial de \textit {IVR}}}{54}{figure.4.12}% 
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a factura de \textit {IVR}}}{55}{figure.4.13}% 
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a ``no reconocido'' de \textit {IVR}}}{55}{figure.4.14}% 
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a reclamaci\IeC {\'o}n de \textit {IVR}}}{56}{figure.4.15}% 
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a resto de \textit {IVR}}}{56}{figure.4.16}% 
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Primeros datos: \textit {wordcloud} inicial}}{60}{figure.4.17}% 
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Primeros datos: \textit {wordcloud} filtrado}}{62}{figure.4.18}% 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Arquitectura CNN}}{66}{figure.5.1}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Arquitectura RNN}}{68}{figure.5.2}% 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Arquitectura ``H\IeC {\'\i }brida'' CNN/RNN}}{70}{figure.5.3}% 
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Arquitectura con capas totalmente conectadas}}{72}{figure.5.4}% 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Arquitectura con capas totalmente conectadas}}{73}{figure.5.5}% 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes convolucionales}}{77}{figure.5.6}% 
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes recurrentes}}{78}{figure.5.7}% 
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con \textit {MLP}}}{78}{figure.5.8}% 
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Optimizaci\IeC {\'o}n de modelos multiclase}}{79}{figure.5.9}% 
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Matriz de confusi\IeC {\'o}n datos balanceados}}{80}{figure.5.10}% 
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Matriz de confusi\IeC {\'o}n datos no balanceados}}{81}{figure.5.11}% 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Streaming Layer}}{85}{figure.6.1}% 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Arquitectura microservicios}}{90}{figure.6.2}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Streaming Layer}}{49}{figure.6.1}% 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Arquitectura microservicios}}{54}{figure.6.2}% 
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{64}{figure.8.1}% 
+\contentsline {figure}{\numberline {8.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{100}{figure.8.1}% 

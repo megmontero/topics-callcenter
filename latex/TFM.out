@@ -35,45 +35,58 @@
 \BOOKMARK [2][-]{subsection.3.3.4}{Integraci\363n y Despliegue Continuo}{section.3.3}% 35
 \BOOKMARK [-1][-]{part.2}{II Modelado: datos, modelos y optimizaciones}{}% 36
 \BOOKMARK [0][-]{chapter.4}{Conjunto de datos}{part.2}% 37
-\BOOKMARK [1][-]{section.4.1}{Evoluci\363n del dataset}{chapter.4}% 38
-\BOOKMARK [2][-]{subsection.4.1.1}{Las llamadas}{section.4.1}% 39
-\BOOKMARK [2][-]{subsection.4.1.2}{Las etiquetas}{section.4.1}% 40
-\BOOKMARK [0][-]{chapter.5}{Modelos Miner\355a de datos}{part.2}% 41
-\BOOKMARK [1][-]{section.5.1}{Entorno de ejecuci\363n}{chapter.5}% 42
-\BOOKMARK [2][-]{subsection.5.1.1}{Plataformas}{section.5.1}% 43
-\BOOKMARK [2][-]{subsection.5.1.2}{Tecnolog\355as}{section.5.1}% 44
-\BOOKMARK [1][-]{section.5.2}{Preprocesado y representaci\363n de palabras}{chapter.5}% 45
-\BOOKMARK [1][-]{section.5.3}{No supervisados}{chapter.5}% 46
-\BOOKMARK [1][-]{section.5.4}{supervisados}{chapter.5}% 47
-\BOOKMARK [-1][-]{part.3}{III Explotaci\363n: procesamiento, visualizaci\363n y alarmados}{}% 48
-\BOOKMARK [0][-]{chapter.6}{Explotaci\363n}{part.3}% 49
-\BOOKMARK [1][-]{section.6.1}{Requisitos del sistema productivo}{chapter.6}% 50
-\BOOKMARK [1][-]{section.6.2}{Arquitectura del sistema}{chapter.6}% 51
-\BOOKMARK [1][-]{section.6.3}{Microservicios}{chapter.6}% 52
-\BOOKMARK [2][-]{subsection.6.3.1}{Tecnolog\355a}{section.6.3}% 53
-\BOOKMARK [2][-]{subsection.6.3.2}{Microservicios}{section.6.3}% 54
-\BOOKMARK [2][-]{subsection.6.3.3}{Tokenizer}{section.6.3}% 55
-\BOOKMARK [2][-]{subsection.6.3.4}{Sequencer}{section.6.3}% 56
-\BOOKMARK [2][-]{subsection.6.3.5}{tf-BajaFactura}{section.6.3}% 57
-\BOOKMARK [2][-]{subsection.6.3.6}{Predicter}{section.6.3}% 58
-\BOOKMARK [1][-]{section.6.4}{Monitorizaci\363n de Microservicios}{chapter.6}% 59
-\BOOKMARK [2][-]{subsection.6.4.1}{Servicios Kafka Streams}{section.6.4}% 60
-\BOOKMARK [2][-]{subsection.6.4.2}{Servicios Tensorflow Serving}{section.6.4}% 61
-\BOOKMARK [1][-]{section.6.5}{Inyector: simulador de tiempo real}{chapter.6}% 62
-\BOOKMARK [0][-]{chapter.7}{Capa de servicio}{part.3}% 63
-\BOOKMARK [1][-]{section.7.1}{Carga y modelo}{chapter.7}% 64
-\BOOKMARK [1][-]{section.7.2}{Visualizaciones}{chapter.7}% 65
-\BOOKMARK [2][-]{subsection.7.2.1}{Monitorizaci\363n}{section.7.2}% 66
-\BOOKMARK [2][-]{subsection.7.2.2}{Sistema}{section.7.2}% 67
-\BOOKMARK [1][-]{section.7.3}{Alarmado}{chapter.7}% 68
-\BOOKMARK [0][-]{chapter.8}{Despliegue en contenedores}{part.3}% 69
-\BOOKMARK [1][-]{section.8.1}{Servicios Kafka Streams}{chapter.8}% 70
-\BOOKMARK [1][-]{section.8.2}{Servicios Tensorflow Serving}{chapter.8}% 71
-\BOOKMARK [1][-]{section.8.3}{Monitorizaci\363n}{chapter.8}% 72
-\BOOKMARK [2][-]{subsection.8.3.1}{Logstash}{section.8.3}% 73
-\BOOKMARK [2][-]{subsection.8.3.2}{Metricbeat}{section.8.3}% 74
-\BOOKMARK [1][-]{section.8.4}{S2I}{chapter.8}% 75
-\BOOKMARK [2][-]{subsection.8.4.1}{Kafka Streams}{section.8.4}% 76
-\BOOKMARK [2][-]{subsection.8.4.2}{Tensorflow Serving}{section.8.4}% 77
-\BOOKMARK [-1][-]{part.4}{IV Conclusiones: mantenimiento y futuros trabajos }{}% 78
-\BOOKMARK [0][-]{section*.7}{Bibliograf\355a}{part.4}% 79
+\BOOKMARK [1][-]{section.4.1}{An\341lisis del conjunto de datos}{chapter.4}% 38
+\BOOKMARK [2][-]{subsection.4.1.1}{Imports}{section.4.1}% 39
+\BOOKMARK [2][-]{subsection.4.1.2}{Carga de datos}{section.4.1}% 40
+\BOOKMARK [2][-]{subsection.4.1.3}{An\341lisis preliminar}{section.4.1}% 41
+\BOOKMARK [1][-]{section.4.2}{Representaci\363n de transcripciones}{chapter.4}% 42
+\BOOKMARK [2][-]{subsection.4.2.1}{Word2vec}{section.4.2}% 43
+\BOOKMARK [2][-]{subsection.4.2.2}{Doc2vec}{section.4.2}% 44
+\BOOKMARK [1][-]{section.4.3}{Evoluci\363n del conjunto de datos}{chapter.4}% 45
+\BOOKMARK [2][-]{subsection.4.3.1}{Las llamadas}{section.4.3}% 46
+\BOOKMARK [2][-]{subsection.4.3.2}{Las etiquetas}{section.4.3}% 47
+\BOOKMARK [0][-]{chapter.5}{Aprendizaje supervisado}{part.2}% 48
+\BOOKMARK [1][-]{section.5.1}{Arquitecturas}{chapter.5}% 49
+\BOOKMARK [2][-]{subsection.5.1.1}{Red neuronal convolucional}{section.5.1}% 50
+\BOOKMARK [2][-]{subsection.5.1.2}{Red neuronal recurrente}{section.5.1}% 51
+\BOOKMARK [2][-]{subsection.5.1.3}{Red neuronal ``h\355brida'' convolucional/recurrente}{section.5.1}% 52
+\BOOKMARK [2][-]{subsection.5.1.4}{MLP}{section.5.1}% 53
+\BOOKMARK [2][-]{subsection.5.1.5}{Combinaci\363n de modelos}{section.5.1}% 54
+\BOOKMARK [1][-]{section.5.2}{Evaluaci\363n y optimizaci\363n}{chapter.5}% 55
+\BOOKMARK [2][-]{subsection.5.2.1}{Modelos CNN binarios}{section.5.2}% 56
+\BOOKMARK [2][-]{subsection.5.2.2}{Modelos RNN Binarios}{section.5.2}% 57
+\BOOKMARK [2][-]{subsection.5.2.3}{Modelos totalmente conectados}{section.5.2}% 58
+\BOOKMARK [2][-]{subsection.5.2.4}{Modelos multiclase}{section.5.2}% 59
+\BOOKMARK [1][-]{section.5.3}{Modelo M\355nimo Viable}{chapter.5}% 60
+\BOOKMARK [-1][-]{part.3}{III Explotaci\363n: procesamiento, visualizaci\363n y alarmados}{}% 61
+\BOOKMARK [0][-]{chapter.6}{Explotaci\363n}{part.3}% 62
+\BOOKMARK [1][-]{section.6.1}{Requisitos del sistema productivo}{chapter.6}% 63
+\BOOKMARK [1][-]{section.6.2}{Arquitectura del sistema}{chapter.6}% 64
+\BOOKMARK [1][-]{section.6.3}{Microservicios}{chapter.6}% 65
+\BOOKMARK [2][-]{subsection.6.3.1}{Tecnolog\355a}{section.6.3}% 66
+\BOOKMARK [2][-]{subsection.6.3.2}{Microservicios}{section.6.3}% 67
+\BOOKMARK [2][-]{subsection.6.3.3}{Tokenizer}{section.6.3}% 68
+\BOOKMARK [2][-]{subsection.6.3.4}{Sequencer}{section.6.3}% 69
+\BOOKMARK [2][-]{subsection.6.3.5}{tf-BajaFactura}{section.6.3}% 70
+\BOOKMARK [2][-]{subsection.6.3.6}{Predicter}{section.6.3}% 71
+\BOOKMARK [1][-]{section.6.4}{Monitorizaci\363n de Microservicios}{chapter.6}% 72
+\BOOKMARK [2][-]{subsection.6.4.1}{Servicios Kafka Streams}{section.6.4}% 73
+\BOOKMARK [2][-]{subsection.6.4.2}{Servicios Tensorflow Serving}{section.6.4}% 74
+\BOOKMARK [1][-]{section.6.5}{Inyector: simulador de tiempo real}{chapter.6}% 75
+\BOOKMARK [0][-]{chapter.7}{Capa de servicio}{part.3}% 76
+\BOOKMARK [1][-]{section.7.1}{Carga y modelo}{chapter.7}% 77
+\BOOKMARK [1][-]{section.7.2}{Visualizaciones}{chapter.7}% 78
+\BOOKMARK [2][-]{subsection.7.2.1}{Monitorizaci\363n}{section.7.2}% 79
+\BOOKMARK [2][-]{subsection.7.2.2}{Sistema}{section.7.2}% 80
+\BOOKMARK [1][-]{section.7.3}{Alarmado}{chapter.7}% 81
+\BOOKMARK [0][-]{chapter.8}{Despliegue en contenedores}{part.3}% 82
+\BOOKMARK [1][-]{section.8.1}{Servicios Kafka Streams}{chapter.8}% 83
+\BOOKMARK [1][-]{section.8.2}{Servicios Tensorflow Serving}{chapter.8}% 84
+\BOOKMARK [1][-]{section.8.3}{Monitorizaci\363n}{chapter.8}% 85
+\BOOKMARK [2][-]{subsection.8.3.1}{Logstash}{section.8.3}% 86
+\BOOKMARK [2][-]{subsection.8.3.2}{Metricbeat}{section.8.3}% 87
+\BOOKMARK [1][-]{section.8.4}{S2I}{chapter.8}% 88
+\BOOKMARK [2][-]{subsection.8.4.1}{Kafka Streams}{section.8.4}% 89
+\BOOKMARK [2][-]{subsection.8.4.2}{Tensorflow Serving}{section.8.4}% 90
+\BOOKMARK [-1][-]{part.4}{IV Conclusiones: mantenimiento y futuros trabajos }{}% 91
+\BOOKMARK [0][-]{section*.7}{Bibliograf\355a}{part.4}% 92

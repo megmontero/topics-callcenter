@@ -136,6 +136,7 @@ Los dos tipos de redes neuronales que comentaremos son las redes neuronales conv
 
 
 \subsubsection{Redes neuronales convolucionales}
+\label{section:arte:arqu:cnn}
 
 Las redes neuronales convolucionales (llamadas usualmente CNN, por su nombre en inglés \textit{\textbf{C}onvolutional \textbf{N}eural \textbf{N}etworks}) son un tipo de redes neuronales que deben su nombre a la operación matemática de convolución que realizan. Esta operación consiste en aplicar a una matriz de entrada multidimensional, un filtro o kernel también multidimensional y obtener una salida, también denominada mapa de características. En la Figura \ref{fig:cnn1} podemos ver una representación gráfica de esta operación para un ejemplo de 2 dimensiones. 
 
@@ -226,6 +227,8 @@ Es en este ámbito dónde las redes neuronales convolucionales pueden ser de gra
 
 
 \subsubsection{Redes neuronales recurrentes}
+\label{section:arte:arqu:rnn}
+
 Otro de los modelos usualmente usados en tareas de Procesamiento del Lenguaje Natural son las redes neuronales recurrentes, (llamadas usualmente RNN, por su nombre en inglés \textit{\textbf{R}ecurrent \textbf{N}eural \textbf{N}etworks}). Hasta ahora todos los modelos de redes neuronales que hemos citado funcionaban siempre en una dirección, las neuronas de una capa anterior producían una salida que era la encargada de activar las neuronas de la capa posterior. En las redes recurrentes veremos que las salidas de una neurona en una capa posterior pueden tener una conexión con una neurona de una capa anterior. Esto crea una especie de \textbf{memoria} que nos permite modificar la respuesta de la red en función de los datos que se hayan procesado anteriormente (incluso reaccionar con datos que lleguen posteriormente).
 
 \begin{figure}[!ht]
