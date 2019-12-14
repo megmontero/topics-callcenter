@@ -85,22 +85,22 @@
 \contentsline {section}{\numberline {7.5}Inyector: simulador de tiempo real}{100}{section.7.5}% 
 \contentsline {chapter}{\numberline {8}Capa de servicio}{101}{chapter.8}% 
 \contentsline {section}{\numberline {8.1}Carga y modelo}{101}{section.8.1}% 
-\contentsline {section}{\numberline {8.2}Visualizaciones}{101}{section.8.2}% 
-\contentsline {subsection}{\numberline {8.2.1}Monitorizaci\IeC {\'o}n}{101}{subsection.8.2.1}% 
-\contentsline {subsection}{\numberline {8.2.2}Sistema}{101}{subsection.8.2.2}% 
-\contentsline {section}{\numberline {8.3}Alarmado}{101}{section.8.3}% 
-\contentsline {chapter}{\numberline {9}Despliegue en contenedores}{103}{chapter.9}% 
-\contentsline {section}{\numberline {9.1}Servicios \textit {Kafka Streams}}{105}{section.9.1}% 
-\contentsline {section}{\numberline {9.2}Servicios \textit {Tensorflow Serving}}{109}{section.9.2}% 
-\contentsline {section}{\numberline {9.3}Monitorizaci\IeC {\'o}n}{113}{section.9.3}% 
-\contentsline {subsection}{\numberline {9.3.1}Logstash}{113}{subsection.9.3.1}% 
-\contentsline {subsection}{\numberline {9.3.2}Metricbeat}{116}{subsection.9.3.2}% 
-\contentsline {section}{\numberline {9.4}S2I}{119}{section.9.4}% 
-\contentsline {subsection}{\numberline {9.4.1}\textit {Kafka Streams}}{120}{subsection.9.4.1}% 
-\contentsline {subsection}{\numberline {9.4.2}\textit {Tensorflow Serving}}{121}{subsection.9.4.2}% 
-\contentsline {part}{IV\hspace {1em}Conclusiones: mantenimiento y futuros trabajos }{123}{part.4}% 
-\contentsline {chapter}{\numberline {10}DevOps}{125}{chapter.10}% 
-\contentsline {section}{\numberline {10.1}Introducci\IeC {\'o}n DevOps}{125}{section.10.1}% 
-\contentsline {section}{\numberline {10.2}Degradaci\IeC {\'o}n del modelo}{125}{section.10.2}% 
-\contentsline {section}{\numberline {10.3}Integraci\IeC {\'o}n y despliegue continuos}{126}{section.10.3}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{126}{section.10.3}% 
+\contentsline {section}{\numberline {8.2}Visualizaciones}{110}{section.8.2}% 
+\contentsline {subsection}{\numberline {8.2.1}Monitorizaci\IeC {\'o}n}{110}{subsection.8.2.1}% 
+\contentsline {subsection}{\numberline {8.2.2}Sistema}{110}{subsection.8.2.2}% 
+\contentsline {section}{\numberline {8.3}Alarmado}{110}{section.8.3}% 
+\contentsline {chapter}{\numberline {9}Despliegue en contenedores}{111}{chapter.9}% 
+\contentsline {section}{\numberline {9.1}Servicios \textit {Kafka Streams}}{113}{section.9.1}% 
+\contentsline {section}{\numberline {9.2}Servicios \textit {Tensorflow Serving}}{117}{section.9.2}% 
+\contentsline {section}{\numberline {9.3}Monitorizaci\IeC {\'o}n}{121}{section.9.3}% 
+\contentsline {subsection}{\numberline {9.3.1}Logstash}{121}{subsection.9.3.1}% 
+\contentsline {subsection}{\numberline {9.3.2}Metricbeat}{124}{subsection.9.3.2}% 
+\contentsline {section}{\numberline {9.4}S2I}{127}{section.9.4}% 
+\contentsline {subsection}{\numberline {9.4.1}\textit {Kafka Streams}}{128}{subsection.9.4.1}% 
+\contentsline {subsection}{\numberline {9.4.2}\textit {Tensorflow Serving}}{129}{subsection.9.4.2}% 
+\contentsline {part}{IV\hspace {1em}Conclusiones: mantenimiento y futuros trabajos }{131}{part.4}% 
+\contentsline {chapter}{\numberline {10}DevOps}{133}{chapter.10}% 
+\contentsline {section}{\numberline {10.1}Introducci\IeC {\'o}n DevOps}{133}{section.10.1}% 
+\contentsline {section}{\numberline {10.2}Degradaci\IeC {\'o}n del modelo/ \textit {Feedback} continuo}{135}{section.10.2}% 
+\contentsline {section}{\numberline {10.3}Integraci\IeC {\'o}n y despliegue continuos}{136}{section.10.3}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{139}{section.10.3}% 

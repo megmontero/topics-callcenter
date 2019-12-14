@@ -1,0 +1,86 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{filter} \PYG{o}{\PYGZob{}}
+    \PYG{k}{if} \PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}jmx\PYGZdq{}} \PYG{k}{in} \PYG{o}{[}\PYG{n}{tags}\PYG{o}{])\PYGZob{}}
+
+        \PYG{n}{mutate}\PYG{o}{\PYGZob{}}
+            \PYG{n}{add\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}[period][ms]\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}\PYGZob{}[metricset][period]\PYGZcb{}\PYGZdq{}} \PYG{o}{\PYGZcb{}}
+            \PYG{n}{split} \PYG{o}{=\PYGZgt{}} \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}[service][address]\PYGZdq{}}\PYG{o}{,} \PYG{l+s+s2}{\PYGZdq{}:\PYGZdq{}}\PYG{o}{]}
+            \PYG{n}{add\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}service\PYGZus{}short\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}\PYGZob{}[service][address][0]\PYGZcb{}\PYGZdq{}} \PYG{o}{\PYGZcb{}}
+        \PYG{o}{\PYGZcb{}}
+
+        \PYG{k}{if} \PYG{o}{([}\PYG{n}{jolokia}\PYG{o}{][}\PYG{n}{jolokia\PYGZus{}metrics}\PYG{o}{][}\PYG{n}{uptime}\PYG{o}{])\PYGZob{}}
+            \PYG{n}{mutate}\PYG{o}{\PYGZob{}}
+                \PYG{n}{add\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}[uptime][ms]\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}\PYGZob{}[jolokia][jolokia\PYGZus{}metrics][uptime]\PYGZcb{}\PYGZdq{}}\PYG{o}{\PYGZcb{}}
+            \PYG{o}{\PYGZcb{}}
+        \PYG{o}{\PYGZcb{}}
+
+        \PYG{k}{if} \PYG{o}{([}\PYG{n}{jolokia}\PYG{o}{][}\PYG{n}{jolokia\PYGZus{}metrics}\PYG{o}{][}\PYG{n}{process}\PYG{o}{\PYGZhy{}}\PYG{n}{rate}\PYG{o}{])\PYGZob{}}
+            \PYG{n}{mutate}\PYG{o}{\PYGZob{}}
+                \PYG{n}{add\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}[process][rate]\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}\PYGZob{}[jolokia][jolokia\PYGZus{}metrics][process\PYGZhy{}rate]\PYGZcb{}\PYGZdq{}}\PYG{o}{\PYGZcb{}}
+                \PYG{n}{add\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}[process][latency][avg][ms]\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}\PYGZob{}[jolokia][jolokia\PYGZus{}metrics][process\PYGZhy{}latency\PYGZhy{}avg]\PYGZcb{}\PYGZdq{}}\PYG{o}{\PYGZcb{}}
+            \PYG{o}{\PYGZcb{}}
+            \PYG{n}{dissect} \PYG{o}{\PYGZob{}}
+                \PYG{n}{mapping} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}
+                    \PYG{l+s+s2}{\PYGZdq{}[jolokia][jolokia\PYGZus{}metrics][mbean]\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}\PYGZob{}\PYGZcb{}=\PYGZpc{}\PYGZob{}kstream\PYGZcb{}\PYGZhy{}\PYGZpc{}\PYGZob{}\PYGZcb{}\PYGZhy{}\PYGZpc{}\PYGZob{}thread\PYGZcb{},\PYGZpc{}\PYGZob{}\PYGZcb{}\PYGZdq{}}
+                \PYG{o}{\PYGZcb{}}
+            \PYG{o}{\PYGZcb{}}
+            \PYG{k}{if} \PYG{o}{([}\PYG{n}{jolokia}\PYG{o}{][}\PYG{n}{jolokia\PYGZus{}metrics}\PYG{o}{][}\PYG{n}{process}\PYG{o}{\PYGZhy{}}\PYG{n}{latency}\PYG{o}{\PYGZhy{}}\PYG{n}{max}\PYG{o}{])\PYGZob{}}
+                \PYG{n}{mutate}\PYG{o}{\PYGZob{}}
+                    \PYG{n}{add\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}[process][latency][max][ms]\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}\PYGZob{}[jolokia][jolokia\PYGZus{}metrics][process\PYGZhy{}latency\PYGZhy{}max]\PYGZcb{}\PYGZdq{}}\PYG{o}{\PYGZcb{}}
+                \PYG{o}{\PYGZcb{}}
+            \PYG{o}{\PYGZcb{}}
+
+        \PYG{o}{\PYGZcb{}}
+
+        \PYG{n}{mutate}\PYG{o}{\PYGZob{}}
+            \PYG{n}{remove\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}event\PYGZdq{}}\PYG{o}{,} \PYG{l+s+s2}{\PYGZdq{}host\PYGZdq{}}\PYG{o}{,} \PYG{l+s+s2}{\PYGZdq{}@version\PYGZdq{}}\PYG{o}{,} \PYG{l+s+s2}{\PYGZdq{}ecs\PYGZdq{}}\PYG{o}{,} \PYG{l+s+s2}{\PYGZdq{}metricset\PYGZdq{}}\PYG{o}{,} \PYG{l+s+s2}{\PYGZdq{}jolokia\PYGZdq{}}\PYG{o}{]}
+            \PYG{n}{rename} \PYG{o}{=\PYGZgt{}} \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}service\PYGZus{}short\PYGZdq{}}\PYG{o}{,} \PYG{l+s+s2}{\PYGZdq{}service\PYGZdq{}} \PYG{o}{]}
+        \PYG{o}{\PYGZcb{}}
+
+    \PYG{o}{\PYGZcb{}}
+
+    \PYG{k}{if} \PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}tf\PYGZdq{}} \PYG{k}{in} \PYG{o}{[}\PYG{n}{tags}\PYG{o}{])\PYGZob{}}
+        \PYG{n}{grok} \PYG{o}{\PYGZob{}}
+            \PYG{n}{match} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}message\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}:tensorflow:cc:saved\PYGZus{}model:load\PYGZus{}attempt\PYGZus{}count\PYGZob{}model\PYGZus{}path=\PYGZbs{}\PYGZdq{}\PYGZpc{}\PYGZob{}DATA\PYGZcb{}\PYGZbs{}\PYGZdq{}\PYGZbs{},status=\PYGZbs{}\PYGZdq{}\PYGZpc{}\PYGZob{}DATA:status\PYGZcb{}\PYGZbs{}\PYGZdq{}\PYGZcb{}\PYGZdq{}} \PYG{o}{\PYGZcb{}}
+        \PYG{o}{\PYGZcb{}}
+        \PYG{n}{grok} \PYG{o}{\PYGZob{}}
+            \PYG{n}{match} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}message\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}:tensorflow:core:graph\PYGZus{}run\PYGZus{}time\PYGZus{}usecs\PYGZus{}histogram\PYGZus{}sum\PYGZob{}\PYGZcb{}\PYGZbs{}s\PYGZpc{}\PYGZob{}NUMBER\PYGZus{}SCI:tf\PYGZus{}total\PYGZus{}usecs\PYGZcb{}\PYGZdq{}}\PYG{o}{\PYGZcb{}}
+            \PYG{n}{pattern\PYGZus{}definitions} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}NUMBER\PYGZus{}SCI\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}\PYGZob{}NUMBER\PYGZcb{}(e\PYGZpc{}\PYGZob{}NUMBER\PYGZcb{})?\PYGZdq{}}\PYG{o}{\PYGZcb{}}
+
+        \PYG{o}{\PYGZcb{}}
+        \PYG{n}{grok} \PYG{o}{\PYGZob{}}
+            \PYG{n}{match} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}message\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}:tensorflow:core:graph\PYGZus{}run\PYGZus{}time\PYGZus{}usecs\PYGZus{}histogram\PYGZus{}count\PYGZob{}\PYGZcb{}\PYGZbs{}s\PYGZpc{}\PYGZob{}NUMBER\PYGZus{}SCI:total\PYGZus{}calls\PYGZcb{}\PYGZdq{}}\PYG{o}{\PYGZcb{}}
+            \PYG{n}{pattern\PYGZus{}definitions} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}NUMBER\PYGZus{}SCI\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}\PYGZpc{}\PYGZob{}NUMBER\PYGZcb{}(e\PYGZpc{}\PYGZob{}NUMBER\PYGZcb{})?\PYGZdq{}}\PYG{o}{\PYGZcb{}}
+
+        \PYG{o}{\PYGZcb{}}
+
+        \PYG{n}{mutate}\PYG{o}{\PYGZob{}}
+            \PYG{n}{remove\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}message\PYGZdq{}}\PYG{o}{,} \PYG{l+s+s2}{\PYGZdq{}@version\PYGZdq{}}\PYG{o}{]}
+            \PYG{n}{convert} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}tf\PYGZus{}total\PYGZus{}usecs\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}float\PYGZdq{}}
+                \PYG{l+s+s2}{\PYGZdq{}total\PYGZus{}calls\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}integer\PYGZdq{}}
+                \PYG{o}{\PYGZcb{}}
+            \PYG{n}{add\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}service\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}tf\PYGZhy{}bajafactura\PYGZdq{}} \PYG{o}{\PYGZcb{}}
+        \PYG{o}{\PYGZcb{}}
+
+        \PYG{n}{ruby} \PYG{o}{\PYGZob{}}
+                \PYG{n}{code} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}event.set(\PYGZsq{}[process][latency][avg][ms]\PYGZsq{}, (event.get(\PYGZsq{}tf\PYGZus{}total\PYGZus{}usecs\PYGZsq{}) / (event.get(\PYGZsq{}total\PYGZus{}calls\PYGZsq{})) /1000).round)\PYGZdq{}}
+                \PYG{n}{remove\PYGZus{}field} \PYG{o}{=\PYGZgt{}} \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}tf\PYGZus{}total\PYGZus{}usecs\PYGZdq{}}\PYG{o}{]}
+        \PYG{o}{\PYGZcb{}}
+
+        \PYG{n}{mutate}\PYG{o}{\PYGZob{}}
+            \PYG{n}{rename} \PYG{o}{=\PYGZgt{}} \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}total\PYGZus{}calls\PYGZdq{}}\PYG{o}{,}\PYG{l+s+s2}{\PYGZdq{}[process][total]\PYGZdq{}} \PYG{o}{]}
+        \PYG{o}{\PYGZcb{}}
+    \PYG{o}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}kafka\PYGZdq{}} \PYG{k}{in} \PYG{o}{[}\PYG{n}{tags}\PYG{o}{])\PYGZob{}}
+            \PYG{n}{ruby} \PYG{o}{\PYGZob{}}
+                \PYG{n}{code} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}hash = event.to\PYGZus{}hash}
+\PYG{l+s+s2}{                         hash.each do |k,v|}
+\PYG{l+s+s2}{                                 if v == nil}
+\PYG{l+s+s2}{                                         event.remove(k)}
+\PYG{l+s+s2}{                                 end}
+\PYG{l+s+s2}{                         end\PYGZdq{}}
+            \PYG{o}{\PYGZcb{}}
+    \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

@@ -57,6 +57,13 @@ Jeffrey Dean and Sanjay Ghemawat.
   Systems Design \& Implementation - Volume 6}, OSDI'04, pages 10--10,
   Berkeley, CA, USA, 2004. USENIX Association.
 
+\bibitem{devops}
+RRHH Digital.
+\newblock ¿qué es devops y que debes saber para convertirte en ello?
+\newblock
+  \url{http://www.rrhhdigital.com/secciones/tecnologia-e-innovacion/136859/Que-es-DevOps-y-que-debes-saber-para-convertirte-en-ello}.
+\newblock Último acceso 2019-12-13.
+
 \bibitem{lambdakappa}
 Jesús Domínguez.
 \newblock De lambda a kappa: evolución de las arquitecturas big data.
