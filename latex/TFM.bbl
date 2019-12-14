@@ -1,5 +1,12 @@
 \begin{thebibliography}{10}
 
+\bibitem{rnnej2}
+O.~Abdelwahab and A.~Elmaghraby.
+\newblock Deep learning based vs. markov chain based text generation for cross
+  domain adaptation for sentiment classification.
+\newblock In {\em 2018 IEEE International Conference on Information Reuse and
+  Integration (IRI)}, pages 252--255, Julio 2018.
+
 \bibitem{temariodeeplearning}
 Toni Lozano~Bagén Anna Bosch~Rué, Jordi Casas~Roma.
 \newblock {\em Deep Learning Principios y Fundamentos}.
@@ -73,6 +80,14 @@ Yoav Goldberg.
 \newblock {\em Neural network methods in natural language processing}.
 \newblock Morgan \& Claypool publishers, 2017.
 
+\bibitem{call3}
+Wenming Guo, Lihong Liang, and Tianlang Deng.
+\newblock Topic mining for call centers based on a-lda and distributed
+  computing.
+\newblock {\em Concurrency and Computation: Practice and Experience},
+  29(3):e3776, 2017.
+\newblock e3776 CPE-15-0479.R1.
+
 \bibitem{hope_lieder_resheff_2017}
 Tom Hope, Itay Lieder, and Yehezkel~S. Resheff.
 \newblock {\em Learning TensorFlow: a guide to building deep learning systems}.
@@ -91,6 +106,27 @@ Douglas Laney.
 \newblock {3D} data management: Controlling data volume, velocity, and variety.
 \newblock Technical report, META Group, February 2001.
 
+\bibitem{doc2vec}
+Quoc Le and Tomas Mikolov.
+\newblock Distributed representations of sentences and documents.
+\newblock In {\em Proceedings of the 31st International Conference on
+  International Conference on Machine Learning - Volume 32}, pages
+  II--1188--II--1196. JMLR.org, 2014.
+
+\bibitem{call2}
+P.~{Li}, Y.~{Yan}, {Chaomin Wang}, {Zhijie Ren}, {Pengyu Cong}, {Huixin Wang},
+  and {Junlan Feng}.
+\newblock Customer voice sensor: A comprehensive opinion mining system for call
+  center conversation.
+\newblock In {\em 2016 IEEE International Conference on Cloud Computing and Big
+  Data Analysis (ICCCBDA)}, pages 324--329, Julio 2016.
+
+\bibitem{rnnej1}
+F.~Long, K.~Zhou, and W.~Ou.
+\newblock Sentiment analysis of text based on bidirectional lstm with
+  multi-head attention.
+\newblock {\em IEEE Access}, 7:141960--141969, 2019.
+
 \bibitem{Mahmood2013LiteratureSO}
 A.~S. M.~Ashique Mahmood.
 \newblock {\em Literature Survey on Topic Modeling}.
@@ -106,6 +142,17 @@ Nathan Marz.
 \bibitem{word2vec}
 Tomas Mikolov, Kai Chen, Greg~S. Corrado, and Jeffrey Dean.
 \newblock Efficient estimation of word representations in vector space, 2013.
+
+\bibitem{monitoringstreams}
+Confluent.~Streams Monitoring.
+\newblock \url{https://docs.confluent.io/current/streams/monitoring.html}.
+\newblock Último acceso 2019-12-09.
+
+\bibitem{call4}
+M.~Morchid, R.~Dufour, M.~Bouallegue, and G.~Linarès.
+\newblock Author-topic based representation of call-center conversations.
+\newblock In {\em 2014 IEEE Spoken Language Technology Workshop (SLT)}, pages
+  218--223, Diciembre 2014.
 
 \bibitem{cap}
 Syed~Sadat Nazrul.
@@ -145,6 +192,13 @@ Michal Rosen-Zvi, Thomas Griffiths, Mark Steyvers, and Padhraic Smyth.
   Artificial Intelligence}, UAI '04, pages 487--494, Arlington, Virginia,
   United States, 2004. AUAI Press.
 
+\bibitem{call1}
+Jullian Sepúlveda.
+\newblock {\em Metodolgía para estimar el impacto que generan las llamadas
+  realizadas en un call center en la fuga de los clientes utilizando técnicas
+  de text mining}.
+\newblock PhD thesis, Universidad de Chile, 2015.
+
 \bibitem{tfserving}
 Tensorflow Serving.
 \newblock \url{https://www.tensorflow.org/tfx/guide/serving}.
@@ -164,5 +218,16 @@ A.~M. Turing.
 Kevin Warwick and Huma Shah.
 \newblock {\em Turings imitation game: conversations with the unknown}.
 \newblock Cambridge Univeristy Press, 2016.
+
+\bibitem{rnnej3}
+Yonghui Wu, Mike Schuster, Zhifeng Chen, Quoc~V. Le, Mohammad Norouzi, Wolfgang
+  Macherey, Maxim Krikun, Yuan Cao, Qin Gao, Klaus Macherey, Jeff Klingner,
+  Apurva Shah, Melvin Johnson, Xiaobing Liu, Lukasz Kaiser, Stephan Gouws,
+  Yoshikiyo Kato, Taku Kudo, Hideto Kazawa, Keith Stevens, George Kurian,
+  Nishant Patil, Wei Wang, Cliff Young, Jason Smith, Jason Riesa, Alex Rudnick,
+  Oriol Vinyals, Greg Corrado, Macduff Hughes, and Jeffrey Dean.
+\newblock Google's neural machine translation system: Bridging the gap between
+  human and machine translation.
+\newblock {\em CoRR}, abs/1609.08144, 2016.
 
 \end{thebibliography}

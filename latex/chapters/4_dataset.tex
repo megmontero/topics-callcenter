@@ -1,8 +1,13 @@
 \chapter{Conjunto de datos}
 \label{chapter:dataset}
-El primer paso, cuando nos enfrentamos a un problema de minería de datos, es comprender el conjunto de datos con el que contamos y ver si se adapta a nuestras necesidades. En este caso, al tratarse de un proyecto que se desarrolla dentro de una empresa, en caso de duda, tenemos la posibilidad de acudir a las áreas dueñas del dato para solicitarle información adicional sobre el mismo. 
+El primer paso, cuando nos enfrentamos a un problema de minería de datos, es comprender el conjunto de datos con el que contamos y ver si se adapta a nuestras necesidades. En este caso, al tratarse de un proyecto que se desarrolla dentro de una empresa, en caso de duda, hemos tenido la posibilidad de acudir a las áreas dueñas del dato para solicitarle información adicional sobre el mismo. 
 
-En este capítulo abordaremos todos los aspectos relacionados con los datos que hemos ido recopilando. En la sección \ref{section:data:ana}, describiremos el conjunto datos con el trabajaremos, posteriormente en la sección \ref{section:data:repr} veremos las diferentes formas que usaremos para representar los datos que alimentarán los modelos que construiremos en los siguientes capítulos y, por último, en la sección \ref{section:data:evol} echaremos la vista atrás para ver el conjunto de datos inicial y poder apreciar la evolución que ha ido sufriendo.
+
+En este capítulo abordaremos todos los aspectos relacionados con los datos que hemos ido recopilando durante el desarrollo del proyecto. En la sección \ref{section:data:ana}, describiremos el conjunto datos con el que hemos estado trabajando, posteriormente en la sección \ref{section:data:repr} veremos las diferentes formas que hemos usado para representar los datos que alimentan los modelos que hemos construido (y que describiremos en los siguientes capítulos) y, por último, en la sección \ref{section:data:evol} echaremos la vista atrás para ver el conjunto de datos inicial y poder apreciar la evolución que ha ido sufriendo.
+
+
+Otro de los objetivos del capítulo es poner de manifiesto la importancia de la parte quizás menos ``glamurosa'' que está presente en todos los proyectos de minería de datos. Cuando exponemos un proyecto de minería de datos siempre ponemos el foco en los modelos creados, sin embargo, el grueso del trabajo en los proyectos de este tipo se encuentra en recopilar datos, entenderlos y preprocesarlos (o limpiarlos). Todo este proceso es el que intentaremos describir en las siguientes páginas.
+
 
 En el código expuesto a lo largo del capítulo se hará referencia a un módulo llamado \textit{mgmtfm}, se trata de de un módulo en \textit{Python} creado especialmente para este proyecto y que nos permitirá realizar las tareas necesarias con un nivel de abstracción mayor. 
 
@@ -349,8 +354,10 @@ llamadas dependiendo de su \textit{IVR}.
     Vemos que en este caso tenemos categorizadas un número bastante considerable de
 llamadas que pueden ser muy útiles para entrenar nuestros modelos.
 
-    \hypertarget{anuxe1lisis-preliminar}{%
-\subsection{Análisis preliminar}\label{anuxe1lisis-preliminar}}
+
+\subsection{Análisis preliminar}
+\label{section:data:ana:pre}
+
 
     En esta sección vamos a hacer un pequeño estudio sobre los datos
 anteriormente extraídos y sobre la distribución de las llamadas. Lo haremos tanto con los datos de las
@@ -442,12 +449,14 @@ términos más usados:
     \label{fig:cloudmoni}
 \end{figure}    
     
-    Las palabras que nos encontramos parece que están claramente
+ En la figura \ref{fig:cloudmoni}, vemos como las palabras que nos encontramos parece que están claramente
 relacionadas con el servicio que se puede dar en el \textit{call center} como
 ``línea móvil'', ``número teléfono'', ``contrato'', ``oferta'',
 ``servicio'', etc.
 
 A continuación vamos a representar la nube de palabras centrándonos en cada categoría de las monitorizaciones para apreciar las diferencias entre ellas. 
+
+\vspace{0.5cm}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{13}{\boxspacing}
@@ -464,7 +473,7 @@ A continuación vamos a representar la nube de palabras centrándonos en cada ca
     
     \begin{figure}[!ht]
     	\centering
-    	\adjustimage{max size={0.8\linewidth}}{images/data/cloudmoni_consulta}
+    	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_consulta}
     	
     	
         \caption{Nube de palabras para la categoría consulta de las monitorizaciones}
@@ -474,7 +483,7 @@ A continuación vamos a representar la nube de palabras centrándonos en cada ca
     
     \begin{figure}[!ht]
         	\centering
-        	\adjustimage{max size={0.8\linewidth}}{images/data/cloudmoni_contratar}
+        	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_contratar}
         	
         	
             \caption{Nube de palabras para la categoría contratar de las monitorizaciones}
@@ -484,7 +493,7 @@ A continuación vamos a representar la nube de palabras centrándonos en cada ca
    
        \begin{figure}[!ht]
            	\centering
-           	\adjustimage{max size={0.8\linewidth}}{images/data/cloudmoni_info}
+           	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_info}
            	
            	
                \caption{Nube de palabras para la categoría informacion de las monitorizaciones}
@@ -493,7 +502,7 @@ A continuación vamos a representar la nube de palabras centrándonos en cada ca
               
        \begin{figure}[!ht]
            	\centering
-           	\adjustimage{max size={0.8\linewidth}}{images/data/cloudmoni_queja}
+           	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_queja}
            	
            	
                \caption{Nube de palabras para la categoría queja de las monitorizaciones}
@@ -503,7 +512,7 @@ A continuación vamos a representar la nube de palabras centrándonos en cada ca
     
     \begin{figure}[!ht]
                	\centering
-               	\adjustimage{max size={0.8\linewidth}}{images/data/cloudmoni_tram}
+               	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_tram}
                	
                	
                    \caption{Nube de palabras para la categoría trámite de las monitorizaciones}
@@ -511,7 +520,7 @@ A continuación vamos a representar la nube de palabras centrándonos en cada ca
  \end{figure}     
     
    
-    Vemos que efectivamente hay variaciones en las nubes de palabras de las
+   En las figuras \ref{fig:cloudmoni_consulta}, \ref{fig:cloudmoni_contratar}, \ref{fig:cloudmoni_info}, \ref{fig:cloudmoni_queja} y \ref{fig:cloudmoni_tram} vemos que efectivamente hay variaciones en las nubes de palabras de las
 categorías, por destacar algunas:
 \begin{itemize}
 \item Vemos ``línea'' y ``número'' como palabras muy representativas a la hora
@@ -520,14 +529,15 @@ de contratar.
 \item Vemos ``reclamación'' y ``incidencia'' como palabras presentes en la
 categoría queja.
 
-\item En trámite nos aparece por ejemplo ``dar baja''.
+\item En trámite nos aparece, por ejemplo, el bigrama ``dar baja''.
 \end{itemize}
-    \hypertarget{ivr}{%
-\subsubsection{IVR}\label{ivr}}
 
-    Realizamos el mismo ejercicio para las categorizaciones con IVR. En
-primer lugar mostramos su distribución:
+\FloatBarrier
+\subsubsection{IVR}
 
+    Realizamos el mismo ejercicio para las categorizaciones de las llamadas mediante \textit{IVR}. En
+primer lugar mostramos su distribución tanto en formato tabular como en gráfico de tartas:
+\vspace{0.5cm}
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{14}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -560,9 +570,11 @@ Resto          108746
     \label{fig:distivr}
 \end{figure}
     
-    De nuevo cargamos los tokens, para no tener que repetir el procesamiento
-y mostramos la nube de palabras.
+    De nuevo, como hicimos con las llamadas monitorizadas, cargamos los \textit{tokens} de las llamadas que poseen \textit{IVR}, con el objetivo de ahorrar tiempo de procesamiento.
+    
+ Una vez tenemos los \textit{tokens}, mostramos la nube de palabras.
 
+\vspace{0.5cm}
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{15}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -587,8 +599,12 @@ Found 47,990 unique tokens.
 \end{figure} 
 
     
-    Vemos que aparecen más términos diferentes al aumentar la cantidad de llamadas.
-Mostramos la nube de palabras por categorías.
+    Vemos que aparecen más términos diferentes al aumentar la cantidad de la muestra, recordemos que el porcentaje de llamadas con \textit{IVR} sobre el total era mucho mayor. 
+    
+    
+Para cada categoría de \textit{IVR} mostramos la nube de palabras obtenida.
+
+\vspace{0.5cm}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{16}{\boxspacing}
@@ -603,7 +619,7 @@ Mostramos la nube de palabras por categorías.
 
 \begin{figure}[!ht]
 	\centering
-	\adjustimage{max size={0.8\linewidth}}{images/data/cloudivr_ave}
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_ave}
     \caption{Nube de palabras de la categoría avería de \textit{IVR}}
     \label{fig:cloudivr_ave}
 \end{figure} 
@@ -611,51 +627,45 @@ Mostramos la nube de palabras por categorías.
 
 \begin{figure}[!ht]
 	\centering
-	\adjustimage{max size={0.8\linewidth}}{images/data/cloudivr_baja}
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_baja}
     \caption{Nube de palabras de la categoría baja de \textit{IVR}}
     \label{fig:cloudivr_baja}
 \end{figure} 
 
 \begin{figure}[!ht]
 	\centering
-	\adjustimage{max size={0.8\linewidth}}{images/data/cloudivr_comercial}
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_comercial}
     \caption{Nube de palabras de la categoría comercial de \textit{IVR}}
     \label{fig:cloudivr_comercial}
 \end{figure} 
 
 \begin{figure}[!ht]
 	\centering
-	\adjustimage{max size={0.8\linewidth}}{images/data/cloudivr_factura}
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_factura}
     \caption{Nube de palabras de la categoría factura de \textit{IVR}}
     \label{fig:cloudivr_factura}
 \end{figure} 
 
 \begin{figure}[!ht]
 	\centering
-	\adjustimage{max size={0.8\linewidth}}{images/data/cloudivr_nrec}
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_nrec}
     \caption{Nube de palabras de la categoría ``no reconocido'' de \textit{IVR}}
     \label{fig:cloudivr_nrec}
 \end{figure} 
 
 \begin{figure}[!ht]
 	\centering
-	\adjustimage{max size={0.8\linewidth}}{images/data/cloudivr_recl}
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_recl}
     \caption{Nube de palabras de la categoría reclamación de \textit{IVR}}
     \label{fig:cloudivr_recl}
 \end{figure} 
 
-\begin{figure}[!ht]
-	\centering
-	\adjustimage{max size={0.8\linewidth}}{images/data/cloudivr_resto}
-    \caption{Nube de palabras de la categoría resto de \textit{IVR}}
-    \label{fig:cloudivr_resto}
-\end{figure} 
 
   
   
   
     
-    Las categorías aparecen algo más difusas en este caso que en el de
+En las figuras  \ref{fig:cloudivr_ave}, \ref{fig:cloudivr_baja}, \ref{fig:cloudivr_comercial}, \ref{fig:cloudivr_factura}, \ref{fig:cloudivr_nrec}, \ref{fig:cloudivr_recl} y \ref{fig:cloudivr_resto}  observamos que las  categorías aparecen algo más difusas en este caso que en el de
 monitorizaciones. Pero sí nos encontramos por ejemplo con:
 \begin{itemize}
 \item  ``dar baja'' en la categoría baja.
@@ -668,17 +678,29 @@ monitorizaciones. Pero sí nos encontramos por ejemplo con:
 
 \end{itemize}
 
+\FloatBarrier
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_resto}
+    \caption{Nube de palabras de la categoría resto de \textit{IVR}}
+    \label{fig:cloudivr_resto}
+\end{figure} 
 
 
-\clearpage
-\section{Representación de transcripciones}
+Así pues, tras el estudio de ambos tipos de clasificaciones, podemos concluir que la calidad que presentan las etiquetas de monitorizaciones es mayor y la clasificación es menos difusa; sin embargo el número de muestras se presenta \textit{a priori} insuficiente para ser usado en modelos de \textit{deep learning}. 
+
+Por estos motivos, en el capítulo \ref{chapter:super} los modelos supervisados serán entrenados usando las etiquetas \textit{IVR}, en un futuro, cuando los datos de monitorizaciones crezcan se realizará el mismo ejercicio con las etiquetas de monitorizaciones. 
+
+
+\section{Preprocesado y Representación de transcripciones}
 \label{section:data:repr}
 
-Todos los modelos que se presentarán a lo largo de esta sección utilizan como entrada las transcripciones de las llamadas recibidas al \textit{call-center}. En esta primera sección nos centraremos en los diferentes métodos que hemos escogido para representar estas llamadas.
 
-En esta primera sección identificaremos los diferentes métodos que vamos a usar para representar las transcripciones. 
 
-Los primeros pasos una vez recibimos la transcripción, y en cualquier proceso de minería de datos, es limpiar los datos. Para ello, como ya hemos visto en apartados anteriores, realizaremos un proceso de \textit{tokenizado} que constará de los siguientes pasos: 
+Todos los modelos que se presentarán a lo largo de esta sección utilizan como entrada las transcripciones de las llamadas recibidas al \textit{call-center}. En esta sección nos centraremos en los diferentes métodos que hemos escogido para representar estas llamadas.
+
+
+Los primeros pasos una vez recibimos la transcripción, y en cualquier proceso de minería de datos, es limpiar los datos. Para ello, como ya hemos visto en apartados anteriores, realizaremos un proceso de \textit{\textbf{tokenizado}} que constará de los siguientes pasos: 
 
 \begin{itemize}
 \item Eliminar caracteres especiales. 
@@ -689,38 +711,49 @@ Los primeros pasos una vez recibimos la transcripción, y en cualquier proceso d
 \item Eliminar palabras comunes que no aporten información.
 \end{itemize}
 
-A partir de la lista de palabras obtenida por este proceso realizaremos las representaciones que detallaremos a continuación. 
+A partir de la lista de \textit{tokens} obtenida por este proceso hemos creado un diccionario, en el que cada \textit{token} tiene asignado un identificador numérico, obteniendo de este modo una \textbf{secuencia numérica} para cada llamada. 
+
+Los modelos que presentaremos en la siguiente sección necesitan que esta secuencia numérica sea de una longitud fija por lo que usualmente limitaremos las secuencias a 866 elementos, ya que el 99\% de las llamadas poseen un tamaño menor. En el caso de  que las llamadas posean una longitud menor usaremos \textit{left padding}, es decir, rellenaremos con 0 por la izquierda la secuencia hasta los 866 elementos.
+
+
+Las secuencias obtenidas ya podrían alimentar la mayoría de nuestros modelos, utilizando \textit{one hot enconding}, sin embargo hemos decidido añadir algunas transformaciones que nos permitan entender el contexto de las palabras.  
 
 \subsection{Word2vec}
 Como ya vimos en el estado del arte, una de las representaciones que más popularidad ha tomado  en los últimos tiempos es \textit{word2vec} y esta será la entrada de la mayoría de nuestros modelos supervisados. Nuestro objetivo es huir de representaciones que traten a las palabras como elementos aislados y poder disponer de una representación que cuente con el contexto de la palabra.
 
-Entre las dos representaciones de \textit{word2vec} hemos optado por \textit{SKIP-Gram} y hemos realizado pruebas entrenando el \textit{embedding} con datos de \textit{Wikipedia} y con nuestro corpus. Finalmente hemos optado por usar el modelo entrenado con nuestro corpus.
+Entre las dos representaciones de \textit{word2vec} hemos optado por \textit{SKIP-Gram} y hemos realizado pruebas entrenando el \textit{embedding} con datos de \textit{Wikipedia} y con nuestro corpus. Finalmente hemos optado por usar el modelo entrenado con nuestro corpus. Esto se debe a que tenemos un corpus lo suficientemente extenso y, de este modo, el modelo aprende las palabras según el contexto de las llamadas al \textit{call-center} y no en un contexto general como puede ser \textit{Wikipedia}.
 
- 
+En el caso de nuestros modelos, el \textit{embedding}, es decir el paso a la representación de cada palabra como un vector de números reales, se realizará dentro del mismo modelo en una primera capa. Esta capa no será entrenada durante la fase de entrenamiento del modelo y consistirá de una matriz que contendrá por cada identificador de \textit{token} un vector representando las palabras. 
 
+
+Usualmente utilizaremos una dimensionalidad de 150 en los vectores que representaran cada palabra.
 
 \subsection{Doc2vec}
 
+Otra opción para representar nuestras transcripciones que hemos abordado, tanto para modelos supervisados como no supervisados, es la de representar el documento completo como un único vector huyendo de la representación secuencial.
+
+Una de las posibilidades de obtener un único vector consiste en hacer la media de los vectores \textit{word2vec} obtenidos, pero en 2014 Le y Mikolov \cite{doc2vec} propusieron un nuevo método denominado \textit{doc2vec} que aplica un procedimiento muy similar a \textit{word2vec}, pero a los documentos en lugar de las palabras. De hecho posee dos implementaciones \textit{``Paragraph Vector - Distributed Memory''} (\textit{PV-DM}) y \textit{``Paragraph Vector - Distributed Bag of Words''} (\textit{PV-DBOW}) que son análogas a las implementaciones \textit{CBOW} y \textit{SKIP-Gram} de \textit{Word2Vec} que ya vimos en el estado del arte.
+
+
+Nosotros hemos optado por entrenar un modelo \textit{doc2vec} con nuestro corpus \textit{tokenizado},  usando el modelo \textit{PV-DBOW} (análogo a \textit{SKIP-Gram}), para obtener un vector por transcripción con 500 dimensiones.
 
 
 \section{Evolución del conjunto de datos}
 \label{section:data:evol}
 
-Durante este apartado hemos realizado un análisis del conjunto de datos más completo que teníamos hasta la fecha, no obstante, el proceso para conseguir y entender este conjunto de datos no ha sido una tarea trivial sino que se ha tratado de un proceso iterativo en el que ha sido necesario involucrar a varias áreas y extraer información de diversas fuentes de datos de la compañía. Estos datos, como veremos de nuevo en el siguiente capítulo, nos han llevado a crear modelos poco eficientes que nos han situado otra vez en el punto de partida. 
+Durante este capítulo hemos realizado un análisis del conjunto de datos más completo que teníamos hasta la fecha, no obstante, el proceso para conseguir y entender este conjunto de datos no ha sido una tarea trivial, sino que se ha tratado de un proceso iterativo en el que ha sido necesario involucrar a varias áreas y extraer información de diversas fuentes de datos de la compañía. El hecho de disponer de datos incompletos o de baja calidad nos han llevado a crear modelos poco eficientes que nos han situado otra vez en el punto de partida (como volveremos a ver en el siguiente capítulo). 
 
-Aunque el hecho de volver a la fase de recopilación y entendimiento de los datos es algo que ya preveíamos cuando presentamos el estándar \textbf{\textit{CRISP-DM}} (apartado \ref{section:intro:planificacion}) vamos a utilizar esta sección una breve muestra de los análisis iniciales para que pueda compararse con el análisis final y quede patente la evolución de los datos.
+Aunque el hecho de volver a la fase de recopilación y entendimiento de los datos es algo que ya preveíamos cuando presentamos el estándar \textbf{\textit{CRISP-DM}} (apartado \ref{section:intro:planificacion}),  vamos a describir en esta sección una breve muestra de los análisis iniciales para que pueda compararse con el análisis final y quede patente la evolución de los datos.
 
 Al igual que en el apartado anterior expondremos los datos como si se tratara de un \textit{notebook}, pero en este caso mostraremos unicamente las sentencias claves (ignorando por ejemplos los \textit{imports}). 
 
-Todo el análisis que se muestra en este apartado fue realizado en \textit{PySpark}. Veremos a lo largo de este apartado tanto los datos iniciales de las llamadas como las primeras etiquetas que obtuvimos de las mismas. 
-
-Debido a la cantidad de llamadas con categoría \textit{IVR} que poseemos, esta será la etiqueta que utilizaremos para la mayoría de nuestros modelos supervisados que veremos en el apartado siguiente. 
+Todo el análisis que se muestra en este apartado fue realizado utilizando \textit{PySpark} sobre un clúster de \textit{Hadoop} \textit{Hortonworks}.
 
 \subsection{Las llamadas}
 
 
 
-Este análisis fue realizado en \textit{PySpark} y el primer paso, como es obvio, fue cargar los datos en un \textit{dataframe} y comprobar la estructura del mismo: 
+El primer paso, como es obvio, fue cargar los datos en un \textit{dataframe} y comprobar la estructura del mismo: 
 
 
 \vspace{0.5cm}
@@ -741,7 +774,7 @@ DataFrame[co\_llamada\_verint: string, id\_descarga:string,nu\_telefono\_actuaci
 \end{tcolorbox}
 
 
-De los campos listados unicamente es factible extraer información del texto de la llamada (``raw\_verint''). El siguiente paso fue comprobar el número de llamadas que no contenían una transcripción nula. Además reparticionamos los datos y los dejamos en caché para realizar un análisis más eficiente: 
+De los campos listados unicamente era factible extraer información del texto de la llamada (``raw\_verint''). El siguiente paso fue comprobar el número de llamadas que no contenían una transcripción nula. Además reparticionamos los datos y los dejamos en caché para realizar un análisis más eficiente: 
 
 \vspace{0.5cm}
 
@@ -790,7 +823,7 @@ Y eliminamos las \textit{Stopwords} en español usando el paquete \textit{ntlk}.
     \end{Verbatim}
     \end{tcolorbox}
     
-       Volvemos a unir las palabras de la lista (ahora sin las \textit{stopwords}) para mostrar una nube de  palabras más frecuentes
+       Volvimos a unir las palabras de la lista (ahora sin las \textit{stopwords}) para mostrar una nube de  palabras más frecuentes
     
         \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{5}{\boxspacing}
@@ -812,9 +845,9 @@ Y eliminamos las \textit{Stopwords} en español usando el paquete \textit{ntlk}.
                     \end{figure}
               
               
-Como podemos observar en la nube de palabras obtenida, el resultado no fue el esperado. Las llamadas que aparecían no eran significante y entre ellas existían muchas malas  transcripciones. A partir de aquí intentamos abordar distintas aproximaciones que nos permitieran poder extraer algo de valor de los datos.
+Como podemos observar en la nube de palabras obtenida (figura \ref{fig:wordcloudmalo1}), el resultado no fue el esperado. Las llamadas que aparecían no eran significante y entre ellas existían muchas malas  transcripciones. A partir de aquí intentamos abordar distintas aproximaciones que nos permitieran poder extraer algo de valor de los datos.
 
-Un ejemplo de estas aproximaciones fue \textit{taggear} las palabras en  función de su categoría gramatical para quedarnos solo con una lista de candidatos. Para hacerlo de un modo eficiente de manera distribuida en promer lugar creamos un diccionario con las categorías y la raíz de las palabras: 
+Un ejemplo de estas aproximaciones fue \textit{taggear} las palabras en  función de su categoría gramatical para quedarnos solo con una lista de candidatos. Para hacerlo de un modo eficiente de manera distribuida, en primer lugar creamos un diccionario con las categorías y la raíz de las palabras: 
 
           
 \vspace{0.5cm}
@@ -835,7 +868,7 @@ Un ejemplo de estas aproximaciones fue \textit{taggear} las palabras en  funció
           \end{Verbatim}
           \end{tcolorbox}
           
-             Una vez que hemos filtrado nos quedamos unicamente con la raíz de las palabras que sean
+             Una vez que habíamos realizado el filtrado nos quedamos unicamente con la raíz de las palabras que fueran
           verbos o nombres.
           
           \vspace{0.5cm}
@@ -887,12 +920,14 @@ Un ejemplo de estas aproximaciones fue \textit{taggear} las palabras en  funció
               
               
               
- Observando que los resultados no mejoran con esta propuesta, tampoco lo hicieron con la obtención de N-Gramas, y en el capítulo siguiente veremos que la creación de los modelos sobre este conjunto de datos nos llevó a volver a buscar y entender nuevos datos.
+ Observamos que los resultados mostrados en la figura \ref{fig:wordcloudmalo2} no mejoran con esta propuesta, tampoco lo hicieron con la obtención de N-Gramas, y en el capítulo siguiente veremos que la creación de los modelos sobre este conjunto de datos nos llevó a volver a buscar y entender nuevos datos.
  
  
  \subsection{Las etiquetas}
  
- Tras ver la pobre calidad de los datos iniciales, intentamos encontrar algún dato que nos sirviera para etiquetar las llamadas pensando que podrían ser de utilidad para un modelo supervisado. Una posibilidad era revisar e etiquetar llamadas manualmente, pero dado la cantidad de datos que podían ser necesarios para entrenar un modelo supervisado convertía esta posibilidad en inviable.
+ Tras ver la pobre calidad de los datos iniciales, intentamos encontrar algún dato que nos sirviera para etiquetar las llamadas pensando que podrían ser de utilidad para un modelo supervisado. 
+ 
+ Una posibilidad era revisar e etiquetar llamadas manualmente, pero dado la cantidad de datos que podían ser necesarios para entrenar un modelo supervisado convertía esta posibilidad en inviable.
  
  A continuación vamos a analizar los primeros datos que obtuvimos de etiquetas. En primer lugar cargamos las etiquetas y los datos originales:  
  \vspace{0.5cm}
@@ -930,7 +965,7 @@ La etiqueta se corresponde con el dato \textit{no\_destino\_pa} del \textit{data
   \end{Verbatim}
   \end{tcolorbox}
  
-El primer problema que nos encontramos es el gran número de etiquetas que aparecen sin tener una jerarquía clara, además aunque intentamos agruparlas, su clasificación (sin un conocimiento previo de los datos) se trataba de una tarea bastante complicada. 
+El primer problema que nos encontramos es el gran número de etiquetas que aparecen sin tener una jerarquía clara, además aunque intentamos agruparlas, su clasificación (sin un conocimiento previo de los datos) se antojaba una tarea bastante compleja. 
 
 No obstante, mirando el número de llamadas con etiqueta: 
 
@@ -952,7 +987,7 @@ No obstante, mirando el número de llamadas con etiqueta:
 Llamadas etiquetadas disponibles : 170,844
     \end{Verbatim}
 
- Nos dimos cuenta que teníamos un gran número de llamadas etiquetadas, convirtiéndose en un dato muy interesante para una clasificación supervisada. Como hemos visto en este capítulo este dato agrupado ha sido uno de los usados en el \textit{dataset} definitivo.
+ Nos dimos cuenta que teníamos un gran número de llamadas etiquetadas, convirtiéndose en un dato muy interesante para una clasificación supervisada. Como hemos visto en la sección \ref{section:data:ana:pre} de este mismo capítulo este dato agrupado ha sido uno de los usados en el \textit{dataset} definitivo.
  
  
  
