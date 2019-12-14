@@ -27,49 +27,50 @@ Warning--entry type for "kstreams" isn't style-file defined
 --line 387 of file referencias.bib
 Warning--entry type for "tfserving" isn't style-file defined
 --line 392 of file referencias.bib
-Warning--I didn't find a database entry for "serving"
+Warning--entry type for "devops" isn't style-file defined
+--line 412 of file referencias.bib
 Warning--I didn't find a database entry for "apendi:contenedores"
 Warning--empty publisher in temariodeeplearning
 Warning--empty publisher in Mahmood2013LiteratureSO
-You've used 36 entries,
+You've used 37 entries,
             2118 wiz_defined-function locations,
-            707 strings with 10446 characters,
-and the built_in function-call counts, 12386 in all, are:
-= -- 1205
-> -- 626
+            711 strings with 10672 characters,
+and the built_in function-call counts, 12599 in all, are:
+= -- 1226
+> -- 633
 < -- 10
-+ -- 252
-- -- 214
-* -- 782
-:= -- 2034
-add.period$ -- 122
-call.type$ -- 36
-change.case$ -- 206
++ -- 255
+- -- 216
+* -- 787
+:= -- 2070
+add.period$ -- 126
+call.type$ -- 37
+change.case$ -- 210
 chr.to.int$ -- 0
-cite$ -- 38
-duplicate$ -- 464
-empty$ -- 966
-format.name$ -- 214
-if$ -- 2653
+cite$ -- 39
+duplicate$ -- 471
+empty$ -- 988
+format.name$ -- 216
+if$ -- 2700
 int.to.chr$ -- 0
-int.to.str$ -- 36
+int.to.str$ -- 37
 missing$ -- 29
-newline$ -- 190
-num.names$ -- 72
-pop$ -- 296
+newline$ -- 196
+num.names$ -- 74
+pop$ -- 306
 preamble$ -- 1
-purify$ -- 179
+purify$ -- 182
 quote$ -- 0
-skip$ -- 349
+skip$ -- 354
 stack$ -- 0
-substring$ -- 597
-swap$ -- 122
+substring$ -- 602
+swap$ -- 123
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 130
+type$ -- 134
 warning$ -- 2
-while$ -- 105
-width$ -- 38
-write$ -- 408
+while$ -- 107
+width$ -- 39
+write$ -- 419
 (There was 1 error message)
