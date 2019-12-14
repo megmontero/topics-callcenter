@@ -1,10 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2019/Arch Linux)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: TFM.aux
-White space in argument---line 230 of file TFM.aux
- : \citation{Kafka
- :                 Streamsmonitoring}
-I'm skipping whatever remains of this command
 The style file: plain.bst
 Database file #1: referencias.bib
 Warning--entry type for "colahblog" isn't style-file defined
@@ -21,64 +17,59 @@ Warning--entry type for "cap" isn't style-file defined
 --line 236 of file referencias.bib
 Warning--entry type for "kappa" isn't style-file defined
 --line 245 of file referencias.bib
-You're missing a field name---line 254 of file referencias.bib
+You're missing a field name---line 376 of file referencias.bib
  : @book{kafka, 
  :              , title={Designing Event-Driven Systems}, publisher={O'Reilly}, author={Ben Stopford}, year={2018}}
 I'm skipping whatever remains of this entry
+Warning--entry type for "monitoringstreams" isn't style-file defined
+--line 380 of file referencias.bib
 Warning--entry type for "kstreams" isn't style-file defined
---line 265 of file referencias.bib
+--line 387 of file referencias.bib
 Warning--entry type for "tfserving" isn't style-file defined
---line 270 of file referencias.bib
-Warning--I didn't find a database entry for "rnnej1"
-Warning--I didn't find a database entry for "rnnej2"
-Warning--I didn't find a database entry for "rnnej3"
-Warning--I didn't find a database entry for "call1"
-Warning--I didn't find a database entry for "call2"
-Warning--I didn't find a database entry for "call3"
-Warning--I didn't find a database entry for "call4"
+--line 392 of file referencias.bib
 Warning--I didn't find a database entry for "serving"
 Warning--I didn't find a database entry for "apendi:contenedores"
 Warning--empty publisher in temariodeeplearning
 Warning--empty publisher in Mahmood2013LiteratureSO
-You've used 27 entries,
+You've used 36 entries,
             2118 wiz_defined-function locations,
-            666 strings with 8226 characters,
-and the built_in function-call counts, 8029 in all, are:
-= -- 805
-> -- 331
-< -- 6
-+ -- 135
-- -- 106
-* -- 439
-:= -- 1321
-add.period$ -- 93
-call.type$ -- 27
-change.case$ -- 127
+            707 strings with 10446 characters,
+and the built_in function-call counts, 12386 in all, are:
+= -- 1205
+> -- 626
+< -- 10
++ -- 252
+- -- 214
+* -- 782
+:= -- 2034
+add.period$ -- 122
+call.type$ -- 36
+change.case$ -- 206
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 326
-empty$ -- 685
-format.name$ -- 106
-if$ -- 1745
+cite$ -- 38
+duplicate$ -- 464
+empty$ -- 966
+format.name$ -- 214
+if$ -- 2653
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 22
-newline$ -- 144
-num.names$ -- 54
-pop$ -- 205
+int.to.str$ -- 36
+missing$ -- 29
+newline$ -- 190
+num.names$ -- 72
+pop$ -- 296
 preamble$ -- 1
-purify$ -- 107
+purify$ -- 179
 quote$ -- 0
-skip$ -- 238
+skip$ -- 349
 stack$ -- 0
-substring$ -- 360
-swap$ -- 75
-text.length$ -- 6
+substring$ -- 597
+swap$ -- 122
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 94
+type$ -- 130
 warning$ -- 2
-while$ -- 76
-width$ -- 29
-write$ -- 308
-(There were 2 error messages)
+while$ -- 105
+width$ -- 38
+write$ -- 408
+(There was 1 error message)

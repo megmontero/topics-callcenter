@@ -18,6 +18,7 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
+\usepackage[section]{placeins}
 
 
 
@@ -383,7 +384,7 @@
 \input{0_titulo.tex}
 \newpage
 % abstract
-\input{chapters/0_resumen.tex}
+\input{chapters/00_resumen.tex}
 \newpage
 
 \pagestyle{fancy}
@@ -442,17 +443,17 @@
 
 % capitulos del documento
 \part{Introdución: objetivos, estado del arte y arquitectura global}
-\input{chapters/1_introduccion.tex}
-\input{chapters/2_estadoarte.tex}
-\input{chapters/3_arquitectura.tex}
+\input{chapters/01_introduccion.tex}
+\input{chapters/02_estadoarte.tex}
+\input{chapters/03_arquitectura.tex}
 
 \part{Modelado: datos, modelos y optimizaciones}
-\input{chapters/4_dataset.tex}
+\input{chapters/04_dataset.tex}
 
 %\input{chapters/5_modelos.tex}
+\input{chapters/05_nosupervisados.tex}
 
-
-\input{chapters/6_supervisados.tex}
+\input{chapters/06_supervisados.tex}
 
 
 
@@ -460,12 +461,14 @@
 
 
 \part{Explotación: procesamiento, visualización y alarmados}
-\input{chapters/6_produccion.tex}
-\input{chapters/7_servicio.tex}
-\input{chapters/8_contenedores.tex}
+\input{chapters/07_produccion.tex}
+\input{chapters/08_servicio.tex}
+\input{chapters/09_contenedores.tex}
 
 
 \part{Conclusiones: mantenimiento y futuros trabajos }
+\input{chapters/10_mantenimiento.tex}
+
 
 % bibliografia
 \addcontentsline{toc}{chapter}{Bibliografía}
