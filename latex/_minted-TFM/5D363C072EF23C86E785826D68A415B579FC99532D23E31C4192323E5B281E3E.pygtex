@@ -1,0 +1,37 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{input} \PYG{o}{\PYGZob{}}
+  \PYG{n}{beats} \PYG{o}{\PYGZob{}}
+    \PYG{n}{id} \PYG{o}{=\PYGZgt{}} \PYG{n}{jmx\PYGZus{}5010}
+    \PYG{n}{port} \PYG{o}{=\PYGZgt{}} \PYG{l+m+mi}{5010}
+    \PYG{n}{client\PYGZus{}inactivity\PYGZus{}timeout} \PYG{o}{=\PYGZgt{}} \PYG{l+m+mi}{86400}
+  \PYG{o}{\PYGZcb{}}
+
+  \PYG{n}{kafka} \PYG{o}{\PYGZob{}}
+        \PYG{n}{id} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}topic\PYGZus{}calls\PYGZus{}topic\PYGZdq{}}
+        \PYG{n}{topics} \PYG{o}{=\PYGZgt{}} \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}TOPICS.CALLS\PYGZdq{}}\PYG{o}{]}
+        \PYG{n}{sasl\PYGZus{}jaas\PYGZus{}config} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}org.apache.kafka.common.security.scram.ScramLoginModule required username=\PYGZsq{}topic\PYGZus{}user\PYGZsq{}  password=\PYGZsq{}topic\PYGZus{}pwd\PYGZsq{};\PYGZdq{}}
+        \PYG{n}{security\PYGZus{}protocol} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}SASL\PYGZus{}PLAINTEXT\PYGZdq{}}
+        \PYG{n}{sasl\PYGZus{}mechanism} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}SCRAM\PYGZhy{}SHA\PYGZhy{}256\PYGZdq{}}
+        \PYG{n}{client\PYGZus{}id} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}logstash\PYGZdq{}}
+        \PYG{n}{bootstrap\PYGZus{}servers} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}kfk1,kfk2,kfk3\PYGZdq{}}
+        \PYG{n}{codec} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}json\PYGZdq{}}
+        \PYG{n}{group\PYGZus{}id} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}logstash\PYGZdq{}}
+        \PYG{n}{tags} \PYG{o}{=\PYGZgt{}} \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}kafka\PYGZdq{}}\PYG{o}{]}
+
+    \PYG{o}{\PYGZcb{}}
+
+
+    \PYG{n}{http\PYGZus{}poller} \PYG{o}{\PYGZob{}}
+        \PYG{n}{urls} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}
+            \PYG{n}{metrics} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}http://tf\PYGZhy{}baja\PYGZhy{}model:8501/monitoring/metrics\PYGZdq{}}
+        \PYG{o}{\PYGZcb{}}
+        \PYG{n}{request\PYGZus{}timeout} \PYG{o}{=\PYGZgt{}} \PYG{l+m+mi}{60}
+        \PYG{n}{schedule} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}every\PYGZdq{}} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}1m\PYGZdq{}} \PYG{o}{\PYGZcb{}}
+        \PYG{n}{tags} \PYG{o}{=\PYGZgt{}} \PYG{o}{[}\PYG{l+s+s2}{\PYGZdq{}tf\PYGZdq{}}\PYG{o}{]}
+        \PYG{n}{codec} \PYG{o}{=\PYGZgt{}} \PYG{l+s+s2}{\PYGZdq{}plain\PYGZdq{}}
+  \PYG{o}{\PYGZcb{}}
+
+
+\PYG{o}{\PYGZcb{}} 	
+ 	
+\end{Verbatim}

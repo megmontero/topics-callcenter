@@ -1,11 +1,11 @@
 \chapter{DevOps}
 \label{chapter:mant}
 
-Una vez hemos llegado a esta parte del documento ya hemos realizado el análisis completo de los datos y hemos dejado el modelo en un entorno productivo clasificando llamadas en \textit{real-time}; sin embargo sería muy atrevido dar el proyecto por finalizado.
+Una vez hemos llegado a esta parte del documento, ya hemos realizado el análisis completo de los datos y hemos dejado el modelo en un entorno productivo clasificando llamadas en \textit{real-time}; sin embargo sería muy atrevido dar el proyecto por finalizado.
 
-Probablemente surgirán nuevos datos, dispondremos de nuevas etiquetas, nuestro \textit{software} se degradará, crearemos nuevos y mejores modelos con ideas más o menos brillantes, etc. Este universo cambiante provocará a que se modificarán y/o se crearán nuevos \textit{software} y modelos con bastante frecuencia que será necesario llevar de nuevo a producción.  
+Probablemente surgirán nuevos datos, dispondremos de nuevas etiquetas, nuestro \textit{software} se degradará, crearemos nuevos y mejores modelos con ideas más o menos brillantes, etc. Este universo cambiante provocará que se modifiquen y/o se creen nuevos \textit{software} y modelos con bastante frecuencia y será necesario llevar de nuevo a producción.  
 
-Este capítulo tiene objetivo definir los mecanismos y la metodología que hemos establecido para poder reaccionar con gran agilidad ante el cambio, algo esencial hoy en día. En la sección \ref{section:mant:devops} haremos una introducción a la metodología DevOps que acuñaremos en nuestro proyecto, posteriormente pondremos foco en algunos aspectos importantes: La degradación del modelo (sección \ref{section:mant:efi}) y la integración y el despliegue continuos (sección \ref{section:mant:cicd}).
+Este capítulo tiene como objetivo definir los mecanismos y la metodología que hemos establecido para poder reaccionar con gran agilidad ante el cambio, algo esencial hoy en día. En la sección \ref{section:mant:devops} haremos una introducción a la metodología DevOps que acuñaremos en nuestro proyecto, posteriormente pondremos foco en algunos aspectos importantes: La degradación del modelo (sección \ref{section:mant:efi}) y la integración y el despliegue continuos (sección \ref{section:mant:cicd}).
 
 
 \section{Introducción DevOps}
@@ -34,7 +34,7 @@ En la figura \ref{fig:devops} podemos ver las ocho fases de un flujo DevOps que 
 
 \item \textbf{Construir}: La fases anteriores no han aportado nada nuevo respecto al desarrollo de \textit{software} tradicional. En esta fase se procede al compilado del código que normalmente es iniciado por algún automatismo al realizar un \textit{push} al repositorio de control de versiones.
 
-\item \textbf{Probar}: Una vez se ha compilado el \textit{software} lo ideal es realizar pruebas sobre el mismo en un entorno de pruebas para garantizar el funcionamiento del mismo.
+\item \textbf{Probar}: Una vez se ha compilado el \textit{software} lo ideal es realizar pruebas sobre el mismo en un entorno de pruebas para garantizar su  funcionamiento.
 
 \item \textbf{Versionar}: Es el punto en el que decimos que una compilación está lista para implantarse en producción. 
 
@@ -63,33 +63,46 @@ En nuestro caso hemos ayudado a crear un flujo DevOps dando los siguientes pasos
 
 \section{Degradación del modelo/ \textit{Feedback} continuo}
 \label{section:mant:efi}
-Aunque el \textit{software} desarrollado también es propenso de degradarse con el paso del tiempo, si hay algo que tenemos seguro que se va a degradar en este universo cambiante es el modelo. Nuestro modelo se alimenta con las transcripciones de los clientes que están basadas en el servicio que ofrecemos en cada momento, en las inquietudes de nuestros clientes y otros muchos factores externos que pueden influir en la temática de las conversaciones que recibimos.
+Aunque el \textit{software} desarrollado también es propenso a degradarse con el paso del tiempo, si hay algo que tenemos seguro que se va a degradar en este universo cambiante, es el modelo. Nuestro modelo se alimenta con las transcripciones de los clientes que están basadas en el servicio que ofrecemos en cada momento, en las inquietudes de nuestros clientes y otros muchos factores externos que pueden influir en la temática de las conversaciones que recibimos.
 
-La certeza en la degradación de nuestro modelo hace que tengamos monitorizar constantemente el rendimiento del mismo, en el caso del modelo supervisado que hemos llevado a producción, nos lleva a seguir testándolo constantemente introduciendo en el flujo llamadas de control etiquetadas para medir su eficiencia.  
+La certeza en la degradación de nuestro modelo hace que tengamos que monitorizar constantemente el rendimiento del mismo, en el caso del modelo supervisado que hemos llevado a producción, nos lleva a seguir testándolo constantemente introduciendo en el flujo llamadas de control etiquetadas para medir su eficiencia.  
 
 
 
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/mant/cmeficiencia}
+	\includegraphics[width=1\textwidth]{images/mant/cmeficiencia}
 	\caption{Cuadro de mando eficiencia}
 	\label{fig:cmeficiencia}
 \end{figure}
 
-Para ello, hemos creado un cuadro de mando que nos permita observar la eficiencia del modelo a lo largo del tiempo. Podemos observarlo en la figura \ref{fig:cmeficiencia}, en el vemos para distintos periodos de tiempo (último mes, último día y última semana) como se comporta la precisión de nuestro modelo en función de las llamadas de control recibidas. Además vemos una gráfica con la evolución de la misma para el periodo temporal deseado. Actualmente la precisión se mantiene constante, pero es algo que podría variar a lo largo del tiempo.
+Para ello, hemos creado un cuadro de mando que nos permite observar la eficiencia del modelo a lo largo del tiempo. Podemos observarlo en la figura \ref{fig:cmeficiencia}, en él vemos para distintos periodos de tiempo (último mes, último día y última semana), cómo se comporta la precisión de nuestro modelo en función de las llamadas de control recibidas. Además vemos una gráfica con la evolución de la misma para el periodo temporal deseado. Actualmente la precisión se mantiene constante, pero es algo que podría variar a lo largo del tiempo.
 
 La información del cuadro de mando puede consultarse de manera pro-activa o podríamos crear alarmas para reaccionar de una manera reactiva. 
 
-Además de este cuadro de mando, como ya vimos en el capítulo \ref{chapter:servicio} dedicado a la capa de servicio, disponemos de otros cuadros de mando que nos darán un \textit{feedback} continuo de nuestro sistema.
+
+Otra opción que nos permite la capa de servicio creada es investigar las llamadas que hayan sido etiquetadas erróneamente para verificar si, efectivamente, se ha producido un error en la predicción.
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/mant/cm-error.png}
+	\caption{\textit{Discover} predicción errónea}
+	\label{fig:cm-error}
+\end{figure}
+
+En la figura \ref{fig:cm-error} podemos ver un ejemplo de este caso. En la parte superior, vemos como filtramos por llamadas que hayan sido clasificadas como ``Factura'', pero que no hayamos realizado una predicción correcta. En este caso podemos ver que aunque la clase de control sea ``Avería'', el texto de la llamada sí esta tratando un tema de una ``Factura''.  Este tipo de casos ponen de manifiesto que nuestro sistema esta clasificando bien las llamadas, en algunas ocasiones, aunque la etiqueta de control diga lo contrario. Además nos lleva a, en siguientes iteraciones, buscar etiquetas de mayor calidad.
+
+Además de la información presentada, disponemos de otros cuadros de mando, como ya vimos en el capítulo \ref{chapter:servicio} dedicado a la capa de servicio, que nos darán un \textit{feedback} continuo de nuestro sistema.
 
 
 \section{Integración y despliegue continuos}
 \label{section:mant:cicd}
 
-Aunque se trata de un proyecto desarrollado de maneara individual y en un único entorno hemos querido simular lo que sería un flujo de integración y despliegue continuos.
+Aunque se trata de un proyecto desarrollado de manera individual y en un único entorno, hemos querido simular lo que sería un flujo de integración y despliegue continuos.
 
-Nuestro objetivo es que cuando realicemos un \textit{push} en la rama \textit{master} de nuestro repositorio de código se inicie el compilado del mismo de manera automática junto con un conjunto de pruebas unitarias que verifiquen el funcionamiento de cada uno de los servicios. Una vez creado el fichero binario se enviará a Openshift para que, a partir del mecanismo S2I visto en la sesión \ref{section:cont:s2i}, despliegue de manera automática nuestros servicios.
+Nuestro objetivo es que cuando realicemos un \textit{push} en la rama \textit{master} de nuestro repositorio de código, se inicie el compilado del mismo de manera automática junto con un conjunto de pruebas unitarias que verifiquen el funcionamiento de cada uno de los servicios. Una vez creado el fichero binario, se enviará a Openshift para que, a partir del mecanismo S2I visto en la sesión \ref{section:cont:s2i}, despliegue de manera automática nuestros servicios.
 
 El servidor de automatización que nos permitirá orquestar todo este flujo será \textit{Jenkins}. \textit{Jenkins} será accionado mediante un \textit{webhook} cada vez se realice un cambio en la rama \textit{master} de nuestro repositorio de \textit{Bitbucket} y a partir de entonces ejecutará el \textit{pipeline} definido.
 
@@ -179,15 +192,15 @@ En el \textit{pipeline}  podemos ver que en primer lugar definimos las variables
 
 \item \textit{\textbf{Build}} (línea 24): Realizamos la compilación de nuestro proyecto (omitimos los tests) realizados anteriormente.
 
-\item \textit{\textbf{Login Openshift}} (línea 35):Nos logamos en la plataforma Openshift.
+\item \textit{\textbf{Login Openshift}} (línea 35): Nos logamos en la plataforma Openshift.
 
 \item \textit{\textbf{Build Docker Image}} (línea 44): Construimos la imagen \textit{docker} con nuestra aplicación.
 
-\item \textit{\textbf{post}} (línea 59): Una vez hemos finalizado el \textit{pipeline} enviamos un \textit{mail} informando del estado del mismo. 
+\item \textit{\textbf{Post}} (línea 59): Una vez hemos finalizado el \textit{pipeline}, enviamos un \textit{mail} informando del estado del mismo. 
  
 \end{itemize}
 
 
-En la imagen \ref{fig:flujocicd} podemos ver como sería el flujo completo desde que hacemos un \textit{push} a la rama \textit{master} hasta el despliegue definitivo en producción. 
+En la imagen \ref{fig:flujocicd} podemos ver cómo sería el flujo completo desde que hacemos un \textit{push} a la rama \textit{master} hasta el despliegue definitivo en producción. 
 
 
