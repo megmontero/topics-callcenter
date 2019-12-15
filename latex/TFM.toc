@@ -112,4 +112,6 @@
 \contentsline {section}{\numberline {10.1}Introducci\IeC {\'o}n DevOps}{147}{section.10.1}% 
 \contentsline {section}{\numberline {10.2}Degradaci\IeC {\'o}n del modelo/ \textit {Feedback} continuo}{149}{section.10.2}% 
 \contentsline {section}{\numberline {10.3}Integraci\IeC {\'o}n y despliegue continuos}{151}{section.10.3}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{154}{section.10.3}% 
+\contentsline {chapter}{Ap\IeC {\'e}ndices}{155}{section*.7}% 
+\contentsline {chapter}{\numberline {A}M\IeC {\'o}dulo Python mgmtfm}{157}{Appendix.1.Alph1}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{180}{Appendix.1.Alph1}% 
