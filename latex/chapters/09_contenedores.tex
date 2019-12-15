@@ -559,7 +559,15 @@ Todos los parámetros vistos en este despliegue deberían resultarnos ya familia
 \label{section:cont:s2i}
 Los despliegues en \textit{OCP} descritos a lo largo de este capítulo podrían clasificarse en dos: Aquellos que son imágenes oficiales con alguna configuración propia y aquellos que contienen código fuente o binarios propios. En el primer grupo se encuentra el agente \textit{Metricbeat} y \textit{Logstash} (aunque ejecuta código propio no está almacenado en la imagen), mientras que al segundo grupo pertenecen los microservicios de \textit{Kafka Streams} y el modelo de \textit{Tensorflow Serving}. A partir de ahora, nos centraremos en este segundo grupo.
 
-La opción más simple para tener una imagen con nuestro código sería generarlas de forma individual y subirlas al repositorio de imágenes de la plataforma, sin embargo esta tarea se volvería algo tediosa conforme el número de servicios crezca, además presentaría dificultades en su mantenimiento y en su integración (como veremos más adelante) con flujos de integración y despliegue continuos. Es por eso que utilizaremos una característica de \textit{OCP} denominada \textit{S2I} (\textit{Sorce to Image}), que nos permitirá a partir de una imagen base (a partir de ahora imagen S2I) generar una nueva imagen personalizada con nuestra aplicación. 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/cont/s2i}
+	\caption{S2I en Openshift}
+	\label{fig:ocp-s2i}
+\end{figure}
+
+La opción más simple para tener una imagen con nuestro código sería generarlas de forma individual y subirlas al repositorio de imágenes de la plataforma, sin embargo esta tarea se volvería algo tediosa conforme el número de servicios crezca, además presentaría dificultades en su mantenimiento y en su integración (como veremos más adelante) con flujos de integración y despliegue continuos. Es por eso que utilizaremos una característica de \textit{OCP} denominada \textit{S2I} (\textit{Sorce to Image}), que nos permitirá a partir de una imagen base (a partir de ahora imagen S2I) generar una nueva imagen personalizada con nuestra aplicación. En la figura \ref{fig:ocp-s2i}.
 
 El proceso de crear la imagen de nuestra aplicación a partir de una imagen S2I y nuestro código o binarios se denomina \textit{Build} y al igual que con la configuración de despliegue para los despliegues \textit{Openshift}, nos proporciona una configuración de \textit{Build} para controlar las versiones y los cambios que se realizan en un mismo tipo de \textit{Build}. A continuación veremos como hemos abordado los casos de \textit{Kafka Streams} y \textit{Tensorflow Serving}.
 
@@ -623,8 +631,8 @@ El proceso de creación de una imagen S2I consta, a grandes rasgos, de los sigui
 
 \begin{itemize}
 \item \textit{Assemble}: Crear los scripts necesarios para una vez recibido los ficheros, colocarlos en la ruta adecuada y construir con ellos la imagen de aplicación. 
-\item \textit{run}: Establecer como debe comportarse la imagen de aplicación.
-\item \textit{usage}: Recopilar el modo de uso de la imagen S2I. 
+\item \textit{Run}: Establecer como debe comportarse la imagen de aplicación.
+\item \textit{Usage}: Recopilar el modo de uso de la imagen S2I. 
 
 \end{itemize}
 

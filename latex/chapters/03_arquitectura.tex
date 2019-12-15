@@ -44,15 +44,18 @@ En nuestro caso, disponemos de todas las llamadas en tiempo real, que nos llegar
 
 
 
+
+En la figura \ref{fig:kappa2} podemos ver la arquitectura global de la solución propuesta. Esta arquitectura consta de dos capas principales. Por un lado, una capa de \textit{streaming} o capa rápida donde se realizará todo el procesamiento en \textit{streaming} de las transcripciones de las llamadas conforme vayan llegando. Por otro lado, una capa de servicio que permite a los usuarios explotar la información procesada en la primera capa. 
+
+
+
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.70\textwidth]{images/arqu/kappa}
+	\includegraphics[width=1\textwidth]{images/arqu/kappa_v1}
 	\caption{Arquitectura Kappa}
 	\label{fig:kappa2}
 \end{figure}
 
-
-En la figura \ref{fig:kappa2} podemos ver la arquitectura global de la solución propuesta. Esta arquitectura consta de dos capas principales. Por un lado, una capa de \textit{streaming} o capa rápida donde se realizará todo el procesamiento en \textit{streaming} de las transcripciones de las llamadas conforme vayan llegando. Por otro lado, una capa de servicio que permite a los usuarios explotar la información procesada en la primera capa. 
 
 El \textit{core} de la primera capa será Apache Kafka, que además nos dará la posibilidad de retener los eventos y poder reprocesarlos en caso de error, siendo una solución ideal para arquitecturas Kappa. De hecho Jey Kreps, quien propuso la arquitectura Kappa es el co-fundador de Confluent, la compañía que se encuentra detrás de Apache Kafka. Los detalles de la capa de \textit{streaming} podemos verlos con más detalle en el capítulo \ref{chapter:prod}.
 

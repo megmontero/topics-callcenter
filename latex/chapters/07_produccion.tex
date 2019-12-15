@@ -13,7 +13,7 @@ Este paso que relata el viaje ``del laboratorio a la fábrica'', nos permitirá 
 \end{figure}
 
 
-En la figura \ref{fig:streamlayer} podemos ver un \textit{zoom} de la capa de servicio de nuestra arquitectura que describiremos a lo largo del capítulo. 
+En la figura \ref{fig:streamlayer} podemos ver un \textit{zoom} de la capa de \textit{streaming} de nuestra arquitectura que describiremos a lo largo del capítulo. 
 
 
 
@@ -69,9 +69,9 @@ En la sección anterior decidimos el modelo de arquitectura que vamos a utilizar
 \subsection{Tecnología}
 En el apartado \ref{section:arqu:tecn} hicimos un repaso por las tecnologías usadas en el proyecto, en este punto queremos tratar de profundizar con un poco más de detalle en las tecnologías que nos permitirán desarrollar y desplegar nuestros microservicios. Estas tecnologías son Kafka Streams y Tensorflow Serving.
 
-\subsubsection{\textit{Kafka Streams}}
+\subsubsection{Kafka Streams}
 
-El núcleo de nuestra capa de \textit{Streaming} estará compuesto por microservicios desarrollados mediante 
+El núcleo de nuestra capa de \textit{streaming} estará compuesto por microservicios desarrollados mediante 
  Kafka Streams. Kafka Streams \cite{kstreams} es una librería cliente que nos permite desarrollar aplicaciones y microservicios  cuya entrada y salida sea un bus Kafka. 
  
  Kafka Streams nos permite desarrollar aplicaciones en \textit{Java} (el lenguaje que usaremos) o Scala de una manera sencilla e intuitiva, además, a diferencia de otros \textit{frameworks} de procesamiento en tiempo real, como puede ser Spark Streaming, no tiene necesidad de disponer de un clúster aparte (usa el mismo bus Apache Kafka) lo que simplifica bastante nuestra arquitectura. Además Kafka Streams nos permitirá \textbf{garantizar la escalabilidad y la tolerancia a fallos} de nuestros despliegues. 
