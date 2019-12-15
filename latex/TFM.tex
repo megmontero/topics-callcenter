@@ -17,12 +17,22 @@
 \usepackage{epsfig, amsmath}
 \usepackage{algorithm}
 \usepackage{algorithmic}
+\usepackage{pdfpages}
+\usepackage{etoolbox} % we load it for the workaround
+
+\usepackage[toc,page]{appendix}
 
 \usepackage[section]{placeins}
 
+\usepackage{etoolbox}
+\makeatletter
+\appto{\appendices}{\def\Hy@chapapp{Appendix}}
+\makeatother
 
 
 
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices}
 
 
 
@@ -470,9 +480,27 @@
 \input{chapters/10_mantenimiento.tex}
 
 
+%Apendices
+\begin{appendices}
+\chapter{Módulo Python mgmtfm}
+\includepdf[pages=-]{appendices/mgmtfm.pdf}
+\end{appendices}
+
+
 % bibliografia
 \addcontentsline{toc}{chapter}{Bibliografía}
 \bibliographystyle{plain}
 \bibliography{referencias}
+
+
+%\newpage
+
+%\appendix
+%\addcontentsline{toc}{chapter}{Appendix}
+%\addtocontents{toc}{\protect\contentsline{chapter}{Appendix:}{}}
+%\chapter{mgmpdf}
+%
+
+
 
 \end{document}
