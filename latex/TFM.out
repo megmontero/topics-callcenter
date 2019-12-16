@@ -45,7 +45,7 @@
 \BOOKMARK [2][-]{subsection.4.3.2}{Las etiquetas}{section.4.3}% 45
 \BOOKMARK [0][-]{chapter.5}{Aprendizaje No Supervisado}{part.2}% 46
 \BOOKMARK [1][-]{section.5.1}{LDA}{chapter.5}% 47
-\BOOKMARK [1][-]{section.5.2}{DOC2VEC + clustering}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.2}{Doc2Vec + clustering}{chapter.5}% 48
 \BOOKMARK [1][-]{section.5.3}{Evoluci\363n de los modelos}{chapter.5}% 49
 \BOOKMARK [0][-]{chapter.6}{Aprendizaje supervisado}{part.2}% 50
 \BOOKMARK [1][-]{section.6.1}{Arquitecturas}{chapter.6}% 51
@@ -101,6 +101,4 @@
 \BOOKMARK [1][-]{section.10.1}{Introducci\363n DevOps}{chapter.10}% 101
 \BOOKMARK [1][-]{section.10.2}{Degradaci\363n del modelo/ Feedback continuo}{chapter.10}% 102
 \BOOKMARK [1][-]{section.10.3}{Integraci\363n y despliegue continuos}{chapter.10}% 103
-\BOOKMARK [0][-]{section*.7}{Ap\351ndices}{part.4}% 104
-\BOOKMARK [0][-]{Appendix.1.Alph1}{M\363dulo Python mgmtfm}{part.4}% 105
-\BOOKMARK [0][-]{Appendix.1.Alph1}{Bibliograf\355a}{part.4}% 106
+\BOOKMARK [0][-]{Item.21}{Bibliograf\355a}{part.4}% 104
