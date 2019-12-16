@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.9.23)  15 DEC 2019 23:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.9.23)  16 DEC 2019 12:19
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1845,22 +1845,23 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [104]
 Cap\'{\i }tulo 8.
-<images/serv/servicelayer.png, id=1463, 539.41283pt x 230.3062pt>
-File: images/serv/servicelayer.png Graphic file (type png)
-<use images/serv/servicelayer.png>
-Package pdftex.def Info: images/serv/servicelayer.png  used on input line 9.
-(pdftex.def)             Requested size: 539.4115pt x 230.30562pt.
+<images/serv/servicelayer_v1.png, id=1463, 2007.5pt x 869.2475pt>
+File: images/serv/servicelayer_v1.png Graphic file (type png)
+<use images/serv/servicelayer_v1.png>
+Package pdftex.def Info: images/serv/servicelayer_v1.png  used on input line 9.
+
+(pdftex.def)             Requested size: 2007.49512pt x 869.24538pt.
 [105
 
- <./images/serv/servicelayer.png>]
+ <./images/serv/servicelayer_v1.png>]
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/default-pyg-prefix.pygstyle) (./_minted-TFM/default.pygstyle)
 (./_minted-TFM/5D363C072EF23C86E785826D68A415B579FC99532D23E31C4192323E5B281E3E
 .pygtex
-LaTeX Info: Redefining \. on input line 27.
-LaTeX Info: Redefining \% on input line 27.
+LaTeX Info: Redefining \. on input line 23.
+LaTeX Info: Redefining \% on input line 23.
  [106])
 \openout3 = `TFM.pyg'.
 
@@ -1869,108 +1870,104 @@ LaTeX Info: Redefining \% on input line 27.
 .pygtex
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 3.
-LaTeX Info: Redefining \. on input line 13.
-LaTeX Info: Redefining \% on input line 13.
+LaTeX Info: Redefining \. on input line 8.
+LaTeX Info: Redefining \% on input line 8.
  [107]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 49.
-LaTeX Info: Redefining \% on input line 49.
+LaTeX Info: Redefining \. on input line 44.
+LaTeX Info: Redefining \% on input line 44.
  [108])
-LaTeX Info: Redefining \. on input line 181.
-LaTeX Info: Redefining \% on input line 181.
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
 
 [109]
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/EC111D40050EBE92CA86D556B3ECEAFE79FC99532D23E31C4192323E5B281E3E
-.pygtex)
-LaTeX Info: Redefining \. on input line 228.
-LaTeX Info: Redefining \% on input line 228.
- [110]
+.pygtex
+LaTeX Info: Redefining \. on input line 26.
+LaTeX Info: Redefining \% on input line 26.
+ [110])
+LaTeX Info: Redefining \. on input line 249.
+LaTeX Info: Redefining \% on input line 249.
+ [111]
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/AB0DBF0D3E6598CACCCAAC733BEE98840BC778E762F3CC214DDFC636B320B0BE
 .pygtex
-LaTeX Info: Redefining \. on input line 7.
-LaTeX Info: Redefining \% on input line 7.
- [111]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 50.
-LaTeX Info: Redefining \% on input line 50.
+LaTeX Info: Redefining \. on input line 43.
+LaTeX Info: Redefining \% on input line 43.
  [112]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 94.
-LaTeX Info: Redefining \% on input line 94.
+LaTeX Info: Redefining \. on input line 87.
+LaTeX Info: Redefining \% on input line 87.
  [113])
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/AEA6DBC53DC9FA0B155785B1BD5AF9B30BC778E762F3CC214DDFC636B320B0BE
 .pygtex
-LaTeX Info: Redefining \. on input line 14.
-LaTeX Info: Redefining \% on input line 14.
+LaTeX Info: Redefining \. on input line 8.
+LaTeX Info: Redefining \% on input line 8.
  [114]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 48.
-LaTeX Info: Redefining \% on input line 48.
+LaTeX Info: Redefining \. on input line 39.
+LaTeX Info: Redefining \% on input line 39.
  [115])
-<images/serv/CM-calls.png, id=1517, 1404.74812pt x 712.16063pt>
+LaTeX Info: Redefining \. on input line 465.
+LaTeX Info: Redefining \% on input line 465.
+
+[116]
+<images/serv/CM-calls.png, id=1520, 1404.74812pt x 712.16063pt>
 File: images/serv/CM-calls.png Graphic file (type png)
 <use images/serv/CM-calls.png>
 Package pdftex.def Info: images/serv/CM-calls.png  used on input line 474.
 (pdftex.def)             Requested size: 1404.7447pt x 712.15889pt.
-LaTeX Info: Redefining \. on input line 484.
-LaTeX Info: Redefining \% on input line 484.
-
-[116]
-LaTeX Info: Redefining \. on input line 497.
-LaTeX Info: Redefining \% on input line 497.
+LaTeX Info: Redefining \. on input line 489.
+LaTeX Info: Redefining \% on input line 489.
  [117 <./images/serv/CM-calls.png (PNG copy)>]
-<images/serv/CM-monitoring.png, id=1526, 1404.74812pt x 618.81187pt>
+<images/serv/CM-monitoring.png, id=1525, 1404.74812pt x 618.81187pt>
 File: images/serv/CM-monitoring.png Graphic file (type png)
 <use images/serv/CM-monitoring.png>
 Package pdftex.def Info: images/serv/CM-monitoring.png  used on input line 504.
 
 (pdftex.def)             Requested size: 1404.7447pt x 618.81036pt.
-LaTeX Info: Redefining \. on input line 517.
-LaTeX Info: Redefining \% on input line 517.
+LaTeX Info: Redefining \. on input line 513.
+LaTeX Info: Redefining \% on input line 513.
  [118 <./images/serv/cm-monitoring.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 535.
+LaTeX Info: Redefining \% on input line 535.
+ [119]
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/46B6A5F0D23D5542EE5266E495A4B7C579FC99532D23E31C4192323E5B281E3E
 .pygtex
-LaTeX Info: Redefining \. on input line 6.
-LaTeX Info: Redefining \% on input line 6.
- [119]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 47.
-LaTeX Info: Redefining \% on input line 47.
+LaTeX Info: Redefining \. on input line 37.
+LaTeX Info: Redefining \% on input line 37.
  [120])
-LaTeX Info: Redefining \. on input line 629.
-LaTeX Info: Redefining \% on input line 629.
-
-[121]
-<images/serv/ml-factura.png, id=1545, 1404.74812pt x 599.99156pt>
+LaTeX Info: Redefining \. on input line 618.
+LaTeX Info: Redefining \% on input line 618.
+ [121]
+<images/serv/ml-factura.png, id=1544, 1404.74812pt x 599.99156pt>
 File: images/serv/ml-factura.png Graphic file (type png)
 <use images/serv/ml-factura.png>
 Package pdftex.def Info: images/serv/ml-factura.png  used on input line 634.
 (pdftex.def)             Requested size: 1404.7447pt x 599.9901pt.
-<images/serv/ml-total.png, id=1548, 1404.74812pt x 436.63126pt>
+LaTeX Info: Redefining \. on input line 640.
+LaTeX Info: Redefining \% on input line 640.
+ [122 <./images/serv/ml-factura.png (PNG copy)>]
+<images/serv/ml-total.png, id=1551, 1404.74812pt x 436.63126pt>
 File: images/serv/ml-total.png Graphic file (type png)
 <use images/serv/ml-total.png>
 Package pdftex.def Info: images/serv/ml-total.png  used on input line 644.
 (pdftex.def)             Requested size: 1404.7447pt x 436.63019pt.
-LaTeX Info: Redefining \. on input line 656.
-LaTeX Info: Redefining \% on input line 656.
- [122 <./images/serv/ml-factura.png (PNG copy)>])
+)
 (./chapters/09_contenedores.tex
 LaTeX Info: Redefining \. on input line 3.
 LaTeX Info: Redefining \% on input line 3.
@@ -1983,7 +1980,7 @@ LaTeX Info: Redefining \% on input line 3.
 ]
 Cap\'{\i }tulo 9.
 [125]
-<images/cont/overview.png, id=1567, 772.05511pt x 579.92268pt>
+<images/cont/overview.png, id=1566, 772.05511pt x 579.92268pt>
 File: images/cont/overview.png Graphic file (type png)
 <use images/cont/overview.png>
 Package pdftex.def Info: images/cont/overview.png  used on input line 34.
@@ -2084,7 +2081,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 74.
 LaTeX Info: Redefining \% on input line 74.
  [140])
-<images/cont/s2i.png, id=1636, 1033.61156pt x 563.85657pt>
+<images/cont/s2i.png, id=1635, 1033.61156pt x 563.85657pt>
 File: images/cont/s2i.png Graphic file (type png)
 <use images/cont/s2i.png>
 Package pdftex.def Info: images/cont/s2i.png  used on input line 565.
@@ -2114,7 +2111,7 @@ LaTeX Info: Redefining \% on input line 479.
 
 ] [146] (./chapters/10_mantenimiento.tex
 Cap\'{\i }tulo 10.
-<images/mant/devops.jpg, id=1666, 481.8pt x 260.975pt>
+<images/mant/devops.jpg, id=1665, 481.8pt x 260.975pt>
 File: images/mant/devops.jpg Graphic file (type jpg)
 <use images/mant/devops.jpg>
 Package pdftex.def Info: images/mant/devops.jpg  used on input line 20.
@@ -2125,7 +2122,7 @@ Package pdftex.def Info: images/mant/devops.jpg  used on input line 20.
 LaTeX Info: Redefining \. on input line 59.
 LaTeX Info: Redefining \% on input line 59.
  [148 <./images/mant/devops.jpg>]
-<images/mant/cmeficiencia.png, id=1678, 1410.0178pt x 533.74406pt>
+<images/mant/cmeficiencia.png, id=1677, 1410.0178pt x 533.74406pt>
 File: images/mant/cmeficiencia.png Graphic file (type png)
 <use images/mant/cmeficiencia.png>
 Package pdftex.def Info: images/mant/cmeficiencia.png  used on input line 75.
@@ -2133,7 +2130,7 @@ Package pdftex.def Info: images/mant/cmeficiencia.png  used on input line 75.
 LaTeX Info: Redefining \. on input line 83.
 LaTeX Info: Redefining \% on input line 83.
  [149 <./images/mant/cmeficiencia.png (PNG copy)>]
-<images/mant/cm-error.png, id=1684, 581.17125pt x 316.93407pt>
+<images/mant/cm-error.png, id=1683, 581.17125pt x 316.93407pt>
 File: images/mant/cm-error.png Graphic file (type png)
 <use images/mant/cm-error.png>
 Package pdftex.def Info: images/mant/cm-error.png  used on input line 90.
@@ -2175,7 +2172,7 @@ LaTeX Info: Redefining \% on input line 484.
 
 ] [156]
 Ap\'{e}ndice A.
-<appendices/mgmtfm.pdf, id=1717, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1716, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf>
 Package pdftex.def Info: appendices/mgmtfm.pdf  used on input line 486.
@@ -2184,7 +2181,7 @@ File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf>
 Package pdftex.def Info: appendices/mgmtfm.pdf  used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<appendices/mgmtfm.pdf, id=1720, page=1, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1719, page=1, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 1>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page1 used on input line 486.
@@ -2209,7 +2206,7 @@ File: appendices/mgmtfm.pdf Graphic file (type pdf)
 Package pdftex.def Info: appendices/mgmtfm.pdf , page1 used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [158 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1741, page=2, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1740, page=2, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 2>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page2 used on input line 486.
@@ -2223,7 +2220,7 @@ File: appendices/mgmtfm.pdf Graphic file (type pdf)
 Package pdftex.def Info: appendices/mgmtfm.pdf , page2 used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [159 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1746, page=3, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1745, page=3, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 3>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page3 used on input line 486.
@@ -2237,7 +2234,7 @@ File: appendices/mgmtfm.pdf Graphic file (type pdf)
 Package pdftex.def Info: appendices/mgmtfm.pdf , page3 used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [160 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1761, page=4, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1760, page=4, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 4>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page4 used on input line 486.
@@ -2251,7 +2248,7 @@ File: appendices/mgmtfm.pdf Graphic file (type pdf)
 Package pdftex.def Info: appendices/mgmtfm.pdf , page4 used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [161 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1766, page=5, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1765, page=5, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 5>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page5 used on input line 486.
@@ -2265,7 +2262,7 @@ File: appendices/mgmtfm.pdf Graphic file (type pdf)
 Package pdftex.def Info: appendices/mgmtfm.pdf , page5 used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [162 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1776, page=6, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1775, page=6, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 6>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page6 used on input line 486.
@@ -2279,7 +2276,7 @@ File: appendices/mgmtfm.pdf Graphic file (type pdf)
 Package pdftex.def Info: appendices/mgmtfm.pdf , page6 used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [163 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1782, page=7, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1781, page=7, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 7>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page7 used on input line 486.
@@ -2293,7 +2290,7 @@ File: appendices/mgmtfm.pdf Graphic file (type pdf)
 Package pdftex.def Info: appendices/mgmtfm.pdf , page7 used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [164 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1802, page=8, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1801, page=8, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 8>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page8 used on input line 486.
@@ -2308,7 +2305,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page8 used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
 [165 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1807, page=9, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1806, page=9, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 9>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page9 used on input line 486.
@@ -2322,7 +2319,7 @@ File: appendices/mgmtfm.pdf Graphic file (type pdf)
 Package pdftex.def Info: appendices/mgmtfm.pdf , page9 used on input line 486.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [166 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1812, page=10, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1811, page=10, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 10>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page10 used on input line 486.
@@ -2339,7 +2336,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page10 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [167 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1817, page=11, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1816, page=11, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 11>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page11 used on input line 486.
@@ -2356,7 +2353,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page11 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [168 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1822, page=12, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1821, page=12, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 12>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page12 used on input line 486.
@@ -2373,7 +2370,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page12 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [169 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1828, page=13, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1827, page=13, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 13>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page13 used on input line 486.
@@ -2390,7 +2387,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page13 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [170 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1834, page=14, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1833, page=14, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 14>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page14 used on input line 486.
@@ -2407,7 +2404,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page14 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [171 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1839, page=15, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1838, page=15, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 15>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page15 used on input line 486.
@@ -2424,7 +2421,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page15 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [172 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1844, page=16, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1843, page=16, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 16>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page16 used on input line 486.
@@ -2441,7 +2438,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page16 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [173 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1849, page=17, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1848, page=17, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 17>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page17 used on input line 486.
@@ -2458,7 +2455,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page17 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [174 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1854, page=18, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1853, page=18, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 18>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page18 used on input line 486.
@@ -2475,7 +2472,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page18 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [175 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1860, page=19, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1859, page=19, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 19>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page19 used on input line 486.
@@ -2492,7 +2489,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page19 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [176 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1865, page=20, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1864, page=20, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 20>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page20 used on input line 486.
@@ -2509,7 +2506,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page20 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [177 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1870, page=21, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1869, page=21, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 21>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page21 used on input line 486.
@@ -2526,7 +2523,7 @@ Package pdftex.def Info: appendices/mgmtfm.pdf , page21 used on input line 486.
 
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [178 <./appendices/mgmtfm.pdf>]
-<appendices/mgmtfm.pdf, id=1875, page=22, 614.295pt x 794.97pt>
+<appendices/mgmtfm.pdf, id=1874, page=22, 614.295pt x 794.97pt>
 File: appendices/mgmtfm.pdf Graphic file (type pdf)
 <use appendices/mgmtfm.pdf, page 22>
 Package pdftex.def Info: appendices/mgmtfm.pdf , page22 used on input line 486.
@@ -2637,15 +2634,9 @@ LaTeX Info: Redefining \% on input line 25.
 )
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 506.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 506.
+Package rerunfilecheck Info: File `TFM.out' has not changed.
+(rerunfilecheck)             Checksum: 9EDA3923048EFB6C006C7B99EBD0779F;7418.
 
-
-Package rerunfilecheck Warning: File `TFM.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `TFM.out':
-(rerunfilecheck)             Before: B839BE2C97D7EDAD53C8E755027E0925;7408
-(rerunfilecheck)             After:  9EDA3923048EFB6C006C7B99EBD0779F;7418.
 
 LaTeX Warning: There were undefined references.
 
@@ -2654,8 +2645,8 @@ runsystem(rm TFM.pyg)...executed.
  ) 
 Here is how much of TeX's memory you used:
  25008 strings out of 492623
- 454104 string characters out of 6135669
- 647457 words of memory out of 5000000
+ 454119 string characters out of 6135669
+ 647354 words of memory out of 5000000
  27840 multiletter control sequences out of 15000+600000
  25081 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2687,9 +2678,9 @@ w/helvetic/uhvbo8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.p
 fb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on TFM.pdf (196 pages, 10483626 bytes).
+Output written on TFM.pdf (196 pages, 10706438 bytes).
 PDF statistics:
- 2103 PDF objects out of 2487 (max. 8388607)
+ 2102 PDF objects out of 2487 (max. 8388607)
  1732 compressed objects within 18 object streams
  412 named destinations out of 1000 (max. 500000)
  1281 words of extra memory for PDF output out of 10000 (max. 10000000)
