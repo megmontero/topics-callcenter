@@ -201,6 +201,40 @@ En el \textit{pipeline}  podemos ver que en primer lugar definimos las variables
 \end{itemize}
 
 
-En la imagen \ref{fig:flujocicd} podemos ver cómo sería el flujo completo desde que hacemos un \textit{push} a la rama \textit{master} hasta el despliegue definitivo en producción. 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/mant/cicd_v1.png}
+	\caption{Despliegue tras \textit{push}}
+	\label{fig:flujocicd}
+\end{figure}
+
+En la figura \ref{fig:flujocicd} podemos ver cómo sería el flujo completo desde que hacemos un \textit{push} a la rama \textit{master} hasta el despliegue definitivo en producción, con los siguientes pasos:  
+
+\begin{enumerate}
+\item El usuario realiza el \textit{push} en el repositorio de Bitbucket en la rama \textit{master}.
+
+\item Se activa un \textit{webhook} que realiza una llamada a \textit{jenkins} para que inicie el \textit{pipeline}. 
+
+\item Jenkins descarga el código de Bitbucket. 
+
+\item Si la fase anterior a finalizado con éxito. Jenkins realiza las pruebas unitarias definidas en el código subido. 
+
+\item Si se superan los tests de la fase anterior Jenkins compila el código fuente para obtener un binario.
+
+
+\item Una vez obtenido el binario, Jenkins realiza se autentica en la plataforma de Openshift y envía el binario para iniciar un nuevo \textit{build}. 
+
+\item Jenkins espera hasta que el \textit{build} finalice con éxito por parte de Openshift.
+
+\item En este punto el flujo se bifurca tras un \textit{build} satisfactorio:  
+	\begin{enumerate}
+		\item Openshift registra la nueva imagen de aplicación creada en el \textit{registry} de la plataforma.
+
+		\item Jenkins inicia las acciones \textit{post} del \textit{pipeline}. En nuestro caso, enviar un e-mail (en caso de error este e-mail se enviaría igualmente interrumpiendo el flujo). 
+	\end{enumerate}
+
+\item Al actualizarse la imagen la configuración de despliegue de Openshift inicia un nuevo despliegue. Al finalizar con éxito tendríamos operativa la aplicación con nuestro código.
+
+\end{enumerate}
 
 
