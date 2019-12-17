@@ -48,7 +48,7 @@
 \contentsline {figure}{\numberline {5.7}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 2}}{73}{figure.5.7}% 
 \contentsline {figure}{\numberline {5.8}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 3}}{74}{figure.5.8}% 
 \contentsline {figure}{\numberline {5.9}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 4}}{74}{figure.5.9}% 
-\contentsline {figure}{\numberline {5.10}{\ignorespaces \textit {Tokens} topic 5}}{75}{figure.5.10}% 
+\contentsline {figure}{\numberline {5.10}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 5}}{75}{figure.5.10}% 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Arquitectura CNN}}{82}{figure.6.1}% 
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Arquitectura RNN}}{84}{figure.6.2}% 
@@ -67,9 +67,10 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {8.1}{\ignorespaces Capa de servicio}}{113}{figure.8.1}% 
 \contentsline {figure}{\numberline {8.2}{\ignorespaces Cuadro de mando del servicio}}{125}{figure.8.2}% 
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Cuadro de mando de monitorizaci\IeC {\'o}n}}{126}{figure.8.3}% 
-\contentsline {figure}{\numberline {8.4}{\ignorespaces \textit {Machine learning}. Vista de m\IeC {\'e}trica individual.}}{130}{figure.8.4}% 
-\contentsline {figure}{\numberline {8.5}{\ignorespaces \textit {Machine learning}. Vista de anomal\IeC {\'\i }as.}}{131}{figure.8.5}% 
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Nube de palabras desde la capa de servicio}}{126}{figure.8.3}% 
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Cuadro de mando de monitorizaci\IeC {\'o}n}}{127}{figure.8.4}% 
+\contentsline {figure}{\numberline {8.5}{\ignorespaces \textit {Machine learning}. Vista de m\IeC {\'e}trica individual.}}{131}{figure.8.5}% 
+\contentsline {figure}{\numberline {8.6}{\ignorespaces \textit {Machine learning}. Vista de anomal\IeC {\'\i }as.}}{131}{figure.8.6}% 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {9.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{134}{figure.9.1}% 
 \contentsline {figure}{\numberline {9.2}{\ignorespaces S2I en Openshift}}{150}{figure.9.2}% 
@@ -79,5 +80,4 @@
 \contentsline {figure}{\numberline {10.3}{\ignorespaces \textit {Discover} predicci\IeC {\'o}n err\IeC {\'o}nea}}{158}{figure.10.3}% 
 \contentsline {figure}{\numberline {10.4}{\ignorespaces Despliegue tras \textit {push}}}{162}{figure.10.4}% 
 \contentsline {figure}{\numberline {10.5}{\ignorespaces \textit {stages} en Jenkins}}{163}{figure.10.5}% 
-\contentsline {figure}{\numberline {10.6}{\ignorespaces \textit {stages} en Jenkins}}{163}{figure.10.6}% 
-\contentsline {figure}{\numberline {10.7}{\ignorespaces Resultado de pruebas unitarias}}{164}{figure.10.7}% 
+\contentsline {figure}{\numberline {10.6}{\ignorespaces Resultado de pruebas unitarias}}{164}{figure.10.6}% 

@@ -55,7 +55,7 @@
 \contentsline {chapter}{\numberline {5}Aprendizaje No Supervisado}{67}{chapter.5}% 
 \contentsline {section}{\numberline {5.1}LDA}{67}{section.5.1}% 
 \contentsline {section}{\numberline {5.2}Doc2Vec + \textit {clustering}}{72}{section.5.2}% 
-\contentsline {section}{\numberline {5.3}Evoluci\IeC {\'o}n de los modelos}{76}{section.5.3}% 
+\contentsline {section}{\numberline {5.3}Evoluci\IeC {\'o}n de los modelos}{75}{section.5.3}% 
 \contentsline {chapter}{\numberline {6}Aprendizaje supervisado}{81}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Arquitecturas}{81}{section.6.1}% 
 \contentsline {subsection}{\numberline {6.1.1}Red neuronal convolucional}{82}{subsection.6.1.1}% 
@@ -95,7 +95,7 @@
 \contentsline {section}{\numberline {8.3}Visualizaciones}{124}{section.8.3}% 
 \contentsline {subsection}{\numberline {8.3.1}Servicio}{125}{subsection.8.3.1}% 
 \contentsline {subsection}{\numberline {8.3.2}Monitorizaci\IeC {\'o}n}{126}{subsection.8.3.2}% 
-\contentsline {section}{\numberline {8.4}Alarmado}{127}{section.8.4}% 
+\contentsline {section}{\numberline {8.4}Alarmado}{128}{section.8.4}% 
 \contentsline {subsection}{\numberline {8.4.1}Alarmas Est\IeC {\'a}ticas}{128}{subsection.8.4.1}% 
 \contentsline {subsection}{\numberline {8.4.2}Alarmas mediante \textit {machine learning}}{130}{subsection.8.4.2}% 
 \contentsline {chapter}{\numberline {9}Despliegue en contenedores}{133}{chapter.9}% 
@@ -112,4 +112,4 @@
 \contentsline {section}{\numberline {10.1}Introducci\IeC {\'o}n DevOps}{155}{section.10.1}% 
 \contentsline {section}{\numberline {10.2}Degradaci\IeC {\'o}n del modelo/ \textit {Feedback} continuo}{157}{section.10.2}% 
 \contentsline {section}{\numberline {10.3}Integraci\IeC {\'o}n y despliegue continuos}{159}{section.10.3}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{164}{figure.10.7}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{163}{figure.10.6}% 
