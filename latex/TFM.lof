@@ -41,40 +41,43 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces \textit {Tokens} LDA \textit {topic} 1}}{70}{figure.5.1}% 
 \contentsline {figure}{\numberline {5.2}{\ignorespaces \textit {Tokens} LDA \textit {topic} 2}}{70}{figure.5.2}% 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces \textit {Tokens} LDA \textit {topic} 3}}{70}{figure.5.3}% 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces \textit {Tokens} LDA \textit {topic} 3}}{71}{figure.5.3}% 
 \contentsline {figure}{\numberline {5.4}{\ignorespaces \textit {Tokens} LDA \textit {topic} 4}}{71}{figure.5.4}% 
 \contentsline {figure}{\numberline {5.5}{\ignorespaces \textit {Tokens} LDA \textit {topic} 5}}{71}{figure.5.5}% 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 1}}{72}{figure.5.6}% 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 2}}{72}{figure.5.7}% 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 3}}{73}{figure.5.8}% 
-\contentsline {figure}{\numberline {5.9}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 4}}{73}{figure.5.9}% 
-\contentsline {figure}{\numberline {5.10}{\ignorespaces \textit {Tokens} topic 5}}{74}{figure.5.10}% 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 1}}{73}{figure.5.6}% 
+\contentsline {figure}{\numberline {5.7}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 2}}{73}{figure.5.7}% 
+\contentsline {figure}{\numberline {5.8}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 3}}{74}{figure.5.8}% 
+\contentsline {figure}{\numberline {5.9}{\ignorespaces \textit {Tokens} Doc2Vec + \textit {clustering} topic 4}}{74}{figure.5.9}% 
+\contentsline {figure}{\numberline {5.10}{\ignorespaces \textit {Tokens} topic 5}}{75}{figure.5.10}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Arquitectura CNN}}{80}{figure.6.1}% 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Arquitectura RNN}}{82}{figure.6.2}% 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Arquitectura ``H\IeC {\'\i }brida'' CNN/RNN}}{84}{figure.6.3}% 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Arquitectura con capas totalmente conectadas}}{86}{figure.6.4}% 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Arquitectura con capas totalmente conectadas}}{87}{figure.6.5}% 
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes convolucionales}}{91}{figure.6.6}% 
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes recurrentes}}{92}{figure.6.7}% 
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con \textit {MLP}}}{92}{figure.6.8}% 
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Optimizaci\IeC {\'o}n de modelos multiclase}}{93}{figure.6.9}% 
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Matriz de confusi\IeC {\'o}n datos balanceados}}{94}{figure.6.10}% 
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Matriz de confusi\IeC {\'o}n datos no balanceados}}{95}{figure.6.11}% 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Arquitectura CNN}}{82}{figure.6.1}% 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Arquitectura RNN}}{84}{figure.6.2}% 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Arquitectura ``H\IeC {\'\i }brida'' CNN/RNN}}{86}{figure.6.3}% 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Arquitectura con capas totalmente conectadas}}{88}{figure.6.4}% 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Arquitectura con capas totalmente conectadas}}{89}{figure.6.5}% 
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes convolucionales}}{93}{figure.6.6}% 
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes recurrentes}}{94}{figure.6.7}% 
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con \textit {MLP}}}{94}{figure.6.8}% 
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Optimizaci\IeC {\'o}n de modelos multiclase}}{95}{figure.6.9}% 
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Matriz de confusi\IeC {\'o}n datos balanceados}}{96}{figure.6.10}% 
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Matriz de confusi\IeC {\'o}n datos no balanceados}}{97}{figure.6.11}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Capa de \textit {streaming}}}{99}{figure.7.1}% 
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Arquitectura microservicios}}{104}{figure.7.2}% 
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Capa de \textit {streaming}}}{101}{figure.7.1}% 
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Arquitectura microservicios}}{106}{figure.7.2}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Capa de servicio}}{111}{figure.8.1}% 
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Cuadro de mando del servicio}}{123}{figure.8.2}% 
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Cuadro de mando de monitorizaci\IeC {\'o}n}}{124}{figure.8.3}% 
-\contentsline {figure}{\numberline {8.4}{\ignorespaces \textit {Machine learning}. Vista de m\IeC {\'e}trica individual.}}{128}{figure.8.4}% 
-\contentsline {figure}{\numberline {8.5}{\ignorespaces \textit {Machine learning}. Vista de anomal\IeC {\'\i }as.}}{129}{figure.8.5}% 
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Capa de servicio}}{113}{figure.8.1}% 
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Cuadro de mando del servicio}}{125}{figure.8.2}% 
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Cuadro de mando de monitorizaci\IeC {\'o}n}}{126}{figure.8.3}% 
+\contentsline {figure}{\numberline {8.4}{\ignorespaces \textit {Machine learning}. Vista de m\IeC {\'e}trica individual.}}{130}{figure.8.4}% 
+\contentsline {figure}{\numberline {8.5}{\ignorespaces \textit {Machine learning}. Vista de anomal\IeC {\'\i }as.}}{131}{figure.8.5}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{132}{figure.9.1}% 
-\contentsline {figure}{\numberline {9.2}{\ignorespaces S2I en Openshift}}{148}{figure.9.2}% 
+\contentsline {figure}{\numberline {9.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{134}{figure.9.1}% 
+\contentsline {figure}{\numberline {9.2}{\ignorespaces S2I en Openshift}}{150}{figure.9.2}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {10.1}{\ignorespaces Metodolog\IeC {\'\i }a DevOps. Fuente \cite {devops}}}{154}{figure.10.1}% 
-\contentsline {figure}{\numberline {10.2}{\ignorespaces Cuadro de mando eficiencia}}{155}{figure.10.2}% 
-\contentsline {figure}{\numberline {10.3}{\ignorespaces \textit {Discover} predicci\IeC {\'o}n err\IeC {\'o}nea}}{156}{figure.10.3}% 
-\contentsline {figure}{\numberline {10.4}{\ignorespaces Despliegue tras \textit {push}}}{160}{figure.10.4}% 
+\contentsline {figure}{\numberline {10.1}{\ignorespaces Metodolog\IeC {\'\i }a DevOps. Fuente \cite {devops}}}{156}{figure.10.1}% 
+\contentsline {figure}{\numberline {10.2}{\ignorespaces Cuadro de mando eficiencia}}{157}{figure.10.2}% 
+\contentsline {figure}{\numberline {10.3}{\ignorespaces \textit {Discover} predicci\IeC {\'o}n err\IeC {\'o}nea}}{158}{figure.10.3}% 
+\contentsline {figure}{\numberline {10.4}{\ignorespaces Despliegue tras \textit {push}}}{162}{figure.10.4}% 
+\contentsline {figure}{\numberline {10.5}{\ignorespaces \textit {stages} en Jenkins}}{163}{figure.10.5}% 
+\contentsline {figure}{\numberline {10.6}{\ignorespaces \textit {stages} en Jenkins}}{163}{figure.10.6}% 
+\contentsline {figure}{\numberline {10.7}{\ignorespaces Resultado de pruebas unitarias}}{164}{figure.10.7}% 

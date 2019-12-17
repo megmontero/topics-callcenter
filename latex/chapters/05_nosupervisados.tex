@@ -1,20 +1,22 @@
 \chapter{Aprendizaje No Supervisado}
 \label{chapter:nosup}
 
-Una de las aproximaciones que hemos llevado a cabo a la hora de clasificar las llamadas es la creación de modelos no supervisados. 
+Una de las aproximaciones que hemos llevado a cabo a la hora de clasificar las llamadas es la creación de modelos no supervisados. Durante este capítulo analizaremos diferentes aproximaciones que hemos llevado a cabo para aplicar este tipo de métodos. 
+
+En la sección \ref{section:nosup:lda} veremos los resultados de aplicar LDA sobre las transcripciones \textit{tokenizadas}, posteriormente, en la sección \ref{section:nosup:birch} mostraremos la aplicación de un algoritmo de \textit{clustering} tradicional y, por último, en la sección \ref{section:nosup:evol} veremos los resultados de aplicar estos mismos métodos al conjunto de datos inicial descrito en el capítulo anterior.
 
 
-
-Todo el análisis realizado en este capítulo se expondrá como si se tratara de un \textit{notebook} de \textit{Jupyter}, que ha sido la interfaz utilizada para realizar el análisis.
+Todo el análisis realizado en este capítulo se expondrá como si se tratara de un \textit{notebook} de \textit{Jupyter}, que ha sido la interfaz utilizada para realizar el análisis, mostrando únicamente las partes más relevantes del mismo (ignorando por ejemplo los \textit{imports}).
 
 
 \section{LDA}
+\label{section:nosup:lda}
 La primera opción que hemos tenido en cuenta a la hora de clasificar \textit{topics} de forma no supervisada ha sido el uso del algoritmo LDA, que ya comentamos en el estado del arte en la sección \ref{section:arte:lda}.
 
 Por ello, a lo largo de esta sección, aplicaremos LDA al conjunto de datos descrito en el capítulo \ref{chapter:dataset}. 
 
 
-Una vez hemos realizada la carga de los datos, utilizamos \textit{CountVectorizer} para obtener a partir de los documentos una matriz con el conteo de los \textit{tokens}.
+En el análisis que exponemos, partiremos de los \textit{tokens} previamente cargados. Una vez hemos realizada la carga de los datos, utilizamos \textit{CountVectorizer} de \textit{sklearn} para obtener a partir de los documentos una matriz con el conteo de los \textit{tokens}.
 
 \vspace{0.5cm}
    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
@@ -26,7 +28,8 @@ Una vez hemos realizada la carga de los datos, utilizamos \textit{CountVectorize
 \end{Verbatim}
 \end{tcolorbox}
 
-A partir de aquí aplicamos $LDA$.
+A partir de aquí aplicamos el método \textit{LatentDirichletAllocation} de \textit{sklearn}, importado como \textit{lda}.
+
 \vspace{0.5cm}
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{9}{\boxspacing}
@@ -54,7 +57,7 @@ Definimos una función para mostrar los \textit{topics} extraídos por  LDA junt
 \end{Verbatim}
 \end{tcolorbox}
 
-    Mostramos los topics.
+Mostramos los términos más relevantes por cada uno de los \textit{topics}. 
 \vspace{0.5cm}
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{10}{\boxspacing}
@@ -89,7 +92,7 @@ tambien tarifa meses ilimitadas
     \end{Verbatim}
 
 
-Los \textit{topics} obtenidos nos pueden llevar a hacernos una idea sobre la temática: 
+Los \textit{topics} obtenidos nos pueden llevar a hacernos una idea sobre la temática:
 
 \begin{enumerate}
 \item Palabras como ``factura'', ``reclamacion'' o ``euros'' nos indican que la temática de este \textit{topic} puede ir relacionada con temas de facturas.
@@ -99,7 +102,8 @@ Los \textit{topics} obtenidos nos pueden llevar a hacernos una idea sobre la tem
 \item Este último \textit{topic} con palabras como ``fusion'', ``promociones'' o ``paquete'' parece más ligado a promociones y productos. 
 \end{enumerate}
 
-LDA puede ser usado para tareas de clasificación, a continuación agrupamos los documentos por \textit{topics} según al clúster al que pertenezcan: 
+LDA puede ser usado para tareas de clasificación, a continuación agrupamos los documentos por \textit{topics} según al clúster al que pertenezcan. 
+
 
 \vspace{0.5cm}
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
@@ -182,11 +186,13 @@ En la figura \ref{fig:lda_topic4} vemos que como esperábamos las llamadas trata
     \label{fig:lda_topic5}
 \end{figure}
 
-Por último en la figura \ref{fig:lda_topic5} vemos que las llamadas hablan de servicios de la compañía tal y como esperábamos.
+Por último en la figura \ref{fig:lda_topic5} vemos que las llamadas hablan de servicios de la compañía tal y como esperábamos. 
+
+En este apartado hemos visto una muestra con cinco \textit{topics} que ha sido una de las ejecuciones del algoritmo con la que  mejor resultado hemos obtenido. Sin embargo, podemos ver que, al tratarse un modelo estadístico basado en la repetición de determinadas palabras en los documentos hemos tenido clasificaciones como la del segundo \textit{topic} que no tienen mucho sentido desde el punto de vista semántico.
 
 \section{Doc2Vec + \textit{clustering}}
-
-La aplicación de LDA nos ha devuelto unos resultados bastante interesantes, aún así queremos abordar otra aproximación más \textit{naive} aprovechando la posibilidad de representar una llamada como un vector de números reales mediante Doc2Vec. Una vez obtengamos los vectores vamos a aplicar un método de \textit{cluestering} tradicional al mismo.
+\label{section:nosup:birch}
+La aplicación de LDA nos ha devuelto unos resultados bastante interesantes, aún así queremos abordar otra aproximación más \textit{naive} aprovechando la posibilidad de representar una llamada como un vector de números reales mediante Doc2Vec. Una vez obtengamos los vectores vamos a aplicar un método de \textit{cluestering} tradicional al mismo. A \textit{priori}, una de las ventajas de utilizar estos vectores es la posibilidad que tienen de capturar la semántica de cada una de las transcripciones.
 
 
     En primer lugar obtenemos una lista con los vectores.
@@ -199,7 +205,7 @@ La aplicación de LDA nos ha devuelto unos resultados bastante interesantes, aú
 \end{Verbatim}
 \end{tcolorbox}
 
-    Aplicamos Birch y clasificamos los documentos en clusters.
+    Aplicamos el método de \textit{clustering} Birch de \textit{sklearn} y clasificamos los documentos.
 \vspace{0.5cm}
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{20}{\boxspacing}
@@ -268,26 +274,30 @@ La aplicación de LDA nos ha devuelto unos resultados bastante interesantes, aú
 	\centering
 	\adjustimage{max size={0.9\linewidth}}{images/nosup/birch_topic5}
     \caption{\textit{Tokens} topic 5}
-    \label{fig:lda_topic5}
+    \label{fig:birch_topic5}
 \end{figure}
 
 
+
+En las figuras \ref{fig:birch_topic1},\ref{fig:birch_topic2}, \ref{fig:birch_topic3}, \ref{fig:birch_topic4} y \ref{fig:birch_topic5} podemos ver documentos de ejemplo para cada uno de los \textit{topics} detectados por el algoritmo \textit{Birch}. Algunos de estos \textit{topics} poseen una temática concreta, mientras que otro parecen ser una mezcla de varias.
+
 \begin{enumerate}
-\item Varios conceptos. Liberar móvil, permanencia...
-\item Alta fusión, alta línea.
-\item Cancelación. Este parece más coherente.
-\item Reclamación.
-\item Datos sobre factura.
+\item En este \textit{topic} aparecen conceptos mezclados, muchos de ellos relacionados con portabilidades o liberar terminales.
+\item Aunque no es un \textit{topic} claro, la mayoría de documentos están relacionados con el alta de producto o línea. 
+\item Cancelaciones varias. A la hora de contratar servicios o por falta de pagos.
+\item En este caso el \textit{topic} sí parece bastante claro, ya que parece que todos los documentos tratan sobre reclamaciones. 
+\item Este último \textit{topic} también parece uniforme y todos los documentos giran alrededor de las facturas.
 \end{enumerate}
 
 
-\FloatBarrier
+Una vez aplicado ambas aproximaciones, y vista una muestra con 5 \textit{topics} para cada una, podemos ver como en ambos casos existen \textit{topics} que se encuentran bien definidos y otros que parecen ser una mezcla de varios temas, una especie de miscelánea. Otro tema que parece quedar claro tras la aplicación de ambos métodos es la existencia de una temática de facturación bien diferenciada del resto.
+
+
 \section{Evolución de los modelos}
+\label{section:nosup:evol}
 
 Como ya vimos en el capítulo anterior la calidad de los datos iniciales era bastante pobre, aún así intentamos aplicar métodos no supervisados a estos primeros datos. La idea de esta sección es poner de manifiesto, una vez más, que este tipo de proyectos son iterativos y que, a menudo, es necesario volver al punto de partida y a recopilar datos una vez construido el modelo.
 
-
-Al igual que en el apartado anterior expondremos los datos como si se tratara de un \textit{notebook}, pero en este caso mostraremos unicamente las sentencias claves (ignorando por ejemplo los \textit{imports}). 
 
 Todo el análisis que se muestra en este apartado fue realizado utilizando PySpark sobre un clúster de Hadoop Hortonworks.De entre todas las pruebas realizadas hemos decidido mostrar la aplicación de LDA una vez extraído los \textit{tokens}. 
 
