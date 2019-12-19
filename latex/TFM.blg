@@ -29,48 +29,52 @@ Warning--entry type for "tfserving" isn't style-file defined
 --line 392 of file referencias.bib
 Warning--entry type for "devops" isn't style-file defined
 --line 412 of file referencias.bib
+Warning--entry type for "ldafig" isn't style-file defined
+--line 420 of file referencias.bib
+Warning--entry type for "birch" isn't style-file defined
+--line 427 of file referencias.bib
 Warning--I didn't find a database entry for "apendi:contenedores"
 Warning--empty publisher in temariodeeplearning
 Warning--empty publisher in Mahmood2013LiteratureSO
-You've used 37 entries,
+You've used 39 entries,
             2118 wiz_defined-function locations,
-            711 strings with 10672 characters,
-and the built_in function-call counts, 12599 in all, are:
-= -- 1226
-> -- 633
+            720 strings with 10982 characters,
+and the built_in function-call counts, 13025 in all, are:
+= -- 1268
+> -- 647
 < -- 10
-+ -- 255
-- -- 216
-* -- 787
-:= -- 2070
-add.period$ -- 126
-call.type$ -- 37
-change.case$ -- 210
++ -- 261
+- -- 220
+* -- 797
+:= -- 2142
+add.period$ -- 134
+call.type$ -- 39
+change.case$ -- 218
 chr.to.int$ -- 0
-cite$ -- 39
-duplicate$ -- 471
-empty$ -- 988
-format.name$ -- 216
-if$ -- 2700
+cite$ -- 41
+duplicate$ -- 485
+empty$ -- 1032
+format.name$ -- 220
+if$ -- 2794
 int.to.chr$ -- 0
-int.to.str$ -- 37
+int.to.str$ -- 39
 missing$ -- 29
-newline$ -- 196
-num.names$ -- 74
-pop$ -- 306
+newline$ -- 208
+num.names$ -- 78
+pop$ -- 326
 preamble$ -- 1
-purify$ -- 182
+purify$ -- 188
 quote$ -- 0
-skip$ -- 354
+skip$ -- 364
 stack$ -- 0
-substring$ -- 602
-swap$ -- 123
+substring$ -- 612
+swap$ -- 125
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 134
+type$ -- 142
 warning$ -- 2
-while$ -- 107
-width$ -- 39
-write$ -- 419
+while$ -- 111
+width$ -- 41
+write$ -- 441
 (There was 1 error message)

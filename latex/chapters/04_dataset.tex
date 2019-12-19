@@ -91,9 +91,9 @@ para identificar de manera unívoca la transcripción.
 
 \item \textbf{\textit{fx\_evento}}: Fecha del evento.
 
-\item \textbf{\textit{it\_llamada}}: Timestamp del evento.
+\item \textbf{\textit{it\_llamada}}: Instante en el que se produce el evento.
 
-\item \textbf{\textit{datecreated}}: Timestamp en el que se crea la transcripción.
+\item \textbf{\textit{datecreated}}: Instante en el que se crea la transcripción.
 
 \item \textbf{\textit{plaintext}}: Transcripción de la llamada en texto plano.
 
@@ -678,16 +678,26 @@ monitorizaciones. Pero sí nos encontramos por ejemplo con:
 
 \end{itemize}
 
-\FloatBarrier
+
 \begin{figure}[!ht]
 	\centering
 	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_resto}
     \caption{Nube de palabras de la categoría resto de \textit{IVR}}
     \label{fig:cloudivr_resto}
 \end{figure} 
+\FloatBarrier
+
+Así pues, tras el estudio de ambos tipos de clasificaciones, podemos concluir que la calidad que presentan las etiquetas de monitorizaciones es mayor y la clasificación es menos difusa; sin embargo el número de muestras se presenta \textit{a priori} insuficiente para ser usado en modelos de \textit{deep learning}. En la figura \ref{fig:ivrvsmoni}, podemos ver (aún usando una escala logarítmica) la gran diferencia entre el total de llamadas etiquetadas con IVR y el total de llamadas etiquetadas con monitorizaciones.
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.8\linewidth}}{images/data/ivrvsmoni}
+    \caption{Llamadas IVR Vs. llamadas monitorizadas (escala logarítmica)}
+    \label{fig:ivrvsmoni}
+\end{figure} 
 
 
-Así pues, tras el estudio de ambos tipos de clasificaciones, podemos concluir que la calidad que presentan las etiquetas de monitorizaciones es mayor y la clasificación es menos difusa; sin embargo el número de muestras se presenta \textit{a priori} insuficiente para ser usado en modelos de \textit{deep learning}. 
+
 
 Por estos motivos, en el capítulo \ref{chapter:super} los modelos supervisados serán entrenados usando las etiquetas \textit{IVR}, en un futuro, cuando los datos de monitorizaciones crezcan se realizará el mismo ejercicio con las etiquetas de monitorizaciones. 
 
