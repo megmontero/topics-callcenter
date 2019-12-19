@@ -2,7 +2,7 @@
 \label{chapter:super}
 En este capítulo, realizaremos el análisis de diferentes modelos supervisados que hemos construido con el fin de clasificar las llamadas en función de las etiquetas que hemos analizado en el capítulo \ref{chapter:dataset}.
 
-Durante este capítulo describiremos las diferentes arquitecturas que proponemos para construir nuestros modelos (sección  \ref{section:super:arq}), posteriormente en la sección \ref{section:super:opt} evaluaremos la precisión de los modelos construidos con cada una de las arquitecturas propuestas y por último, en la sección \ref{section:super:mvm}, propondremos el modelo que pasaremos a producción y que hará de enlace con la siguiente parte del documento. 
+Durante este capítulo describiremos las diferentes arquitecturas que proponemos para construir nuestros modelos (sección  \ref{section:super:arq}), posteriormente en la sección \ref{section:super:opt} evaluaremos la precisión de los modelos construidos con cada una de las arquitecturas propuestas, haremos un resumen gráfico de los modelos en la sección \ref{section:super:resumen} y por último, en la sección \ref{section:super:mvm}, propondremos el modelo que pasaremos a producción y que hará de enlace con la siguiente parte del documento. 
 
 La creación y entrenamiento de estos modelos se ha realizado en Python 3.6, usando la librería Keras con Tensorflow como \textit{backend} sobre un equipo con las siguientes características:
 
@@ -357,6 +357,9 @@ Optuna es un \textit{framework} de optimización de modelos que utiliza métodos
 \end{itemize}
 
 
+\textit{Optuna} necesita como parámetro una función a optimizar, en nuestro caso hemos decidido utilizar el \textit{accuracy} sobre el conjunto de \textit{test}. Este conjunto de \textit{test} estará formado por un tercio de los datos, mientras que los dos tercios restantes se dedicarán al conjunto de \textit{train}.
+
+
 Desde que empezamos a usar \textit{Optuna} en la plataforma formada por \textit{GPUs} $Tesla V100-SXM2 32GB$, hemos dedicado unas 340 horas a la optimización de modelos, lo que supone algo más de 14 días. Hay que tener en cuenta que muchas de las pruebas no prometedoras \textit{Optuna} las ha cancelado automáticamente, por lo que en condiciones normales hubiéramos necesitado bastante más tiempo. También hay momentos en los que se ha paralelizado el entrenamiento entre varias \textit{GPUs}.
 
 
@@ -476,13 +479,80 @@ Las últimas iniciales del campo \textit{study} nos indican las clases que el mo
 Vemos que la mejor precisión en un modelo multiclase la tenemos hasta el momento en un modelo con redes recurrentes que distingue entrelas clases \textit{baja}, \textit{facturas} y el resto de llamadas con una precisión del 81\%.
 
 
+
+\section{Resumen de modelos}
+\label{section:super:resumen}
+
+Tras la gran cantidad de modelos supervisados entrenados y vistos a lo largo de este capítulo, el objetivo de esta sección es hacer un breve resumen en el que poder acceder de un vistazo y de una manera más visual a todos ellos. 
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/super/resumen_todos}
+	\caption{Precisión de todos los modelos}
+	\label{fig:resumen_todos}
+\end{figure}
+
+En la figura \ref{fig:resumen_todos} podemos ver todos los modelos ordenados por precisión y coloreados según el tipo de arquitectura usada. Observamos que los modelos con más precisión se tratan de modelos con las arquitecturas recurrentes, convolucional e híbrida vistas en la sección \ref{section:super:arq}.
+
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/super/resumen_tiempo}
+	\caption{Mediana de ejecución de todos los estudios}
+	\label{fig:resumen_tiempo}
+\end{figure}
+
+Otro dato interesante es el tiempo de ejecución que requiere cada arquitectura. En la figura \ref{fig:resumen_tiempo} podemos ver la mediana de ejecución de todos los modelos, que nos servirá para hacernos una idea de la diferencia entre arquitecturas. Vemos que las arquitecturas con redes recurrentes son las más costosas de entrenar, mientras que las totalmente conectadas son las que menos tiempo han supuesto.
+
+\FloatBarrier
+
+
+Data la gran cantidad de modelos existentes vamos a hacer un primer filtro dependiendo de si estamos tratando la clasificación como binario o multiclase.
+
+ 
+\subsection{Modelos binarios}
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/super/resumen_bin}
+	\caption{Precisión de todos los modelos}
+	\label{fig:resumen_bin}
+\end{figure}
+
+En la figura \ref{fig:resumen_bin}, vemos todos los modelos binarios entrenados y la precisión de cada uno. Como podemos observar los modelos binarios son la mayoría de los creados, por lo que la visión no cambia mucho con respecto a la figura \ref{fig:resumen_todos}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/super/resumen_bestbin}
+	\caption{Precisión de todos los modelos}
+	\label{fig:resumen_bestbin}
+\end{figure}
+
+Para tener una visión más clara de la bondad de los modelos binarios, vamos a mostrar la precisión del mejor modelo entrenado para cada una de las clases y su arquitectura. Como podemos observar en la figura \ref{fig:resumen_bestbin} la arquitectura que mejor resultado nos ha dado es la arquitectura con redes recurrentes, aunque también se cuela un modelo convolucional y uno híbrido. En todos los casos la precisión está en torno al 80\%.
+
+\subsection{Modelos multiclase}
+
+Aunque hay algunos modelos multiclase realizados con otras arquitecturas,los únicos con un rendimiento aceptable se encuentran implementados con la arquitectura de redes recurrentes.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{images/super/resumen_multi}
+	\caption{Precisión de todos los modelos}
+	\label{fig:resumen_multi}
+\end{figure}
+
+
+En la figura \ref{fig:resumen_multi}  podemos ver los diferentes modelos multiclase entrenados, junto con su precisión en el conjunto de test. Observamos que el único modelo que posee un rendimiento superior al 80\% es el modelo que nos permite clasificar las clases \textit{Baja} y \textit{Factura}.
+
+
 \section{Modelo Mínimo Viable}
 \label{section:super:mvm}
 El título de este apartado esta basado en el concepto de mínimo producto viable (MVP por sus siglas en inglés) acuñado por la metodología \textit{Lean Startup}. Un producto mínimo viable debe reunir las características mínimas para satisfacer a los primeros clientes y poder crear una retroalimentación que ayude a que sea mejorado en el futuro. En nuestro caso queremos llevar a producción uno de los modelos diseñados hasta ahora para poder construir un sistema completo y obtener \textit{feedback} que nos ayude en futuras mejoras.
 
-El modelo que hemos seleccionado es el mejor modelo del estudio ``RNN\_866\_IVR\_MULALL\_W2V150QC\_QN\_BF'' y podemos verlo en la figura \ref{fig:opt_multi}. Se trata de un modelo basado en la arquitectura de redes recurrentes, con 149 celdas tipo $GRU$ y que toma como entrada una secuencia de 866 \textit{Tokens} (El 99\% de las transcripciones están por debajo de este número de \textit{tokens}).
-
-A continuación vamos a volver a medir la precisión del modelo usando tanto datos balanceados como sin balancear con el objetivo de verificar que el modelo pueda ser usado en un entorno productivo.
+El modelo que hemos seleccionado es el mejor modelo del estudio ``RNN\_866\_IVR\_MULALL\_W2V150QC\_QN\_BF'' y podemos verlo en las figura \ref{fig:opt_multi} y \ref{fig:resumen_multi}. Se trata de un modelo basado en la arquitectura de redes recurrentes, con 149 celdas tipo $GRU$ y que toma como entrada una secuencia de 866 \textit{Tokens} (El 99\% de las transcripciones están por debajo de este número de \textit{tokens}).
 
 
 \begin{figure}[!ht]
@@ -491,6 +561,11 @@ A continuación vamos a volver a medir la precisión del modelo usando tanto dat
 	\caption{Matriz de confusión datos balanceados}
 	\label{fig:mvp_mat1}
 \end{figure}
+
+
+A continuación vamos a volver a medir la precisión del modelo usando tanto datos balanceados como sin balancear con el objetivo de verificar que el modelo pueda ser usado en un entorno productivo.
+
+
 
 
 \begin{figure}[!ht]

@@ -59,46 +59,49 @@
 \BOOKMARK [2][-]{subsection.6.2.2}{Modelos RNN Binarios}{section.6.2}% 59
 \BOOKMARK [2][-]{subsection.6.2.3}{Modelos totalmente conectados}{section.6.2}% 60
 \BOOKMARK [2][-]{subsection.6.2.4}{Modelos multiclase}{section.6.2}% 61
-\BOOKMARK [1][-]{section.6.3}{Modelo M\355nimo Viable}{chapter.6}% 62
-\BOOKMARK [-1][-]{part.3}{III Explotaci\363n: procesamiento, visualizaci\363n y alarmados}{}% 63
-\BOOKMARK [0][-]{chapter.7}{Explotaci\363n}{part.3}% 64
-\BOOKMARK [1][-]{section.7.1}{Requisitos del sistema productivo}{chapter.7}% 65
-\BOOKMARK [1][-]{section.7.2}{Arquitectura del sistema}{chapter.7}% 66
-\BOOKMARK [1][-]{section.7.3}{Microservicios}{chapter.7}% 67
-\BOOKMARK [2][-]{subsection.7.3.1}{Tecnolog\355a}{section.7.3}% 68
-\BOOKMARK [2][-]{subsection.7.3.2}{Microservicios}{section.7.3}% 69
-\BOOKMARK [2][-]{subsection.7.3.3}{Tokenizer}{section.7.3}% 70
-\BOOKMARK [2][-]{subsection.7.3.4}{Sequencer}{section.7.3}% 71
-\BOOKMARK [2][-]{subsection.7.3.5}{tf-BajaFactura}{section.7.3}% 72
-\BOOKMARK [2][-]{subsection.7.3.6}{Predicter}{section.7.3}% 73
-\BOOKMARK [1][-]{section.7.4}{Monitorizaci\363n de Microservicios}{chapter.7}% 74
-\BOOKMARK [2][-]{subsection.7.4.1}{Servicios Kafka Streams}{section.7.4}% 75
-\BOOKMARK [2][-]{subsection.7.4.2}{Servicios Tensorflow Serving}{section.7.4}% 76
-\BOOKMARK [1][-]{section.7.5}{Inyector: simulador de tiempo real}{chapter.7}% 77
-\BOOKMARK [0][-]{chapter.8}{Capa de servicio}{part.3}% 78
-\BOOKMARK [1][-]{section.8.1}{Ingesta de datos}{chapter.8}% 79
-\BOOKMARK [2][-]{subsection.8.1.1}{Input}{section.8.1}% 80
-\BOOKMARK [2][-]{subsection.8.1.2}{Filter}{section.8.1}% 81
-\BOOKMARK [2][-]{subsection.8.1.3}{Output}{section.8.1}% 82
-\BOOKMARK [1][-]{section.8.2}{Modelo de datos}{chapter.8}% 83
-\BOOKMARK [1][-]{section.8.3}{Visualizaciones}{chapter.8}% 84
-\BOOKMARK [2][-]{subsection.8.3.1}{Servicio}{section.8.3}% 85
-\BOOKMARK [2][-]{subsection.8.3.2}{Monitorizaci\363n}{section.8.3}% 86
-\BOOKMARK [1][-]{section.8.4}{Alarmado}{chapter.8}% 87
-\BOOKMARK [2][-]{subsection.8.4.1}{Alarmas Est\341ticas}{section.8.4}% 88
-\BOOKMARK [2][-]{subsection.8.4.2}{Alarmas mediante machine learning}{section.8.4}% 89
-\BOOKMARK [0][-]{chapter.9}{Despliegue en contenedores}{part.3}% 90
-\BOOKMARK [1][-]{section.9.1}{Servicios Kafka Streams}{chapter.9}% 91
-\BOOKMARK [1][-]{section.9.2}{Servicios Tensorflow Serving}{chapter.9}% 92
-\BOOKMARK [1][-]{section.9.3}{Monitorizaci\363n}{chapter.9}% 93
-\BOOKMARK [2][-]{subsection.9.3.1}{Logstash}{section.9.3}% 94
-\BOOKMARK [2][-]{subsection.9.3.2}{Metricbeat}{section.9.3}% 95
-\BOOKMARK [1][-]{section.9.4}{S2I}{chapter.9}% 96
-\BOOKMARK [2][-]{subsection.9.4.1}{Kafka Streams}{section.9.4}% 97
-\BOOKMARK [2][-]{subsection.9.4.2}{Tensorflow Serving}{section.9.4}% 98
-\BOOKMARK [-1][-]{part.4}{IV Conclusiones: mantenimiento y futuros trabajos }{}% 99
-\BOOKMARK [0][-]{chapter.10}{DevOps}{part.4}% 100
-\BOOKMARK [1][-]{section.10.1}{Introducci\363n DevOps}{chapter.10}% 101
-\BOOKMARK [1][-]{section.10.2}{Degradaci\363n del modelo/ Feedback continuo}{chapter.10}% 102
-\BOOKMARK [1][-]{section.10.3}{Integraci\363n y despliegue continuos}{chapter.10}% 103
-\BOOKMARK [0][-]{figure.10.6}{Bibliograf\355a}{part.4}% 104
+\BOOKMARK [1][-]{section.6.3}{Resumen de modelos}{chapter.6}% 62
+\BOOKMARK [2][-]{subsection.6.3.1}{Modelos binarios}{section.6.3}% 63
+\BOOKMARK [2][-]{subsection.6.3.2}{Modelos multiclase}{section.6.3}% 64
+\BOOKMARK [1][-]{section.6.4}{Modelo M\355nimo Viable}{chapter.6}% 65
+\BOOKMARK [-1][-]{part.3}{III Explotaci\363n: procesamiento, visualizaci\363n y alarmados}{}% 66
+\BOOKMARK [0][-]{chapter.7}{Explotaci\363n}{part.3}% 67
+\BOOKMARK [1][-]{section.7.1}{Requisitos del sistema productivo}{chapter.7}% 68
+\BOOKMARK [1][-]{section.7.2}{Arquitectura del sistema}{chapter.7}% 69
+\BOOKMARK [1][-]{section.7.3}{Microservicios}{chapter.7}% 70
+\BOOKMARK [2][-]{subsection.7.3.1}{Tecnolog\355a}{section.7.3}% 71
+\BOOKMARK [2][-]{subsection.7.3.2}{Microservicios}{section.7.3}% 72
+\BOOKMARK [2][-]{subsection.7.3.3}{Tokenizer}{section.7.3}% 73
+\BOOKMARK [2][-]{subsection.7.3.4}{Sequencer}{section.7.3}% 74
+\BOOKMARK [2][-]{subsection.7.3.5}{tf-BajaFactura}{section.7.3}% 75
+\BOOKMARK [2][-]{subsection.7.3.6}{Predicter}{section.7.3}% 76
+\BOOKMARK [1][-]{section.7.4}{Monitorizaci\363n de Microservicios}{chapter.7}% 77
+\BOOKMARK [2][-]{subsection.7.4.1}{Servicios Kafka Streams}{section.7.4}% 78
+\BOOKMARK [2][-]{subsection.7.4.2}{Servicios Tensorflow Serving}{section.7.4}% 79
+\BOOKMARK [1][-]{section.7.5}{Inyector: simulador de tiempo real}{chapter.7}% 80
+\BOOKMARK [0][-]{chapter.8}{Capa de servicio}{part.3}% 81
+\BOOKMARK [1][-]{section.8.1}{Ingesta de datos}{chapter.8}% 82
+\BOOKMARK [2][-]{subsection.8.1.1}{Input}{section.8.1}% 83
+\BOOKMARK [2][-]{subsection.8.1.2}{Filter}{section.8.1}% 84
+\BOOKMARK [2][-]{subsection.8.1.3}{Output}{section.8.1}% 85
+\BOOKMARK [1][-]{section.8.2}{Modelo de datos}{chapter.8}% 86
+\BOOKMARK [1][-]{section.8.3}{Visualizaciones}{chapter.8}% 87
+\BOOKMARK [2][-]{subsection.8.3.1}{Servicio}{section.8.3}% 88
+\BOOKMARK [2][-]{subsection.8.3.2}{Monitorizaci\363n}{section.8.3}% 89
+\BOOKMARK [1][-]{section.8.4}{Alarmado}{chapter.8}% 90
+\BOOKMARK [2][-]{subsection.8.4.1}{Alarmas Est\341ticas}{section.8.4}% 91
+\BOOKMARK [2][-]{subsection.8.4.2}{Alarmas mediante machine learning}{section.8.4}% 92
+\BOOKMARK [0][-]{chapter.9}{Despliegue en contenedores}{part.3}% 93
+\BOOKMARK [1][-]{section.9.1}{Servicios Kafka Streams}{chapter.9}% 94
+\BOOKMARK [1][-]{section.9.2}{Servicios Tensorflow Serving}{chapter.9}% 95
+\BOOKMARK [1][-]{section.9.3}{Monitorizaci\363n}{chapter.9}% 96
+\BOOKMARK [2][-]{subsection.9.3.1}{Logstash}{section.9.3}% 97
+\BOOKMARK [2][-]{subsection.9.3.2}{Metricbeat}{section.9.3}% 98
+\BOOKMARK [1][-]{section.9.4}{S2I}{chapter.9}% 99
+\BOOKMARK [2][-]{subsection.9.4.1}{Kafka Streams}{section.9.4}% 100
+\BOOKMARK [2][-]{subsection.9.4.2}{Tensorflow Serving}{section.9.4}% 101
+\BOOKMARK [-1][-]{part.4}{IV Conclusiones: mantenimiento y futuros trabajos }{}% 102
+\BOOKMARK [0][-]{chapter.10}{DevOps}{part.4}% 103
+\BOOKMARK [1][-]{section.10.1}{Introducci\363n DevOps}{chapter.10}% 104
+\BOOKMARK [1][-]{section.10.2}{Degradaci\363n del modelo/ Feedback continuo}{chapter.10}% 105
+\BOOKMARK [1][-]{section.10.3}{Integraci\363n y despliegue continuos}{chapter.10}% 106
+\BOOKMARK [0][-]{figure.10.6}{Bibliograf\355a}{part.4}% 107

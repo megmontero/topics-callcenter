@@ -1,7 +1,7 @@
 \chapter{Arquitectura y tecnologías}
 \label{chapter:arquitectura}
 
-El objetivo de este capítulo es tener una visión global de lo que será nuestro proyecto, antes de entrar en más profundidad en cada una de las partes. El proyecto que presentamos en este documento consta de dos partes bien diferenciadas. Por un lado, una parte que podemos considerar ``de laboratorio'', en la que realizaremos las labores más analíticas sobre los datos disponibles: extracción, procesamiento, estudio y creación de modelos; esta última la veremos en la sección \ref{section:arq:mod}. Y por otro lado, una parte ``de explotación'', en la que trataremos de poner en valor los resultados de la primera parte en el mundo real y que será tratada en la sección \ref{section:arq:exp}. 
+El objetivo de este capítulo es tener una visión global de lo que será nuestro proyecto, antes de entrar en más profundidad en cada una de las partes. El proyecto que presentamos en este documento consta de dos partes bien diferenciadas. Por un lado, una parte que podemos considerar ``de laboratorio'', en la que realizaremos las labores más analíticas sobre los datos disponibles: extracción, procesamiento, estudio y creación de modelos; la cuál presentamos en la sección \ref{section:arq:mod}. Y por otro lado, una parte ``de explotación'', en la que trataremos de poner en valor los resultados de la primera parte en el mundo real y que será tratada en la sección \ref{section:arq:exp}. 
 
 
 El capítulo se completará con la sección \ref{section:arq:mant}, dedicada al mantenimiento del proyecto una vez llevado a producción y con la sección \ref{section:arqu:tecn}, en la que se describirán a grandes rasgos todas la tecnologías usadas en el proyecto.
@@ -27,7 +27,7 @@ En cuanto a la plataforma que utilizaremos para realizar la analítica, puede se
 \end{itemize}
  
 
-El modelo es un elemento vivo en nuestra arquitectura y, además de por posibles mejoras en los hiperparámetros o por la tecnología, debe re-entrenarse conforme se vayan recibiendo datos nuevos en el histórico, ya que es lógico pensar que la temática de las consultas variarán a lo largo del tiempo debido por ejemplo al lanzamiento de nuevos productos. 
+El modelo presentado en nuestra arquitectura es un elemento sometido al cambio y, además de por posibles mejoras en los hiperparámetros o por la tecnología, debe re-entrenarse conforme se vayan recibiendo datos nuevos en el histórico, ya que es lógico pensar que la temática de las consultas variarán a lo largo del tiempo debido por ejemplo al lanzamiento de nuevos productos. 
 
 
 En los capítulos \ref{chapter:dataset}, \ref{chapter:nosup} y \ref{chapter:super} trataremos en más detalle toda la parte de modelado, desde el análisis de los datos hasta la creación de modelos supervisados y no supervisados.

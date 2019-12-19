@@ -194,6 +194,8 @@ En este apartado hemos visto una muestra con cinco \textit{topics} que ha sido u
 \label{section:nosup:birch}
 La aplicación de LDA nos ha devuelto unos resultados bastante interesantes, aún así queremos abordar otra aproximación más \textit{naive} aprovechando la posibilidad de representar una llamada como un vector de números reales mediante Doc2Vec. Una vez obtengamos los vectores, vamos a aplicar un método de \textit{clustering} tradicional al mismo. A \textit{priori}, una de las ventajas de utilizar estos vectores es la posibilidad que tienen de capturar la semántica de cada una de las transcripciones.
 
+El método de \textit{clustering} usado en este capítulo será  BIRCH (\textit{Balanced Iterative Reducing and Clustering using Hierarchies}) \cite{birch} que nos permite procesar grandes cantidades de datos sin grandes requerimientos de recursos.
+
 Para realizar este análisis vamos a partir, al igual que en el apartado anterior, de los datos \textit{tokenizados} y de un modelo Doc2Vec entrenado y cargado con el módulo \textit{mgmtfm}.
 
 

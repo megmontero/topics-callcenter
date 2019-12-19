@@ -3,20 +3,21 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Diagrama de Gantt}}{5}{figure.1.1}% 
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Fases del modelo CRISP-DM}}{7}{figure.1.2}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Ejemplo de arquitectura MLP. Fuente \cite {mlp}}}{14}{figure.2.1}% 
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Arquitecturas CBOW y Skip-gram. Fuente \cite {word2vec}}}{15}{figure.2.2}% 
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Ejemplo de una convoluci\IeC {\'o}n de dos dimensiones. Fuente \cite {temariodeeplearning}}}{16}{figure.2.3}% 
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Ejemplo de aplicaci\IeC {\'o}n de \textit {zero padding} para mantener la dimensionalidad. Fuente \cite {temariodeeplearning}}}{17}{figure.2.4}% 
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Ejemplo de aplicaci\IeC {\'o}n de convoluci\IeC {\'o}n por pasos para reducir la dimensionalidad. Fuente \cite {temariodeeplearning}}}{17}{figure.2.5}% 
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Ejemplo de aplicaci\IeC {\'o}n de \textit {max-pooling}. Fuente \cite {temariodeeplearning}}}{18}{figure.2.6}% 
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Comparaci\IeC {\'o}n capa tradicional totalmente conectada con capa convolucional. Fuente \cite {hope_lieder_resheff_2017}}}{19}{figure.2.7}% 
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Ejemplo RNN. Fuente \cite {colahblog}}}{20}{figure.2.8}% 
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Ejemplo RNN ``desenrollada''. Fuente \cite {colahblog}}}{21}{figure.2.9}% 
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Arquitectura celdas LSTM y GRU. Fuente \cite {lstmgru}}}{22}{figure.2.10}% 
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Evoluci\IeC {\'o}n del \textit {Big Data}. Fuente \cite {lambdakappa}}}{24}{figure.2.11}% 
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Teorema CAP. Fuente \cite {cap}}}{26}{figure.2.12}% 
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Arquitectura Lambda definida por Nathan Marz. Fuente \cite {lambdakappa}}}{27}{figure.2.13}% 
-\contentsline {figure}{\numberline {2.14}{\ignorespaces Arquitectura Kappa definida por Jay Kreps. Fuente \cite {lambdakappa}}}{27}{figure.2.14}% 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Representaci\IeC {\'o}n gr\IeC {\'a}fica de LDA. Fuente \cite {ldafig}}}{12}{figure.2.1}% 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ejemplo de arquitectura MLP. Fuente \cite {mlp}}}{15}{figure.2.2}% 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Arquitecturas CBOW y Skip-gram. Fuente \cite {word2vec}}}{16}{figure.2.3}% 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Ejemplo de una convoluci\IeC {\'o}n de dos dimensiones. Fuente \cite {temariodeeplearning}}}{17}{figure.2.4}% 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Ejemplo de aplicaci\IeC {\'o}n de \textit {zero padding} para mantener la dimensionalidad. Fuente \cite {temariodeeplearning}}}{17}{figure.2.5}% 
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Ejemplo de aplicaci\IeC {\'o}n de convoluci\IeC {\'o}n por pasos para reducir la dimensionalidad. Fuente \cite {temariodeeplearning}}}{18}{figure.2.6}% 
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Ejemplo de aplicaci\IeC {\'o}n de \textit {max-pooling}. Fuente \cite {temariodeeplearning}}}{19}{figure.2.7}% 
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Comparaci\IeC {\'o}n capa tradicional totalmente conectada con capa convolucional. Fuente \cite {hope_lieder_resheff_2017}}}{20}{figure.2.8}% 
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Ejemplo RNN. Fuente \cite {colahblog}}}{21}{figure.2.9}% 
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Ejemplo RNN ``desenrollada''. Fuente \cite {colahblog}}}{21}{figure.2.10}% 
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Arquitectura celdas LSTM y GRU. Fuente \cite {lstmgru}}}{22}{figure.2.11}% 
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Evoluci\IeC {\'o}n del \textit {Big Data}. Fuente \cite {lambdakappa}}}{25}{figure.2.12}% 
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Teorema CAP. Fuente \cite {cap}}}{26}{figure.2.13}% 
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Arquitectura Lambda definida por Nathan Marz. Fuente \cite {lambdakappa}}}{27}{figure.2.14}% 
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Arquitectura Kappa definida por Jay Kreps. Fuente \cite {lambdakappa}}}{28}{figure.2.15}% 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Arquitectura Kappa}}{33}{figure.3.1}% 
 \addvspace {10\p@ }
@@ -24,10 +25,10 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Nube de palabras a partir de transcripciones monitorizadas}}{50}{figure.4.2}% 
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a consulta de las monitorizaciones}}{51}{figure.4.3}% 
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a contratar de las monitorizaciones}}{51}{figure.4.4}% 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a informacion de las monitorizaciones}}{52}{figure.4.5}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a informacion de las monitorizaciones}}{51}{figure.4.5}% 
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a queja de las monitorizaciones}}{52}{figure.4.6}% 
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Nube de palabras para la categor\IeC {\'\i }a tr\IeC {\'a}mite de las monitorizaciones}}{52}{figure.4.7}% 
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Distribuci\IeC {\'o}n de llamadas por \textit {IVR}}}{54}{figure.4.8}% 
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Distribuci\IeC {\'o}n de llamadas por \textit {IVR}}}{53}{figure.4.8}% 
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Nube de palabras a partir de transcripciones con \textit {IVR}}}{54}{figure.4.9}% 
 \contentsline {figure}{\numberline {4.10}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a aver\IeC {\'\i }a de \textit {IVR}}}{55}{figure.4.10}% 
 \contentsline {figure}{\numberline {4.11}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a baja de \textit {IVR}}}{55}{figure.4.11}% 
@@ -36,8 +37,9 @@
 \contentsline {figure}{\numberline {4.14}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a ``no reconocido'' de \textit {IVR}}}{56}{figure.4.14}% 
 \contentsline {figure}{\numberline {4.15}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a reclamaci\IeC {\'o}n de \textit {IVR}}}{57}{figure.4.15}% 
 \contentsline {figure}{\numberline {4.16}{\ignorespaces Nube de palabras de la categor\IeC {\'\i }a resto de \textit {IVR}}}{57}{figure.4.16}% 
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Primeros datos: \textit {wordcloud} inicial}}{61}{figure.4.17}% 
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Primeros datos: \textit {wordcloud} filtrado}}{63}{figure.4.18}% 
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Llamadas IVR Vs. llamadas monitorizadas (escala logar\IeC {\'\i }tmica)}}{58}{figure.4.17}% 
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Primeros datos: \textit {wordcloud} inicial}}{62}{figure.4.18}% 
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Primeros datos: \textit {wordcloud} filtrado}}{64}{figure.4.19}% 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces \textit {Tokens} LDA \textit {topic} 1}}{70}{figure.5.1}% 
 \contentsline {figure}{\numberline {5.2}{\ignorespaces \textit {Tokens} LDA \textit {topic} 2}}{70}{figure.5.2}% 
@@ -57,27 +59,32 @@
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Arquitectura con capas totalmente conectadas}}{89}{figure.6.5}% 
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes convolucionales}}{93}{figure.6.6}% 
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con redes recurrentes}}{94}{figure.6.7}% 
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con \textit {MLP}}}{94}{figure.6.8}% 
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Optimizaci\IeC {\'o}n de modelos binarios con \textit {MLP}}}{95}{figure.6.8}% 
 \contentsline {figure}{\numberline {6.9}{\ignorespaces Optimizaci\IeC {\'o}n de modelos multiclase}}{95}{figure.6.9}% 
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Matriz de confusi\IeC {\'o}n datos balanceados}}{96}{figure.6.10}% 
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Matriz de confusi\IeC {\'o}n datos no balanceados}}{97}{figure.6.11}% 
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Precisi\IeC {\'o}n de todos los modelos}}{96}{figure.6.10}% 
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Mediana de ejecuci\IeC {\'o}n de todos los estudios}}{97}{figure.6.11}% 
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Precisi\IeC {\'o}n de todos los modelos}}{97}{figure.6.12}% 
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Precisi\IeC {\'o}n de todos los modelos}}{98}{figure.6.13}% 
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Precisi\IeC {\'o}n de todos los modelos}}{98}{figure.6.14}% 
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Matriz de confusi\IeC {\'o}n datos balanceados}}{99}{figure.6.15}% 
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Matriz de confusi\IeC {\'o}n datos no balanceados}}{100}{figure.6.16}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Capa de \textit {streaming}}}{101}{figure.7.1}% 
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Arquitectura microservicios}}{106}{figure.7.2}% 
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Capa de \textit {streaming}}}{103}{figure.7.1}% 
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Arquitectura microservicios}}{108}{figure.7.2}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Capa de servicio}}{113}{figure.8.1}% 
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Cuadro de mando del servicio}}{125}{figure.8.2}% 
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Nube de palabras desde la capa de servicio}}{126}{figure.8.3}% 
-\contentsline {figure}{\numberline {8.4}{\ignorespaces Cuadro de mando de monitorizaci\IeC {\'o}n}}{127}{figure.8.4}% 
-\contentsline {figure}{\numberline {8.5}{\ignorespaces \textit {Machine learning}. Vista de m\IeC {\'e}trica individual.}}{131}{figure.8.5}% 
-\contentsline {figure}{\numberline {8.6}{\ignorespaces \textit {Machine learning}. Vista de anomal\IeC {\'\i }as.}}{131}{figure.8.6}% 
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Capa de servicio}}{115}{figure.8.1}% 
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Cuadro de mando del servicio}}{127}{figure.8.2}% 
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Nube de palabras desde la capa de servicio}}{128}{figure.8.3}% 
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Cuadro de mando de monitorizaci\IeC {\'o}n}}{129}{figure.8.4}% 
+\contentsline {figure}{\numberline {8.5}{\ignorespaces \textit {Machine learning}. Vista de m\IeC {\'e}trica individual.}}{133}{figure.8.5}% 
+\contentsline {figure}{\numberline {8.6}{\ignorespaces \textit {Machine learning}. Vista de anomal\IeC {\'\i }as.}}{133}{figure.8.6}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{134}{figure.9.1}% 
-\contentsline {figure}{\numberline {9.2}{\ignorespaces S2I en Openshift}}{150}{figure.9.2}% 
+\contentsline {figure}{\numberline {9.1}{\ignorespaces configuraci\IeC {\'o}n de despliegue y recursos usados en OCP}}{136}{figure.9.1}% 
+\contentsline {figure}{\numberline {9.2}{\ignorespaces S2I en Openshift}}{152}{figure.9.2}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {10.1}{\ignorespaces Metodolog\IeC {\'\i }a DevOps. Fuente \cite {devops}}}{156}{figure.10.1}% 
-\contentsline {figure}{\numberline {10.2}{\ignorespaces Cuadro de mando eficiencia}}{157}{figure.10.2}% 
-\contentsline {figure}{\numberline {10.3}{\ignorespaces \textit {Discover} predicci\IeC {\'o}n err\IeC {\'o}nea}}{158}{figure.10.3}% 
-\contentsline {figure}{\numberline {10.4}{\ignorespaces Despliegue tras \textit {push}}}{162}{figure.10.4}% 
-\contentsline {figure}{\numberline {10.5}{\ignorespaces \textit {stages} en Jenkins}}{163}{figure.10.5}% 
-\contentsline {figure}{\numberline {10.6}{\ignorespaces Resultado de pruebas unitarias}}{164}{figure.10.6}% 
+\contentsline {figure}{\numberline {10.1}{\ignorespaces Metodolog\IeC {\'\i }a DevOps. Fuente \cite {devops}}}{158}{figure.10.1}% 
+\contentsline {figure}{\numberline {10.2}{\ignorespaces Cuadro de mando eficiencia}}{159}{figure.10.2}% 
+\contentsline {figure}{\numberline {10.3}{\ignorespaces \textit {Discover} predicci\IeC {\'o}n err\IeC {\'o}nea}}{160}{figure.10.3}% 
+\contentsline {figure}{\numberline {10.4}{\ignorespaces Despliegue tras \textit {push}}}{164}{figure.10.4}% 
+\contentsline {figure}{\numberline {10.5}{\ignorespaces \textit {stages} en Jenkins}}{165}{figure.10.5}% 
+\contentsline {figure}{\numberline {10.6}{\ignorespaces Resultado de pruebas unitarias}}{166}{figure.10.6}% 

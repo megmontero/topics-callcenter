@@ -139,12 +139,26 @@ A.~S. M.~Ashique Mahmood.
 \newblock {\em Literature Survey on Topic Modeling}.
 \newblock 2013.
 
+\bibitem{birch}
+Cory Maklin.
+\newblock Birch clustering algorithm example in python.
+\newblock
+  \url{https://towardsdatascience.com/machine-learning-birch-clustering-algorithm-clearly-explained-fb9838cbeed9}.
+\newblock Último acceso 2019-12-18.
+
 \bibitem{lambda}
 Nathan Marz.
 \newblock How to beat the cap theorem.
 \newblock \url{http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html},
   Octubre 2011.
 \newblock Último acceso 2019-10-14.
+
+\bibitem{ldafig}
+Yingjie Miao.
+\newblock Reactive ldap library.
+\newblock
+  \url{https://medium.com/kifi-engineering/reactive-lda-library-d495ed2a6342}.
+\newblock Último acceso 2019-12-18.
 
 \bibitem{word2vec}
 Tomas Mikolov, Kai Chen, Greg~S. Corrado, and Jeffrey Dean.
