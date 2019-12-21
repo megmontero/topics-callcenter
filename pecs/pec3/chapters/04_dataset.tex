@@ -1,0 +1,1003 @@
+\chapter{Conjunto de datos}
+\label{chapter:dataset}
+El primer paso cuando nos enfrentamos a un problema de minería de datos, es comprender el conjunto de datos con el que contamos y ver si se adapta a nuestras necesidades. En este caso, al tratarse de un proyecto que se desarrolla dentro de una empresa, en caso de duda, hemos tenido la posibilidad de acudir a las áreas dueñas del dato para solicitarle información adicional sobre el mismo. 
+
+
+En este capítulo abordaremos todos los aspectos relacionados con los datos que hemos ido recopilando durante el desarrollo del proyecto. En la sección \ref{section:data:ana}, describiremos el conjunto de datos con el que hemos estado trabajando, posteriormente en la sección \ref{section:data:repr} veremos las diferentes formas que hemos usado para representar los datos que alimentan los modelos que hemos construido (y que describiremos en los siguientes capítulos) y, por último, en la sección \ref{section:data:evol} echaremos la vista atrás para ver el conjunto de datos inicial y poder apreciar la evolución que ha ido sufriendo.
+
+
+Otro de los objetivos del capítulo es poner de manifiesto la importancia de la parte quizás menos ``glamurosa'' que está presente en todos los proyectos de minería de datos. Cuando exponemos un proyecto de minería de datos siempre ponemos el foco en los modelos creados, sin embargo, el grueso del trabajo en los proyectos de este tipo se encuentra en recopilar datos, entenderlos y preprocesarlos (o limpiarlos). Todo este proceso es el que intentaremos describir en las siguientes páginas.
+
+
+En el código expuesto a lo largo del capítulo se hará referencia a un módulo llamado \textit{mgmtfm}, se trata de de un módulo en \textit{Python} creado especialmente para este proyecto y que nos permitirá realizar las tareas necesarias con un nivel de abstracción mayor. 
+
+\section{Análisis del conjunto de datos}
+\label{section:data:ana}
+En este apartado analizaremos el conjunto de datos con el que trabajaremos a lo largo de todo el documento. Como veremos en el apartado \ref{section:data:evol}, este conjunto de datos ha sido fruto de un proceso evolutivo y de recopilar información de diferentes fuentes. 
+
+El resto de esta sección de análisis lo dividiremos en secciones como si se tratara de un \textit{notebook} de \textit{Jupyter}, que ha sido la interfaz utilizada para realizar el análisis.
+
+
+\subsection{Imports}
+
+   Importamos las librerías y establecemos los parámetros que necesitaremos en la ejecución del \textit{notebook}.
+
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{sys}
+\PY{n}{sys}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{..}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{k+kn}{import} \PY{n+nn}{warnings}
+\PY{n}{warnings}\PY{o}{.}\PY{n}{filterwarnings}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\PY{k+kn}{from} \PY{n+nn}{datetime} \PY{k}{import} \PY{n}{datetime}
+\PY{k+kn}{import} \PY{n+nn}{nltk}
+\PY{k+kn}{from} \PY{n+nn}{nltk}\PY{n+nn}{.}\PY{n+nn}{tokenize}\PY{n+nn}{.}\PY{n+nn}{toktok} \PY{k}{import} \PY{n}{ToktokTokenizer}
+\PY{k+kn}{from} \PY{n+nn}{nltk}\PY{n+nn}{.}\PY{n+nn}{corpus} \PY{k}{import} \PY{n}{stopwords}
+\PY{k+kn}{from} \PY{n+nn}{mgmtfm} \PY{k}{import} \PY{n}{clean}
+\PY{k+kn}{from} \PY{n+nn}{wordcloud} \PY{k}{import} \PY{n}{WordCloud}
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+
+
+\PY{n}{pd}\PY{o}{.}\PY{n}{set\PYZus{}option}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{max\PYZus{}rows}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+m+mi}{9999}\PY{p}{)}
+\PY{n}{pd}\PY{o}{.}\PY{n}{set\PYZus{}option}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{max\PYZus{}columns}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{9999}\PY{p}{)}
+\PY{n}{pd}\PY{o}{.}\PY{n}{set\PYZus{}option}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{display.max\PYZus{}colwidth}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{500}\PY{p}{)}
+
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Notebook ejecutado el }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{datetime}\PY{o}{.}\PY{n}{now}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{strftime}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{\PYZhy{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{m\PYZhy{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{Y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Using TensorFlow backend.
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Notebook ejecutado el 12-11-2019.
+    \end{Verbatim}
+
+    \hypertarget{carga-de-datos}{%
+\subsection{Carga de datos}\label{carga-de-datos}}
+
+    El \textit{core} de nuestros datos son las llamadas en sí. Actualmente disponemos de grabaciones de un 20\% de las llamadas de las que se transcriben un
+20\% (lo que supone un 4\% del total), estas llamadas llegan a nuestra plataforma de análisis mediante un
+proceso \textit{batch}. El objetivo es disponer en un futuro del 100\% de las
+transcripciones en tiempo real.
+
+Para comenzar el análisis, cargamos el \textit{dataset}.
+
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{verint\PYZus{}raw} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}parquet}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{/data/datasets/input\PYZus{}data/verint\PYZus{}dataset.parquet}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+        
+ Describimos brevemente los campos que pueden ser de utilidad para nuestro proyecto: 
+ 
+ \begin{itemize}
+
+
+\item \textbf{\textit{co\_llamada\_verint}}: Código de la llamada en el sistema, nos servirá
+para identificar de manera unívoca la transcripción.
+
+ \item \textbf{\textit{ucid}}: Código unívoco de la llamada.
+
+\item \textbf{\textit{fx\_evento}}: Fecha del evento.
+
+\item \textbf{\textit{it\_llamada}}: Instante en el que se produce el evento.
+
+\item \textbf{\textit{datecreated}}: Instante en el que se crea la transcripción.
+
+\item \textbf{\textit{plaintext}}: Transcripción de la llamada en texto plano.
+
+\item \textbf{\textit{audio\_start\_time}}: Hora de inicio del audio. Formato UTC.
+
+\item \textbf{\textit{cd22}}: Provincia desde la que se ha realizado la llamada. 
+
+\item \textbf{\textit{no\_destino\_pa}}: Código IVR que categoriza la llamada en función de las
+opciones que elige el usuario al llamar.
+
+\item \textbf{\textit{duration}}: Duración de la llamada.
+
+
+ \end{itemize}
+
+Aunque existen más campos en el conjunto de datos original, estos no son relevantes para 
+nuestro caso de uso.
+
+    Utilizamos  un subconjunto de estos campos, para realizar un análisis
+previo. Vemos en primer lugar el número total de llamadas disponibles:
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{verint} \PY{o}{=} \PY{n}{verint\PYZus{}raw}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{co\PYZus{}llamada\PYZus{}verint}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ucid}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fx\PYZus{}evento}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{it\PYZus{}llamada}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                     \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{duration}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{plaintext}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{no\PYZus{}destino\PYZus{}pa}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+\PY{n}{verint}\PY{o}{.}\PY{n}{plaintext} \PY{o}{=} \PY{n}{verint}\PY{o}{.}\PY{n}{plaintext}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{verint}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+co\_llamada\_verint    509374
+ucid                 509374
+fx\_evento            509374
+it\_llamada           508524
+duration               3457
+plaintext            509374
+no\_destino\_pa        508497
+dtype: int64
+    \end{Verbatim}
+
+
+        
+    \hypertarget{monitorizaciones}{%
+\subsubsection{Monitorizaciones}\label{monitorizaciones}}
+
+    Otra fuente de datos de la  que disponemos, son las monitorizaciones de las
+llamadas. Se trata de un cuestionario realizado por un grupo de personas
+sobre llamadas escuchadas. A nosotros nos interesa la parte relacionada
+con el tipo de la llamada, que viene identificada en el cuestionario con los
+prefijos $C$ y $D$.
+
+\vspace{0.5cm}
+
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{4}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{monitorizaciones} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}parquet}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{/data/datasets/input\PYZus{}data/monitorizaciones.parquet}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Tenemos }\PY{l+s+si}{\PYZob{}:,\PYZcb{}}\PY{l+s+s2}{ llamadas monitorizadas.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{n}{monitorizaciones}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ucid}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Tenemos 45,465 llamadas monitorizadas.
+    \end{Verbatim}
+
+        
+    Al igual que hemos hecho anteriormente, vemos los datos más relevantes
+de este Dataset:
+
+\begin{itemize}
+ 
+
+
+\item \textbf{\textit{co\_llamada\_verint}}: Código de la llamada en el sistema, nos servirá
+para identificar de manera unívoca la transcripción.
+
+\item \textbf{\textit{ucid}}: Código unívoco de la llamada.
+
+\item \textbf{\textit{it\_llamada}}: Timestamp de la llamada.
+
+\item \textbf{\textit{duration}}: Duración de la llamada.
+
+\item \textbf{\textit{unidad\_negocio}}: Unidad de negocio (no aplica en nuestro caso de uso).
+
+\item \textbf{\textit{name}}: Nombre de lo que se mide en el cuestionario.
+
+\item \textbf{\textit{value}}: Valor de lo que se mide en el cuestionario.
+
+\end{itemize}
+
+    Nos quedamos con los datos de categorización de las llamadas (prefijos C
+y D). Y mostramos un ejemplo de registro.
+
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{monitor} \PY{o}{=} \PY{n}{monitorizaciones}\PY{p}{[}\PY{p}{(}\PY{n}{monitorizaciones}\PY{o}{.}\PY{n}{name}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{startswith}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{C}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{o}{|} \PY{n}{monitorizaciones}\PY{o}{.}\PY{n}{name}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{startswith}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{D}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}\PY{p}{]}\PY{o}{.}\PY{n}{drop\PYZus{}duplicates}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{diccionario} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{C\PYZsh{}1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{información}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{C\PYZsh{}2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{contratar}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{D\PYZsh{}1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{información}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{D\PYZsh{}2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{consulta}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{D\PYZsh{}3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{queja}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{D\PYZsh{}4}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trámite}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+
+\PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n}{diccionario}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{n}{monitor}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{monitor}\PY{o}{.}\PY{n}{name}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{startswith}\PY{p}{(}\PY{n}{k}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tipo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{diccionario}\PY{p}{[}\PY{n}{k}\PY{p}{]}
+        
+        
+\PY{n}{monitor}\PY{o}{.}\PY{n}{name} \PY{o}{=} \PY{n}{monitor}\PY{o}{.}\PY{n}{name}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:}  \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{comercial}\PY{l+s+s1}{\PYZsq{}} \PY{k}{if} \PY{n}{x}\PY{o}{.}\PY{n}{startswith}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{C}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{else} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{no\PYZus{}comercial}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{monitor}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\PY{n}{monitor}\PY{o}{.}\PY{n}{it\PYZus{}llamada} \PY{o}{=} \PY{n}{monitor}\PY{o}{.}\PY{n}{it\PYZus{}llamada}\PY{o}{.}\PY{n}{dt}\PY{o}{.}\PY{n}{date}
+\PY{n}{monitor}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{co\PYZus{}llamada\PYZus{}verint}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ucid}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fx\PYZus{}evento}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{duration}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{unidad\PYZus{}negocio}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{motivo\PYZus{}llamada}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{subtipo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tipo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{n}{monitor}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+      co\_llamada\_verint                  ucid   fx\_evento  duration  \textbackslash{}
+35  9133922894230003051  00028029411538374830  2018-10-01     612.0
+
+   unidad\_negocio motivo\_llamada                   subtipo   tipo
+35            GRP   no\_comercial  D.3.4 Problemas Técnicos  queja
+
+\end{Verbatim}
+\end{tcolorbox}
+        
+    Combinamos los datos de las monitorizaciones con las llamadas:
+
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{monitored\PYZus{}calls} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{verint}\PY{p}{,} \PY{n}{monitor}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{co\PYZus{}llamada\PYZus{}verint}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ucid}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fx\PYZus{}evento}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{duration}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{inner}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{display}\PY{p}{(}\PY{n}{monitored\PYZus{}calls}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:,\PYZcb{}}\PY{l+s+s2}{ llamadas totales monitorizadas.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{n}{monitored\PYZus{}calls}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{co\PYZus{}llamada\PYZus{}verint}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    
+    \begin{verbatim}
+     co_llamada_verint                  ucid   fx_evento it_llamada  duration  \
+  9136067963760004051  00026022771559825158  2019-06-06        NaT     507.0   
+                         plaintext  \
+  buenas tardes soy ana de zaragoza en qué puedo ayudarle\nbuenas tardes..
+
+  no_destino_pa unidad_negocio motivo_llamada        subtipo      tipo  
+          None            GRP   no_comercial  D.2.6 Factura  consulta  
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+3,438 llamadas totales monitorizadas.
+    \end{Verbatim}
+
+    El hecho de que el número de llamadas transcritas sea tan bajo en
+relación con las llamadas totales puede ser un \textit{handicap} a la hora de entrenar un modelo supervisado.
+
+    \hypertarget{ivr}{%
+\subsubsection{IVR}\label{ivr}}
+
+    Como hemos visto los datos de monitorizaciones tienen el problema de que
+son escasos, es por eso que nos planteamos analizar los datos de \textit{IVR}.
+Estos datos son proporcionados por el usuario al llamar al \emph{call-center}. En primer lugar vemos el número de categorías diferentes que obtenemos del \textit{dataset} de llamadas.
+
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{verint}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{no\PYZus{}destino\PYZus{}pa}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+438
+\end{Verbatim}
+\end{tcolorbox}
+        
+    Como vemos el número de elementos es enorme y, sin agrupar, es difícil entender la categoría de las llamadas. Gracias a una jerarquía que nos han proporcionado desde el área de marketing (y que actualizan periódicamente), hemos podido obtener los datos agrupados. 
+    
+    Obtenemos la categoría más actual a través de una extracción de los datos originales y mostramos el formato.
+    
+    \vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{8}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{ivr\PYZus{}hierarchy} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}excel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{/data/mgm/data/dwproyp0.dwen\PYZus{}1004\PYZus{}14\PYZus{}etiquetas\PYZus{}23102019.xlsx}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{index\PYZus{}col}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{header}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{last\PYZus{}date} \PY{o}{=} \PY{n}{ivr\PYZus{}hierarchy}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fx\PYZus{}carga}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Nos quedamos con la fecha: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{last\PYZus{}date}\PY{p}{)}\PY{p}{)}
+\PY{n}{ivr\PYZus{}hierarchy} \PY{o}{=} \PY{n}{ivr\PYZus{}hierarchy}\PY{p}{[}\PY{n}{ivr\PYZus{}hierarchy}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fx\PYZus{}carga}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{==} \PY{n}{last\PYZus{}date}\PY{p}{]}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fx\PYZus{}carga}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{ivr\PYZus{}hierarchy}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tipo}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{subtipo}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{no\PYZus{}destino\PYZus{}pa}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\PY{n}{ivr\PYZus{}hierarchy}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Nos quedamos con la fecha: 20190508
+    \end{Verbatim}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{8}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+             tipo              subtipo                        no\_destino\_pa
+3          Avería  Averias\_Incidencias       MovistarTV\_Conectividad\_Futbol
+6   No Reconocido        No reconocido                    IVR-DTScontenidos
+7          Avería  Averias\_Incidencias       Internet\_Velocidad\_NoValidaNum
+9           Resto                Deuda                           IVR-DEUDAF
+11      Comercial          Movistar TV                  MovistarTV\_Desambig
+12         Avería  Averias\_Incidencias                     Silencio\_AdminKO
+13         Avería  Averias\_Incidencias       Internet\_NoCol\_AdminKO\_NoPulsa
+14         Avería  Averias\_Incidencias  Averia\_Telefono\_Movil\_Otros\_AdminKO
+15          Resto              Idiomas                        Idiomas\_Arabe
+17  No Reconocido        No reconocido        Facturacion\_Desambiguar\_NoCol
+\end{Verbatim}
+\end{tcolorbox}
+        
+    Por último, utilizamos esta jerarquía para obtener los tipos de las
+llamadas dependiendo de su \textit{IVR}.
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{9}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{ivr\PYZus{}calls} \PY{o}{=}  \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{verint}\PY{p}{,} \PY{n}{ivr\PYZus{}hierarchy}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{no\PYZus{}destino\PYZus{}pa}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{inner}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{display}\PY{p}{(}\PY{n}{ivr\PYZus{}calls}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:,\PYZcb{}}\PY{l+s+s2}{ llamadas totales con IVR.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{n}{ivr\PYZus{}calls}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{co\PYZus{}llamada\PYZus{}verint}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    
+    \begin{verbatim}
+     co_llamada_verint                  ucid   fx_evento  \
+  9136040272670004051  00028114201559548193  2019-06-03   
+
+                 it_llamada  duration  \
+ 2019-06-03 09:52:04+00:00       NaN   
+
+                   plaintext  \
+  buenos días soy marina habla dígame puedo ayudarle buenos días
+
+        no_destino_pa   tipo                                  subtipo  
+  MenuOpciones_NoCol  Resto  Gestiones Productos y Servicios - Resto  
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+495,830 llamadas totales con IVR.
+    \end{Verbatim}
+
+    Vemos que en este caso tenemos categorizadas un número bastante considerable de
+llamadas que pueden ser muy útiles para entrenar nuestros modelos.
+
+
+\subsection{Análisis preliminar}
+\label{section:data:ana:pre}
+
+
+    En esta sección vamos a hacer un pequeño estudio sobre los datos
+anteriormente extraídos y sobre la distribución de las llamadas. Lo haremos tanto con los datos de las
+monitorizaciones como con los datos de \textit{IVR}.
+
+\subsubsection{Monitorizaciones}
+
+En primer lugar mostramos la distribución de los datos de monitorizaciones, tanto en formato tabular como en un gráfico de tarta.
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{10}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{df\PYZus{}group} \PY{o}{=}  \PY{p}{(}\PY{n}{monitored\PYZus{}calls}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tipo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{motivo\PYZus{}llamada}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tipo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{motivo\PYZus{}llamada}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ucid}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tipo}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{motivo\PYZus{}llamada}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+\PY{n}{df\PYZus{}group}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\PY{n}{df\PYZus{}group}\PY{o}{.}\PY{n}{plot}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{y}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{p}{)}
+\PY{n}{display}\PY{p}{(}\PY{n}{df\PYZus{}group}\PY{p}{)}
+\PY{k}{del}\PY{p}{(}\PY{n}{df\PYZus{}group}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+    \begin{verbatim}
+tipo        motivo_llamada       
+consulta    no_comercial     2204
+contratar   comercial         108
+información comercial         204
+            no_comercial       41
+queja       no_comercial      476
+trámite     no_comercial      771
+    \end{verbatim}
+
+    
+      
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.6\linewidth}}{images/data/distmoni}
+    \caption{Distribución de llamadas por monitorizaciones}
+    \label{fig:distmoni}
+\end{figure}
+    
+ Observamos en la figura \ref{fig:distmoni} las llamadas monitorizadas, además de ser un porcentaje muy bajo del total, no están balanceadas, teniendo más de la mitad de las llamadas concentradas en un mismo tipo. 
+ 
+ El análisis lo continuaremos con las llamadas \textit{tokenizadas} con el objetivo de no mostrar en la nube \textit{stopwords} o palabras comunes. Para ahorrar procesamiento y código cargaremos directamente los datos \textit{tokenizados} de un fichero. En la sección \ref{section:data:repr} podremos ver en que consiste este proceso de \textit{tokenizado}. La carga del fichero la hacemos usando el módulo \textit{mgmtfm}
+que contiene clases y funciones para simplificarnos la ejecución del
+proyecto.
+
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{11}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{file\PYZus{}tokens} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/data/mgm/data/pandas/tokens\PYZus{}monitored\PYZus{}quit\PYZus{}commons\PYZus{}12112019.pkl}\PY{l+s+s2}{\PYZdq{}}
+\PY{n}{clean\PYZus{}steps} \PY{o}{=} \PY{n}{clean}\PY{o}{.}\PY{n}{Clean}\PY{p}{(}\PY{p}{)}
+\PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{load\PYZus{}tokens}\PY{p}{(}\PY{n}{file\PYZus{}tokens}\PY{p}{)}
+\PY{n}{monitored\PYZus{}tokens} \PY{o}{=} \PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{tokens}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Found 20,422 unique tokens.
+    \end{Verbatim}
+
+    Para tener una idea inicial de las llamadas que se hacen, vamos a utilizar 
+una nube de palabras que nos permita visualizar de manera sencilla los
+términos más usados:
+\vspace{0.5cm}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{12}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{plot\PYZus{}wordcloud}\PY{p}{(}\PY{n}{tokens}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+    \PY{n}{text} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{tokens}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{plaintext}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{)}\PY{p}{)}
+    \PY{n}{wordcloud} \PY{o}{=} \PY{n}{WordCloud}\PY{p}{(}\PY{n}{background\PYZus{}color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{white}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{generate}\PY{p}{(}\PY{n}{text}\PY{p}{)}
+    \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)} \PY{p}{)}
+    \PY{k}{if} \PY{p}{(}\PY{n}{title}\PY{p}{)}\PY{p}{:}
+        \PY{n}{fig}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{n}{title}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{wordcloud}\PY{p}{,} \PY{n}{interpolation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bilinear}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{off}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+    
+\PY{n}{plot\PYZus{}wordcloud}\PY{p}{(}\PY{n}{monitored\PYZus{}tokens}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    
+    
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.8\linewidth}}{images/data/cloudmoni}
+    \caption{Nube de palabras a partir de transcripciones monitorizadas}
+    \label{fig:cloudmoni}
+\end{figure}    
+    
+ En la figura \ref{fig:cloudmoni}, vemos como las palabras que nos encontramos parece que están claramente
+relacionadas con el servicio que se puede dar en el \textit{call center} como
+``línea móvil'', ``número teléfono'', ``contrato'', ``oferta'',
+``servicio'', etc.
+
+A continuación vamos a representar la nube de palabras centrándonos en cada categoría de las monitorizaciones para apreciar las diferencias entre ellas. 
+
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{13}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{tipos} \PY{o}{=} \PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{distribucion\PYZus{}tipos}\PY{o}{.}\PY{n}{index}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
+
+\PY{k}{for} \PY{n}{tipo} \PY{o+ow}{in} \PY{n}{tipos}\PY{p}{:}
+    \PY{n}{tokens\PYZus{}cat} \PY{o}{=} \PY{n}{monitored\PYZus{}tokens}\PY{p}{[}\PY{n}{monitored\PYZus{}tokens}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tipo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{n}{tipo}\PY{p}{]}
+    \PY{n}{plot\PYZus{}wordcloud}\PY{p}{(}\PY{n}{tokens\PYZus{}cat}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Categoría: }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{tipo}\PY{o}{.}\PY{n}{upper}\PY{p}{(}\PY{p}{)} \PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+
+    
+    \begin{figure}[!ht]
+    	\centering
+    	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_consulta}
+    	
+    	
+        \caption{Nube de palabras para la categoría consulta de las monitorizaciones}
+        \label{fig:cloudmoni_consulta}
+    \end{figure}    
+    
+    
+    \begin{figure}[!ht]
+        	\centering
+        	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_contratar}
+        	
+        	
+            \caption{Nube de palabras para la categoría contratar de las monitorizaciones}
+            \label{fig:cloudmoni_contratar}
+        \end{figure}    
+   
+   
+       \begin{figure}[!ht]
+           	\centering
+           	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_info}
+           	
+           	
+               \caption{Nube de palabras para la categoría informacion de las monitorizaciones}
+               \label{fig:cloudmoni_info}
+           \end{figure}  
+              
+       \begin{figure}[!ht]
+           	\centering
+           	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_queja}
+           	
+           	
+               \caption{Nube de palabras para la categoría queja de las monitorizaciones}
+               \label{fig:cloudmoni_queja}
+           \end{figure}     
+    
+    
+    \begin{figure}[!ht]
+               	\centering
+               	\adjustimage{max size={0.7\linewidth}}{images/data/cloudmoni_tram}
+               	
+               	
+                   \caption{Nube de palabras para la categoría trámite de las monitorizaciones}
+                   \label{fig:cloudmoni_tram}
+ \end{figure}     
+    
+   
+   En las figuras \ref{fig:cloudmoni_consulta}, \ref{fig:cloudmoni_contratar}, \ref{fig:cloudmoni_info}, \ref{fig:cloudmoni_queja} y \ref{fig:cloudmoni_tram} vemos que efectivamente hay variaciones en las nubes de palabras de las
+categorías, por destacar algunas:
+\begin{itemize}
+\item Vemos ``línea'' y ``número'' como palabras muy representativas a la hora
+de contratar.
+
+\item Vemos ``reclamación'' y ``incidencia'' como palabras presentes en la
+categoría queja.
+
+\item En trámite nos aparece, por ejemplo, el bigrama ``dar baja''.
+\end{itemize}
+
+\FloatBarrier
+\subsubsection{IVR}
+
+    Realizamos el mismo ejercicio para las categorizaciones de las llamadas mediante \textit{IVR}. En
+primer lugar mostramos su distribución tanto en formato tabular como en gráfico de tartas:
+\vspace{0.5cm}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{14}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{df\PYZus{}group} \PY{o}{=}  \PY{p}{(}\PY{n}{ivr\PYZus{}calls}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tipo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tipo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ucid}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tipo}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{df\PYZus{}group}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\PY{n}{df\PYZus{}group}\PY{o}{.}\PY{n}{plot}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{y}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{p}{)}
+\PY{n}{display}\PY{p}{(}\PY{n}{df\PYZus{}group}\PY{p}{)}
+\PY{k}{del}\PY{p}{(}\PY{n}{df\PYZus{}group}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    
+    \begin{verbatim}
+                count
+tipo                 
+Avería          12350
+Baja            24999
+Comercial      204924
+Factura         67892
+No Reconocido   53198
+Reclamación     23802
+Resto          108746
+    \end{verbatim}
+
+    
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.6\linewidth}}{images/data/distivr}
+    \caption{Distribución de llamadas por \textit{IVR}}
+    \label{fig:distivr}
+\end{figure}
+    
+    De nuevo, como hicimos con las llamadas monitorizadas, cargamos los \textit{tokens} de las llamadas que poseen \textit{IVR}, con el objetivo de ahorrar tiempo de procesamiento.
+    
+ Una vez tenemos los \textit{tokens}, mostramos la nube de palabras.
+
+\vspace{0.5cm}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{15}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{file\PYZus{}tokens} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/data/mgm/data/pandas/tokens\PYZus{}ivr\PYZus{}quit\PYZus{}commons\PYZus{}02112019.pkl}\PY{l+s+s2}{\PYZdq{}}
+\PY{n}{clean\PYZus{}steps} \PY{o}{=} \PY{n}{clean}\PY{o}{.}\PY{n}{Clean}\PY{p}{(}\PY{p}{)}
+\PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{load\PYZus{}tokens}\PY{p}{(}\PY{n}{file\PYZus{}tokens}\PY{p}{)}
+\PY{n}{ivr\PYZus{}tokens} \PY{o}{=} \PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{tokens}
+\PY{n}{plot\PYZus{}wordcloud}\PY{p}{(}\PY{n}{ivr\PYZus{}tokens}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Found 47,990 unique tokens.
+    \end{Verbatim}
+
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.8\linewidth}}{images/data/cloudivr}
+    \caption{Nube de palabras a partir de transcripciones con \textit{IVR}}
+    \label{fig:cloudivr}
+\end{figure} 
+
+    
+    Vemos que aparecen más términos diferentes al aumentar la cantidad de la muestra, recordemos que el porcentaje de llamadas con \textit{IVR} sobre el total era mucho mayor. 
+    
+    
+Para cada categoría de \textit{IVR} mostramos la nube de palabras obtenida.
+
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{16}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{tipos} \PY{o}{=} \PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{distribucion\PYZus{}tipos}\PY{o}{.}\PY{n}{index}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
+
+\PY{k}{for} \PY{n}{tipo} \PY{o+ow}{in} \PY{n}{tipos}\PY{p}{:}
+    \PY{n}{tokens\PYZus{}cat} \PY{o}{=} \PY{n}{ivr\PYZus{}tokens}\PY{p}{[}\PY{n}{ivr\PYZus{}tokens}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tipo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{n}{tipo}\PY{p}{]}
+    \PY{n}{plot\PYZus{}wordcloud}\PY{p}{(}\PY{n}{tokens\PYZus{}cat}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Categoría: }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{tipo}\PY{o}{.}\PY{n}{upper}\PY{p}{(}\PY{p}{)} \PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_ave}
+    \caption{Nube de palabras de la categoría avería de \textit{IVR}}
+    \label{fig:cloudivr_ave}
+\end{figure} 
+
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_baja}
+    \caption{Nube de palabras de la categoría baja de \textit{IVR}}
+    \label{fig:cloudivr_baja}
+\end{figure} 
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_comercial}
+    \caption{Nube de palabras de la categoría comercial de \textit{IVR}}
+    \label{fig:cloudivr_comercial}
+\end{figure} 
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_factura}
+    \caption{Nube de palabras de la categoría factura de \textit{IVR}}
+    \label{fig:cloudivr_factura}
+\end{figure} 
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_nrec}
+    \caption{Nube de palabras de la categoría ``no reconocido'' de \textit{IVR}}
+    \label{fig:cloudivr_nrec}
+\end{figure} 
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_recl}
+    \caption{Nube de palabras de la categoría reclamación de \textit{IVR}}
+    \label{fig:cloudivr_recl}
+\end{figure} 
+
+
+  
+  
+  
+    
+En las figuras  \ref{fig:cloudivr_ave}, \ref{fig:cloudivr_baja}, \ref{fig:cloudivr_comercial}, \ref{fig:cloudivr_factura}, \ref{fig:cloudivr_nrec}, \ref{fig:cloudivr_recl} y \ref{fig:cloudivr_resto}  observamos que las  categorías aparecen algo más difusas en este caso que en el de
+monitorizaciones. Pero sí nos encontramos por ejemplo con:
+\begin{itemize}
+\item  ``dar baja'' en la categoría baja.
+
+\item ``problema'' y ``caso'' en reclamación.
+
+\item ``están cobrando'' en factura.
+
+\item ``avería'' en avería.
+
+\end{itemize}
+
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.7\linewidth}}{images/data/cloudivr_resto}
+    \caption{Nube de palabras de la categoría resto de \textit{IVR}}
+    \label{fig:cloudivr_resto}
+\end{figure} 
+\FloatBarrier
+
+Así pues, tras el estudio de ambos tipos de clasificaciones, podemos concluir que la calidad que presentan las etiquetas de monitorizaciones es mayor y la clasificación es menos difusa; sin embargo el número de muestras se presenta \textit{a priori} insuficiente para ser usado en modelos de \textit{deep learning}. En la figura \ref{fig:ivrvsmoni}, podemos ver (aún usando una escala logarítmica) la gran diferencia entre el total de llamadas etiquetadas con IVR y el total de llamadas etiquetadas con monitorizaciones.
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.8\linewidth}}{images/data/ivrvsmoni}
+    \caption{Llamadas IVR Vs. llamadas monitorizadas (escala logarítmica)}
+    \label{fig:ivrvsmoni}
+\end{figure} 
+
+
+
+
+Por estos motivos, en el capítulo \ref{chapter:super} los modelos supervisados serán entrenados usando las etiquetas \textit{IVR}, en un futuro, cuando los datos de monitorizaciones crezcan se realizará el mismo ejercicio con las etiquetas de monitorizaciones. 
+
+
+\section{Preprocesado y Representación de transcripciones}
+\label{section:data:repr}
+
+
+
+Todos los modelos que se presentarán a lo largo de esta sección utilizan como entrada las transcripciones de las llamadas recibidas al \textit{call-center}. En esta sección nos centraremos en los diferentes métodos que hemos escogido para representar estas llamadas.
+
+
+El primer paso una vez recibimos la transcripción, y en cualquier proceso de minería de datos, es limpiar los datos. Para ello, como ya hemos visto en apartados anteriores, realizaremos un proceso de \textit{\textbf{tokenizado}} que constará de los siguientes pasos: 
+
+\begin{itemize}
+\item Eliminar caracteres especiales. 
+\item Pasar a minúsculas. 
+\item Eliminar números. 
+\item Eliminar nombres propios. 
+\item Eliminar palabras \textit{stopwords}. 
+\item Eliminar palabras comunes que no aporten información.
+\end{itemize}
+
+A partir de la lista de \textit{tokens} obtenida por este proceso hemos creado un diccionario, en el que cada \textit{token} tiene asignado un identificador numérico, obteniendo de este modo una \textbf{secuencia numérica} para cada llamada. 
+
+Los modelos que presentaremos en la siguiente sección necesitan que esta secuencia numérica sea de una longitud fija, por lo que usualmente limitaremos las secuencias a 866 elementos, ya que el 99\% de las llamadas poseen un tamaño menor. En el caso de  que las llamadas posean una longitud menor usaremos \textit{left padding}, es decir, rellenaremos con 0 por la izquierda la secuencia hasta los 866 elementos.
+
+
+Las secuencias obtenidas ya podrían alimentar la mayoría de nuestros modelos, utilizando \textit{one hot enconding}, sin embargo, hemos decidido añadir algunas transformaciones que nos permitan entender el contexto de las palabras.  
+
+\subsection{Word2vec}
+Como ya vimos en el estado del arte, una de las representaciones que más popularidad ha tomado  en los últimos tiempos es \textit{word2vec} y esta será la entrada de la mayoría de nuestros modelos supervisados. Nuestro objetivo es huir de representaciones que traten a las palabras como elementos aislados y poder disponer de una representación que cuente con el contexto de la palabra.
+
+Entre las dos representaciones de \textit{word2vec} hemos optado por \textit{SKIP-Gram} y hemos realizado pruebas entrenando el \textit{embedding} con datos de \textit{Wikipedia} y con nuestro corpus. Finalmente hemos optado por usar el modelo entrenado con nuestro corpus. Esto se debe a que tenemos un corpus lo suficientemente extenso y, de este modo, el modelo aprende las palabras según el contexto de las llamadas al \textit{call-center} y no en un contexto general como puede ser \textit{Wikipedia}.
+
+En el caso de nuestros modelos, el \textit{embedding}, es decir el paso a la representación de cada palabra como un vector de números reales, se realizará dentro del mismo modelo en una primera capa. Esta capa no será entrenada durante la fase de entrenamiento del modelo y consistirá en una matriz que contendrá por cada identificador de \textit{token} un vector representando las palabras. 
+
+
+Usualmente utilizaremos una dimensionalidad de 150 en los vectores que representaran cada palabra.
+
+\subsection{Doc2vec}
+
+Otra opción para representar nuestras transcripciones que hemos abordado, tanto para modelos supervisados como no supervisados, es la de representar el documento completo como un único vector huyendo de la representación secuencial.
+
+Una de las posibilidades de obtener un único vector consiste en hacer la media de los vectores \textit{word2vec} obtenidos, pero en 2014 Le y Mikolov \cite{doc2vec} propusieron un nuevo método denominado \textit{doc2vec} que aplica un procedimiento muy similar a \textit{word2vec}, pero a los documentos en lugar de las palabras. De hecho posee dos implementaciones \textit{``Paragraph Vector - Distributed Memory''} (\textit{PV-DM}) y \textit{``Paragraph Vector - Distributed Bag of Words''} (\textit{PV-DBOW}) que son análogas a las implementaciones \textit{CBOW} y \textit{SKIP-Gram} de \textit{Word2Vec} que ya vimos en el estado del arte.
+
+
+Nosotros hemos optado por entrenar un modelo \textit{doc2vec} con nuestro corpus \textit{tokenizado},  usando el modelo \textit{PV-DBOW} (análogo a \textit{SKIP-Gram}), para obtener un vector por transcripción con 500 dimensiones.
+
+
+\section{Evolución del conjunto de datos}
+\label{section:data:evol}
+
+Durante este capítulo hemos realizado un análisis del conjunto de datos más completo que teníamos hasta la fecha, no obstante, el proceso para conseguir y entender este conjunto de datos no ha sido una tarea trivial, sino que se ha tratado de un proceso iterativo en el que ha sido necesario involucrar a varias áreas y extraer información de diversas fuentes de datos de la compañía. El hecho de disponer de datos incompletos o de baja calidad nos han llevado a crear modelos poco eficientes que nos han situado otra vez en el punto de partida (como volveremos a ver en el siguiente capítulo). 
+
+Aunque el hecho de volver a la fase de recopilación y entendimiento de los datos es algo que ya preveíamos cuando presentamos el estándar \textbf{CRISP-DM} (apartado \ref{section:intro:planificacion}),  vamos a describir en esta sección una breve muestra de los análisis iniciales para que pueda compararse con el análisis final y quede patente la evolución de los datos.
+
+Al igual que en el apartado anterior expondremos los datos como si se tratara de un \textit{notebook}, pero en este caso mostraremos unicamente las sentencias claves (ignorando por ejemplo los \textit{imports}). 
+
+Todo el análisis que se muestra en este apartado fue realizado utilizando PySpark sobre un clúster de Hadoop Hortonworks.
+
+\subsection{Las llamadas}
+
+
+
+El primer paso, como es obvio, fue cargar los datos en un \textit{dataframe} y comprobar la estructura del mismo: 
+
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{domo\PYZus{}dataset} \PY{o}{=} \PY{n}{sqlContext}\PY{o}{.}\PY{n}{read}\PY{o}{.}\PY{n}{parquet}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dataset/domo\PYZus{}dataset.parquet}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{domo\PYZus{}dataset}
+\end{Verbatim}
+\end{tcolorbox}
+
+ \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+DataFrame[co\_llamada\_verint: string, id\_descarga:string,nu\_telefono\_actuacion:string, it\_llamada: timestamp, nu\_llamada\_ic: string, co\_grabacion: string,raw\_verint:array<string>, \_\_index\_level\_0\_\_: bigint]
+\end{Verbatim}
+\end{tcolorbox}
+
+
+De los campos listados unicamente era factible extraer información del texto de la llamada (``raw\_verint''). El siguiente paso fue comprobar el número de llamadas que no contenían una transcripción nula. Además reparticionamos los datos y los dejamos en caché para realizar un análisis más eficiente: 
+
+\vspace{0.5cm}
+
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{raw\PYZus{}verint} \PY{o}{=} \PY{n}{domo\PYZus{}dataset}\PY{o}{.}\PY{n}{select}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{raw\PYZus{}verint}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{rdd}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{raw\PYZus{}verint}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o+ow}{is} \PY{o+ow}{not} \PY{k+kc}{None}\PY{p}{)}\PYZbs{}
+    \PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{y}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PYZbs{}
+    \PY{o}{.}\PY{n}{repartition}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{)}
+\PY{n}{raw\PYZus{}verint}\PY{o}{.}\PY{n}{cache}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Llamadas disponibles : }\PY{l+s+si}{\PYZob{}:,\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(} \PY{n}{raw\PYZus{}verint}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}  
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Llamadas disponibles : 185,109
+    \end{Verbatim}
+    
+    
+ A través de todas las llamadas obtuvimos una lista de palabras: 
+    \vspace{0.5cm}
+    
+        \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{3}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{raw\PYZus{}list\PYZus{}word} \PY{o}{=} \PY{n}{raw\PYZus{}verint}\PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{document}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PYZbs{}
+                    \PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{document}\PY{p}{)}\PY{p}{)}
+    \end{Verbatim}
+    \end{tcolorbox}
+    
+    
+    
+Y eliminamos las \textit{Stopwords} en español usando el paquete \textit{ntlk}.
+
+\vspace{0.5cm}
+    
+        \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{4}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{StopWords} \PY{o}{=} \PY{n}{stopwords}\PY{o}{.}\PY{n}{words}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{spanish}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    
+    \PY{n}{raw\PYZus{}no\PYZus{}stop} \PY{o}{=} \PY{n}{raw\PYZus{}verint}\PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{document}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PYZbs{}
+    	\PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{document}\PY{p}{)}\PY{p}{)} \PYZbs{}
+        \PY{o}{.}\PY{n}{map}\PY{p}{(} \PY{k}{lambda} \PY{n}{word}\PY{p}{:} \PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{word} \PY{k}{if} \PY{n}{x} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{StopWords}\PY{p}{]}\PY{p}{)}
+    \end{Verbatim}
+    \end{tcolorbox}
+    
+       Volvimos a unir las palabras de la lista (ahora sin las \textit{stopwords}) para mostrar una nube de  palabras más frecuentes
+    
+        \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{5}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{list\PYZus{}words} \PY{o}{=} \PY{n}{raw\PYZus{}no\PYZus{}stop}\PY{o}{.}\PY{n}{reduce}\PY{p}{(}\PY{k}{lambda} \PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{:} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{a}\PY{o}{+}\PY{n}{b}\PY{p}{)}\PY{p}{)}\PY{p}{)}  
+    \PY{n}{wordcloud} \PY{o}{=} \PY{n}{WordCloud}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{generate}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{list\PYZus{}words}\PY{p}{)}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{wordcloud}\PY{p}{,} \PY{n}{interpolation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bilinear}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{off}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+    \end{Verbatim}
+    \end{tcolorbox}
+    
+      \begin{figure}[!ht]
+                    	\centering
+                    	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/data/malo_wordclod1}
+                    	\caption{Primeros datos: \textit{wordcloud} inicial}
+                    	\label{fig:wordcloudmalo1}
+                    \end{figure}
+              
+              
+Como podemos observar en la nube de palabras obtenida (figura \ref{fig:wordcloudmalo1}), el resultado no fue el esperado. Las llamadas que aparecían no eran significantes y entre ellas existían muchas malas  transcripciones. A partir de aquí intentamos abordar distintas aproximaciones que nos permitieran poder extraer algo de valor de los datos.
+
+Un ejemplo de estas aproximaciones fue \textit{taggear} las palabras en  función de su categoría gramatical para quedarnos solo con una lista de candidatos. Para hacerlo de un modo eficiente de manera distribuida, en primer lugar creamos un diccionario con las categorías y la raíz de las palabras: 
+
+          
+\vspace{0.5cm}
+          
+              \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+          \prompt{In}{incolor}{6}{\boxspacing}
+          \begin{Verbatim}[commandchars=\\\{\}]
+          \PY{n}{tagger} \PY{o}{=} \PY{n}{treetaggerwrapper}\PY{o}{.}\PY{n}{TreeTagger}\PY{p}{(}\PY{n}{TAGLANG}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{es}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{TAGPARFILE}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/tmp/tree/spanish.par}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{TAGDIR}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/tmp/tree/tree\PYZhy{}tagger\PYZhy{}3.2.1/}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}          
+          \PY{n}{vocabulary} \PY{o}{=}  \PY{n}{raw\PYZus{}no\PYZus{}stop}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{)} \PYZbs{}
+              \PY{o}{.}\PY{n}{flatMap}\PY{p}{(}\PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{document}\PY{p}{)} \PYZbs{}
+              \PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{word}\PY{p}{:} \PY{p}{(}\PY{n}{word}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PYZbs{}
+              \PY{o}{.}\PY{n}{reduceByKey}\PY{p}{(} \PY{k}{lambda} \PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{:} \PY{n}{x} \PY{o}{+} \PY{n}{y}\PY{p}{)}   \PYZbs{}
+              \PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n+nb}{tuple}\PY{p}{:} \PY{n+nb}{tuple}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} 
+          \PY{n}{vocabulary}\PY{o}{.}\PY{n}{cache}\PY{p}{(}\PY{p}{)}
+          \PY{n}{vocabulary}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+          \PY{n}{vocabulary\PYZus{}tags} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{el}\PY{p}{:} \PY{p}{(}\PY{n}{el}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{(}\PY{n}{el}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{el}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)} \PY{p}{)} \PY{p}{,}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{y}\PY{p}{:} \PY{n}{y}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}\PY{n+nb}{list}\PY{p}{(}\PY{n}{tagger}\PY{o}{.}\PY{n}{tag\PYZus{}text}\PY{p}{(}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{vocabulary}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+          \PY{n}{tags\PYZus{}dict} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{broadcast}\PY{p}{(}\PY{p}{\PYZob{}}\PY{n}{key}\PY{p}{:} \PY{n}{value} \PY{k}{for} \PY{p}{(}\PY{n}{key}\PY{p}{,} \PY{n}{value}\PY{p}{)} \PY{o+ow}{in} \PY{n}{vocabulary\PYZus{}tags}\PY{p}{\PYZcb{}}\PY{p}{)}
+          \end{Verbatim}
+          \end{tcolorbox}
+          
+             Una vez que habíamos realizado el filtrado nos quedamos únicamente con la raíz de las palabras que fueran
+          verbos o nombres.
+          
+          \vspace{0.5cm}
+          
+              \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+          \prompt{In}{incolor}{7}{\boxspacing}
+          \begin{Verbatim}[commandchars=\\\{\}]
+          \PY{k}{def} \PY{n+nf}{get\PYZus{}stem\PYZus{}of\PYZus{}candidates}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+              \PY{n}{good} \PY{o}{=} \PY{p}{[}\PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VLinf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+              \PY{n}{candidates} \PY{o}{=}  \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{word}\PY{p}{:} \PY{n}{word} \PY{o+ow}{in} \PY{n}{tags\PYZus{}dict}\PY{o}{.}\PY{n}{value} \PY{o+ow}{and} \PY{n}{tags\PYZus{}dict}\PY{o}{.}\PY{n}{value}\PY{p}{[}\PY{n}{word}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o+ow}{in} \PY{n}{good}  \PY{p}{,}\PY{n}{x}\PY{p}{)}\PY{p}{)}
+              \PY{n}{stem} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{word}\PY{p}{:} \PY{n}{tags\PYZus{}dict}\PY{o}{.}\PY{n}{value}\PY{p}{[}\PY{n}{word}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{candidates}\PY{p}{)}\PY{p}{)}
+              \PY{k}{return} \PY{n}{stem}
+              
+          \PY{n}{stemmed\PYZus{}candidates} \PY{o}{=} \PY{n}{raw\PYZus{}no\PYZus{}stop}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{get\PYZus{}stem\PYZus{}of\PYZus{}candidates}\PY{p}{)}    
+          \PY{n}{stemmed\PYZus{}candidates}\PY{o}{.}\PY{n}{cache}\PY{p}{(}\PY{p}{)}
+          \end{Verbatim}
+          \end{tcolorbox}
+         
+         Con estos resultados volvemos a crear la nube de palabras.  
+         
+         \vspace{0.5cm}
+
+                  
+              \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+          \prompt{In}{incolor}{8}{\boxspacing}
+          \begin{Verbatim}[commandchars=\\\{\}]
+          \PY{n}{list\PYZus{}stemmed\PYZus{}words} \PY{o}{=} \PY{n}{stemmed\PYZus{}candidates}\PY{o}{.}\PY{n}{reduce}\PY{p}{(}\PY{k}{lambda} \PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{:} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{a}\PY{o}{+}\PY{n}{b}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{wordcloud} \PY{o}{=} \PY{n}{WordCloud}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{generate}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{list\PYZus{}stemmed\PYZus{}words}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} Display the generated image:}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{plt}\PY{o}{.}\PY{n}{imshow}\PY{p}{(}\PY{n}{wordcloud}\PY{p}{,} \PY{n}{interpolation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bilinear}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{off}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+          \end{Verbatim}
+          \end{tcolorbox}
+          
+     
+              
+              \begin{figure}[!ht]
+              	\centering
+              	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{images/data/malo_wordclod2}
+                    	\caption{Primeros datos: \textit{wordcloud} filtrado}
+                    	\label{fig:wordcloudmalo2}
+              \end{figure}
+              
+              
+              
+              
+ Observamos que los resultados mostrados en la figura \ref{fig:wordcloudmalo2} no mejoran con esta propuesta, tampoco lo hicieron con la obtención de N-Gramas, y en el capítulo siguiente veremos que la creación de los modelos sobre este conjunto de datos nos llevó a volver a buscar y entender nuevos datos.
+ 
+ 
+ \subsection{Las etiquetas}
+ 
+ Tras ver la pobre calidad de los datos iniciales, intentamos encontrar algún dato que nos sirviera para etiquetar las llamadas pensando que podrían ser de utilidad para un modelo supervisado. 
+ 
+ Una posibilidad era revisar y etiquetar llamadas manualmente, pero dada la cantidad de datos que podían ser necesarios para entrenar un modelo supervisado, convertía esta posibilidad en inviable.
+ 
+ A continuación vamos a analizar los primeros datos que obtuvimos de etiquetas. En primer lugar cargamos las etiquetas y los datos originales:  
+ \vspace{0.5cm}
+ 
+   \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+ \prompt{In}{incolor}{1}{\boxspacing}
+ \begin{Verbatim}[commandchars=\\\{\}]
+ \PY{n}{domo\PYZus{}dataset} \PY{o}{=} \PY{n}{sqlContext}\PY{o}{.}\PY{n}{read}\PY{o}{.}\PY{n}{parquet}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dataset/domo\PYZus{}dataset.parquet}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+ \PY{n}{label\PYZus{}dataset} \PY{o}{=} \PY{n}{sqlContext}\PY{o}{.}\PY{n}{read}\PY{o}{.}\PY{n}{csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dataset/20190802\PYZus{}meta\PYZus{}todo.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{header}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+ \PY{n+nb}{print}\PY{p}{(}\PY{n}{label\PYZus{}dataset}\PY{p}{)}
+ \end{Verbatim}
+ \end{tcolorbox}
+ 
+     \begin{Verbatim}[commandchars=\\\{\}]
+ DataFrame[co\_llamada\_verint: string, nu\_telefono\_actuacion: string, it\_llamada:
+ string, nu\_llamada\_ic: string, co\_grabacion: string, no\_destino\_pa: string,
+ in\_poc1: string, satisfaccion: string]
+     \end{Verbatim}
+     
+La etiqueta se corresponde con el dato \textit{no\_destino\_pa} del \textit{dataset}. Vemos las diferentes etiquetas que tenemos disponibles: 
+\vspace{0.5cm}
+ \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{label\PYZus{}dataset}\PY{o}{.}\PY{n}{createOrReplaceTempView}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{label\PYZus{}tmp}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{labels} \PY{o}{=} \PY{n}{sqlContext}\PY{o}{.}\PY{n}{sql}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SELECT DISTINCT no\PYZus{}destino\PYZus{}pa FROM label\PYZus{}tmp}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{labels}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{l+m+mi}{)}
+\end{Verbatim}
+\end{tcolorbox}
+ 
+   \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+  \prompt{Out}{outcolor}{2}{\boxspacing}
+  \begin{Verbatim}[commandchars=\\\{\}]
+  438
+  \end{Verbatim}
+  \end{tcolorbox}
+ 
+El primer problema que nos encontramos es el gran número de etiquetas que aparecen sin tener una jerarquía clara, además aunque intentamos agruparlas, su clasificación (sin un conocimiento previo de los datos) se antojaba una tarea bastante compleja. 
+
+No obstante, mirando el número de llamadas con etiqueta: 
+
+\vspace{0.5cm}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{domo\PYZus{}dataset}\PY{o}{.}\PY{n}{createOrReplaceTempView}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{domo\PYZus{}tmp}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{label\PYZus{}calls} \PY{o}{=} \PY{n}{sqlContext}\PY{o}{.}\PY{n}{sql}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s+s2}{SELECT a.raw\PYZus{}verint, b.no\PYZus{}destino\PYZus{}pa }
+\PY{l+s+s2}{                                FROM domo\PYZus{}tmp a JOIN label\PYZus{}tmp b}
+\PY{l+s+s2}{                                ON a.co\PYZus{}llamada\PYZus{}verint = b.co\PYZus{}llamada\PYZus{}verint}
+\PY{l+s+s2}{                                WHERE a.raw\PYZus{}verint IS NOT NULL}\PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Llamadas etiquetadas disponibles : }\PY{l+s+si}{\PYZob{}:,\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(} \PY{n}{label\PYZus{}calls}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}  
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Llamadas etiquetadas disponibles : 170,844
+    \end{Verbatim}
+
+ Nos dimos cuenta que teníamos un gran número de llamadas etiquetadas, convirtiéndose en un dato muy interesante para una clasificación supervisada. Como hemos visto en la sección \ref{section:data:ana:pre} de este mismo capítulo, este dato agrupado ha sido uno de los usados en el \textit{dataset} definitivo.
+ 
+ 
+ 

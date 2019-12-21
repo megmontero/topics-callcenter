@@ -1,0 +1,103 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+        \PYG{n+nt}{\PYGZdq{}@timestamp\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}date\PYGZdq{}}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}agent\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}properties\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}ephemeral\PYGZus{}id\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+              \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}hostname\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+              \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}id\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+              \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}name\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+              \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+              \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}version\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+              \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+            \PYG{p}{\PYGZcb{}}
+          \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}error\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}properties\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}message\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}text\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}
+          \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}kstream\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+          \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}period\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}properties\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}ms\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}integer\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}
+          \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}process\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}properties\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}latency\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}properties\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}avg\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+                  \PYG{n+nt}{\PYGZdq{}properties\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+                    \PYG{n+nt}{\PYGZdq{}ms\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+                      \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}integer\PYGZdq{}}
+                    \PYG{p}{\PYGZcb{}}
+                  \PYG{p}{\PYGZcb{}}
+                \PYG{p}{\PYGZcb{},}
+                \PYG{n+nt}{\PYGZdq{}max\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+                  \PYG{n+nt}{\PYGZdq{}properties\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+                    \PYG{n+nt}{\PYGZdq{}ms\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+                      \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}integer\PYGZdq{}}
+                    \PYG{p}{\PYGZcb{}}
+                  \PYG{p}{\PYGZcb{}}
+                \PYG{p}{\PYGZcb{}}
+              \PYG{p}{\PYGZcb{}}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}rate\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}short\PYGZdq{}}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}total\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}integer\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}
+          \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}service\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+          \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}status\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+          \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}tags\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}keyword\PYGZdq{}}\PYG{p}{,}
+          \PYG{n+nt}{\PYGZdq{}ignore\PYGZus{}above\PYGZdq{}} \PYG{p}{:} \PYG{l+m+mi}{256}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}thread\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}short\PYGZdq{}}
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}uptime\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+          \PYG{n+nt}{\PYGZdq{}properties\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}ms\PYGZdq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}integer\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}
+          \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
