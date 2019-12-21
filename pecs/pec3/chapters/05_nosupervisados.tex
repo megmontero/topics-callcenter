@@ -1,0 +1,493 @@
+\chapter{Aprendizaje No Supervisado}
+\label{chapter:nosup}
+
+Una de las aproximaciones que hemos llevado a cabo a la hora de clasificar las llamadas es la creación de modelos no supervisados. Durante este capítulo analizaremos diferentes aproximaciones que hemos llevado a cabo para aplicar este tipo de métodos. 
+
+En la sección \ref{section:nosup:lda} veremos los resultados de aplicar LDA sobre las transcripciones \textit{tokenizadas}, posteriormente, en la sección \ref{section:nosup:birch} mostraremos la aplicación de un algoritmo de \textit{clustering} tradicional y, por último, en la sección \ref{section:nosup:evol}, veremos los resultados de aplicar estos mismos métodos al conjunto de datos inicial descrito en el capítulo anterior.
+
+
+Todo el análisis realizado en este capítulo se expondrá como si se tratara de un \textit{notebook} de \textit{Jupyter}, que ha sido la interfaz utilizada para realizar el análisis, mostrando únicamente las partes más relevantes del mismo (ignorando por ejemplo los \textit{imports}).
+
+
+\section{LDA}
+\label{section:nosup:lda}
+La primera opción que hemos tenido en cuenta a la hora de clasificar \textit{topics} de forma no supervisada ha sido el uso del algoritmo LDA, que ya comentamos en el estado del arte en la sección \ref{section:arte:lda}.
+
+Por ello, a lo largo de esta sección, aplicaremos LDA al conjunto de datos descrito en el capítulo \ref{chapter:dataset}. 
+
+
+En el análisis que exponemos, partiremos de los \textit{tokens} previamente cargados. Una vez hemos realizado la carga de los datos, utilizamos \textit{CountVectorizer} de \textit{sklearn} para obtener a partir de los documentos una matriz con el conteo de los \textit{tokens}.
+
+\vspace{0.5cm}
+   \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{count\PYZus{}vectorizer} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{p}{)}
+\PY{n}{count\PYZus{}data} \PY{o}{=} \PY{n}{count\PYZus{}vectorizer}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}
+       \PY{n}{tokens}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{plaintext}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{)}\PY{p}{)}      
+\end{Verbatim}
+\end{tcolorbox}
+
+A partir de aquí aplicamos el método \textit{LatentDirichletAllocation} de \textit{sklearn}, importado como \textit{lda}.
+
+\vspace{0.5cm}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{9}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{lda} \PY{o}{=} \PY{n}{LDA}\PY{p}{(}\PY{n}{n\PYZus{}components}\PY{o}{=}\PY{n}{number\PYZus{}topics}\PY{p}{,} \PY{n}{n\PYZus{}jobs}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{lda} \PY{o}{=} \PY{n}{lda}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{count\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+
+
+
+Definimos una función para mostrar los \textit{topics} extraídos por  LDA junto a sus palabras más relevantes.
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{print\PYZus{}topics}\PY{p}{(}\PY{n}{model}\PY{p}{,} \PY{n}{count\PYZus{}vectorizer}\PY{p}{,} \PY{n}{n\PYZus{}top\PYZus{}words}\PY{p}{)}\PY{p}{:}
+    \PY{n}{words} \PY{o}{=} \PY{n}{count\PYZus{}vectorizer}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}
+    \PY{k}{for} \PY{n}{topic\PYZus{}idx}\PY{p}{,} \PY{n}{topic} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{model}\PY{o}{.}\PY{n}{components\PYZus{}}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Topic \PYZsh{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{topic\PYZus{}idx}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n}{words}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{topic}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{n}{n\PYZus{}top\PYZus{}words} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+Mostramos los términos más relevantes por cada uno de los \textit{topics}. 
+\vspace{0.5cm}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{10}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Topics encontrados por LDA:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{print\PYZus{}topics}\PY{p}{(}\PY{n}{lda}\PY{p}{,} \PY{n}{count\PYZus{}vectorizer}\PY{p}{,} \PY{n}{number\PYZus{}words}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Topics encontrados por LDA:
+
+Topic \#0:
+factura reclamacion mas euros baja numero linea acuerdo agosto movistar
+septiembre telefono pago tenia pagar
+
+Topic \#1:
+acuerdo linea movistar indica amable sistema podemos caso espera permitame poder
+retire numero movil servicio
+
+Topic \#2:
+numero linea movil telefono baja portabilidad movistar fijo tarjeta acuerdo
+titular datos mas tardes llamar
+
+Topic \#3:
+movistar fibra mas tecnico numero telefono cliente casa internet television
+correo acuerdo instalacion servicio router
+
+Topic \#4:
+euros linea mas fusion llamadas movil paquete seria promocion gigas moviles
+tambien tarifa meses ilimitadas
+    \end{Verbatim}
+
+
+Los \textit{topics} obtenidos nos pueden llevar a hacernos una idea sobre la temática:
+
+\begin{enumerate}
+\item Palabras como ``factura'', ``reclamacion'' o ``euros'' nos indican que la temática de este \textit{topic} puede ir relacionada con temas de facturas.
+\item En este caso la información parece más difusa por las palabras obtenidas.
+\item Palabras como ``portabilidad'', ``tarjeta'' o ``baja'' nos indican que se pueden estar tratando temas de portabilidades. 
+\item En este caso parece un \textit{topic} ligado a aspectos técnicos por palabras como ``fibra'', ``tecnico'' o ``instalacion''.
+\item Este último \textit{topic} con palabras como ``fusion'', ``promociones'' o ``paquete'' parece más ligado a promociones y productos. 
+\end{enumerate}
+
+LDA puede ser usado para tareas de clasificación, a continuación agrupamos los documentos por \textit{topics} según al clúster al que pertenezcan. 
+
+
+\vspace{0.5cm}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{24}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{doc\PYZus{}topic} \PY{o}{=} \PY{n}{lda}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{count\PYZus{}data}\PY{p}{)}
+\PY{n}{topics}\PY{o}{=}\PY{p}{[}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{p}{]}\PY{p}{]}
+\PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{doc\PYZus{}topic}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+    \PY{n}{topic\PYZus{}most\PYZus{}pr} \PY{o}{=} \PY{n}{doc\PYZus{}topic}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{p}{)}
+    \PY{n}{max\PYZus{}pr} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{doc\PYZus{}topic}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{p}{)}
+    \PY{n}{topics}\PY{p}{[}\PY{n}{topic\PYZus{}most\PYZus{}pr}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{tokens}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{plaintext}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{n}{max\PYZus{}pr} \PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+
+Con esta información, podemos ordenar los documentos por el porcentaje de pertenencia a un \textit{topic} y mostrar dos de los documentos más representativos de cada \textit{topic} para validar las conclusiones extraídas anteriormente. 
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{t} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{topics}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+    \PY{n}{topics}\PY{p}{[}\PY{n}{t}\PY{p}{]} \PY{o}{=} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{topics}\PY{p}{[}\PY{n}{t}\PY{p}{]}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{reverse}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+    \PY{n}{printed\PYZus{}docs} \PY{o}{=} \PY{l+m+mi}{0}
+    \PY{n+nb}{print} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZsh{}\PYZsh{}\PYZsh{} topic }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ \PYZsh{}\PYZsh{}\PYZsh{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{)}
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{topics}\PY{p}{[}\PY{n}{t}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Doc }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{(}\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+s2}{) : }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{printed\PYZus{}docs}\PY{p}{,}\PY{n}{topics}\PY{p}{[}\PY{n}{t}\PY{p}{]}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{topics}\PY{p}{[}\PY{n}{t}\PY{p}{]}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+            \PY{n}{printed\PYZus{}docs}\PY{o}{+}\PY{o}{=}\PY{l+m+mi}{1}
+        \PY{k}{if} \PY{p}{(}\PY{n}{printed\PYZus{}docs}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{n}{number\PYZus{}docs}\PY{p}{)}\PY{p}{:}
+            \PY{k}{break}
+            
+\end{Verbatim}
+\end{tcolorbox}
+
+
+
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/lda_topic1}
+    \caption{\textit{Tokens} LDA \textit{topic} 1}
+    \label{fig:lda_topic1}
+\end{figure}
+
+En la figura \ref{fig:lda_topic1} vemos que efectivamente los documentos guardan relación con temas de pagos y facturas. Al consultar más documentos este patrón se mantiene.
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/lda_topic2}
+    \caption{\textit{Tokens} LDA \textit{topic} 2}
+    \label{fig:lda_topic2}
+\end{figure}
+
+En la figura \ref{fig:lda_topic2} vemos que es difícil encontrar una relación entre los documentos. Tras consultar más documentos, llegamos a la conclusión de que todas las trascripciones tienen en común una petición para valorar la calidad recibida.
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/lda_topic3}
+    \caption{\textit{Tokens} LDA \textit{topic} 3}
+    \label{fig:lda_topic3}
+\end{figure}
+
+En la figura \ref{fig:lda_topic3} vemos que el primer documento habla sobre una portabilidad mientras que el segundo habla de activar una tarjeta tras un alta. No se trata de una categoría tan clara como la primera, pero sigue existiendo una relación.
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/lda_topic4}
+    \caption{\textit{Tokens} LDA \textit{topic} 4}
+    \label{fig:lda_topic4}
+\end{figure}
+
+
+En la figura \ref{fig:lda_topic4} vemos que como esperábamos, las llamadas tratan temas técnicos. 
+
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/lda_topic5}
+    \caption{\textit{Tokens} LDA \textit{topic} 5}
+    \label{fig:lda_topic5}
+\end{figure}
+
+Por último en la figura \ref{fig:lda_topic5} vemos que las llamadas hablan de servicios de la compañía tal y como esperábamos. 
+
+En este apartado hemos visto una muestra con cinco \textit{topics} que ha sido una de las ejecuciones del algoritmo con la que  mejor resultado hemos obtenido. Sin embargo, podemos ver que, al tratarse un modelo estadístico basado en la repetición de determinadas palabras en los documentos hemos tenido clasificaciones como la del segundo \textit{topic} que no tienen mucho sentido desde el punto de vista semántico.
+
+\section{Doc2Vec + \textit{clustering}}
+\label{section:nosup:birch}
+La aplicación de LDA nos ha devuelto unos resultados bastante interesantes, aún así queremos abordar otra aproximación más \textit{naive} aprovechando la posibilidad de representar una llamada como un vector de números reales mediante Doc2Vec. Una vez obtengamos los vectores, vamos a aplicar un método de \textit{clustering} tradicional al mismo. A \textit{priori}, una de las ventajas de utilizar estos vectores es la posibilidad que tienen de capturar la semántica de cada una de las transcripciones.
+
+El método de \textit{clustering} usado en este capítulo será  BIRCH (\textit{Balanced Iterative Reducing and Clustering using Hierarchies}) \cite{birch} que nos permite procesar grandes cantidades de datos sin grandes requerimientos de recursos.
+
+Para realizar este análisis vamos a partir, al igual que en el apartado anterior, de los datos \textit{tokenizados} y de un modelo Doc2Vec entrenado y cargado con el módulo \textit{mgmtfm}.
+
+
+    En primer lugar, partiendo de los \textit{tokens}, obtenemos una lista con los vectores que representan cada documento.
+\vspace{0.5cm}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{19}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{docs} \PY{o}{=} \PY{n}{tokens}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{plaintext}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
+\PY{n}{doc2vec\PYZus{}docs} \PY{o}{=} \PY{p}{[}\PY{n}{embedding\PYZus{}steps}\PY{o}{.}\PY{n}{doc2vec\PYZus{}infer}\PY{p}{(}\PY{n}{doc}\PY{p}{)} \PY{k}{for} \PY{n}{doc} \PY{o+ow}{in} \PY{n}{docs}\PY{p}{]}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Aplicamos el método de \textit{clustering} Birch de \textit{sklearn} y clasificamos los documentos.
+\vspace{0.5cm}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{20}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{birch} \PY{o}{=} \PY{n}{Birch}\PY{p}{(}\PY{n}{branching\PYZus{}factor}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{threshold}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{n\PYZus{}clusters}\PY{o}{=}\PY{n}{number\PYZus{}topics}\PY{p}{,} \PY{n}{compute\PYZus{}labels}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{o}{.} \PYZbs{}
+                    \PY{n}{fit}\PY{p}{(}\PY{n}{doc2vec\PYZus{}docs}\PY{p}{)}
+
+\PY{n}{labels} \PY{o}{=} \PY{n}{birch}\PY{o}{.}\PY{n}{labels\PYZus{}}
+\PY{n}{clusters} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{n}\PY{p}{:} \PY{n}{tokens}\PY{p}{[}\PY{n}{labels}\PY{o}{==}\PY{n}{n}\PY{p}{]}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{plaintext}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{number\PYZus{}topics}\PY{p}{)}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Para cada \textit{topic} detectado, visualizamos una muestra de documentos.
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{25}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{number\PYZus{}topics}\PY{p}{)}\PY{p}{:}
+    \PY{n+nb}{print} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{topic }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{)}
+    \PY{k}{for} \PY{n}{d} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{number\PYZus{}docs}\PY{p}{)}\PY{p}{:}
+        \PY{n}{nd} \PY{o}{=} \PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{clusters}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Doc }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{(}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{) : }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{d}\PY{p}{,}\PY{n}{nd}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{clusters}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{p}{[}\PY{n}{nd}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+
+
+
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/birch_topic1}
+    \caption{\textit{Tokens} Doc2Vec + \textit{clustering} topic 1}
+    \label{fig:birch_topic1}
+\end{figure}
+
+
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/birch_topic2}
+    \caption{\textit{Tokens} Doc2Vec + \textit{clustering} topic 2}
+    \label{fig:birch_topic2}
+\end{figure}
+
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/birch_topic3}
+    \caption{\textit{Tokens} Doc2Vec + \textit{clustering} topic 3}
+    \label{fig:birch_topic3}
+\end{figure}
+
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/birch_topic4}
+    \caption{\textit{Tokens} Doc2Vec + \textit{clustering} topic 4}
+    \label{fig:birch_topic4}
+\end{figure}
+
+
+
+
+
+
+En las figuras \ref{fig:birch_topic1}, \ref{fig:birch_topic2}, \ref{fig:birch_topic3}, \ref{fig:birch_topic4} y \ref{fig:birch_topic5} podemos ver documentos de ejemplo para cada uno de los \textit{topics} detectados por el algoritmo \textit{Birch}. Algunos de estos \textit{topics} poseen una temática concreta, mientras que otros parecen ser una mezcla de varias. Analizando los documentos podemos extraer las siguientes conclusiones:
+
+\begin{enumerate}
+\item En este \textit{topic} aparecen conceptos mezclados, muchos de ellos relacionados con portabilidades o liberar terminales.
+\item Aunque no es un \textit{topic} claro, la mayoría de documentos están relacionados con el alta de producto o línea. 
+\item Cancelaciones varias. A la hora de contratar servicios o por falta de pagos.
+\item En este caso el \textit{topic} sí parece bastante claro, ya que parece que todos los documentos tratan sobre reclamaciones. 
+\item Este último \textit{topic} también parece uniforme y todos los documentos giran alrededor de las facturas.
+\end{enumerate}
+\clearpage
+
+\begin{figure}[!ht]
+	\centering
+	\adjustimage{max size={0.9\linewidth}}{images/nosup/birch_topic5}
+    \caption{\textit{Tokens} Doc2Vec + \textit{clustering} topic 5}
+    \label{fig:birch_topic5}
+\end{figure}
+
+
+Una vez aplicadas ambas aproximaciones, y vista una muestra con 5 \textit{topics} para cada una, podemos ver como en ambos casos existen \textit{topics} que se encuentran bien definidos y otros que parecen ser una mezcla de varios temas, una especie de miscelánea. Otro tema que parece quedar claro tras la aplicación de ambos métodos es la existencia de una temática de facturación bien diferenciada del resto.
+
+
+\section{Evolución de los modelos}
+\label{section:nosup:evol}
+
+Como ya vimos en el capítulo anterior, la calidad de los datos iniciales era bastante pobre, aún así intentamos aplicar métodos no supervisados a estos primeros datos. La idea de esta sección es poner de manifiesto, una vez más, que este tipo de proyectos son iterativos y que, a menudo, es necesario volver al punto de partida y a recopilar datos una vez construido el modelo.
+
+
+Todo el análisis que se muestra en este apartado fue realizado utilizando PySpark sobre un clúster de Hadoop Hortonworks. De entre todas las pruebas realizadas, hemos decidido mostrar la aplicación de LDA una vez extraídos los \textit{tokens}. 
+
+El primer paso consiste en obtener un contador de \textit{tokens}.
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{termCounts\PYZus{}tokens} \PY{o}{=}  \PY{n}{tokens}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{)} \PYZbs{}
+    \PY{o}{.}\PY{n}{flatMap}\PY{p}{(}\PY{k}{lambda} \PY{n}{document}\PY{p}{:} \PY{n}{document}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PYZbs{}
+    \PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{word}\PY{p}{:} \PY{p}{(}\PY{n}{word}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PYZbs{}
+    \PY{o}{.}\PY{n}{reduceByKey}\PY{p}{(} \PY{k}{lambda} \PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{:} \PY{n}{x} \PY{o}{+} \PY{n}{y}\PY{p}{)}   \PYZbs{}
+    \PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n+nb}{tuple}\PY{p}{:} \PY{p}{(}\PY{n+nb}{tuple}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n+nb}{tuple}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}  \PYZbs{}
+    \PY{o}{.}\PY{n}{sortByKey}\PY{p}{(}\PY{k+kc}{False}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+Posteriormente extraemos el vocabulario.
+
+\vspace{0.5cm}
+
+   \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+ \prompt{In}{incolor}{2}{\boxspacing}
+ \begin{Verbatim}[commandchars=\\\{\}]
+ \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}umbral}
+ \PY{n}{threshold\PYZus{}value} \PY{o}{=}\PY{l+m+mi}{50} 
+ \PY{n}{vocabulary\PYZus{}tokens} \PY{o}{=} \PY{n}{termCounts\PYZus{}tokens}   \PYZbs{}
+   \PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{x} \PY{p}{:} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{threshold\PYZus{}value}\PY{p}{)}  \PYZbs{}
+   \PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}  \PYZbs{}
+   \PY{o}{.}\PY{n}{zipWithIndex}\PY{p}{(}\PY{p}{)}  \PYZbs{}
+   \PY{o}{.}\PY{n}{collectAsMap}\PY{p}{(}\PY{p}{)}
+ \PY{n}{vocab\PYZus{}size\PYZus{}tokens} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{vocabulary\PYZus{}tokens}\PY{p}{)}
+ \end{Verbatim}
+ \end{tcolorbox}
+
+Obtenemos el \textit{dataframe} que nos permita  aplicar el modelo.
+
+\vspace{0.5cm}
+
+     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+  \prompt{In}{incolor}{3}{\boxspacing}
+  \begin{Verbatim}[commandchars=\\\{\}]
+  \PY{n}{df\PYZus{}txts} \PY{o}{=} \PY{n}{sqlContext}\PY{o}{.}\PY{n}{createDataFrame}\PY{p}{(}\PY{n}{tokens}\PY{p}{,} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{list\PYZus{}of\PYZus{}words}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+  \PY{n}{cv} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{list\PYZus{}of\PYZus{}words}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{features}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{vocabSize}\PY{o}{=}\PY{n}{vocab\PYZus{}size\PYZus{}tokens}\PY{p}{,} \PY{n}{minDF}\PY{o}{=}\PY{l+m+mf}{10.0}\PY{p}{)}
+  \PY{n}{cvmodel} \PY{o}{=} \PY{n}{cv}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{df\PYZus{}txts}\PY{p}{)}
+  \PY{n}{result\PYZus{}cv} \PY{o}{=} \PY{n}{cvmodel}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{df\PYZus{}txts}\PY{p}{)}
+  \PY{n}{lda\PYZus{}df} \PY{o}{=} \PY{n}{result\PYZus{}cv}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{features}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+  \end{Verbatim}
+  \end{tcolorbox}
+  
+  
+ Aplicamos el modelo LDA de MLlib y obtenemos los \textit{topics}.
+  \vspace{0.5cm}
+  
+      \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+  \prompt{In}{incolor}{4}{\boxspacing}
+  \begin{Verbatim}[commandchars=\\\{\}]
+  \PY{n}{num\PYZus{}topics}\PY{o}{=}\PY{l+m+mi}{10}
+  \PY{n}{max\PYZus{}iterations} \PY{o}{=} \PY{l+m+mi}{50}
+  \PY{n}{lda\PYZus{}tokens} \PY{o}{=} \PY{n}{LDA}\PY{p}{(}\PY{n}{k}\PY{o}{=}\PY{n}{num\PYZus{}topics}\PY{p}{,} \PY{n}{maxIter}\PY{o}{=}\PY{n}{max\PYZus{}iterations}\PY{p}{)}
+  \PY{n}{model\PYZus{}tokens} \PY{o}{=}\PY{n}{lda\PYZus{}tokens}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{lda\PYZus{}df}\PY{p}{)}
+  \PY{n}{topics} \PY{o}{=} \PY{n}{model\PYZus{}tokens}\PY{o}{.}\PY{n}{describeTopics}\PY{p}{(}\PY{p}{)}
+  \end{Verbatim}
+  \end{tcolorbox}
+
+ Imprimimos los \textit{topics}.
+ 
+\vspace{0.5cm}
+
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{terms\PYZus{}tokens} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{n}{value}\PY{p}{,} \PY{n}{key}\PY{p}{)} \PY{k}{for} \PY{n}{key}\PY{p}{,} \PY{n}{value} \PY{o+ow}{in} \PY{n}{vocabulary\PYZus{}tokens}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+\PY{n}{topics\PYZus{}term} \PY{o}{=} \PY{n}{topics}\PY{o}{.}\PY{n}{rdd}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{p}{[}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{y}\PY{p}{:} \PY{n}{terms\PYZus{}tokens}\PY{p}{[}\PY{n}{y}\PY{p}{]}\PY{p}{,}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\PY{n}{topics\PYZus{}term}\PY{o}{.}\PY{n}{toDF}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{t1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{t2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{t1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{t2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{n}{truncate}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+|0  |[rayos, adherir, campillos, cool, aplicárselo, mensualment, presionamos,
+oriol, nuri, ciencuenta]        |
+|1  |[campillos, cool, oriol, adherir, inversiones, bajemos, mensualment, acoso,
+consignado, obispo]          |
+|2  |[campillos, platicar, adherir, nuri, mensualment, penalice, seque,
+saludado, cool, picazón]              |
+|3  |[planteamos, enviaste, campillos, aplicárselo, adherir, informadas,
+desglosa, asaltado, saludado, antony]|
+|4  |[campillos, cool, adherir, ancianos, mensualment, seque, arreglaran,
+saludado, penalice, aplicárselo]    |
+|5  |[interpreto, saludado, campillos, desglosa, seque, cogera, solventada,
+aplicárselo, arreglaran, censando]|
+|6  |[campillos, adherir, cool, costaban, rayos, inversiones, acoso,
+mensualment, desglosa, aplicárselo]      |
+|7  |[cool, adherir, ciencuenta, campillos, desglosa, acoso, pulgada, afectaba,
+muestre, inversiones]         |
+|8  |[campillos, adherir, cool, mensualment, penalice, seque, obispo, acoso,
+saludado, allianz]               |
+|9  |[rehacer, pilo, campillos, remitirle, contestarnos, contaré, adherir,
+rayos, cobranzas, penalice]        |
+
+    \end{Verbatim}
+
+Como podemos observar, el resultado obtenido no es coherente con lo que esperamos encontrar en las llamadas de un \textit{call center}. Aún así seguimos intentando sacar valor a nuestros datos e intentamos aplicar el mismo método a los bigramas que fueran candidatos a aportar información relevante. 
+
+Con la siguiente función tratábamos de quedarnos con los bigramas relevantes: 
+\vspace{0.5cm}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{is\PYZus{}candidate}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+	\PY{n}{good} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VLinf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ADJ}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{NC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{p}{]}
+	\PY{k}{for} \PY{n}{g} \PY{o+ow}{in} \PY{n}{good}\PY{p}{:}
+		\PY{k}{if} \PY{p}{(}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{g}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o+ow}{and}  \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{g}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+			\PY{k}{return} \PY{k+kc}{True}
+	\PY{k}{return} \PY{k+kc}{False}
+	
+\PY{k}{def} \PY{n+nf}{get\PYZus{}bigrams}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+	\PY{n}{tagger} \PY{o}{=} \PY{n}{treetaggerwrapper}\PY{o}{.}\PY{n}{TreeTagger}\PY{p}{(}\PY{n}{TAGLANG}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{es}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{TAGPARFILE}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/tmp/tree/spanish.par}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{TAGDIR}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/tmp/tree/tree\PYZhy{}tagger\PYZhy{}3.2.1/}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+	\PY{n}{pos\PYZus{}tags}\PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{y}\PY{p}{:} \PY{n}{y}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}\PY{n+nb}{list}\PY{p}{(}\PY{n}{tagger}\PY{o}{.}\PY{n}{tag\PYZus{}text}\PY{p}{(}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)} \PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+	\PY{n}{bigrams} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{nltk}\PY{o}{.}\PY{n}{bigrams}\PY{p}{(}\PY{n}{pos\PYZus{}tags}\PY{p}{)}\PY{p}{)}
+	\PY{n}{candidate\PYZus{}bigrams} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{filter}\PY{p}{(}\PY{n}{is\PYZus{}candidate} \PY{p}{,}\PY{n}{bigrams}\PY{p}{)}\PY{p}{)}
+	\PY{n}{stemmed\PYZus{}bigram} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}  \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{n}{candidate\PYZus{}bigrams}\PY{p}{)}\PY{p}{)}
+	\PY{n}{tokens} \PY{o}{=} \PY{p}{[}\PY{n}{stemmed\PYZus{}bigram}\PY{p}{,} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+	\PY{k}{return} \PY{n}{tokens}
+
+\PY{n}{bigrams} \PY{o}{=} \PY{n}{tokens}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{get\PYZus{}bigrams}\PY{p}{)}	
+\PY{n}{bigrams}\PY{o}{.}\PY{n}{cache}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+
+El objetivo de esta función es quedarnos unicamente con los bigramas más representativos según su categoría gramatical. En nuestro caso seleccionamos las parejas Nombre-Nombre, Verbo-Nombre y Nombre-Adjetivo y además nos quedamos con la raíz de las palabras.
+          
+Una vez obtenidos los bigramas, realizamos el mismo proceso que seguimos para los \textit{tokens} obteniendo el siguiente resultado.
+
+\vspace{0.5cm}
+   \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{terms\PYZus{}bigrams} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{n}{value}\PY{p}{,} \PY{n}{key}\PY{p}{)} \PY{k}{for} \PY{n}{key}\PY{p}{,} \PY{n}{value} \PY{o+ow}{in} \PY{n}{vocabulary\PYZus{}bigrams}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+\PY{n}{topics\PYZus{}term} \PY{o}{=} \PY{n}{topics\PYZus{}bigrams}\PY{o}{.}\PY{n}{rdd}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{p}{[}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{y}\PY{p}{:} \PY{n}{terms\PYZus{}bigrams}\PY{p}{[}\PY{n}{y}\PY{p}{]}\PY{p}{,}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{x}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\PY{n}{topics\PYZus{}term}\PY{o}{.}\PY{n}{toDF}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{t1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{t2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{t1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{t2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{n}{truncate}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+|0  |[gusto teléfono, hacer vecino, número futbol, portabilidad marido, foco
+champion, tipo semanal, sánchez equipo, ruido correcto, decir moviles, tiempo
+devolución]      |
+|1  |[mirar trámite, número futbol, ahorrar cuota, tiempo giga, emoción paso,
+nombre paulina, amor llamada, mes lista, tipo semanal, principio grande]
+|
+|2  |[gusto teléfono, número futbol, euro clienta, abonado caso, servicio
+sánchez, hacer vecino, sánchez equipo, dato regalo, ruido correcto, vez
+barcelona]                |
+|3  |[hacer vecino, gusto teléfono, número futbol, abonado caso, suscripción
+informe, banca claro, mañana mediodía, rehabilitación parte, euro clienta,
+portabilidad marido]|
+|4  |[hijo bono, hecho tipo, gracia detalle, descargar acuerdo, tiempo cerrado,
+raquel instalación, línea info, abaratar poco, intentar cliente, contraseña
+primera]        |
+|5  |[hacer vecino, número futbol, cheque bancario, abonado caso, momento
+desconexión, ayudar bien, reclamar promoción, tipo semanal, gusto teléfono,
+llamada puerta]       |
+|6  |[número futbol, euro clienta, hacer vecino, sánchez equipo, abonado caso,
+gusto teléfono, paso medio, mañana mediodía, forma pequeño, acuerdo noche]
+|
+|7  |[número futbol, promoción equipo, lado gigas, momento extraño, suscripción
+televisión, señora jueves, calle paralelo, problema luis, cantidad hora, mayo
+posible]      |
+|8  |[vez barcelona, falta permanencia, paquete eric, dato abril, disponer
+futbol, señor normal, gusto teléfono, decir contacto, empresa grabación, emoción
+paso]           |
+|9  |[hacer vecino, número futbol, gusto teléfono, cash línea, decisión casa,
+dirección carrer, sánchez equipo, precio regalo, vez barcelona, foco champion]
+|
+
+    \end{Verbatim}
+
+En este caso nos encontramos con algo más de sentido en los resultados que en los casos anteriores, sin embargo parece imposible distinguir temas concretos. En este momento desistimos seguir trabajando con estos datos, viendo que estábamos enfrentándonos a un claro problema de \textit{garbage-in-garbage-out} y que era imposible extraer valor con una calidad tan pobre.
+
+
+
+

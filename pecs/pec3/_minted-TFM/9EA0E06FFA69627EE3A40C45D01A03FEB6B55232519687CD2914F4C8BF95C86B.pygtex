@@ -1,0 +1,103 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{apiVersion}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{apps.openshift.io/v1}
+\PYG{n+nt}{kind}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{DeploymentConfig}
+\PYG{n+nt}{metadata}\PYG{p}{:}
+  \PYG{n+nt}{labels}\PYG{p}{:}
+    \PYG{n+nt}{app}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{tfm\PYGZhy{}mgm}
+    \PYG{n+nt}{service}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{lt\PYGZhy{}tfm\PYGZhy{}calls}
+    \PYG{n+nt}{version}\PYG{p}{:} \PYG{l+s}{\PYGZsq{}1.0\PYGZsq{}}
+  \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{lt\PYGZhy{}tfm\PYGZhy{}calls}
+  \PYG{n+nt}{namespace}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{nbia\PYGZhy{}prod}
+\PYG{n+nt}{spec}\PYG{p}{:}
+  \PYG{n+nt}{replicas}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{1}
+  \PYG{n+nt}{revisionHistoryLimit}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{10}
+  \PYG{n+nt}{selector}\PYG{p}{:}
+    \PYG{n+nt}{deploymentconfig}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{lt\PYGZhy{}tfm\PYGZhy{}calls}
+  \PYG{n+nt}{strategy}\PYG{p}{:}
+    \PYG{n+nt}{activeDeadlineSeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{21600}
+    \PYG{n+nt}{resources}\PYG{p}{:} \PYG{p+pIndicator}{\PYGZob{}\PYGZcb{}}
+    \PYG{n+nt}{rollingParams}\PYG{p}{:}
+      \PYG{n+nt}{intervalSeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{1}
+      \PYG{n+nt}{maxSurge}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{25\PYGZpc{}}
+      \PYG{n+nt}{maxUnavailable}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{25\PYGZpc{}}
+      \PYG{n+nt}{timeoutSeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{600}
+      \PYG{n+nt}{updatePeriodSeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{1}
+    \PYG{n+nt}{type}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{Rolling}
+  \PYG{n+nt}{template}\PYG{p}{:}
+    \PYG{n+nt}{metadata}\PYG{p}{:}
+      \PYG{n+nt}{labels}\PYG{p}{:}
+        \PYG{n+nt}{app}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{tfm\PYGZhy{}mgm}
+        \PYG{n+nt}{deploymentconfig}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{lt\PYGZhy{}tfm\PYGZhy{}calls}
+        \PYG{n+nt}{service}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{lt\PYGZhy{}tfm\PYGZhy{}calls}
+        \PYG{n+nt}{version}\PYG{p}{:} \PYG{l+s}{\PYGZsq{}1.0\PYGZsq{}}
+    \PYG{n+nt}{spec}\PYG{p}{:}
+      \PYG{n+nt}{containers}\PYG{p}{:}
+        \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{env}\PYG{p}{:}
+            \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{PIPELINE}
+              \PYG{n+nt}{value}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{tfm\PYGZhy{}calls}
+            \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{LS\PYGZus{}JAVA\PYGZus{}OPTS}
+              \PYG{n+nt}{value}\PYG{p}{:} \PYG{l+s}{\PYGZsq{}\PYGZhy{}Xmx2g\PYGZsq{}}
+            \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{USER\PYGZus{}LOGSTASH}
+              \PYG{n+nt}{valueFrom}\PYG{p}{:}
+                \PYG{n+nt}{secretKeyRef}\PYG{p}{:}
+                  \PYG{n+nt}{key}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{username}
+                  \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{logstash\PYGZhy{}internal\PYGZhy{}user}
+            \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{PASS\PYGZus{}LOGSTASH}
+              \PYG{n+nt}{valueFrom}\PYG{p}{:}
+                \PYG{n+nt}{secretKeyRef}\PYG{p}{:}
+                  \PYG{n+nt}{key}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{password}
+                  \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{logstash\PYGZhy{}internal\PYGZhy{}user}
+          \PYG{n+nt}{image}\PYG{p}{:} \PYG{l+s}{\PYGZsq{}docker\PYGZhy{}registry.default.svc:5000/openshift/logstash:7.4.2\PYGZsq{}}
+          \PYG{n+nt}{imagePullPolicy}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{IfNotPresent}
+          \PYG{n+nt}{livenessProbe}\PYG{p}{:}
+            \PYG{n+nt}{failureThreshold}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{10}
+            \PYG{n+nt}{httpGet}\PYG{p}{:}
+              \PYG{n+nt}{path}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/}
+              \PYG{n+nt}{port}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{9600}
+              \PYG{n+nt}{scheme}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{HTTP}
+            \PYG{n+nt}{initialDelaySeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{300}
+            \PYG{n+nt}{periodSeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{30}
+            \PYG{n+nt}{successThreshold}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{1}
+            \PYG{n+nt}{timeoutSeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{5}
+          \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{lt\PYGZhy{}tfm\PYGZhy{}calls}
+          \PYG{n+nt}{ports}\PYG{p}{:}
+            \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{containerPort}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{5010}
+              \PYG{n+nt}{protocol}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{TCP}
+            \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{containerPort}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{9600}
+              \PYG{n+nt}{protocol}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{TCP}
+          \PYG{n+nt}{readinessProbe}\PYG{p}{:}
+            \PYG{n+nt}{failureThreshold}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{1}
+            \PYG{n+nt}{httpGet}\PYG{p}{:}
+              \PYG{n+nt}{path}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/}
+              \PYG{n+nt}{port}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{9600}
+              \PYG{n+nt}{scheme}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{HTTP}
+            \PYG{n+nt}{initialDelaySeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{120}
+            \PYG{n+nt}{periodSeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{10}
+            \PYG{n+nt}{successThreshold}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{1}
+            \PYG{n+nt}{timeoutSeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{5}
+          \PYG{n+nt}{resources}\PYG{p}{:}
+            \PYG{n+nt}{limits}\PYG{p}{:}
+              \PYG{n+nt}{cpu}\PYG{p}{:} \PYG{l+s}{\PYGZsq{}1\PYGZsq{}}
+              \PYG{n+nt}{memory}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{2200Mi}
+            \PYG{n+nt}{requests}\PYG{p}{:}
+              \PYG{n+nt}{cpu}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{500m}
+              \PYG{n+nt}{memory}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{2Gi}
+          \PYG{n+nt}{terminationMessagePath}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/dev/termination\PYGZhy{}log}
+          \PYG{n+nt}{terminationMessagePolicy}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{File}
+          \PYG{n+nt}{volumeMounts}\PYG{p}{:}
+            \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{mountPath}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{/usr/share/logstash/config/logstash.yml}
+              \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{calls\PYGZhy{}config}
+              \PYG{n+nt}{subPath}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{logstash.yml}
+      \PYG{n+nt}{dnsPolicy}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{ClusterFirst}
+      \PYG{n+nt}{restartPolicy}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{Always}
+      \PYG{n+nt}{schedulerName}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{default\PYGZhy{}scheduler}
+      \PYG{n+nt}{terminationGracePeriodSeconds}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{30}
+      \PYG{n+nt}{volumes}\PYG{p}{:}
+        \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{configMap}\PYG{p}{:}
+            \PYG{n+nt}{defaultMode}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{420}
+            \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{calls\PYGZhy{}config}
+          \PYG{n+nt}{name}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{calls\PYGZhy{}config}
+  \PYG{n+nt}{test}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{false}
+  \PYG{n+nt}{triggers}\PYG{p}{:}
+    \PYG{p+pIndicator}{\PYGZhy{}} \PYG{n+nt}{type}\PYG{p}{:} \PYG{l+lScalar+lScalarPlain}{ConfigChange}
+\end{Verbatim}

@@ -1,0 +1,666 @@
+\chapter{Modelos Minería de datos}
+\label{chapter:modelos}
+
+A lo largo de este capítulo haremos un repaso por diferentes modelos, que representan diferentes métodos para conseguir un objetivo común, \textbf{clasificar las llamadas}. La mayoría de estos modelos intentan aplicar las técnicas vistas en el capítulo \ref{chapter:estadoarte}, dedicado al estado del arte, a los datos descritos en el capítulo \ref{chapter:dataset}.
+
+Una parte del código que mostraremos a lo largo del capítulo, al igual que en el capítulo anterior, hace referencia a un módulo llamado \textit{mgmtfm}, se trata de de un módulo en \textit{Python} creado especialmente para este proyecto y que nos permitirá realizar las tareas necesarias con un nivel de abstracción mayor. 
+
+
+
+
+\section{Entorno de ejecución}
+
+
+
+
+\subsection{Plataformas}
+
+
+
+\subsection{Tecnologías}
+
+
+\section{Preprocesado y representación de palabras}
+
+
+\section{No supervisados}
+
+\subsection{Imports}
+
+    Importamos las librerías que necesitaremos en la ejecución del Notebook.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{24}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{sys}
+\PY{n}{sys}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{..}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{k+kn}{import} \PY{n+nn}{warnings}
+\PY{n}{warnings}\PY{o}{.}\PY{n}{filterwarnings}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\PY{k+kn}{from} \PY{n+nn}{datetime} \PY{k}{import} \PY{n}{datetime}
+\PY{k+kn}{import} \PY{n+nn}{nltk}
+\PY{k+kn}{from} \PY{n+nn}{nltk}\PY{n+nn}{.}\PY{n+nn}{tokenize}\PY{n+nn}{.}\PY{n+nn}{toktok} \PY{k}{import} \PY{n}{ToktokTokenizer}
+\PY{k+kn}{from} \PY{n+nn}{nltk}\PY{n+nn}{.}\PY{n+nn}{corpus} \PY{k}{import} \PY{n}{stopwords}
+\PY{k+kn}{from} \PY{n+nn}{mgmtfm} \PY{k}{import} \PY{n}{clean}\PY{p}{,} \PY{n}{embedding}
+\PY{k+kn}{from} \PY{n+nn}{wordcloud} \PY{k}{import} \PY{n}{WordCloud}
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{decomposition} \PY{k}{import} \PY{n}{LatentDirichletAllocation} \PY{k}{as} \PY{n}{LDA}
+\PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{feature\PYZus{}extraction}\PY{n+nn}{.}\PY{n+nn}{text} \PY{k}{import} \PY{n}{CountVectorizer}
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
+\PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{cluster} \PY{k}{import} \PY{n}{Birch} 
+\PY{k+kn}{from} \PY{n+nn}{random} \PY{k}{import} \PY{n}{randint}
+
+\PY{n}{pd}\PY{o}{.}\PY{n}{set\PYZus{}option}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{max\PYZus{}rows}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+m+mi}{9999}\PY{p}{)}
+\PY{n}{pd}\PY{o}{.}\PY{n}{set\PYZus{}option}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{max\PYZus{}columns}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{9999}\PY{p}{)}
+\PY{n}{pd}\PY{o}{.}\PY{n}{set\PYZus{}option}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{display.max\PYZus{}colwidth}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{500}\PY{p}{)}
+
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Notebook ejecutado el }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{datetime}\PY{o}{.}\PY{n}{now}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{strftime}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{\PYZhy{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{m\PYZhy{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{Y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Notebook ejecutado el 14-11-2019.
+    \end{Verbatim}
+
+    Establecemos los parámetros y los ficheros para cargar los tokens y el
+\emph{embedding}. Los parámetros \emph{numer\_words} y
+\emph{number\_docs} hacen referencia al número de palabras y documentos
+que mostraremos posteriormente dependiendo del método.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{22}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{number\PYZus{}topics} \PY{o}{=} \PY{l+m+mi}{5}
+\PY{n}{number\PYZus{}words} \PY{o}{=} \PY{l+m+mi}{15}
+\PY{n}{number\PYZus{}docs} \PY{o}{=} \PY{l+m+mi}{2}
+\PY{n}{file\PYZus{}tokens} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/data/mgm/data/pandas/tokens\PYZus{}monitored\PYZus{}quit\PYZus{}commons\PYZus{}12112019.pkl}\PY{l+s+s2}{\PYZdq{}}
+\PY{n}{doc2vec\PYZus{}model} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/data/mgm/data/doc2vec/allcalls\PYZus{}500\PYZus{}w7\PYZus{}mincount2\PYZus{}quit\PYZus{}commons\PYZus{}02112019}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \hypertarget{carga-de-datos}{%
+\subsection{Carga de datos}\label{carga-de-datos}}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{clean\PYZus{}steps} \PY{o}{=} \PY{n}{clean}\PY{o}{.}\PY{n}{Clean}\PY{p}{(}\PY{p}{)}
+\PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{load\PYZus{}tokens}\PY{p}{(}\PY{n}{file\PYZus{}tokens}\PY{p}{)}
+\PY{n}{tokens} \PY{o}{=} \PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{tokens}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Found 20,422 unique tokens.
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{18}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{embedding\PYZus{}steps} \PY{o}{=} \PY{n}{embedding}\PY{o}{.}\PY{n}{Embedding}\PY{p}{(}\PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{tokens}\PY{p}{,}\PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{word\PYZus{}index} \PY{p}{,}\PY{n}{num\PYZus{}words}\PY{o}{=}\PY{n}{clean\PYZus{}steps}\PY{o}{.}\PY{n}{NUM\PYZus{}WORDS}\PY{p}{)}
+\PY{n}{embedding\PYZus{}steps}\PY{o}{.}\PY{n}{load\PYZus{}embedding}\PY{p}{(}\PY{n}{doc2vec\PYZus{}model}\PY{p}{,} \PY{n+nb}{type}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \hypertarget{lda}{%
+\subsection{LDA}\label{lda}}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{count\PYZus{}vectorizer} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{p}{)}
+\PY{n}{count\PYZus{}data} \PY{o}{=} \PY{n}{count\PYZus{}vectorizer}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{tokens}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{plaintext}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{)}\PY{p}{)}      
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{9}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{lda} \PY{o}{=} \PY{n}{LDA}\PY{p}{(}\PY{n}{n\PYZus{}components}\PY{o}{=}\PY{n}{number\PYZus{}topics}\PY{p}{,} \PY{n}{n\PYZus{}jobs}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{lda} \PY{o}{=} \PY{n}{lda}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{count\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+Definimos una función para mostrar los topics de LDA junto a sus palabras más relevantes.
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{print\PYZus{}topics}\PY{p}{(}\PY{n}{model}\PY{p}{,} \PY{n}{count\PYZus{}vectorizer}\PY{p}{,} \PY{n}{n\PYZus{}top\PYZus{}words}\PY{p}{)}\PY{p}{:}
+    \PY{n}{words} \PY{o}{=} \PY{n}{count\PYZus{}vectorizer}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}
+    \PY{k}{for} \PY{n}{topic\PYZus{}idx}\PY{p}{,} \PY{n}{topic} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{model}\PY{o}{.}\PY{n}{components\PYZus{}}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Topic \PYZsh{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{topic\PYZus{}idx}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n}{words}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{topic}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{n}{n\PYZus{}top\PYZus{}words} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Mostramos los topics.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{10}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Topics encontrados por LDA:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{print\PYZus{}topics}\PY{p}{(}\PY{n}{lda}\PY{p}{,} \PY{n}{count\PYZus{}vectorizer}\PY{p}{,} \PY{n}{number\PYZus{}words}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Topics encontrados por LDA:
+
+Topic \#0:
+factura acuerdo linea mas numero movistar euros pago importe reclamacion indica
+espera llamada amable caso
+
+Topic \#1:
+euros linea mas fusion movil llamadas paquete movistar promocion seria tarifa
+gigas tambien moviles fijo
+
+Topic \#2:
+numero telefono movistar mas movil acuerdo tecnico linea servicio llamar fijo
+tardes tambien titular ahi
+
+Topic \#3:
+cuenta movistar grabar cajero decodificador bancaria ultimos menu comprado
+grabaciones doy plus compania cliente aca
+
+Topic \#4:
+linea baja acuerdo movil numero movistar portabilidad servicio titular dar
+suscripcion caso indica servicios amable
+    \end{Verbatim}
+
+    \hypertarget{doc2vec-birch}{%
+\subsection{Doc2Vec + Birch}\label{doc2vec-birch}}
+
+    En este apartado vamos a aplicar un método de clustering sobre los
+documentos pasados a vectores.
+
+    En primer lugar obtenemos una lista con los vectores.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{19}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{docs} \PY{o}{=} \PY{n}{tokens}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{plaintext}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
+\PY{n}{doc2vec\PYZus{}docs} \PY{o}{=} \PY{p}{[}\PY{n}{embedding\PYZus{}steps}\PY{o}{.}\PY{n}{doc2vec\PYZus{}infer}\PY{p}{(}\PY{n}{doc}\PY{p}{)} \PY{k}{for} \PY{n}{doc} \PY{o+ow}{in} \PY{n}{docs}\PY{p}{]}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Aplicamos Birch y clasificamos los documentos en clusters.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{20}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{birch} \PY{o}{=} \PY{n}{Birch}\PY{p}{(}\PY{n}{branching\PYZus{}factor}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{threshold}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{n\PYZus{}clusters}\PY{o}{=}\PY{n}{number\PYZus{}topics}\PY{p}{,} \PY{n}{compute\PYZus{}labels}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{o}{.} \PYZbs{}
+                    \PY{n}{fit}\PY{p}{(}\PY{n}{doc2vec\PYZus{}docs}\PY{p}{)}
+
+\PY{n}{labels} \PY{o}{=} \PY{n}{birch}\PY{o}{.}\PY{n}{labels\PYZus{}}
+\PY{n}{clusters} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{n}\PY{p}{:} \PY{n}{tokens}\PY{p}{[}\PY{n}{labels}\PY{o}{==}\PY{n}{n}\PY{p}{]}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{plaintext}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{number\PYZus{}topics}\PY{p}{)}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+\end{tcolorbox}
+
+    Para cada topic detectado mostramos unos documentos de prueba.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{25}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{number\PYZus{}topics}\PY{p}{)}\PY{p}{:}
+    \PY{n+nb}{print} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{topic }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{)}
+    \PY{k}{for} \PY{n}{d} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{number\PYZus{}docs}\PY{p}{)}\PY{p}{:}
+        \PY{n}{nd} \PY{o}{=} \PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{clusters}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Doc }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{(}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{) : }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{d}\PY{p}{,}\PY{n}{nd}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{clusters}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{p}{[}\PY{n}{nd}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+
+topic 0
+
+Doc 0(808) : tardes ayudarle acuerdo telefono galaxy indiqueme amable asociada
+telefono movistar telefono liberar movistar numero numero llame movil dimos
+contamos linea numero numero amable codigo imei terminal mirar perdoneme sabado
+digito codigo desbloqueo aparece digamelo deberia funcionar dale galaxy young
+metiendo tarjeta operador poniendo pin codigo deberia funcionar acaso lleva guia
+empresa pertenecia movil tendria llamarnos movistar numero atencion cliente
+habian tipo incidencia codigo funciona casos sigue falla empresa propietarios
+numero movistar codigo desbloquear movil funciona pedir acuerdo abrimos
+incidencia generen codigo pocos paso codigos quedamos pueden dar incidencia
+acaso pudiera falla valide pongan contacto miramos nuevo codigo pera aplicacion
+automaticamente cliente movistar numero movil visto promociones movistar
+permanencia gusta foco tiempo subo euros meses linea tarifas limitada optica
+megas pasa compromiso compania compromiso todavia hagamos tipo oferta todavia
+podemos poquito mas adelante ningun compromiso llamemos fecha seria llamemos
+llamada llamaremos seguramente jueves valore atencion llegado llamada acuerdo
+buena tarde
+
+
+Doc 1(2933) : ayudarle consulta saber fecha exacta quise portabilidad problema
+compania cobrando penalizaciones moviles servicio corroborarlo indiqueme datos
+titularidad chip gato factory disculpeme segundito poquito lento sistema
+modificando cosas seguida trajo lineas moviles fijo tambien fijo movil fijo
+pantalla llama escucha deben sigo disculpe hablando pasado fecha hizo hizo
+inicio digamos contratacion movistar empezaba servicio empezaria pidio
+portabilidad cabrones estan cobrando permanencia cambiando compania procede
+iniciado tramites portabilidad valor aparte quisieron cobrando meses pedido
+portabilidad tenia servicio cobrando tenia linea fija siguieron cobrando meses
+ahi pueden cobrar hicieron puse reclamacion tardaron volvo dolor cabeza logrado
+devuelvan dinero empezaron cobrar router conseguido devuelvan dinero router
+devolvi estan cobrando euros penalizacion dejarlo dura cabrones pedi
+portabilidad seria demostracion dado alta servicio debe permanencia pedido
+portabilidad reclamacion aparece fecha digamos informacion fecha vision hice
+portabilidad inicia desea llamar tarifas interesa aceptamos partir muchas
+necesitaba poder minuto hice portabilidad enseguida visual salvo cargar fin
+semana deja domingo llevo listo estan diciendo alta servicio pedia permanencia
+genero sabemos tema compania tendra bastante realista fecha maneras paralela
+renovacion terminales empresa necesitan asociacion van moviles permanencia
+refiero llame tiempo dieran ofertas cambiar plan cuanto pagando cambiar tambien
+quizas terminal enviaran alguna oferta ayer llamaron pasar fusion seleccion liga
+fusion seleccion xantia touran television interesa fibra movil hijo salta aca
+taller necesito buena conexion fibra char vistazo catalogo terminales terminales
+descontar descuento importante determinados terminales cinto valencia pagina web
+ofertas puntuales tambien mirar mirar muchas llaman anuales
+
+
+
+
+topic 1
+
+Doc 0(86) : atiende barcelona cliente solicitar alta linea movil nuevo seria
+alta nueva portabilidad alta nueva alguna movistar ninguna linea mirado
+contratos necesita llamadas ilimitadas mucha gigas contrato llamadas ilimitadas
+vence gigas internet contrato plus coste euros iva incluido entrar llamadas
+ilimitadas ilimitados incluye multisim numero vence giga linea fija contrato
+fusion mas cuenta cambiar cambio domicilio quedado numero vas poner parte tarifa
+inferior numero llame viene contratar fibra fusion numero llama deme gil
+previsto linea tenia dado baja fusion series puesta salita aparece alta
+television linea movistar moviles tienda numero cuenta lleva fijo pongo aparte
+podria guarde aparte linea movil asignada sucesivas pongo llamadas ilimitadas
+gigas euros cosita datos bancarios fusion linea nueva serian serian numero
+cuenta facilito parece ponga vence plus orla cincos plus medio euros linea
+adicional quiera factura clinico sigo direccion calle vas cania bilmare mar
+maria realizan cheque numero barcelona hospital partir pasar tienda recoger
+tarjeta entregan tarjeta plazo semana recogerla necesita escoger terminal
+dispone telefono asume modifican acuerdo simplemente recoger tarjeta tienda
+movistar pregunta mia partir podria pasar ultima okey comentaron encima espera
+dame centro comercial telefonicamente santana tarda partir tarde pasar recogerla
+comentarios juan presionando entregan tarjeta facilita mas recordarle lunes
+recibira llamada valorar atencion recibida estandar acuerdo
+
+
+Doc 1(237) : buen hacen cable cada semana buen faltan porte modem miguen
+inalambrico prima temas dije mas clic pagar tele ordenador problema inalambrica
+llama ancas numero incidencia pasar final solucionar digan noticia semanales
+router inalambrico dire descodificador inalambrico pin pintor fibra optica three
+numero aunque aura parado ordenador tenia cambiado modem euros principio unica
+valido sirena alambrico final troca senal inalambrica cuanto numero incidencia
+comunes idenciales pague ayer ficha vera pasa numero telefono diga telefono
+ficha cepsa acuerdo quitando acuerdo senal gustaria ficha vera mapa llega numero
+incidencia mirando contactar ficha pagando pasa tura reclamacion echaran sobra
+aja incidencia comercia perdi indicado pagar sonando acaba dado mas outlook
+avanzaba incidencia lleguen insistir base quedan cable inalambrico pasaba
+perdido gestionado alguna descodificador espere ana fija debate acepta martini
+digas mantenida dando fija propia television pagado ordenador asume tienda
+posibilidad office pulsa descodificador don juan cuenta casi asignada mexique
+euros iva desconectado aca zona mas reclamacion plus facturacion comenta
+comercial aceptado barato cada cliente gusta cada call ficha saldo mio
+comunicacion intereso movil nota pagamos paso hija pasa conectar conecta
+desconozco cosas desconoce descodificador vencio pozo solicitud octubre consulta
+principio sabia debido enviar deco cable solicite empresa mas hizo cambio envie
+sino cable inalambrico seria volvera romo salida envien seguramente cable zona
+descodificador peticion transportista acceder buena mal confirmando client
+instalacion estacional cambio tantas amira alam democion pasa departamento
+tecnico formulario envio normalmente podia llegar millon todavia pasado octubre
+arabe vacio bolsa pide usan mandes constanza embonan descodificador auto instala
+reference descodificador hagan tema mas realmente osea supuse sera inalambrico
+sucursal llegue mando ando ajustado don indiqueme router hacen altura accion
+vaya supuesto senal inalambrica solucion reclamacion solucion alli conexion mal
+reparado comercial tecnico firma cliente nuevo instalacion anulemos confirmar
+man mas vuelva instalacion aca estacion horas coumento tema semana anula bola
+sido posible pagando pagan comercial comentando pagan comercial tecnico cambiar
+manda ello llama tendrian letra saludado letra empresa mando pasa ofrecio arroba
+oferta importan informarte aca cuota alta euros iva cuota alta cambia buscar
+ingreso problema todas maneras alli pase pedir jose falta alla tonalidad trucada
+palabra mucha casi elina mande osea comentaba aca reclamacion comercial pulsar
+cliente reference comento deco todas llamar ficha desinstalar alla borran mirar
+cuba hacia san vacia viaje inalambrico coger quite paciente envio inalambrico
+inalambrica llamadas tendre deuda pasarle troca anulado alta supuse comercial
+shopping instalar quiera inalambrico guaranda envie inalambrico fusion dentro
+fibra optica megas router router vera router fusion base fusion megas megas taxi
+tema tema diga compartida compartidos centrados movil tenian intrusos benzo
+contrato fusion importancia pegue pagando juan pasas partidas comparte todas
+lineas compacto deseandolas presentar movil pague fusion martin linea descuenta
+tarifa fusion tambien compartida espere linea linea fusion llegue costos tambien
+doces megas tambien baldas compartida stop tope tema contracto bastan caro
+llamaran cambiar tenia amistad tantos euros pago adicional siempre telefono
+tambien compartido grua datos numero comenzar linea abona mia fusion lleguen
+costos call megas cada social nokia aca aca pagan pacto caba caso gratuitos
+linea traves hogar gratuitas linea viendo cada utilizar alta linea fusion
+utilizo coma alta llama comercial mas movil pin movil hago linea fusion solicita
+maneras jose visa contrata pase linea sigue tambien movil medio hablando atienda
+movil siguiente paso osea actual atencion dato usado caballo sala capussio marzo
+deco mandan via marcha cosita horas ademas horita descodificador exacta acuerdo
+don envian resulta isa sino semana casi seguro canal datos llamando sabado dije
+habran ahorra baja descodificador abre hice porta tarjeta llamadas
+descodificador espana seguir prueba exacta ando cosas cuestion informada
+mientras chance alguna informar internet residencia alguien fusion semana
+licencia podrias internet vaya central compromiso permanencia cuota euros mas
+acuerdo mano julian oiga tocaba movistar comentarla razonando cada automatica
+valorada llame pension igualmente veo veo
+
+
+
+
+topic 2
+
+Doc 0(84) : atiende servicio servicios digitales movistar podemos linea numero
+abonado desea realizar bloqueo pagos online linea movil paginas gastos trato
+tambien desea confirmo apellidos completa titular perfectamente puedes comunicar
+retomo tardes atiende especialista servicios digitales movistar indicado desea
+realizar gestion parecer tenia presenta linea movil acuerdo verificar caso
+dispone servicios mocion linea caso compra realizan navegar internet redes
+sociales dicha anuncios publicitarios ventanas emergentes portal llama pagos
+online consisten forma pago traves pueden realizar suscripciones servicios
+comprar aplicaciones contenido digitales cargarlos directamente factura movistar
+servicios estan activos linea movil verificando linea movil parte emocion
+ninguna comprado suscripcion parte pagos online efectivamente suscripcion
+llamada euros categoria musica streaming encuentra agosto ubicacion solucion
+portal internet abre cita sabia marido pasa recibo gratis gestion desea realizar
+suscripcion desea cancelarla supuesto acuerdo cancelar recuerde periodo
+facturacion cada siguiente ultimo cargo entra sera factura noviembre genero
+septiembre serian euros ultimo cargo partir ahi numero sabado cargo mas mas
+realizar queja parece excesivo pagamos todavia caso tambien desea titular pudo
+haber activado podemos aparte cancelar suscripcion bloquear contenidos vuelva
+suceder realizar gestion mantengase espera retire musica punto espera confirmo
+suscripcion quedo completamente cancelada renovar mal generar ningun cargo
+adicional factura llegar mensaje texto linea movil acaba confirmando cancelacion
+suscripcion pagos online terceros realizar prueba parcial consiste bloquearla
+suscripciones semanales vienen derivadas publicidad internet compras pedi feliz
+suarez ofrece seguiria realizando acuerdo realizar gestion portal pago van
+terceros quedo bloqueo parcial preguntarle portal llama emocion tambien
+bloqueamos mic sistema emocione portal pueden compras suscripciones navegando
+internet redes sociales acepto comprar online traves tarjeta ello afectaria
+tarjeta especial comprar online resto importa motivo llevar portal movistar
+tambien compras suscripciones medio factura movistar interesa reactivar ningun
+problema podemos desbloquear nuevamente bloqueado tambien acuerdo linea movil
+quedo bloqueado portal emocion opcion parcial pagos online terceros verificando
+lineas moviles aparece acaba acaba meses ninguna compra suscripciones ninguno
+portales preguntarle lineas tambien hacemos anterios estan resolvemos problemas
+problema loca pincha localizo acuerdo ningun problema recuerde recomendacion
+linea movil encuentre navegando internet indica celis alguna publicidad alguna
+ventana emergente unico pinchar hacia atras negra atentamente publicidad
+cerrarla correcta podra evitar suscripciones futuras respecto linea movil cada
+linea movil cada realizado bloqueos podemos desbloquear podemos llama solicita
+misma titular quedo realizada gestion ahorrarle llamada preguntarle alguna duda
+gestion unico suceda llamado atencion factura super alta pagamos lista
+suscribase cualquier dar alguna preocupe preocupe bloqueo realizado devolver
+suceder ultimo recuerde proximo lunes llamaran valorar atencion recibida parte
+sepa importante preocupe muchas haber gusto haberle atendido llamada buen muchas
+adios
+
+
+Doc 1(66) : tardes atiende ana especializada servicios digitales podemos tardes
+cliente numero linea movil dieciseis confirmo dieciseis dieciseis llama cliente
+trasferir desea restriccion pagos interna adios tardes atiende anderson pinte
+servicios digitales movistar gusto hablar pasala cliente confirmarlo comercial
+tienda baja suscripcion emocion bloqueo tambien caso acuerdo podemos acceder
+sistema confirmamos comenta siguiente movistar cuenta portales cuales realizan
+compras suscripciones emocione segundos pagos online emociones suscripcion
+realizan navegando internet redes sociales pinchando anuncios valer
+publicitarios alguna ventana emergente portal llama pago inconsistencia forma
+pago traves podemos realizar suscripciones servicios compramos aplicaciones
+contenido digitales cargamos directamente factura movistar servicio estan
+activos todas lineas defecto caso linea terminada suscripcion llamada noticias
+emocion categoria emocion noticias genero importe semanal damos baja suscripcion
+llegar mensaje texto linea movil confirmandole baja suscripcion recuerde mensaje
+informativo debe contestarlo aparte linea misma suscripciones transacciones
+desea continuar portales activos seria bloquearlo tambien futuras atenciones
+recuerde bloquear cancelar sport perderia beneficio poder seguir realizando
+suscripciones compras inconveniente ninguno realizamos respectivo total
+restringir tipo compromiso traves factura movistar caso recuerde titular linea
+caso seria unica persona autorizada volver activar servicio aparte linea
+verificar tambien bloqueado bloquear aparece lineas desea bloquear paso caso
+linea terminada ninguna solucion transaccion tambien portales forma total evitar
+ocurrir futuro procedemos verificar ultima linea terminada linea movil termina
+portal pagos online ninguna suscripcion emocion suscripcion llamada tobillo
+suscripcion emocion virus importe semana activo tambien van suscripcion llegar
+mensaje confirmandole baja suscripcion linea movil aparte realizamos respectivo
+bloqueo forma total evitando volver ocurrir aparte lineas alguna caso proceder
+reformulemos realizado seria linea movil terminada caso enter dimos baja
+suscripcion bloqueamos cancelamos portales pagos online contenido emocion lineas
+incluidas fusion aparte recuerdo gestion dentro periodo facturacion movistar
+inicio termina seria factura agosto caso suscripcion tobillo linea movil termina
+tendra importe euro siguiente factura suscripcion noticias emocion ultimo
+importe seria factura pregunto alguna duda fusion muchisimas recuerde lunes
+llamaran valorar atencion recibida parte sepa importante participe sido
+verdadero gusto atender llamada confianza buena tarde
+
+
+
+
+topic 3
+
+Doc 0(62) : tardes julian zaragoza indica ayudarle tardes dieciseis fibra fijo
+fibra imagenio fusion sorpresa llegue pasando factura operadora dicen procedido
+dar baja linea explicacion podeis persona titular dieciseis portabilidad
+mantiene numero compania baja compania linea nueva evidentemente dar baja tenia
+problema hablando telefonica portabilidad linea nueva dejado vigentes orange
+tenia anterior operativa servicio pagan cobran dio baja solicita portabilidad
+portabilidad numero baja linea compania cambia debieron dar alta numero nuevo
+totalmente tenia orange numero anos numero facturando orden baja veces dieron
+numero llevamos hice portabilidad numero nuevo portabilidad movistar numero
+dimos alta instalo numero nuevo monto verizon hablar reves decia indica compania
+pide pasar movistar numero portabilidad numero nuevo instala alcance decirle
+comunicarnos desistir producto estan producto error numero nuevo traslada doy
+baja servicio usa evidentemente linea vodafone fijo fijo instalamos nuevo
+portabilidad santa vida portabilidad telefonica compania resulta portabilidad
+conservar numero encima encima ocupados dar baja numero nuevo error verano
+mencionaba numero fijo raro viene factura tecnico casa instala servicio numero
+fijo indica numero distinto solicito trasladar cancelen error entiende tendria
+haber numero usa usado caso dar baja telefono funciona ninguna opcion numero
+nuevo error comunicar desistir contrato comunico meses meses pago mas contrato
+nuevo punto ordenarlo preocuparme mas desistir baja numero baja numero reclamar
+todavia permanencia fibra meses van penalizar reclamarlo darlo baja dar baja
+horas preocupe dejar fecha movistar dar baja linea reclamar linea orange dado
+baja linea acepta deposito imagenio numero hago baja cobran telefono torno
+diciendo lleva puesto linea pedido compania utilizar mucha logica logica logica
+contrario torre movistar portabilidad compania encargo encargo portabilidad
+linea fija moviles dejame cargo haga profesional irme acuerdo pap darme linea
+nueva anterior linea cuota linea cerro nio tramitar linea nueva error incedio
+linea venido cierto reclamacion final abrir accion reclamacion seria desistir
+linea denuncia telefonica seria seria caso seguir numero numero baja total
+gestiono recargar ello reclamacion gestion realice cambio ficha dieciseis
+hicieron mal lleva baja numero reclamacion victoria haciendo gestion dado
+servicio servicio servicio pedido conlleva conlleva baja numero solicitado
+rebaja delantero anterior dejaron linea anterior compania dado baja siguen
+facturando denunciar explica realizado reclamar dimos alta linea tenia compania
+conlleva baja numero seguro reclamacion accion importa hicieron baja linea van
+aceptar explicando mal reconoce linea reconoce alta linea van tramitarle baja
+numero anularlo reconozca linea entiende revision ello podemos reclamacion
+gestiones realizado portabilidad estan mal hecha llevaria consumo llamar
+reconoce alta numero nuevo numero nuevo portabilidad quedar numero logico
+comentar numero nuevo partir vengo numero aparte saber escuchando comenzaron
+fijo quieres explico tambien gestiones telefonicas sola fecha vida juani pasos
+titular gestion siempre todavia telefono siguiente interior conoce orange tenia
+movistar casa mini pueblo mismos misma gestion fija telefonos familia coste
+fonos contexto numero telefono portabilidad posible informa ningun problema
+ningun problema pasa orange gestiones numero telefono ningun telefono telefono
+fijo telefono fijo preocupe portabilidad resulta telefono fijo funcionando
+familiar mio llama personas llama telefono fijo llame ponga telefono resulta
+movil misma pagar plazo posible posible pisan telefono fijo portabilidad
+telefono fijo quieres lineas moviles lineas moviles numeros logico logico
+cuestiono diciendo reclama linea nueva portabilidad reclamo conlleva baja numero
+nuevo quedar numero reclamando contrario numero cambio tomar final pagas decirlo
+cobrado euros verlo instalacion numero nuevo numero nuevo comunicarse nuevo
+vencida tira papel artista lado imagenio ponen cambiarlo linea asociada ahi
+linea nueva boletin correo electronico pago boletin tecnico fisicamente tecnico
+reclamo tendria amable unicamente gestion movistar gacho pesimo reclamar letra
+baja tramito baja reclamacion devuelvan dinero devuelvan cuentas pagar bajas
+pasa pagadoras movistar pagaba linea alo dinero pagado movistar pagar baja
+numero numero generando facturas llamar importes euros pagando movil reclamo
+accion llego devolveis euros hago hablo generado junio generar fecha pagar
+movistar devuelve reclamar costo lleva reclamar servicios movistar ahorra
+reclamo mandar reclamar mientras fijo moviles justamente haciendo corporativo
+aumente simplemente reclama error dieron alta numero nuevo recien devolver
+importes genero tendra tramitar baja siga linea corte numero nuevo conforme
+cobrara tenia promociones siga linea delante aparatos instalados funciona medio
+medio reclamarlo usando instalar tecnico fin semana santa llamadas tecnico
+imagenio router firmo firmo correctamente router cortando deja imagino funcion
+informarle informan ningun cambie fijo entero cambiado fijo familiar mio llame
+oye chico comuniquele pasar cambio fijo casa hice portabilidad resulta llame
+cambio fijo casa ocupado reclamar entiende comprueban conexion numero nuevo van
+devolver entiende sera requiera numero devolver disfrutado unica forma seria
+dando baja linea entendiendo nuevo valoren devolvieran proxy uso vence moviles
+fijo caso usado servicio perder numero dejo constancia linea reclamar servicio
+utilizado entiende reclamar llegan meses caso telefonica entiendeme reclamar
+telefonica gestion pesima cambiate telefono antiguo telefono orange movistar
+pediamos amigas mostrar pide disculpas podemos reclamar facturas oran reclamar
+devuelvan gastado anterior telefonica dificiles ahorrando informando quiera
+entiendalo movistar motivo reclamar factura orange vuelvo llamar brindar zona
+azul cita llega menos entienda apareciendo demos orange rato pasando pasando
+principio movistar pueden dar factura orange motivo explico tienda compro oye
+solicitado proponer tienda reclamaciones poquito vera hacerlo numero tenia haber
+desestimiento reclamo reclamar informado dado alta mas mobile alta linea gestion
+mal reclamar mala gestion resolver situacion pasado mas situacion reclama podido
+resolver situacion senal resolver estan llamando coge monitor cambio numero
+informa fibra tecnico dio numero hacen sigo camino informa explica mando
+explicara router linea nueva estudiare instalador casos hacerlo caso reclamacion
+reclamacion podemos desistir contrato seria podria constancia dejar constancia
+nadie poder resolver situacion recupera numero antiguo reclamar resuelva
+situacion plantea dejar constancia poder recuperar numero dar baja linea hacerlo
+programita encienda situacion dejar constancia podemos resolver situacion
+plantea volver atras tiempo opcion reclamacion pasan desistir contrato devuelto
+logramos portabilidad numero compania sido saber volver atras obvio navega
+autoriza malo navegar servicio malo encima falta informacion acaba gilipollas
+pagaba disculpa linea casa telefonos planteo reclamar reclamar conllevaria baja
+numero evidentemente reclamar danos perfiles consignado pondria portabilidad
+hizo alta nueva desistir contrato dar baja compania pagaria devolucion
+compensacion cargos reclamar repetir situacion podemos pudiera indicar cambiar
+evidentemente encima dejalo reclamar movistar error compania traves reclamar
+reclamacion movistar reclamar seria facturaciones movis companias situacion
+recuperar numero desistir interesa dinero ademas aplica promocion llevaria
+perdida promocion dado informacion asesorado tramite posible resolverlos
+entiende nadie resolver volver quedar constancia van caso revertir situacion
+entiende llama realiza quita mente entienda contrario hago portabilidad numeros
+moviles cambia ningun numero portabilidad numero nuevo distinto tipo error
+comercial aplicacion revertir revertir instalacion concepto reclama falla
+comercial oiga verificaran tienda mas resolucion solucion gestion interna
+empresa confirmo interno hacemos comercial hizo tramite verifique cliente
+resolver situacion recuperar numero entiende seria desestimiento plazo cuestion
+economica planteo podia indicar lleva baja caso concreto opcion dejo constancia
+disculpe molestias ocasionadas muchas tardes
+
+
+Doc 1(49) : tardes atiende movistar movistar podemos tardes poner reclamacion
+agentes atendio telefono instalen acaban recargue colgandome telefono osea
+ingresar ficha poder reclamar dime concepcion activar concepcion titular
+servicio dime letra pamplona pamplona ingresando fecha mantengase espera aparece
+maria concepcion bar abrir reclamacion atendio mal trato caso forma atender
+faltan respecto acabando colgandome telefono zona registros escasos lineas
+restaurando chica tema portabilidades perfectamente minuto persona hablando
+plazo adecuado falta falta respeto acabo colgandome telefono consecuencia
+portabilidad recibo mensaje habla chico conforme portabilidad movistar recibo
+llamada perdida numero chico llama estaria realizando tenia registro interno
+forma salida responder correcta cada pregunte chica hable atendio precisamente
+loco dando persona persona tenia llamar paga llamando tramites reclamacion unico
+baja calidad hacen servicio termino personas saben internet comprendo preocupes
+reclamacion directamente reportado conforme atencion acceso abrir vayas retirar
+seguimos aca retires mantengase espera seguimos esperando reclamacion mantengase
+espera seguimos tramitandolo mantengase espera doy numero referencia gestion
+retire puesto dejo puesto dentro reclamacion resumidos cliente llama reclamar
+debido anterior llamada maltrato parte asesor comercial servicio terminos
+adecuados final corto llamada resumen puesto especificaciones chico recordar mas
+anterior hablando chica perfectamente correcta correcta sencillas acuerdo puesto
+directamente puesto haga chica ceron investigacion internas cuenta gestiones
+directamente notificacion haga cliente puesto gestion realiza directamente
+compania superiores encargan saber tipo caso concepcion caso quieres anotar
+digamos numero referencia dime numero telefono contacto telefono llamando elige
+numero telefono sistema pide telefono persona contacto ahi van llamar pronto
+pronto llame numero expediente codigo gestion listo codigo expediente misma
+renovaciones dijiste numero gestion numero gestion lote numero expediente placer
+haberte gestion cuenta retires proximo viernes llamaremos valorar atencion
+brindada parte pido participe importante valoracion acuerdo feliz tarde
+igualmente buena tarde adios
+
+
+
+
+topic 4
+
+Doc 0(54) : tardes atiende hizo yoris movistar podemos tardes tema mas factura
+recibimos llamadas trabajando podia conectar forma indica poder navarra
+encantada saludarle titular servicio confirma numero telefono fijo movil amable
+permitame amable realizarlo podemos ingrese facturacion confirmo retire
+agradezco amable espera balance informacion aparece ultima factura importe ahi
+anterior sucede siguiente veo promocion descuento caso dicen entran factura
+seria financiacion terminal movil llame semana pasada tiempo cambio movistar
+tarifa total imagina grabacion euros meramente pasaria coge cuenta revisar
+recibir llamada bola tarde podia conectar trabajando supongo referencia llame
+pasaba comentar tema mas cobrando factura anterior llame van realizar fallo
+alguna tarifa tenia bloqueado van comentar abono baratito mal siguen llegado
+tarde importe caso seria paquete fusion desea lineas moviles mas suma
+financiacion terminal movil juan disculpa llame grabacion lineas moviles
+internet paquete full tenia euros iva incluido meses pasare pasaria pagar
+siempre euros cuadra entiende dio semana pasada tiendas habian puesto paquete
+diferente van bonificar ahi van pasar nota recibir llamada departamento borro
+departamento seria informarle pesadas corren paquete importe moviles seria movil
+tendria importe precisamente euros caso unico incrementa cuota comento
+financiacion movil aparece ningun fallo factura pasan realmente fallo puesto web
+pagando euros mas pagado alguna linea basica quito euros movil euros pasado
+seria linea movil pagaria importe euros linea movil adicional sumamos seria caso
+permitame confirmo transfierelo importe muchisima mas seria financiacion moviles
+permitame tirar detalles caso caso seria suma seria paquete contratado euros
+meses lineas moviles futbol decirselo cuenta cuadra mato meses espera realice
+cuente seriamos euros paquete mas euros hablo media preguntar vodafone dieron
+euros caso paquete lineas seria euros financiacion movil importe total paso
+recargado ethernet pico caso rosa llamada baja trabajar franquicia vaya verifico
+ningun fallo facturacion estan parecen cambio movistar ofrecerle mas medio
+problemas ahi salen error llamado telefono boda tardes tema soluciona llamada
+preocupe
+
+
+Doc 1(256) : atiende ayudarle comento tenia movistar tenia alguna factura
+pendiente todavia poder mari consulta realiza podria confirmar apellidos persona
+titular mari tenia bar bajo meses alli saber pendiente fraccionarlo pagos pagar
+completo cosas baja piso importe pendiente incorporaba mas mas seguimiento meses
+facturacion septiembre pendientes cierto acuerdo linea activa dada baja dar baja
+perdon podia dar baja paga firmado amente pudiera taller dinero baja fraccionar
+acuerdo numero fraccionar problema incrementando poder pagados nunca llevo meses
+explico caso acuerdo fraccionar oficialmente tendria pagar entendemos deberia
+pagar ingreso vaya pudiendo restando deben totalidad perdon impida hacerlo
+incremente meses demora dar baja linea linea sigue mensualidad ello comprende
+mari diga dinero completo mas mas mal llegar mas ingresan euros meses poder
+pagados numero telefono bar persona querer persona persona numero telefono
+persona quieres numero telefono motivo cambio titularidad pagaria pagaria nueva
+persona persona numero telefono pagar mas desea prorroga servicio solicitar baja
+van aca lista traspaso llegamos ningun negociacion quisieron pagar caso
+incremente mas facturaciones solicitar baja podemos solicitar cuanto alguien
+dejar importe pago paga oficina correos forma quitaban bbv cajeros santander
+indicando telefono fijo importe conoce telefono fijo pedir acuerdo grabacion
+grabacion santander correo mensos sitios ingreso tanta cantidad amente golpe
+golpe hacerlo simplemente seguira hagamos baja mas complementado solicito baja
+acuerdo mientras bono fijo movil acuerdo llamar grabacion tambien ello noviembre
+tramita recibira ultima factura parte proporcional llamando solicito facturas
+mas cierto recibira parte proporcional fecha baja preparar grabacion peticion
+grabacion listo numero referencia
+
+
+    \end{Verbatim}
+
+    Vemos que si parece a priori que los documentos se encuentran
+relacionados, algunos de los topics en los que sí podemos ver una
+temática clara son:
+
+
+\begin{itemize}
+\item \textbf{Topic 0}: Varios conceptos. Liberar móvil, permanencia\ldots{}
+
+\item \textbf{Topic 1}: Alta fusión, alta línea.
+
+\item \textbf{Topic 2}: Cancelación. Este parece más coherente.
+
+\item \textbf{Topic 3}: Reclamación.
+
+\item \textbf{Topic 4}: Datos sobre factura.
+
+\end{itemize}
