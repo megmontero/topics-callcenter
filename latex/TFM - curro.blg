@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: TFM.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: TFM - curro.aux
 The style file: plain.bst
 Database file #1: referencias.bib
 Warning--entry type for "colahblog" isn't style-file defined
@@ -19,19 +19,8 @@ You're missing a field name---line 376 of file referencias.bib
  : @book{kafka, 
  :              , title={Designing Event-Driven Systems}, publisher={O'Reilly}, author={Ben Stopford}, year={2018}}
 I'm skipping whatever remains of this entry
-Warning--entry type for "monitoringstreams" isn't style-file defined
---line 380 of file referencias.bib
-Warning--entry type for "kstreams" isn't style-file defined
---line 387 of file referencias.bib
-Warning--entry type for "tfserving" isn't style-file defined
---line 392 of file referencias.bib
-Warning--entry type for "devops" isn't style-file defined
---line 412 of file referencias.bib
 Warning--entry type for "ldafig" isn't style-file defined
 --line 420 of file referencias.bib
-Warning--entry type for "birch" isn't style-file defined
---line 427 of file referencias.bib
-Warning--I didn't find a database entry for "apendi:contenedores"
 Warning--empty publisher in temariodeeplearning
 Warning--empty publisher in Mahmood2013LiteratureSO
 (There was 1 error message)
