@@ -1,0 +1,148 @@
+\documentclass[12pt,a4paper,twoside]{book}
+\usepackage{graphicx}
+\usepackage{setspace}	%double spacing for text, single for captions, footnotes, etc.
+%\usepackage{hypernat} 	%substitut de cite que permet fer hyperlinks
+\usepackage{natbib}		% substituye a 'hypernat' que funciona en Windows.
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{hhline} 		% extended styles for tables
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{acronym}
+\usepackage{hyperref}
+\usepackage{amsmath,amsmath,amssymb} 
+\usepackage{fancyhdr}
+\usepackage{epsfig, amsmath}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%
+% DOCUMENT %
+%%%%%%%%%%%%
+\begin{document}
+
+% portada
+\input{0_titulo.tex}
+\newpage
+% abstract
+\input{chapters/00_resumen.tex}
+\newpage
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{ \thesection.\ #1}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+
+% indice
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Índice}
+\tableofcontents
+% listado de figuras
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Listado de Figuras}
+\listoffigures
+\cleardoublepage
+\phantomsection
+% listado de tablas
+%\cleardoublepage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Listado de Tablas}
+%\listoftables
+
+\thispagestyle{empty}
+
+\pagenumbering{arabic}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{ \thesection.\ #1}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+
+\onehalfspacing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% capitulos del documento
+\part{Introdución: objetivos, estado del arte y arquitectura global}
+\input{chapters/01_introduccion.tex}
+\input{chapters/02_estadoarte.tex}
+\input{chapters/03_arquitectura.tex}
+
+\part{Modelado: datos, modelos y optimizaciones}
+%\input{chapters/04_dataset.tex}
+
+%\input{chapters/05_nosupervisados.tex}
+
+%\input{chapters/06_supervisados.tex}
+
+
+
+
+
+
+\part{Explotación: procesamiento, visualización y alarmados}
+%\input{chapters/07_produccion.tex}
+%\input{chapters/08_servicio.tex}
+%\input{chapters/09_contenedores.tex}
+
+
+\part{Conclusiones: mantenimiento y futuros trabajos }
+%\input{chapters/10_mantenimiento.tex}
+\input{chapters/11_conclusiones.tex}
+
+%Apendices
+%\begin{appendices}
+%\chapter{Módulo Python mgmtfm}
+%\includepdf[pages=-]{appendices/mgmtfm.pdf}
+%\end{appendices}
+
+
+% bibliografia
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{plain}
+\bibliography{referencias}
+
+
+%\newpage
+
+%\appendix
+%\addcontentsline{toc}{chapter}{Appendix}
+%\addtocontents{toc}{\protect\contentsline{chapter}{Appendix:}{}}
+%\chapter{mgmpdf}
+%
+
+
+
+\end{document}
