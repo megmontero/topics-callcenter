@@ -115,4 +115,10 @@
 \contentsline {section}{\numberline {10.1}Introducci\IeC {\'o}n DevOps}{157}{section.10.1}% 
 \contentsline {section}{\numberline {10.2}Degradaci\IeC {\'o}n del modelo/ \textit {Feedback} continuo}{159}{section.10.2}% 
 \contentsline {section}{\numberline {10.3}Integraci\IeC {\'o}n y despliegue continuos}{161}{section.10.3}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{165}{figure.10.6}% 
+\contentsline {chapter}{\numberline {11}Conclusiones}{167}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Boceto conclusiones}{167}{section.11.1}% 
+\contentsline {section}{\numberline {11.2}Aplicaci\IeC {\'o}n aprendido}{167}{section.11.2}% 
+\contentsline {section}{\numberline {11.3}L\IeC {\'\i }neas de trabajo futuras}{169}{section.11.3}% 
+\contentsline {section}{\numberline {11.4}Caso de negocio}{169}{section.11.4}% 
+\contentsline {section}{\numberline {11.5}Agradecimientos}{170}{section.11.5}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{170}{section.11.5}% 
