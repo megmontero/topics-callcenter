@@ -1,6 +1,24 @@
 \chapter{Conclusiones}
 \label{chapter:conclusiones}
 
+
+\section{Boceto conclusiones}
+
+Positivas: 
+
+Es posible clasificar las llamadas atendiendo a dos visiones.  Supervisada y no supervisada. 
+
+La importancia y dificultad de trabajar con datos reales. 
+
+NEgativas: 
+
+calidad de las etiquetas. 
+
+Ciclo devops completo. 
+
+
+
+
 \section{Aplicación aprendido}
 
 Aunque se ha profundizado en algunos aspectos, más allá de lo aprendido a lo largo del máster, las asignaturas cursadas a lo largo de tres semestres han creado una base solida que han permitido el desarrollo de este proyecto.
@@ -44,13 +62,15 @@ En esta sección queremos hacer un repaso sobre la aplicación que todas las asi
 
 \section{Líneas de trabajo futuras}
 
+Una vez finalizado el proyecto y extraídas las conclusiones es el momento de abrir líneas de trabajos futuras que le den continuidad al trabajo aquí expuesto, ya sea ampliando su alcance o mejorando algunos aspectos.
+
 \begin{itemize}
-	\item Métricas Optimización: 
-	\item Etiquetas monitorización: 
-	\item Profundizar estudio no supervisado: 
-	\item Llevar a producción modelo no supervisado. 
-	\item Adaptar llamadas tiempo real, eliminar inyector. 
-	\item Disponer llamadas 
+	\item Métricas Optimización: Modificar las 
+	\item Etiquetas monitorización: Como hemos visto a lo largo del documento, principalmente en el capítulo \ref{chapter:dataset}, las etiquetas que tienen más calidad son las de monitorización, aunque tenían el problema del escaso porcentaje de etiquetas de este tipo. En un futuro se espera que el porcentaje de llamadas etiquetadas de este tipo aumente, pudiéndose aplicar los modelos vistos a estos datos.
+	\item Etiquetas de sistemas operacionales: Una  opción que no se ha abordado hasta ahora es la de etiquetar las llamadas en función de las operaciones hechas por los clientes tras las llamadas: Si han realizado un alta, si han realizado una baja, si han abierto una reclamación, etc. Estas acciones pueden consultarse directamente en los sistemas operacionales de la empresa.
+	\item Llevar a producción modelo no supervisado: Aunque se ha realizado un estudio no supervisado de las llamadas, este no se ha llevado a un entorno productivo. Puede ser muy interesante introducir un modelo no supervisado en nuestra arquitectura para tener en la capa de servicio una versión distinta a la de las etiquetas actuales. 
+	\item Adaptar llamadas tiempo real, eliminar inyector: En este proyecto se ha presentado un elemento que simula las llamadas en tiempo real, a corto plazo será necesario eliminar este elemento y adaptar los datos de entrada del servicio \textit{tokenizer} a los datos reales de las llamadas. 
+	\item Otras funcionalidades: Tanto la arquitectura expuesta en la capa de \textit{streaming}, como la capa de servicio pueden ser usadas para dotar al sistema de otras capacidades relacionadas con el modelo. Algunas de las funcionalidades que pueden ser útiles para complementar el sistema son: el análisis de sentimientos, analizar si una llamada ha supuesto una venta positiva, etc. 
 \end{itemize}
 
 \section{Caso de negocio}
@@ -58,20 +78,17 @@ Lo que me contó Nacho ver si encajarlo aquí o en la introducción.
 
 \section{Agradecimientos}
 
+
+
 Un \textit{handicap} a la hora de realizar el proyecto dentro de una gran empresa ha sido el hecho de trabajar con unos plazos tan ajustados. Aspectos como la autorización en el acceso a la información, el acceso a diferentes entornos, la intercomunicación entre áreas, etc. requieren unos tiempos que pueden retrasar la ejecución de un trabajo de este tipo. 
  
-Esta última sección tiene como objetivo dar las gracias a todas las personas que han hecho posible la realización de este proyecto en tiempo y forma.
+Esta última sección tiene como objetivo agradecer a todas las personas que han hecho posible la realización de este proyecto en tiempo y forma.
 
-A Antonio Fernández Gallardo
 
-A Willy Gavilán Montegro y Carolina Bouvard Nuño por permitirme realizar el proyecto dentro de Telefónica.
+A Willy Gavilán y Carolina Bouvard por hacer posible la  realización de este proyecto dentro de Telefónica. A Antonio Fernández por aceptar que realice este trabajo con su equipo y por tutorizarlo. A Jorge Ayuso y Rus Mesas por su ayuda a la hora de obtener los datos, por sus consejos y por permitirme usar con ellos el equipo con GPUs usados para  el entrenamiento y optimización de modelos. A Laura Canga por permitirme usar el Bus Apache Kafka y a José Ramón Fernández por ayudarme, incluso a deshoras, con la creación de \textit{topics} y usuarios del bus.  A Pablo Palomares Darocas por su ayuda a la hora de acceder y adaptar a nuestras necesidades las plataformas \textit{DevOps}: Bitbucket, Nexus y Jenkins. A Nacho Charfolé por darme su visión más allá de la parte técnica y por hacerme entender las ventajas que pueden aportar este tipo de proyectos a una empresa. Y por último, pero no menos importante, a mi tutora, Ana Valdivia, por sus concreciones minuciosas y por guiarme y animarme en todo momento.
 
-A Jorge Ayuso Rejas y Rus Mesas Javega por su ayuda a la hora de obtener los datos y por permitirme usar con ellos el equipo con GPUs usados por el entrenamiento. 
+Sin todos vosotros un trabajo de este tipo no sería posible. \textbf{Gracias}.
 
-A Laura Canga García por dejarme usar el Bus Kafka y a José Ramón Fernández Acosta por ayudarme, incluso a deshoras, con la creación y usuarios del bus. 
 
-A Pablo Palomares Darocas por su ayuda a la hora de acceder y usar las plataformas \textit{DevOps}: Bitbucket, Nexus y Jenkins.
-
-A Nacho Charfolé Sancho por darme su visión más allá de la parte técnica.
 
  
