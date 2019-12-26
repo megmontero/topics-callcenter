@@ -73,7 +73,7 @@
 \contentsline {subsection}{\numberline {6.3.2}Modelos multiclase}{98}{subsection.6.3.2}% 
 \contentsline {section}{\numberline {6.4}Modelo M\IeC {\'\i }nimo Viable}{99}{section.6.4}% 
 \contentsline {part}{III\hspace {1em}Explotaci\IeC {\'o}n: procesamiento, visualizaci\IeC {\'o}n y alarmados}{101}{part.3}% 
-\contentsline {chapter}{\numberline {7}Explotaci\IeC {\'o}n}{103}{chapter.7}% 
+\contentsline {chapter}{\numberline {7}Capa de \textit {streaming}}{103}{chapter.7}% 
 \contentsline {section}{\numberline {7.1}Requisitos del sistema productivo}{104}{section.7.1}% 
 \contentsline {section}{\numberline {7.2}Arquitectura del sistema}{104}{section.7.2}% 
 \contentsline {section}{\numberline {7.3}Microservicios}{106}{section.7.3}% 
@@ -115,10 +115,11 @@
 \contentsline {section}{\numberline {10.1}Introducci\IeC {\'o}n DevOps}{157}{section.10.1}% 
 \contentsline {section}{\numberline {10.2}Degradaci\IeC {\'o}n del modelo/ \textit {Feedback} continuo}{159}{section.10.2}% 
 \contentsline {section}{\numberline {10.3}Integraci\IeC {\'o}n y despliegue continuos}{161}{section.10.3}% 
-\contentsline {chapter}{\numberline {11}Conclusiones}{167}{chapter.11}% 
-\contentsline {section}{\numberline {11.1}Boceto conclusiones}{167}{section.11.1}% 
-\contentsline {section}{\numberline {11.2}Aplicaci\IeC {\'o}n aprendido}{167}{section.11.2}% 
+\contentsline {chapter}{\numberline {11}Conclusiones y trabajos futuros}{167}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Cumplimiento de objetivos}{167}{section.11.1}% 
+\contentsline {section}{\numberline {11.2}Aplicaci\IeC {\'o}n m\IeC {\'a}ster}{168}{section.11.2}% 
 \contentsline {section}{\numberline {11.3}L\IeC {\'\i }neas de trabajo futuras}{169}{section.11.3}% 
-\contentsline {section}{\numberline {11.4}Caso de negocio}{169}{section.11.4}% 
-\contentsline {section}{\numberline {11.5}Agradecimientos}{170}{section.11.5}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{170}{section.11.5}% 
+\contentsline {section}{\numberline {11.4}Caso de negocio}{171}{section.11.4}% 
+\contentsline {section}{\numberline {11.5}Conclusiones finales}{172}{section.11.5}% 
+\contentsline {section}{\numberline {11.6}Agradecimientos}{173}{section.11.6}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{173}{section.11.6}% 
