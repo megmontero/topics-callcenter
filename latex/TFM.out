@@ -64,7 +64,7 @@
 \BOOKMARK [2][-]{subsection.6.3.2}{Modelos multiclase}{section.6.3}% 64
 \BOOKMARK [1][-]{section.6.4}{Modelo M\355nimo Viable}{chapter.6}% 65
 \BOOKMARK [-1][-]{part.3}{III Explotaci\363n: procesamiento, visualizaci\363n y alarmados}{}% 66
-\BOOKMARK [0][-]{chapter.7}{Explotaci\363n}{part.3}% 67
+\BOOKMARK [0][-]{chapter.7}{Capa de streaming}{part.3}% 67
 \BOOKMARK [1][-]{section.7.1}{Requisitos del sistema productivo}{chapter.7}% 68
 \BOOKMARK [1][-]{section.7.2}{Arquitectura del sistema}{chapter.7}% 69
 \BOOKMARK [1][-]{section.7.3}{Microservicios}{chapter.7}% 70
@@ -104,10 +104,11 @@
 \BOOKMARK [1][-]{section.10.1}{Introducci\363n DevOps}{chapter.10}% 104
 \BOOKMARK [1][-]{section.10.2}{Degradaci\363n del modelo/ Feedback continuo}{chapter.10}% 105
 \BOOKMARK [1][-]{section.10.3}{Integraci\363n y despliegue continuos}{chapter.10}% 106
-\BOOKMARK [0][-]{chapter.11}{Conclusiones}{part.4}% 107
-\BOOKMARK [1][-]{section.11.1}{Boceto conclusiones}{chapter.11}% 108
-\BOOKMARK [1][-]{section.11.2}{Aplicaci\363n aprendido}{chapter.11}% 109
+\BOOKMARK [0][-]{chapter.11}{Conclusiones y trabajos futuros}{part.4}% 107
+\BOOKMARK [1][-]{section.11.1}{Cumplimiento de objetivos}{chapter.11}% 108
+\BOOKMARK [1][-]{section.11.2}{Aplicaci\363n m\341ster}{chapter.11}% 109
 \BOOKMARK [1][-]{section.11.3}{L\355neas de trabajo futuras}{chapter.11}% 110
 \BOOKMARK [1][-]{section.11.4}{Caso de negocio}{chapter.11}% 111
-\BOOKMARK [1][-]{section.11.5}{Agradecimientos}{chapter.11}% 112
-\BOOKMARK [0][-]{section.11.5}{Bibliograf\355a}{part.4}% 113
+\BOOKMARK [1][-]{section.11.5}{Conclusiones finales}{chapter.11}% 112
+\BOOKMARK [1][-]{section.11.6}{Agradecimientos}{chapter.11}% 113
+\BOOKMARK [0][-]{section.11.6}{Bibliograf\355a}{part.4}% 114
