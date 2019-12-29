@@ -3,7 +3,7 @@
 
 Este último capítulo del documento tiene como objetivo establecer las conclusiones tras la realización de proyecto y enumerar posibles vías de trabajo futuras que permitan darle continuidad al trabajo presentado.
 
-En el apartado \ref{section:con:obj} analizaremos el cumplimiento de los objetivos propuestos al inicio del proyecto. A continuación, en el apartado \ref{section:con:master} veremos como las asignaturas cursadas  a lo largo del máster han contribuido a la realización de este trabajo.  Posteriormente, en los apartados \ref{section:con:fut} y \ref{section:con:neg} trataremos las líneas de trabajo futuras; de un modo más general y profundizando en un caso de negocio particular respectivamente. Por último, en el apartado \ref{section:con:fin} abordaremos el resto de conclusiones al margen de los objetivos propuestos. 
+En el apartado \ref{section:con:obj} analizaremos el cumplimiento de los objetivos propuestos al inicio del proyecto. A continuación, en el apartado \ref{section:con:master} veremos como las asignaturas cursadas  a lo largo del máster han contribuido a la realización de este trabajo.  Posteriormente, en los apartados \ref{section:con:fut} y \ref{section:con:neg} trataremos las líneas de trabajo futuras de un modo más general y profundizando en un caso de negocio particular respectivamente. Por último, en el apartado \ref{section:con:fin} abordaremos el resto de conclusiones al margen de los objetivos propuestos. 
 
 
 
@@ -14,7 +14,7 @@ En el apartado \ref{section:con:obj} analizaremos el cumplimiento de los objetiv
 Al empezar este documento, en la sección \ref{section:intro:objetivos}, propusimos una serie de objetivos específicos a cumplir a lo largo del mismo y ahora, una vez finalizado el trabajo, es el momento de evaluar el cumplimiento de los mismos: 
 
 \begin{CheckList}{Goal}
-\Goal{achieved}{ \textbf{Construir un modelo que nos permita extraer la temática de las llamadas} a partir de su transcripción a texto. Este objetivo a sido abordado durante la segunda parte del documento que trata el modelado de los datos. Hemos logrado construir tanto modelos no supervisados como supervisados que nos permiten clasificar correctamente las llamadas. En el caso de los modelos supervisados hemos obtenido varios con precisiones alrededor del 80\% lo que nos permite superar el objetivo propuesto.}
+\Goal{achieved}{ \textbf{Construir un modelo que nos permita extraer la temática de las llamadas} a partir de su transcripción a texto. Este objetivo a sido abordado durante la segunda parte del documento que trata el modelado de los datos. Hemos logrado construir tanto modelos no supervisados como supervisados que nos permiten clasificar correctamente las llamadas. En el caso de los modelos supervisados, hemos obtenido varios con precisiones alrededor del 80\% lo que nos permite superar el objetivo propuesto.}
 	
 \Goal{achieved}{ Desarrollar un mecanismo que nos permita \textbf{extraer esta temática para nuevas llamadas en tiempo real}. Se ha construido usando un inyector que simula las llegadas de llamadas en tiempo real. El desarrollo del objetivo usando una arquitectura de microservicios puede verse en el capítulo \ref{chapter:prod} dedicado a la capa de \textit{streaming}.
 }	
@@ -28,7 +28,7 @@ Al empezar este documento, en la sección \ref{section:intro:objetivos}, propusi
 
 \end{CheckList}
 
-El cumplimiento de estos objetivos a sido prácticamente total, aunque la precisión de los modelos supervisados este en el 80\% ha sido complementado con la creación de modelos no supervisados. En cuanto al resto de objetivos estos han sido cubiertos al 100\%.
+El cumplimiento de estos objetivos ha sido prácticamente total, aunque la precisión de los modelos supervisados esté en el 80\% ha sido complementado con la creación de modelos no supervisados. En cuanto al resto de objetivos estos han sido cubiertos al 100\%.
 
 
 
@@ -36,7 +36,7 @@ El cumplimiento de estos objetivos a sido prácticamente total, aunque la precis
 
 \section{Aplicación máster}
 \label{section:con:master}
-Aunque se ha profundizado en algunos aspectos más allá de lo aprendido a lo largo del máster, las asignaturas cursadas a lo largo de tres semestres han creado una base solida que han permitido el desarrollo de este proyecto.
+Aunque se ha profundizado en algunos aspectos más allá de lo aprendido a lo largo del máster, las asignaturas cursadas a lo largo de tres semestres han creado una base sólida que ha permitido el desarrollo de este proyecto.
 
 En esta sección queremos hacer un repaso sobre la aplicación que todas las asignaturas cursadas a lo largo del máster, en mayor o menor medida, han tenido en este proyecto. 
 
@@ -66,7 +66,7 @@ En esta sección queremos hacer un repaso sobre la aplicación que todas las asi
 \item  \textbf{Diseño y construcción del data warehouse}: Aunque no se han aplicado directamente los conocimientos de esta asignatura en el desarrollo del proyecto, sí ha sido necesario acceder al \textit{datawarehouse} de la empresa para la obtención de datos.
 
 
-\item \textbf{Análisis de datos en entornos big data}: Aunque no hemos cursado esta asignatura, sí hemos aplicado algunos conceptos tratados en ella y relacionados con el uso de un ecosistema Hadoop. Principalmente HDFS, Spark y Hive.
+\item \textbf{Análisis de datos en entornos big data}: Aunque sin cursar esta asignatura, hemos aplicado algunos conceptos tratados en ella y relacionados con el uso de un ecosistema Hadoop. Principalmente HDFS, Spark y Hive.
 
 
 \end{itemize}
@@ -78,7 +78,7 @@ En esta sección queremos hacer un repaso sobre la aplicación que todas las asi
 \section{Líneas de trabajo futuras}
 \label{section:con:fut}
 
-Una vez finalizado el proyecto es el momento de abrir líneas de trabajos futuras que le den continuidad al trabajo aquí expuesto, ya sea ampliando su alcance o mejorando algunos aspectos.
+Una vez finalizado el proyecto es el momento de abrir líneas de trabajos futuros que le den continuidad al trabajo aquí expuesto, ya sea ampliando su alcance o mejorando algunos aspectos.
 
 
 
@@ -86,7 +86,7 @@ Una vez finalizado el proyecto es el momento de abrir líneas de trabajos futura
 \begin{itemize}
 	\item \textbf{Métricas Optimización}: Modificar las métricas usadas para la evaluación, usando por ejemplo F1-score que nos proporcionará una mejor medida de los casos clasificados incorrectamente que la métrica de precisión utilizada.
 	\item \textbf{Etiquetas monitorización}: Como hemos visto a lo largo del documento, principalmente en el capítulo \ref{chapter:dataset}, las etiquetas que tienen más calidad son las de monitorización, aunque tenían el problema del escaso porcentaje de etiquetas de este tipo. En un futuro se espera que el porcentaje de llamadas etiquetadas de este tipo aumente, pudiéndose aplicar los modelos vistos a estos datos.
-	\item \textbf{Etiquetas de sistemas operacionales}: Una  opción que no se ha abordado hasta ahora es la de etiquetar las llamadas en función de las operaciones hechas por los clientes tras las llamadas. Por ejemplo si han realizado un alta, si han realizado una baja, si han abierto una reclamación, etc. Estas acciones pueden consultarse directamente en los sistemas operacionales de la empresa.
+	\item \textbf{Etiquetas de sistemas operacionales}: Una opción que no se ha abordado hasta ahora es la de etiquetar las llamadas en función de las operaciones hechas por los clientes tras las llamadas. Por ejemplo si han realizado un alta, si han realizado una baja, si han abierto una reclamación, etc. Estas acciones pueden consultarse directamente en los sistemas operacionales de la empresa.
 	\item \textbf{Llevar a producción modelo no supervisado}: Aunque se ha realizado un estudio no supervisado de las llamadas, este no se ha llevado a un entorno productivo. Puede ser muy interesante introducir un modelo no supervisado en nuestra arquitectura para tener en la capa de servicio una versión distinta a la de las etiquetas actuales. 
 	\item \textbf{Adaptar llamadas tiempo real, eliminar inyector}: En este proyecto se ha presentado un elemento que simula las llamadas en tiempo real, a corto plazo será necesario eliminar este elemento y adaptar los datos de entrada del servicio \textit{tokenizer} a los datos reales de las llamadas. 
 	
@@ -98,14 +98,14 @@ Una vez finalizado el proyecto es el momento de abrir líneas de trabajos futura
 
 \end{itemize}
 
-En resumen, pensamos que se trata de un trabajo con mucho recorrido y margen de mejora y, esperamos, que este proyecto posea continuidad en el futuro.
+En resumen, pensamos que se trata de un trabajo con mucho recorrido y margen de mejora y esperamos que este proyecto posea continuidad en el futuro.
 
 \section{Caso de negocio}
 \label{section:con:neg}
 
-Aunque hemos dedicado la sección anterior en enumerar posibles líneas de trabajo futuras, queremos esbozar en  este apartado un posible caso de negocio en el que un proyecto de este tipo encajaría y aportaría valor a la empresa. 
+Aunque hemos dedicado la sección anterior en enumerar posibles líneas de trabajo futuras, queremos esbozar en este apartado un posible caso de negocio en el que un proyecto de este tipo encajaría y aportaría valor a la empresa. 
 
-Las personas encargadas de recibir las llamadas en un \textit{call center} deben de atender a un gran número de llamadas de diferente tipología. En función del tipo de llamada, lo ideal es disponer de un tipo de agente especializado en la temática a resolver. Vamos a ver algunos ejemplos de tipos de llamas que pueden requerir diferentes agentes:
+Las personas encargadas de recibir las llamadas en un \textit{call center} deben de atender a un gran número de llamadas de diferente tipología. En función del tipo de llamada, lo ideal es disponer de un tipo de agente especializado en la temática a resolver. Vamos a ver algunos ejemplos de tipos de llamadas que pueden requerir diferentes agentes:
 
 \begin{itemize}
 \item \textbf{Consulta}:  Los clientes que realicen consultas sobre diferentes productos, lo ideal es que sean atendidos por agentes especializados en la venta. Deben ser capaces de conseguir que aumente el interés del cliente por nuestros productos hasta el punto de generar una contratación. 
@@ -117,7 +117,7 @@ Las personas encargadas de recibir las llamadas en un \textit{call center} deben
 
 
 
-Estos tipos de llamada y de agentes nos servirán de ejemplo para mostrar los beneficios que la clasificación automática de llamadas pueden tener para la empresa, más allá de lo comentado en el documento.
+Estos tipos de llamada y de agentes nos servirán de ejemplo para mostrar los beneficios que la clasificación automática de llamadas puede tener para la empresa, más allá de lo comentado en el documento.
 
 Es lógico pensar que los agentes especializados en realizar nuevas ventas y los agentes encargados de evitar las bajas tendrán un coste mayor que, por ejemplo, los agentes encargados de realizar las reclamaciones de facturación que realizan labores más mecánicas. Esta variación en el coste y el objetivo de poder ofrecer una mejor calidad de servicio, haciendo que cada agente solo responda las llamadas que mejor puede resolver, pone de manifiesto la importancia de realizar una buena clasificación previa. 
 
@@ -145,7 +145,7 @@ Con los cuatro primeros puntos, al ser beneficios cuantitativos, sería bastante
 \section{Conclusiones finales}
 \label{section:con:fin}
 
-Más allá de la valoración del cumplimiento de los objetivos propuestos y de las futuras líneas de trabajo que abrimos queremos finalizar el trabajo extrayendo una serie de  conclusiones del mismo. 
+Más allá de la valoración del cumplimiento de los objetivos propuestos y de las futuras líneas de trabajo que abrimos queremos finalizar el trabajo extrayendo una serie de conclusiones del mismo. 
 
 
 \begin{itemize}
@@ -153,25 +153,29 @@ Más allá de la valoración del cumplimiento de los objetivos propuestos y de l
 
 \item La creación de modelos en un proyecto real es un proceso que puede requerir una gran cantidad de tiempo y ``siempre'' es posible afinar un poco más un modelo. Esto nos ha hecho darnos cuenta de que es importante fijarse unos objetivos factibles y establecer un punto de parada.
 
+\item El buen rendimiento de modelos con redes neuronales recurrentes para la clasificación de textos y el elevado coste de entrenamiento que estos tienen. 
+
+\item La importancia de la representación elegida para las transcripciones y el buen funcionamientos de los modelos Word2Vec.
+
 \item El aprendizaje no supervisado es un proceso que requiere una gran capacidad de análisis por nuestra parte ya que no siempre obtenemos lo que esperamos y es necesario descubrir los patrones encontrados por los modelos.
 
-\item Este proyecto nos ha hecho darnos cuentas de las amplias posibilidades del aprendizaje profundo, pero también de la gran cantidad de datos que necesitamos normalmente para entrenar estos modelos. Esto no ha llevado a tener que prescindir de momento de algunas etiquetas debido a su escasez.  
+\item Este proyecto nos ha hecho darnos cuenta de las amplias posibilidades del aprendizaje profundo, pero también de la gran cantidad de datos que necesitamos normalmente para entrenar estos modelos. Esto no ha llevado a tener que prescindir de momento de algunas etiquetas debido a su escasez.  
 
 \item El entrenamiento de los modelos supervisados nos ha hecho también enfrentarnos en la realidad a varios problemas vistos a lo largo del máster como son el sobrentrenamiento y las clases desbalanceadas. 
 
-\item Durante este proyecto hemos tenido la posibilidad de trabajar con GPUs, poniendo de manifiesto la gran capacidad de este tipo de \textit{hardware} para entrenar modelos de aprendizaje profundo. Sin embargo se ha demostrado que estos modelos, una vez entrenados, pueden tener un rendimiento bastante decente sobre plataformas de con CPUs.
+\item Durante este proyecto hemos tenido la posibilidad de trabajar con GPUs, poniendo de manifiesto la gran capacidad de este tipo de \textit{hardware} para entrenar modelos de aprendizaje profundo. Sin embargo, se ha demostrado que estos modelos, una vez entrenados, pueden tener un rendimiento bastante decente sobre plataformas de con CPUs.
 
 
 
-\item El trabajo expuesto expone un implementación real de la arquitectura Kappa llevando al terreno práctico las ideas propuestas por Jay Kreps. Además incorpora a esta arquitectura los modelos de aprendizaje profundo creados con Tensorflow. 
+\item El trabajo expuesto expone una implementación real de la arquitectura Kappa llevando al terreno práctico las ideas propuestas por Jay Kreps. Además incorpora a esta arquitectura los modelos de aprendizaje profundo creados con Tensorflow. 
 
-Creemos que más allá de la clasificación de llamadas esta propuesta puede ser de utilidad a la hora de dar el salto ``del laboratorio'' a la producción; ayudando a desplegar otros modelos productivos dentro de la empresa reaprovechando las capacidades creadas tanto en la capa de \textit{streaming} como en la capa de servicio.    
+Creemos que más allá de la clasificación de llamadas, esta propuesta puede ser de utilidad a la hora de dar el salto ``del laboratorio'' a la producción; ayudando a desplegar otros modelos productivos dentro de la empresa reaprovechando las capacidades creadas tanto en la capa de \textit{streaming} como en la capa de servicio.    
 
 \item Otra de las aportaciones que creemos que este trabajo realiza a la empresa es la aproximación que se ha hecho a la metodología DevOps permitiendo que toda la arquitectura sea factible de entrar en un ciclo de integración y despliegue continuos, siendo algo reutilizable para cualquier otro nuevo proyecto que use esta misma arquitectura. 
 
-\item Pensamos que otra de las partes reutilizables de este trabajo es el esfuerzo realizado para la monitorización de todos los procesos Kafka Streams y Tensorflow Serving. Esta tarea se ha realizado de modo que sea totalmente reaprovechable por otros procesos de estas tecnologías. Teniendo la posibilidad de obtener  datos del rendimiento y del uso de recursos de los mismos y las visualizaciones y alertas necesarias para controlarlo.
+\item Pensamos que otra de las partes reutilizables de este trabajo es el esfuerzo realizado para la monitorización de todos los procesos Kafka Streams y Tensorflow Serving. Esta tarea se ha realizado de modo que sea totalmente reaprovechable por otros procesos de estas tecnologías. Teniendo la posibilidad de obtener datos del rendimiento y del uso de recursos de los mismos y las visualizaciones y alertas necesarias para controlarlo.
 
-\item Por último uno de los retos que hemos asumido en este proyecto es que el despliegue de toda la parte productiva se haga sobre contenedores. Además esta tarea se ha realizado de modo que sean reutilizables por futuras aplicaciones gracias a S2I.
+\item Por último, uno de los retos que hemos asumido en este proyecto es que el despliegue de toda la parte productiva se haga sobre contenedores. Además esta tarea se ha realizado de modo que sean reutilizables por futuras aplicaciones gracias a S2I.
 \end{itemize}
 
 

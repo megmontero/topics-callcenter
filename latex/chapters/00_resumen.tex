@@ -76,7 +76,7 @@ Un \textit{handicap} a la hora de realizar el proyecto dentro de una gran empres
 Este apartado tiene como objetivo agradecer a todas las personas que han hecho posible la realización de este proyecto en tiempo y forma.
 
 
-A Willy Gavilán y Carolina Bouvard por hacer posible la  realización de este proyecto dentro de Telefónica. A Antonio Fernández por aceptar que realice este trabajo con su equipo y por tutorizarlo. A Jorge Ayuso y Rus Mesas por su ayuda a la hora de obtener los datos, por sus consejos y por permitirme usar con ellos el equipo con GPUs usados para  el entrenamiento y optimización de modelos. A Laura Canga por permitirme usar el Bus Apache Kafka y a José Ramón Fernández por ayudarme, incluso a deshoras, con la creación de \textit{topics} y usuarios del bus.  A Pablo Palomares por su ayuda a la hora de acceder y adaptar a nuestras necesidades las plataformas \textit{DevOps}: Bitbucket, Nexus y Jenkins. A Nacho Charfolé por darme su visión más allá de la parte técnica y por hacerme entender las ventajas que pueden aportar este tipo de proyectos a una empresa. Y por último, pero no menos importante, a mi tutora, Ana Valdivia, por sus concreciones minuciosas y por guiarme y animarme en todo momento.
+A Willy Gavilán y Carolina Bouvard por hacer posible la  realización de este proyecto dentro de Telefónica. A Antonio Fernández por aceptar que realice este trabajo con su equipo y por tutorizarlo. A Jorge Ayuso y Rus Mesas por su ayuda a la hora de obtener los datos, por sus consejos y por permitirme usar con ellos el equipo con GPUs usados para  el entrenamiento y optimización de modelos. A Laura Canga por permitirme usar el Bus Apache Kafka y a José Ramón Fernández por ayudarme, incluso a deshoras, con la creación de \textit{topics} y usuarios del bus.  A Pablo Palomares por su ayuda a la hora de acceder y adaptar a nuestras necesidades las plataformas \textit{DevOps}: Bitbucket, Nexus y Jenkins. A Nacho Charfolé por darme su visión más allá de la parte técnica y por hacerme entender las ventajas que pueden aportar este tipo de proyectos a una empresa. Y por último, pero no menos importante, a mi tutora, Ana Valdivia, por sus correcciones minuciosas y por guiarme y animarme en todo momento.
 
 Sin todos vosotros un trabajo de este tipo no sería posible. \textbf{{\LARGE Gracias}}.
 
@@ -88,16 +88,23 @@ Sin todos vosotros un trabajo de este tipo no sería posible. \textbf{{\LARGE Gr
 \addcontentsline{toc}{chapter}{Resumen}
 
 
-Un \textit{call center} es el área de una empresa el cuál se encarga de recibir y transmitir llamadas desde o hacia clientes, socios comerciales u otras compañías externas. Debido a la gran cantidad de información que se transfiere en estos centros, resulta una tarea esencial optimizar el tiempo de respuesta para así reaccionar en tiempo real a las peticiones de los clientes y mejorar la percepción que estos tienen sobre la compañía. 
+Un \textit{call center} es el área de una empresa el cuál se encarga de recibir y transmitir llamadas desde o hacia clientes, socios comerciales u otras compañías externas. La gran cantidad de información generada a partir de estas llamada refleja, entre otros aspectos, las necesidades de los clientes de la empresa. 
 
-Una manera de mejorar el rendimiento es detectar el tema de las llamadas  mediante técnicas de \textit{machine learning} dando la posibilidad a la empresa de reaccionar en tiempo real, en función de la temática que se este tratando en cada momento. 
+
+La capacidad de clasificar las llamadas recibidas en tiempo real en función de la temática , provocaría en las empresas una mejora en la calidad de atención al público y en la experiencia del cliente.  Esto es abordable mediante técnicas de \textit{machine learning}.
+
+%Por ello, resulta una tarea esencial ser capaces de reaccionar en el menor tiempo posible ante un cambio en la temática de las llamadas con el objetivo de mejorar la experiencia del cliente.
+
+%optimizar el tiempo de respuesta ante un cambio en la temática de las llamadas, para así reaccionar en tiempo real a las peticiones de los mismos y mejorar la percepción que estos tienen sobre la compañía. 
+
+%Las empresas mejorarían la calidad de las llamadas de atención al público si fuesen capaces de clasificar en tiempo real las llamadas que reciben o emiten, en función de la temática que se este tratando en cada momento. Esto es abordable mediante técnicas de machine learning. 
 
 En este documento se presenta un sistema implementado en el \textit{call center} de Telefónica que nos 
  permite, a partir de la transcripción de las llamadas, obtener la temática de las mismas utilizando métodos de Procesamiento de Lenguaje Natural. El análisis expuesto realiza clasificaciones con diferentes arquitecturas, tanto con modelos no supervisados como con modelos supervisados de aprendizaje profundo. Dependiendo del modelo se han estudiado también diferentes métodos a la hora de representar las transcripciones.
  
- Por último, se ha llevado uno de los modelos a producción, dotando al sistema de la posibilidad de realizar esta clasificación en tiempo real y proporcionando a los usuarios capacidades de visualizar la evolución de las llamadas a lo largo del tiempo y de generar alertas en base a anomalías. El sistema llevado a producción ha sido totalmente desplegado en contenedores y provisto de mecanismos  de monitorización, integración continua y despliegue continuo. 
+ Por último, se ha llevado uno de los modelos a producción, dotando al sistema de la posibilidad de realizar esta clasificación en tiempo real y proporcionando a la empresa la capacidad de visualizar la evolución de las llamadas a lo largo del tiempo y de generar alertas en base a anomalías. El sistema llevado a producción ha sido totalmente desplegado en contenedores y provisto de mecanismos  de monitorización, integración continua y despliegue continuo. 
  
-El proyecto presentado abre a la empresa un gran número de posibilidades a la hora tanto de  realizar nuevos sistemas de Procesamiento del Lenguaje Natural como a la hora de llevar modelos de aprendizaje profundo a un entorno productivo.
+El proyecto presentado abre a la empresa un gran número de posibilidades, tanto a la hora de  realizar nuevos sistemas de Procesamiento del Lenguaje Natural, como a la hora de llevar modelos de aprendizaje profundo a un entorno productivo.
  
 
 
