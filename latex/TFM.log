@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.9.23)  29 DEC 2019 13:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.9.23)  30 DEC 2019 00:27
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2452,8 +2452,8 @@ LaTeX Info: Redefining \% on input line 123.
 LaTeX Info: Redefining \. on input line 152.
 LaTeX Info: Redefining \% on input line 152.
  [174]
-LaTeX Info: Redefining \. on input line 171.
-LaTeX Info: Redefining \% on input line 171.
+LaTeX Info: Redefining \. on input line 173.
+LaTeX Info: Redefining \% on input line 173.
  [175]) (./TFM.bbl
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -2579,7 +2579,7 @@ runsystem(rm TFM.pyg)...executed.
 Here is how much of TeX's memory you used:
  26408 strings out of 492623
  476023 string characters out of 6135669
- 680547 words of memory out of 5000000
+ 679545 words of memory out of 5000000
  29109 multiletter control sequences out of 15000+600000
  26705 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2607,7 +2607,7 @@ usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf
 e1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
 per/sftt1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pf
 b></usr/share/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb>
-Output written on TFM.pdf (202 pages, 13027682 bytes).
+Output written on TFM.pdf (202 pages, 13027856 bytes).
 PDF statistics:
  2270 PDF objects out of 2487 (max. 8388607)
  1909 compressed objects within 20 object streams
