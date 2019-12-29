@@ -280,7 +280,7 @@ Como ya hemos comentado en anteriores capítulos actualmente las transcripciones
 Este inyector, realizado en Python utiliza como fuente la transcripción de las llamadas realizadas en batch. Y a partir de la misma cumplirá los siguientes objetivos: 
 
 \begin{itemize}
-	\item \textbf{ Extraer la frecuencia de llamadas por hora}. De este modo simularemos el comportamiento real de un \textit{call-center} inyectando más llamadas a las horas del día con mayor actividad.
+	\item \textbf{ Extraer la frecuencia de llamadas por hora}. De este modo simularemos el comportamiento real de un \textit{call center} inyectando más llamadas a las horas del día con mayor actividad.
 	\item \textbf{Multiplicar el número de llamadas}. Teniendo en cuenta que actualmente solo se transcriben un 4\% del total de las llamadas, el inyector multiplicará por 25 el número de llamadas recibidas en un día para simular el comportamiento real de un sistema que ingeste el 100\% de las llamadas.
 	\item \textbf{Introducir datos de control}: El inyector insertará en un porcentaje de llamadas los datos reales de clasificación con el fin de poder verificar el comportamiento del modelo. En un entorno real se podrían insertar periódicamente un número de llamadas de control que nos permitan este objetivo.
 	
