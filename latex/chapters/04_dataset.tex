@@ -261,7 +261,7 @@ relación con las llamadas totales puede ser un \textit{handicap} a la hora de e
 
     Como hemos visto los datos de monitorizaciones tienen el problema de que
 son escasos, es por eso que nos planteamos analizar los datos de \textit{IVR}.
-Estos datos son proporcionados por el usuario al llamar al \emph{call-center}. En primer lugar vemos el número de categorías diferentes que obtenemos del \textit{dataset} de llamadas.
+Estos datos son proporcionados por el usuario al llamar al \emph{call center}. En primer lugar vemos el número de categorías diferentes que obtenemos del \textit{dataset} de llamadas.
 
 \vspace{0.5cm}
 
@@ -707,7 +707,7 @@ Por estos motivos, en el capítulo \ref{chapter:super} los modelos supervisados 
 
 
 
-Todos los modelos que se presentarán a lo largo de esta sección utilizan como entrada las transcripciones de las llamadas recibidas al \textit{call-center}. En esta sección nos centraremos en los diferentes métodos que hemos escogido para representar estas llamadas.
+Todos los modelos que se presentarán a lo largo de esta sección utilizan como entrada las transcripciones de las llamadas recibidas al \textit{call center}. En esta sección nos centraremos en los diferentes métodos que hemos escogido para representar estas llamadas.
 
 
 El primer paso una vez recibimos la transcripción, y en cualquier proceso de minería de datos, es limpiar los datos. Para ello, como ya hemos visto en apartados anteriores, realizaremos un proceso de \textit{\textbf{tokenizado}} que constará de los siguientes pasos: 
@@ -731,7 +731,7 @@ Las secuencias obtenidas ya podrían alimentar la mayoría de nuestros modelos, 
 \subsection{Word2vec}
 Como ya vimos en el estado del arte, una de las representaciones que más popularidad ha tomado  en los últimos tiempos es \textit{word2vec} y esta será la entrada de la mayoría de nuestros modelos supervisados. Nuestro objetivo es huir de representaciones que traten a las palabras como elementos aislados y poder disponer de una representación que cuente con el contexto de la palabra.
 
-Entre las dos representaciones de \textit{word2vec} hemos optado por \textit{SKIP-Gram} y hemos realizado pruebas entrenando el \textit{embedding} con datos de \textit{Wikipedia} y con nuestro corpus. Finalmente hemos optado por usar el modelo entrenado con nuestro corpus. Esto se debe a que tenemos un corpus lo suficientemente extenso y, de este modo, el modelo aprende las palabras según el contexto de las llamadas al \textit{call-center} y no en un contexto general como puede ser \textit{Wikipedia}.
+Entre las dos representaciones de \textit{word2vec} hemos optado por \textit{SKIP-Gram} y hemos realizado pruebas entrenando el \textit{embedding} con datos de \textit{Wikipedia} y con nuestro corpus. Finalmente hemos optado por usar el modelo entrenado con nuestro corpus. Esto se debe a que tenemos un corpus lo suficientemente extenso y, de este modo, el modelo aprende las palabras según el contexto de las llamadas al \textit{call center} y no en un contexto general como puede ser \textit{Wikipedia}.
 
 En el caso de nuestros modelos, el \textit{embedding}, es decir el paso a la representación de cada palabra como un vector de números reales, se realizará dentro del mismo modelo en una primera capa. Esta capa no será entrenada durante la fase de entrenamiento del modelo y consistirá en una matriz que contendrá por cada identificador de \textit{token} un vector representando las palabras. 
 

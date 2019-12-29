@@ -572,7 +572,7 @@ La opción más simple para tener una imagen con nuestro código sería generarl
 El proceso de crear la imagen de nuestra aplicación a partir de una imagen S2I y nuestro código o binarios se denomina \textit{Build} y al igual que con la configuración de despliegue para los despliegues \textit{Openshift}, nos proporciona una configuración de \textit{Build} para controlar las versiones y los cambios que se realizan en un mismo tipo de \textit{Build}. A continuación veremos como hemos abordado los casos de \textit{Kafka Streams} y \textit{Tensorflow Serving}.
 
 
-\subsection{\textit{Kafka Streams}}
+\subsection{Kafka Streams}
 
 En este caso tenemos dos opciones a la hora de crear nuestra imagen de aplicación mediante S2I, partir del código fuente o partir de un binario (un jar generado a partir del código fuente). Hemos optado por esta segunda opción para dejar la compilación y tests fuera de la plataforma \textit{OCP}. 
 
@@ -621,7 +621,7 @@ Algunos aspectos relevantes de la configuración de \textit{Build} son:
 \end{itemize}
 
 
-\subsection{\textit{Tensorflow Serving}}
+\subsection{Tensorflow Serving}
 
 En este caso no tenemos elección entre realizar el \textit{build} con fuente o binario, debido a que los modelos que tenemos de \textit{Tensorflow} son binarios. La aproximación, por tanto, será la misma que en el apartado anterior. 
 

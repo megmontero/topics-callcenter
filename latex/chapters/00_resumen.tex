@@ -5,53 +5,54 @@
 %%%%%%%%%%%%%%%%
 %%% CREDITOS %%%
 %%%%%%%%%%%%%%%%
-%\chapter*{Créditos/Copyright}
+\chapter*{Créditos/Copyright}
 
 %Una página con la especificación de créditos/copyright para el proyecto (ya sea aplicación por un lado y documentación por el otro, o unificadamente), así como la del uso de marcas, productos o servicios de terceros (incluidos códigos fuente). Si una persona diferente al autor colaboró en el proyecto, tiene que quedar explicitada su identidad y qué hizo.
 
 %A continuación se ejemplifica el caso más habitual, aunque se puede modificar por cualquier otra alternativa:
 
-%\vspace{1cm}
+\vspace{1cm}
 
-%\begin{figure}[ht]
-%    \centering
-%	\includegraphics[scale=1]{images/license.png}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+	\includegraphics[scale=0.2]{images/license.png}
+\end{figure}
 
-%Esta obra está sujeta a una licencia de Reconocimiento -  NoComercial - SinObraDerivada
-
-%\href{https://creativecommons.org/licenses/by-nc-nd/3.0/es/}{3.0 España de CreativeCommons}.
+Esta obra está sujeta a una licencia de Reconocimiento-CompartirIgual \href{https://creativecommons.org/licenses/by-sa/4.0/deed.es}{4.0 Internacional (CC BY-SA 4.0)}.
 
 %%%%%%%%%%%%%
 %%% FICHA %%%
 %%%%%%%%%%%%%
-%\chapter*{FICHA DEL TRABAJO FINAL}
+\chapter*{FICHA DEL TRABAJO FINAL}
 
-%\begin{table}[ht]
-%	\centering{}
-%	\renewcommand{\arraystretch}{2}
-%	\begin{tabular}{r | l}
-%		\hline
-%		Título del trabajo: & Descriptivo del trabajo\\
-%		\hline
-%       Nombre del autor: & Nombre y dos apellidos\\
-%		\hline
-%        Nombre del colaborador/a docente: & Nombre y dos apellidos\\
-%		\hline
-%        Nombre del PRA: & Nombre y dos apellidos\\
-%		\hline
-%        Fecha de entrega (mm/aaaa): & MM/AAAA\\
-%		\hline
-%        Titulación o programa: & Plan de estudios\\
-%		\hline
-%        Área del Trabajo Final: & El nombre de la asignatura de TF\\
-%		\hline
-%        Idioma del trabajo: & Catalán, español o inglés\\
-%		\hline
-%        Palabras clave & Máximo 3 palabras clave\\
-%		\hline
-%	\end{tabular}
-%\end{table}
+\begin{table}[ht]
+	\centering{}
+	\renewcommand{\arraystretch}{2}
+	\begin{tabular}{r | l}
+		\hline
+		Título del trabajo: &  Modelización de temas de llamadas en tiempo real\\
+		\hline
+       Nombre del autor: & Manuel E. Gómez Montero\\
+		\hline
+        Tutor UOC: & Ana Valdivia Garcia\\
+		\hline
+		Tutor TME: & Antonio Fernández Gallardo\\
+		\hline
+        Nombre del PRA: & Jordi Casas Roma\\
+		\hline
+        Fecha de entrega (mm/aaaa): & 01/2019\\
+		\hline
+        Titulación o programa: & Máster Universitario en Ciencia de Datos\\
+		\hline
+        Área del Trabajo Final: & Procesamiento del Lenguaje Natural\\
+		\hline
+        Idioma del trabajo: & Español\\
+		\hline
+        Palabras clave & ``natural language processing'', ``sentiment analysis'',\\
+        & ``real time'', ``call center'', ``topic modeling'', ``deep learning''\\
+		\hline
+	\end{tabular}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%
 %%% DEDICATORIA %%%
@@ -59,35 +60,63 @@
 %\chapter*{Dedicatoria/Cita}
 
 %Breves palabras de dedicatoria y/o una cita.
-
+\cleardoublepage
+\begin{dedication}
+A Ana, por el tiempo robado
+\end{dedication}
+\cleardoublepage
 %%%%%%%%%%%%%%%%%%%
 %%% Agradecimientos %%%
 %%%%%%%%%%%%%%%%%%%
-%\chapter*{Agradecimientos}
+\chapter*{Agradecimientos}
 
+
+Un \textit{handicap} a la hora de realizar el proyecto dentro de una gran empresa ha sido el hecho de trabajar con unos plazos tan ajustados. Aspectos como la autorización en el acceso a la información, el acceso a diferentes entornos, la intercomunicación entre áreas, etc. requieren unos tiempos que pueden retrasar la ejecución de un trabajo de este tipo. 
+ 
+Este apartado tiene como objetivo agradecer a todas las personas que han hecho posible la realización de este proyecto en tiempo y forma.
+
+
+A Willy Gavilán y Carolina Bouvard por hacer posible la  realización de este proyecto dentro de Telefónica. A Antonio Fernández por aceptar que realice este trabajo con su equipo y por tutorizarlo. A Jorge Ayuso y Rus Mesas por su ayuda a la hora de obtener los datos, por sus consejos y por permitirme usar con ellos el equipo con GPUs usados para  el entrenamiento y optimización de modelos. A Laura Canga por permitirme usar el Bus Apache Kafka y a José Ramón Fernández por ayudarme, incluso a deshoras, con la creación de \textit{topics} y usuarios del bus.  A Pablo Palomares por su ayuda a la hora de acceder y adaptar a nuestras necesidades las plataformas \textit{DevOps}: Bitbucket, Nexus y Jenkins. A Nacho Charfolé por darme su visión más allá de la parte técnica y por hacerme entender las ventajas que pueden aportar este tipo de proyectos a una empresa. Y por último, pero no menos importante, a mi tutora, Ana Valdivia, por sus concreciones minuciosas y por guiarme y animarme en todo momento.
+
+Sin todos vosotros un trabajo de este tipo no sería posible. \textbf{{\LARGE Gracias}}.
 
 
 %%%%%%%%%%%%%%%%
 %%% RESUMEN  %%%
 %%%%%%%%%%%%%%%%
 \chapter*{Resumen}
-\addcontentsline{toc}{chapter}{Abstract}
+\addcontentsline{toc}{chapter}{Resumen}
 
 
-Un call-center es el área de una empresa el cuál se encarga de recibir y transmitir llamadas desde o hacia clientes, socios comerciales u otras compañías externas. Debido a la gran cantidad de información que se transfiere en estos centros, resulta una tarea esencial optimizar el tiempo de respuesta para así reaccionar en tiempo real a las peticiones de los clientes y mejorar la percepción que estos tienen sobre la compañía. 
+Un \textit{call center} es el área de una empresa el cuál se encarga de recibir y transmitir llamadas desde o hacia clientes, socios comerciales u otras compañías externas. Debido a la gran cantidad de información que se transfiere en estos centros, resulta una tarea esencial optimizar el tiempo de respuesta para así reaccionar en tiempo real a las peticiones de los clientes y mejorar la percepción que estos tienen sobre la compañía. 
 
 Una manera de mejorar el rendimiento es detectar el tema de las llamadas  mediante técnicas de \textit{machine learning} dando la posibilidad a la empresa de reaccionar en tiempo real, en función de la temática que se este tratando en cada momento. 
+
+En este documento se presenta un sistema implementado en el \textit{call center} de Telefónica que nos 
+ permite, a partir de la transcripción de las llamadas, obtener la temática de las mismas utilizando métodos de Procesamiento de Lenguaje Natural. El análisis expuesto realiza clasificaciones con diferentes arquitecturas, tanto con modelos no supervisados como con modelos supervisados de aprendizaje profundo. Dependiendo del modelo se han estudiado también diferentes métodos a la hora de representar las transcripciones.
+ 
+ Por último, se ha llevado uno de los modelos a producción, dotando al sistema de la posibilidad de realizar esta clasificación en tiempo real y proporcionando a los usuarios capacidades de visualizar la evolución de las llamadas a lo largo del tiempo y de generar alertas en base a anomalías. El sistema llevado a producción ha sido totalmente desplegado en contenedores y provisto de mecanismos  de monitorización, integración continua y despliegue continuo. 
+ 
+El proyecto presentado abre a la empresa un gran número de posibilidades a la hora tanto de  realizar nuevos sistemas de Procesamiento del Lenguaje Natural como a la hora de llevar modelos de aprendizaje profundo a un entorno productivo.
+ 
+
+
 
 
 
 %El documento que se presenta tiene como objetivo final mejorar la operatividad del \textit{call-center}  de una gran empresa, extrayendo mediante técnicas de \textit{machine learning} la temática de las llamadas que se realizan al mismo y dando la posibilidad a la empresa de reaccionar en tiempo real, en función de la temática que se este tratando en cada momento. 
 
-El sistema que se presenta en el documento nos permite, a partir de la transcripción de las llamadas al \textit{call-center} de Telefónica España, descubrir en tiempo real la temática de las mismas. Esta modelización de \textit{topics} se ha realizado utilizando métodos de Procesamiento de Lenguaje Natural y aprendizaje profundo. El sistema realiza la clasificación de las nuevas llamadas en tiempo real, permitiendo a los usuarios visualizar la evolución en la temática de las mismas y generar alertas en base a anomalías.  
+%En este documento se presenta un sistema implementado en el \textit{call-center} de Telefónica que nos  permite, a partir de la transcripción de las llamadas, descubrir en tiempo real la temática de las mismas. Esta modelización de \textit{topics} se ha realizado utilizando métodos de Procesamiento de Lenguaje Natural y aprendizaje profundo. El sistema realiza la clasificación de las nuevas llamadas en tiempo real, permitiendo a los usuarios visualizar la evolución en la temática de las mismas y generar alertas en base a anomalías.  
 
 
-TODO Es un borrador volver al  resumen una vez acabado el proyecto.
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+
+
+
+
+
 \onehalfspacing
 
-\vspace{1.5cm}
 
-\textbf{Palabras clave}: ``natural language processing'', ``sentiment analysis'', ``real time'', ``call center'', ``topic modeling'', ``deep learning''
