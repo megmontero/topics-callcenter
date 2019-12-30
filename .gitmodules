@@ -1,0 +1,3 @@
+[submodule "src/topicmodel-callcenter-stream"]
+	path = src/topicmodel-callcenter-stream
+	url = https://github.com/megmontero/topicmodel-callcenter-stream
