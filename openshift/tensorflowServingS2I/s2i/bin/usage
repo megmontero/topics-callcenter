@@ -1,0 +1,20 @@
+#!/bin/bash -e
+cat <<EOF
+Create by Manuel Gomez
+BASED ON 
+radanalyticsio/tensorflow-serving-s2i FOR MGM IMAGE
+Usage: 
+
+
+environment variables which should be set when the application is launched:
+    APPLICATION_NAME -- name of the tensorflow application, required.
+    SOURCE_REPOSITORY -- git repo for tensorflow models, required.
+    SOURCE_DIRECTORY  -- sub directory within the repo where models are located.
+    MODEL_NAME  -- name of the model.
+
+EOF
+
+
+
+
+    
