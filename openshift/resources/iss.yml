@@ -1,0 +1,25 @@
+apiVersion: v1
+items:
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:    generation: 1
+    labels:
+      app: tfm-mgm
+      appName: tf-bajafactura-model
+      appTypes: tensorflow-serving-s2i
+      appid: tf-serving-tf-bajafactura-model
+    name: tf-bajafactura-model
+  spec:
+    lookupPolicy:
+      local: false
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:    generation: 1
+    labels:
+      app: tfm-mgm
+    name: topic-model-streaming
+  spec:
+    lookupPolicy:
+      local: false
+kind: List
+metadata:

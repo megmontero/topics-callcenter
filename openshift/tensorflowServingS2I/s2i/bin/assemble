@@ -1,0 +1,10 @@
+#!/bin/bash -e
+#
+# S2I assemble
+
+
+echo " -----> Copy models."
+
+for a in `ls -1 /tmp/src/*.tar.gz`; do gzip -dc $a | tar xf -; done
+rm -f /tmp/src/*.tar.gz
+cp -Rf /tmp/src/* /models/

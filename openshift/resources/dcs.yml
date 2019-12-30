@@ -1,0 +1,535 @@
+apiVersion: v1
+items:
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    labels:
+      app: tfm-mgm
+      deploymentconfig: jmx-beat
+      service: jmx-beat
+    name: jmx-beat
+  spec:
+    replicas: 1
+    selector:
+      deploymentconfig: jmx-beat
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftWebConsole
+        labels:
+          app: tfm-mgm
+          deploymentconfig: jmx-beat
+          project: tfmmgm
+          service: jmx-beat
+      spec:
+        containers:
+        - env:
+          - name: ELASTICSEARCH_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key: username
+                name: logstash-internal-user
+          - name: ELASTICSEARCH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: logstash-internal-user
+          image: docker-registry/metricbeat:latest
+          imagePullPolicy: Always
+          name: jmx-beat
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /usr/share/metricbeat/metricbeat.yml
+            name: calls-config
+            subPath: metricbeat.yml
+          - mountPath: /usr/share/metricbeat/modules.d/jolokia.yml
+            name: calls-config
+            subPath: jolokia.yml
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 292
+            name: calls-config
+          name: calls-config
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - jmx-beat
+        from:
+          kind: ImageStreamTag
+          name: metricbeat:7.4.2
+        lastTriggeredImage: docker-registry/metricbeat:latest
+      type: ImageChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: 2019-12-03T08:22:12Z
+      lastUpdateTime: 2019-12-03T08:22:13Z
+      message: replication controller "jmx-beat-34" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: 2019-12-29T13:09:12Z
+      lastUpdateTime: 2019-12-29T13:09:12Z
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    details:
+      causes:
+      - imageTrigger:
+          from:
+            kind: DockerImage
+            name: docker-registry/metricbeat:latest
+        type: ImageChange
+      message: image change
+    latestVersion: 34
+    observedGeneration: 60
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: tfm-mgm
+      service: lt-tfm-calls
+      version: "1.0"
+    name: lt-tfm-calls
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      deploymentconfig: lt-tfm-calls
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        labels:
+          app: tfm-mgm
+          deploymentconfig: lt-tfm-calls
+          service: lt-tfm-calls
+          version: "1.0"
+      spec:
+        containers:
+        - env:
+          - name: PIPELINE
+            value: tfm-calls
+          - name: LS_JAVA_OPTS
+            value: -Xmx250m -Xms250m
+          - name: USER_LOGSTASH
+            valueFrom:
+              secretKeyRef:
+                key: username
+                name: logstash-internal-user
+          - name: PASS_LOGSTASH
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: logstash-internal-user
+          image: docker-registry.default.svc:5000/openshift/logstash:7.4.2
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /
+              port: 9600
+              scheme: HTTP
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 5
+          name: lt-tfm-calls
+          ports:
+          - containerPort: 5010
+            protocol: TCP
+          - containerPort: 9600
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 1
+            httpGet:
+              path: /
+              port: 9600
+              scheme: HTTP
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: "1"
+              memory: 2200Mi
+            requests:
+              cpu: 500m
+              memory: 2Gi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /usr/share/logstash/config/logstash.yml
+            name: calls-config
+            subPath: logstash.yml
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: calls-config
+          name: calls-config
+    test: false
+    triggers:
+    - type: ConfigChange
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: tfm-mgm
+      project: topic-model
+      service: stream-predicter
+    name: stream-predicter
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      deploymentconfig: stream-predicter
+    strategy:
+      activeDeadlineSeconds: 21600
+      recreateParams:
+        timeoutSeconds: 600
+      resources: {}
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          app: tfm-mgm
+          deploymentconfig: stream-predicter
+          project: topic-model
+          service: calls-predicter
+      spec:
+        containers:
+        - env:
+          - name: JAVA_MAIN_CLASS
+            value: com.telefonica.topicmodel.PredicterLauncher
+          image: docker-registry/topic-model-streaming:latest
+          imagePullPolicy: Always
+          name: stream-predicter
+          ports:
+          - containerPort: 8778
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /opt/jolokia/etc/jolokia.properties
+            name: calls-config
+            subPath: jolokia.properties
+          - mountPath: /deployments/application.json
+            name: calls-config
+            subPath: topic-model-streaming.json
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: calls-config
+          name: calls-config
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - stream-predicter
+        from:
+          kind: ImageStreamTag
+          name: topic-model-streaming:latest
+        lastTriggeredImage: docker-registry/topic-model-streaming:latest
+      type: ImageChange
+    - type: ConfigChange
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: tfm-mgm
+      project: topic-model
+      service: stream-sequencer
+    name: stream-sequencer
+  spec:
+    replicas: 1
+    selector:
+      deploymentconfig: stream-sequencer
+    strategy:
+      activeDeadlineSeconds: 21600
+      recreateParams:
+        timeoutSeconds: 600
+      resources: {}
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          app: tfm-mgm
+          deploymentconfig: stream-sequencer
+          project: topic-model
+          service: calls-sequencer
+      spec:
+        containers:
+        - env:
+          - name: JAVA_MAIN_CLASS
+            value: com.telefonica.topicmodel.SequencerLauncher
+          image: docker-registry/topic-model-streaming:latest
+          imagePullPolicy: Always
+          name: stream-sequencer
+          ports:
+          - containerPort: 8778
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /opt/jolokia/etc/jolokia.properties
+            name: calls-config
+            subPath: jolokia.properties
+          - mountPath: /deployments/application.json
+            name: calls-config
+            subPath: topic-model-streaming.json
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: calls-config
+          name: calls-config
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - stream-sequencer
+        from:
+          kind: ImageStreamTag
+          name: topic-model-streaming:latest
+        lastTriggeredImage: docker-registry/topic-model-streaming:latest
+      type: ImageChange
+    - type: ConfigChange
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: tfm-mgm
+      project: topic-model
+      service: stream-tokenizer
+    name: stream-tokenizer
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      deploymentconfig: stream-tokenizer
+    strategy:
+      activeDeadlineSeconds: 21600
+      recreateParams:
+        timeoutSeconds: 600
+      resources: {}
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          app: tfm-mgm
+          deploymentconfig: stream-tokenizer
+          project: topic-model
+          service: calls-tokenizer
+      spec:
+        containers:
+        - env:
+          - name: JAVA_MAIN_CLASS
+            value: com.telefonica.topicmodel.TokenizerLauncher
+          image: docker-registry/topic-model-streaming:latest
+          imagePullPolicy: Always
+          name: stream-tokenizer
+          ports:
+          - containerPort: 8778
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /opt/jolokia/etc/jolokia.properties
+            name: calls-config
+            subPath: jolokia.properties
+          - mountPath: /deployments/application.json
+            name: calls-config
+            subPath: topic-model-streaming.json
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: calls-config
+          name: calls-config
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - stream-tokenizer
+        from:
+          kind: ImageStreamTag
+          name: topic-model-streaming:latest
+        lastTriggeredImage: docker-registry/topic-model-streaming:latest
+      type: ImageChange
+    - type: ConfigChange
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: tfm-mgm
+      appName: tf-bajafactura-model
+      appTypes: tensorflow-serving-s2i
+      appid: tf-serving-tf-bajafactura-model
+      service: tf-bajafactura
+    name: tf-bajafactura-model
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      deploymentconfig: tf-bajafactura-model
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        labels:
+          app: tfm-mgm
+          appName: tf-bajafactura-model
+          appTypes: tensorflow-serving-s2i
+          appid: tf-serving-tf-bajafactura-model
+          deploymentconfig: tf-bajafactura-model
+          service: tf-bajafactura
+      spec:
+        containers:
+        - env:
+          - name: PORT
+            value: "8501"
+          - name: MODEL_NAME
+            value: bajafactura
+          - name: RUN_OPTIONS
+          image: docker-registry/tf-bajafactura-model:latest
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /v1/models/bajafactura
+              port: 8501
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 5
+          name: tf-bajafactura-model
+          ports:
+          - containerPort: 8501
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 1
+            httpGet:
+              path: /v1/models/bajafactura
+              port: 8501
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: "2"
+              memory: 2Gi
+            requests:
+              cpu: "1"
+              memory: 1Gi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - tf-bajafactura-model
+        from:
+          kind: ImageStreamTag
+          name: tf-bajafactura-model:latest
+        lastTriggeredImage: docker-registry/tf-bajafactura-model:latest
+      type: ImageChange
+    - type: ConfigChange
+kind: List
+metadata:
