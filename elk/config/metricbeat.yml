@@ -1,0 +1,18 @@
+name: "jmx-metricbeat-nbia-prod" 
+tags: ["jmx", "nbia-prod", "ocp", "tfm"]
+metricbeat.config.modules:
+  # Mounted `metricbeat-daemonset-modules` configmap:
+  path: ${path.config}/modules.d/*.yml
+  # Reload module configs as they change:
+  reload.enabled: false
+
+#logging.level: debug
+
+output.logstash:
+  # The Logstash hosts
+  hosts: ["lt-tfm-calls:5010"]
+ 
+xpack.monitoring.elasticsearch:
+  hosts: ['elasticsearch']
+  username: ${ELASTICSEARCH_USERNAME}
+  password: ${ELASTICSEARCH_PASSWORD}

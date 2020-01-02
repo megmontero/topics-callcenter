@@ -1,0 +1,190 @@
+{
+  "inbi-topicmodel-topics" : {
+    "order" : 5,
+    "index_patterns" : [
+      "inbi-topicmodel-topics-*"
+    ],
+    "settings" : { },
+    "mappings" : {
+      "properties" : {
+        "control_success" : {
+          "type" : "boolean"
+        },
+        "call_text" : {
+          "type" : "text"
+        },
+        "error" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "ignore_above" : 256,
+              "type" : "keyword"
+            }
+          }
+        },
+        "predictions" : {
+          "type" : "float"
+        },
+        "tags" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "duration" : {
+          "type" : "integer"
+        },
+        "co_province" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "@timestamp" : {
+          "type" : "date"
+        },
+        "call_timestamp" : {
+          "format" : "epoch_second",
+          "type" : "date"
+        },
+        "province" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "co_verint" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "@version" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "pred_type" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "model" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "control_type" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        }
+      }
+    },
+    "aliases" : {
+      "inbi-topicmodel-topics-alias" : { }
+    }
+  },
+  "inbi-topicmodel-monitoring" : {
+    "order" : 5,
+    "index_patterns" : [
+      "inbi-topicmodel-monitoring-*"
+    ],
+    "settings" : { },
+    "mappings" : {
+      "properties" : {
+        "agent" : {
+          "properties" : {
+            "hostname" : {
+              "ignore_above" : 256,
+              "type" : "keyword"
+            },
+            "name" : {
+              "ignore_above" : 256,
+              "type" : "keyword"
+            },
+            "id" : {
+              "ignore_above" : 256,
+              "type" : "keyword"
+            },
+            "ephemeral_id" : {
+              "ignore_above" : 256,
+              "type" : "keyword"
+            },
+            "type" : {
+              "ignore_above" : 256,
+              "type" : "keyword"
+            },
+            "version" : {
+              "ignore_above" : 256,
+              "type" : "keyword"
+            }
+          }
+        },
+        "period" : {
+          "properties" : {
+            "ms" : {
+              "type" : "integer"
+            }
+          }
+        },
+        "process" : {
+          "properties" : {
+            "total" : {
+              "type" : "integer"
+            },
+            "rate" : {
+              "type" : "short"
+            },
+            "latency" : {
+              "properties" : {
+                "avg" : {
+                  "properties" : {
+                    "ms" : {
+                      "type" : "integer"
+                    }
+                  }
+                },
+                "max" : {
+                  "properties" : {
+                    "ms" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "@timestamp" : {
+          "type" : "date"
+        },
+        "service" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "kstream" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "thread" : {
+          "type" : "short"
+        },
+        "error" : {
+          "properties" : {
+            "message" : {
+              "type" : "text"
+            }
+          }
+        },
+        "status" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "tags" : {
+          "ignore_above" : 256,
+          "type" : "keyword"
+        },
+        "uptime" : {
+          "properties" : {
+            "ms" : {
+              "type" : "integer"
+            }
+          }
+        }
+      }
+    },
+    "aliases" : {
+      "inbi-topicmodel-monitoring-alias" : { }
+    }
+  }
+}
+

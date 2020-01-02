@@ -1,0 +1,20 @@
+- module: jolokia
+  metricsets: ["jmx"]
+  period: 1m
+  hosts: ["http://stream-tokenizer:8778/jolokia/" ,"http://stream-sequencer:8778/jolokia/" , "http://stream-predicter:8778/jolokia/"]
+  #path: "jolokia/"
+  namespace: "jolokia_metrics"
+  jmx.mappings:
+    - mbean: 'java.lang:type=Runtime'
+      attributes:
+        - attr: Uptime
+          field: uptime 
+          event: uptime 
+    - mbean: 'kafka.streams:type=stream-metrics,client-id=*'
+      attributes:
+         - attr:  process-latency-avg
+           field: process-latency-avg
+         - attr:  process-latency-max
+           field: process-latency-max
+         - attr: process-rate
+           field: process-rate

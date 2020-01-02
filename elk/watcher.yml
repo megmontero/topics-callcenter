@@ -1,0 +1,93 @@
+{
+  "trigger": {
+    "schedule": {
+      "interval": "30m"
+    }
+  },
+  "input": {
+    "search": {
+      "request": {
+        "search_type": "query_then_fetch",
+        "indices": [
+          "ocp-metricbeat-*"
+        ],
+        "rest_total_hits_as_int": true,
+        "body": {
+          "size": 0,
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "range": {
+                    "@timestamp": {
+                      "gte": "now-10m",
+                      "lte": "now"
+                    }
+                  }
+                },
+                {
+                  "term": {
+                    "kubernetes.labels.app": {
+                      "value": "tfm-mgm"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "aggs": {
+            "total": {
+              "sum_bucket": {
+                "buckets_path": "servicio>cpu"
+              }
+            },
+            "servicio": {
+              "terms": {
+                "field": "kubernetes.labels.service",
+                "size": 100
+              },
+              "aggs": {
+                "cpu": {
+                  "max": {
+                    "field": "kubernetes.pod.cpu.usage.nanocores",
+                    "script": {
+                      "inline": "(int) doc['kubernetes.pod.cpu.usage.nanocores'].value / 1000000",
+                      "lang": "painless"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "condition": {
+    "compare": {
+      "ctx.payload.aggregations.total.value": {
+        "gte": 3000
+      }
+    }
+  },
+  "actions": {
+    "my-logging-action": {
+      "logging": {
+        "level": "info",
+        "text": "El uso actual de CPU es de {{ctx.payload.aggregations.total.value}} milicores."
+      }
+    },
+    "send_email": {
+      "email": {
+        "profile": "standard",
+        "to": [
+          "manuel.gomezmontero@telefonica.com"
+        ],
+        "subject": "[Topic-Model Alert] USO excesivo de CPU",
+        "body": {
+          "html": "El uso actual de CPU es de {{ctx.payload.aggregations.total.value}} milicores."
+        }
+      }
+    }
+  }
+}

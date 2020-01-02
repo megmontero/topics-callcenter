@@ -1,0 +1,167 @@
+input {
+  beats {
+    id => jmx_5010
+    port => 5010
+    client_inactivity_timeout => 86400
+  }
+
+  kafka {
+        id => "topic_calls_topic"
+        topics => ["TOPICS.CALLS"]
+        sasl_jaas_config => "org.apache.kafka.common.security.scram.ScramLoginModule required username='topic_model'  password='password';"
+        security_protocol => "SASL_PLAINTEXT"
+        sasl_mechanism => "SCRAM-SHA-256"
+        client_id => "logstash"
+        bootstrap_servers => "kfk1:9093,kfk2:9093,kfk3:9093"
+        codec => "json"
+        group_id => "logstash"
+        tags => ["kafka"]
+        
+    }
+
+
+    http_poller {
+        urls => {
+            metrics => "http://tf-bajafactura-model:8501/monitoring/metrics"
+        }
+        request_timeout => 60
+        schedule => { "every" => "1m" }
+        tags => ["tf"]
+        codec => "plain"
+  }
+
+
+}
+filter {
+
+    
+
+
+    if ("jmx" in [tags]){
+
+    
+
+        mutate{
+            add_field => { "[period][ms]" => "%{[metricset][period]}" }
+            split => ["[service][address]", ":"]
+            add_field => { "service_short" => "%{[service][address][0]}" }
+        }
+
+
+        if ([jolokia][jolokia_metrics][uptime]){
+            mutate{
+                add_field => { "[uptime][ms]" => "%{[jolokia][jolokia_metrics][uptime]}"}
+            }
+        }
+
+        if ([jolokia][jolokia_metrics][process-rate]){
+            mutate{
+                add_field => { "[process][rate]" => "%{[jolokia][jolokia_metrics][process-rate]}"}
+                add_field => { "[process][latency][avg][ms]" => "%{[jolokia][jolokia_metrics][process-latency-avg]}"}
+            }
+            dissect {
+                mapping => {
+                    "[jolokia][jolokia_metrics][mbean]" => "%{}=%{kstream}-%{}-%{thread},%{}"
+                }
+            }
+            if ([jolokia][jolokia_metrics][process-latency-max]){
+                mutate{
+                    add_field => { "[process][latency][max][ms]" => "%{[jolokia][jolokia_metrics][process-latency-max]}"}
+                }
+            }
+
+        }
+        
+
+        mutate{
+            remove_field => ["event", "host", "@version", "ecs", "metricset", "jolokia"] 
+            rename => ["service_short", "service" ] 
+        }
+
+    }
+    
+
+    if ("tf" in [tags]){
+        grok {
+            match => { "message" => ":tensorflow:cc:saved_model:load_attempt_count{model_path=\"%{DATA}\"\,status=\"%{DATA:status}\"}" }
+        }
+        grok {
+            match => { "message" => ":tensorflow:core:graph_run_time_usecs_histogram_sum{}\s%{NUMBER_SCI:tf_total_usecs}"}
+            pattern_definitions => {"NUMBER_SCI" => "%{NUMBER}(e%{NUMBER})?"}
+
+        }
+        grok {
+            match => { "message" => ":tensorflow:core:graph_run_time_usecs_histogram_count{}\s%{NUMBER_SCI:total_calls}"}
+            pattern_definitions => {"NUMBER_SCI" => "%{NUMBER}(e%{NUMBER})?"}
+
+        }
+
+
+        
+
+        mutate{
+            remove_field => ["message", "@version"] 
+            convert => {
+                "tf_total_usecs" => "float"
+                "total_calls" => "integer"
+                }
+            add_field => { "service" => "tf-bajafactura" }
+        }
+
+        ruby {
+                code => "event.set('[process][latency][avg][ms]', (event.get('tf_total_usecs') / (event.get('total_calls')) /1000).round)"
+                remove_field => ["tf_total_usecs"]
+        }
+    
+        mutate{
+            rename => ["total_calls","[process][total]" ] 
+        }
+    
+
+
+    }
+    if ("kafka" in [tags]){        
+            #Borramos valores nulos
+            ruby {
+                code => "
+                        hash = event.to_hash
+                        hash.each do |k,v|
+                                if v == nil
+                                        event.remove(k)
+                                end
+                        end
+                "
+            }
+    }
+
+    
+    
+
+}
+output {
+
+    if ("jmx" in [tags] or "tf" in [tags]){
+        elasticsearch{
+        
+            hosts => ["elasticsearch"]
+            index => "inbi-topicmodel-monitoring-w.%{+YYYY.ww}"
+            user => "${USER_LOGSTASH}"
+            password => "${PASS_LOGSTASH}"
+        }
+        
+    }
+
+    if ("kafka" in [tags]){
+    
+        
+        elasticsearch{
+        
+            hosts => ["elasticsearch"]
+            index => "inbi-topicmodel-topics-w.%{+YYYY.ww}"
+            user => "${USER_LOGSTASH}"
+            password => "${PASS_LOGSTASH}"
+        }
+        
+    }
+    
+}

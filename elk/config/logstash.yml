@@ -1,0 +1,23 @@
+http.host: "0.0.0.0"
+
+
+pipeline.workers: 1
+pipeline.batch.size: 125
+#
+# X-Pack Monitoring
+xpack.monitoring.enabled: true
+xpack.monitoring.elasticsearch.username: elastic
+xpack.monitoring.elasticsearch.password: pwd
+xpack.monitoring.elasticsearch.hosts: ["http://elasticsearch"  ]
+xpack.monitoring.elasticsearch.sniffing: false
+xpack.monitoring.collection.interval: 10s
+xpack.monitoring.collection.pipeline.details.enabled: true
+#
+# X-Pack Management
+xpack.management.enabled: true
+xpack.management.pipeline.id: ["${PIPELINE}"]
+xpack.management.elasticsearch.username: elastic
+xpack.management.elasticsearch.password: pwd
+xpack.management.elasticsearch.hosts: ["http://elasticsearch"  ]
+xpack.management.elasticsearch.sniffing: false
+xpack.management.logstash.poll_interval: 5s
