@@ -21,11 +21,11 @@ def delivery_report(err, msg):
 
 
 
-producer_conf = {"bootstrap.servers": "10.148.172.101:9093",
+producer_conf = {"bootstrap.servers": "kfk1:9093",
                 "security.protocol": "SASL_PLAINTEXT",
                 "sasl.mechanism": "SCRAM-SHA-256",
                  "sasl.username": "topic_model",
-                 "sasl.password": "topic_pwd"
+                 "sasl.password": "password"
                 }
 producer = Producer(producer_conf)
 
