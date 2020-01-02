@@ -19,6 +19,8 @@ La creación y entrenamiento de estos modelos se ha realizado en Python 3.6, usa
 \end{itemize}
 
 
+Los \textit{notebooks} que comentaremos en este capítulo pueden encontrarse en GitHub en \href{https://github.com/megmontero/topics-callcenter/tree/master/notebooks}{https://github.com/megmontero/topics-callcenter/tree/master/notebooks}. Mientras que el código y documentación del módulo \textit{mgmtfm} podemos encontrarlo en: \href{https://github.com/megmontero/topics-callcenter/tree/master/src/mgmtfm}{https://github.com/megmontero/topics-callcenter/tree/master/src/mgmtfm}.
+
 
 \section{Arquitecturas}
 \label{section:super:arq}
@@ -506,7 +508,6 @@ En la figura \ref{fig:resumen_todos} podemos ver todos los modelos ordenados por
 
 Otro dato interesante es el tiempo de ejecución que requiere cada arquitectura. En la figura \ref{fig:resumen_tiempo} podemos ver la mediana de ejecución de todos los modelos, que nos servirá para hacernos una idea de la diferencia entre arquitecturas. Vemos que las arquitecturas con redes recurrentes son las más costosas de entrenar, mientras que las totalmente conectadas son las que menos tiempo han supuesto.
 
-\FloatBarrier
 
 
 Dada la gran cantidad de modelos existentes vamos a hacer un primer filtro dependiendo de si estamos tratando la clasificación como binario o multiclase.

@@ -58,16 +58,16 @@
 \contentsline {section}{\numberline {5.2}Doc2Vec + \textit {clustering}}{74}{section.5.2}% 
 \contentsline {section}{\numberline {5.3}Evoluci\IeC {\'o}n de los modelos}{77}{section.5.3}% 
 \contentsline {chapter}{\numberline {6}Aprendizaje supervisado}{83}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Arquitecturas}{83}{section.6.1}% 
+\contentsline {section}{\numberline {6.1}Arquitecturas}{84}{section.6.1}% 
 \contentsline {subsection}{\numberline {6.1.1}Red neuronal convolucional}{84}{subsection.6.1.1}% 
 \contentsline {subsection}{\numberline {6.1.2}Red neuronal recurrente}{86}{subsection.6.1.2}% 
-\contentsline {subsection}{\numberline {6.1.3}Red neuronal ``h\IeC {\'\i }brida'' convolucional/recurrente}{87}{subsection.6.1.3}% 
-\contentsline {subsection}{\numberline {6.1.4}MLP}{89}{subsection.6.1.4}% 
+\contentsline {subsection}{\numberline {6.1.3}Red neuronal ``h\IeC {\'\i }brida'' convolucional/recurrente}{88}{subsection.6.1.3}% 
+\contentsline {subsection}{\numberline {6.1.4}MLP}{90}{subsection.6.1.4}% 
 \contentsline {subsection}{\numberline {6.1.5}Combinaci\IeC {\'o}n de modelos}{91}{subsection.6.1.5}% 
 \contentsline {section}{\numberline {6.2}Evaluaci\IeC {\'o}n y optimizaci\IeC {\'o}n}{92}{section.6.2}% 
 \contentsline {subsection}{\numberline {6.2.1}Modelos \textit {CNN} binarios}{94}{subsection.6.2.1}% 
-\contentsline {subsection}{\numberline {6.2.2}Modelos \textit {RNN} Binarios}{94}{subsection.6.2.2}% 
-\contentsline {subsection}{\numberline {6.2.3}Modelos totalmente conectados}{96}{subsection.6.2.3}% 
+\contentsline {subsection}{\numberline {6.2.2}Modelos \textit {RNN} Binarios}{95}{subsection.6.2.2}% 
+\contentsline {subsection}{\numberline {6.2.3}Modelos totalmente conectados}{97}{subsection.6.2.3}% 
 \contentsline {subsection}{\numberline {6.2.4}Modelos multiclase}{97}{subsection.6.2.4}% 
 \contentsline {section}{\numberline {6.3}Resumen de modelos}{98}{section.6.3}% 
 \contentsline {subsection}{\numberline {6.3.1}Modelos binarios}{99}{subsection.6.3.1}% 
@@ -107,7 +107,7 @@
 \contentsline {section}{\numberline {9.2}Servicios \textit {Tensorflow Serving}}{143}{section.9.2}% 
 \contentsline {section}{\numberline {9.3}Monitorizaci\IeC {\'o}n}{147}{section.9.3}% 
 \contentsline {subsection}{\numberline {9.3.1}Logstash}{147}{subsection.9.3.1}% 
-\contentsline {subsection}{\numberline {9.3.2}Metricbeat}{150}{subsection.9.3.2}% 
+\contentsline {subsection}{\numberline {9.3.2}Metricbeat}{151}{subsection.9.3.2}% 
 \contentsline {section}{\numberline {9.4}S2I}{153}{section.9.4}% 
 \contentsline {subsection}{\numberline {9.4.1}Kafka Streams}{154}{subsection.9.4.1}% 
 \contentsline {subsection}{\numberline {9.4.2}Tensorflow Serving}{155}{subsection.9.4.2}% 

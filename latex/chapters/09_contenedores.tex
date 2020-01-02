@@ -38,14 +38,15 @@ A la largo del apartado nos referiremos a los siguientes conceptos propios de \t
 
 En la figura \ref{fig:ocp-overview} podemos ver las diferentes configuraciones de despliegue con los \textit{pods} que tienen levantados cada uno y los recursos de memoria, cpu y red que consumen cada uno. 
  
-A continuación veremos un resumen de los servicios, despliegues y configuraciones desplegadas en Openshift para cada tipo de microservicio y monitorización. En el apéndice \cite{apendi:contenedores} podemos encontrar todo el código de despliegue en Openshift, que nos permitiría desplegar todo nuestro entorno en otro clúster en cuestión de minutos. 
+A continuación veremos un resumen de los servicios, despliegues y configuraciones desplegadas en Openshift para cada tipo de microservicio y monitorización. En GitHub, en \href{https://github.com/megmontero/topics-callcenter/tree/master/openshift}{https://github.com/megmontero/topics-callcenter/tree/master/openshift} podemos encontrar todo el código de despliegue en Openshift, que nos permitiría desplegar todo nuestro entorno en otro clúster en cuestión de minutos. 
 
 
 \section{Servicios \textit{Kafka Streams}}
 
 Para desplegar los servicios de \textit{Kafka Streams} en \textit{OCP} es necesario desplegar una  configuración de despliegue por microservicio, un servicio para exponer las métricas y disponer en un \textit{configmap} de las opciones necesarias para su ejecución. 
 
-En este apartado únicamente presentaremos a modo de ejemplo la configuración de despliegue y el servicio  del microservicio \textit{Predicter} explicando las características más relevantes del mismo. Tanto el \textit{configmap} con todos los ficheros como el resto de despliegues pueden consultarse en el apéndice \cite{apendi:contenedores}. 
+En este apartado únicamente presentaremos a modo de ejemplo la configuración de despliegue y el servicio  del microservicio \textit{Predicter} explicando las características más relevantes del mismo. Todo los ficheros de despliegue de Openshift pueden consultarse en GitHub en \href{https://github.com/megmontero/topics-callcenter/tree/master/openshift}{https://github.com/megmontero/topics-callcenter/tree/master/openshift}.
+
 
 La configuración de despliegue de \textit{Predicter} es la siguiente: 
 
@@ -337,7 +338,7 @@ Dentro de Openshift la monitorización esta formada por dos despliegues diferent
 A continuación veremos la configuración de ambos despliegues.
 
 \subsection{Logstash}
-Al igual que en los casos anteriores, vemos unicamente la configuración del despliegue, pudiendo encontrar el resto de recursos en el anexo \ref{anexo}. 
+Al igual que en los casos anteriores, vemos unicamente la configuración del despliegue, pudiendo encontrar el resto de recursos en GitHub en \href{https://github.com/megmontero/topics-callcenter/tree/master/openshift}{https://github.com/megmontero/topics-callcenter/tree/master/openshift}.
 
 La configuración de despliegue es la siguiente:
 
@@ -636,7 +637,7 @@ El proceso de creación de una imagen S2I consta, a grandes rasgos, de los sigui
 
 \end{itemize}
 
-Todo el código de creación de la imagen así como el build de \textit{Tensorflow Serving} (prácticamente idéntico al anterior) puede encontrarse en el anexo \ref{anexo}.
+Todo el código de creación de la imagen así como el build de \textit{Tensorflow Serving} (prácticamente idéntico al anterior) puede encontrarse en GitHub en: \href{https://github.com/megmontero/topics-callcenter/tree/master/openshift}{https://github.com/megmontero/topics-callcenter/tree/master/openshift}.
 
 
 

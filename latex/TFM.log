@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.9.23)  30 DEC 2019 00:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.9.23)  2 JAN 2020 15:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1540,219 +1540,221 @@ LaTeX Info: Redefining \% on input line 476.
 (./chapters/04_dataset.tex
 Cap\'{\i }tulo 4.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 3219) in paragraph at lines 14--15
+\T1/cmr/m/n/12 los \T1/cmr/m/it/12 no-te-books \T1/cmr/m/n/12 a los que se ha-c
+e re-fe-ren-cia tam-bién se en-cuen-tran dis-po-ni-bles en:
+ []
 
- [43
+[43
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 28.
-
-(/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 30.
+ (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 30.
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 33.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 32.
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 35.
 
 
 (/usr/share/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Info: Redefining \. on input line 60.
-LaTeX Info: Redefining \% on input line 60.
+LaTeX Info: Redefining \. on input line 62.
+LaTeX Info: Redefining \% on input line 62.
  [44]
-LaTeX Info: Redefining \. on input line 127.
-LaTeX Info: Redefining \% on input line 127.
+LaTeX Info: Redefining \. on input line 129.
+LaTeX Info: Redefining \% on input line 129.
  [45]
-LaTeX Info: Redefining \. on input line 187.
-LaTeX Info: Redefining \% on input line 187.
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
  [46]
-LaTeX Info: Redefining \. on input line 238.
-LaTeX Info: Redefining \% on input line 238.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
  [47]
-Overfull \hbox (10.18256pt too wide) in paragraph at lines 242--242
+Overfull \hbox (10.18256pt too wide) in paragraph at lines 244--244
 []     \T1/cmtt/m/n/12 co_llamada_verint                  ucid   fx_evento it_l
 lamada  duration  \ 
  []
 
-LaTeX Info: Redefining \. on input line 298.
-LaTeX Info: Redefining \% on input line 298.
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
 [48]
-LaTeX Info: Redefining \. on input line 345.
-LaTeX Info: Redefining \% on input line 345.
+LaTeX Info: Redefining \. on input line 347.
+LaTeX Info: Redefining \% on input line 347.
  [49]
-<images/data/distmoni.png, id=1264, 514.92375pt x 402.50375pt>
+<images/data/distmoni.png, id=1266, 514.92375pt x 402.50375pt>
 File: images/data/distmoni.png Graphic file (type png)
 <use images/data/distmoni.png>
-Package pdftex.def Info: images/data/distmoni.png  used on input line 395.
+Package pdftex.def Info: images/data/distmoni.png  used on input line 397.
 (pdftex.def)             Requested size: 514.92249pt x 402.50276pt.
-LaTeX Info: Redefining \. on input line 402.
-LaTeX Info: Redefining \% on input line 402.
+LaTeX Info: Redefining \. on input line 404.
+LaTeX Info: Redefining \% on input line 404.
  [50]
-LaTeX Info: Redefining \. on input line 441.
-LaTeX Info: Redefining \% on input line 441.
+LaTeX Info: Redefining \. on input line 443.
+LaTeX Info: Redefining \% on input line 443.
  [51 <./images/data/distmoni.png>]
-<images/data/cloudmoni.png, id=1278, 674.52pt x 341.77687pt>
+<images/data/cloudmoni.png, id=1280, 674.52pt x 341.77687pt>
 File: images/data/cloudmoni.png Graphic file (type png)
 <use images/data/cloudmoni.png>
-Package pdftex.def Info: images/data/cloudmoni.png  used on input line 447.
+Package pdftex.def Info: images/data/cloudmoni.png  used on input line 449.
 (pdftex.def)             Requested size: 674.51836pt x 341.77603pt.
-<images/data/cloudmoni_consulta.png, id=1280, 674.52pt x 343.2825pt>
+<images/data/cloudmoni_consulta.png, id=1282, 674.52pt x 343.2825pt>
 File: images/data/cloudmoni_consulta.png Graphic file (type png)
 <use images/data/cloudmoni_consulta.png>
 Package pdftex.def Info: images/data/cloudmoni_consulta.png  used on input line
- 476.
+ 478.
 (pdftex.def)             Requested size: 674.51836pt x 343.28165pt.
-<images/data/cloudmoni_contratar.png, id=1281, 674.52pt x 368.1253pt>
+<images/data/cloudmoni_contratar.png, id=1283, 674.52pt x 368.1253pt>
 File: images/data/cloudmoni_contratar.png Graphic file (type png)
 <use images/data/cloudmoni_contratar.png>
 Package pdftex.def Info: images/data/cloudmoni_contratar.png  used on input lin
-e 486.
+e 488.
 (pdftex.def)             Requested size: 674.51836pt x 368.1244pt.
-<images/data/cloudmoni_info.png, id=1282, 674.52pt x 344.03531pt>
+<images/data/cloudmoni_info.png, id=1284, 674.52pt x 344.03531pt>
 File: images/data/cloudmoni_info.png Graphic file (type png)
 <use images/data/cloudmoni_info.png>
-Package pdftex.def Info: images/data/cloudmoni_info.png  used on input line 496
+Package pdftex.def Info: images/data/cloudmoni_info.png  used on input line 498
 .
 (pdftex.def)             Requested size: 674.51836pt x 344.03447pt.
-<images/data/cloudmoni_queja.png, id=1283, 674.52pt x 344.03531pt>
+<images/data/cloudmoni_queja.png, id=1285, 674.52pt x 344.03531pt>
 File: images/data/cloudmoni_queja.png Graphic file (type png)
 <use images/data/cloudmoni_queja.png>
 Package pdftex.def Info: images/data/cloudmoni_queja.png  used on input line 50
-5.
+7.
 (pdftex.def)             Requested size: 674.51836pt x 344.03447pt.
-<images/data/cloudmoni_tram.png, id=1284, 674.52pt x 361.35pt>
+<images/data/cloudmoni_tram.png, id=1286, 674.52pt x 361.35pt>
 File: images/data/cloudmoni_tram.png Graphic file (type png)
 <use images/data/cloudmoni_tram.png>
-Package pdftex.def Info: images/data/cloudmoni_tram.png  used on input line 515
+Package pdftex.def Info: images/data/cloudmoni_tram.png  used on input line 517
 .
 (pdftex.def)             Requested size: 674.51836pt x 361.34912pt.
-LaTeX Info: Redefining \. on input line 525.
-LaTeX Info: Redefining \% on input line 525.
+LaTeX Info: Redefining \. on input line 527.
+LaTeX Info: Redefining \% on input line 527.
  [52 <./images/data/cloudmoni.png (PNG copy)>]
 
 LaTeX Warning: Text page 53 contains only floats.
 
-LaTeX Info: Redefining \. on input line 525.
-LaTeX Info: Redefining \% on input line 525.
+LaTeX Info: Redefining \. on input line 527.
+LaTeX Info: Redefining \% on input line 527.
 [53 <./images/data/cloudmoni_consulta.png (PNG copy)> <./images/data/cloudmoni_
 contratar.png (PNG copy)> <./images/data/cloudmoni_info.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 550.
-LaTeX Info: Redefining \% on input line 550.
+LaTeX Info: Redefining \. on input line 552.
+LaTeX Info: Redefining \% on input line 552.
 
 [54 <./images/data/cloudmoni_queja.png (PNG copy)> <./images/data/cloudmoni_tra
 m.png (PNG copy)>]
-<images/data/distivr.png, id=1303, 418.56375pt x 402.50375pt>
+<images/data/distivr.png, id=1305, 418.56375pt x 402.50375pt>
 File: images/data/distivr.png Graphic file (type png)
 <use images/data/distivr.png>
-Package pdftex.def Info: images/data/distivr.png  used on input line 568.
+Package pdftex.def Info: images/data/distivr.png  used on input line 570.
 (pdftex.def)             Requested size: 418.56271pt x 402.50276pt.
-LaTeX Info: Redefining \. on input line 575.
-LaTeX Info: Redefining \% on input line 575.
+LaTeX Info: Redefining \. on input line 577.
+LaTeX Info: Redefining \% on input line 577.
  [55 <./images/data/distivr.png>]
-<images/data/cloudivr.png, id=1309, 674.52pt x 347.04657pt>
+<images/data/cloudivr.png, id=1311, 674.52pt x 347.04657pt>
 File: images/data/cloudivr.png Graphic file (type png)
 <use images/data/cloudivr.png>
-Package pdftex.def Info: images/data/cloudivr.png  used on input line 596.
+Package pdftex.def Info: images/data/cloudivr.png  used on input line 598.
 (pdftex.def)             Requested size: 674.51836pt x 347.04572pt.
-<images/data/cloudivr_ave.png, id=1310, 674.52pt x 347.04657pt>
+<images/data/cloudivr_ave.png, id=1312, 674.52pt x 347.04657pt>
 File: images/data/cloudivr_ave.png Graphic file (type png)
 <use images/data/cloudivr_ave.png>
-Package pdftex.def Info: images/data/cloudivr_ave.png  used on input line 622.
+Package pdftex.def Info: images/data/cloudivr_ave.png  used on input line 624.
 (pdftex.def)             Requested size: 674.51836pt x 347.04572pt.
-<images/data/cloudivr_baja.png, id=1311, 674.52pt x 359.84438pt>
+<images/data/cloudivr_baja.png, id=1313, 674.52pt x 359.84438pt>
 File: images/data/cloudivr_baja.png Graphic file (type png)
 <use images/data/cloudivr_baja.png>
-Package pdftex.def Info: images/data/cloudivr_baja.png  used on input line 630.
+Package pdftex.def Info: images/data/cloudivr_baja.png  used on input line 632.
 
 (pdftex.def)             Requested size: 674.51836pt x 359.84349pt.
-<images/data/cloudivr_comercial.png, id=1312, 674.52pt x 359.84438pt>
+<images/data/cloudivr_comercial.png, id=1314, 674.52pt x 359.84438pt>
 File: images/data/cloudivr_comercial.png Graphic file (type png)
 <use images/data/cloudivr_comercial.png>
 Package pdftex.def Info: images/data/cloudivr_comercial.png  used on input line
- 637.
+ 639.
 (pdftex.def)             Requested size: 674.51836pt x 359.84349pt.
-<images/data/cloudivr_factura.png, id=1313, 674.52pt x 359.84438pt>
+<images/data/cloudivr_factura.png, id=1315, 674.52pt x 359.84438pt>
 File: images/data/cloudivr_factura.png Graphic file (type png)
 <use images/data/cloudivr_factura.png>
 Package pdftex.def Info: images/data/cloudivr_factura.png  used on input line 6
-44.
+46.
 (pdftex.def)             Requested size: 674.51836pt x 359.84349pt.
-<images/data/cloudivr_nrec.png, id=1314, 674.52pt x 359.84438pt>
+<images/data/cloudivr_nrec.png, id=1316, 674.52pt x 359.84438pt>
 File: images/data/cloudivr_nrec.png Graphic file (type png)
 <use images/data/cloudivr_nrec.png>
-Package pdftex.def Info: images/data/cloudivr_nrec.png  used on input line 651.
+Package pdftex.def Info: images/data/cloudivr_nrec.png  used on input line 653.
 
 (pdftex.def)             Requested size: 674.51836pt x 359.84349pt.
-<images/data/cloudivr_recl.png, id=1315, 674.52pt x 358.33875pt>
+<images/data/cloudivr_recl.png, id=1317, 674.52pt x 358.33875pt>
 File: images/data/cloudivr_recl.png Graphic file (type png)
 <use images/data/cloudivr_recl.png>
-Package pdftex.def Info: images/data/cloudivr_recl.png  used on input line 658.
+Package pdftex.def Info: images/data/cloudivr_recl.png  used on input line 660.
 
 (pdftex.def)             Requested size: 674.51836pt x 358.33788pt.
-LaTeX Info: Redefining \. on input line 671.
-LaTeX Info: Redefining \% on input line 671.
+LaTeX Info: Redefining \. on input line 673.
+LaTeX Info: Redefining \% on input line 673.
  [56 <./images/data/cloudivr.png (PNG copy)>]
-<images/data/cloudivr_resto.png, id=1327, 674.52pt x 358.33875pt>
+<images/data/cloudivr_resto.png, id=1329, 674.52pt x 358.33875pt>
 File: images/data/cloudivr_resto.png Graphic file (type png)
 <use images/data/cloudivr_resto.png>
-Package pdftex.def Info: images/data/cloudivr_resto.png  used on input line 684
+Package pdftex.def Info: images/data/cloudivr_resto.png  used on input line 686
 .
 (pdftex.def)             Requested size: 674.51836pt x 358.33788pt.
-LaTeX Info: Redefining \. on input line 688.
-LaTeX Info: Redefining \% on input line 688.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
  [57 <./images/data/cloudivr_ave.png (PNG copy)> <./images/data/cloudivr_baja.p
 ng (PNG copy)>]
-LaTeX Info: Redefining \. on input line 688.
-LaTeX Info: Redefining \% on input line 688.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
  [58 <./images/data/cloudivr_comercial.png (PNG copy)> <./images/data/cloudivr_
 factura.png (PNG copy)> <./images/data/cloudivr_nrec.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 688.
-LaTeX Info: Redefining \% on input line 688.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
  [59 <./images/data/cloudivr_recl.png (PNG copy)> <./images/data/cloudivr_resto
 .png (PNG copy)>]
-<images/data/ivrvsmoni.png, id=1342, 900.36375pt x 494.59781pt>
+<images/data/ivrvsmoni.png, id=1344, 900.36375pt x 494.59781pt>
 File: images/data/ivrvsmoni.png Graphic file (type png)
 <use images/data/ivrvsmoni.png>
-Package pdftex.def Info: images/data/ivrvsmoni.png  used on input line 694.
+Package pdftex.def Info: images/data/ivrvsmoni.png  used on input line 696.
 (pdftex.def)             Requested size: 900.36156pt x 494.59659pt.
-LaTeX Info: Redefining \. on input line 719.
-LaTeX Info: Redefining \% on input line 719.
+LaTeX Info: Redefining \. on input line 721.
+LaTeX Info: Redefining \% on input line 721.
  [60
 
  <./images/data/ivrvsmoni.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 744.
-LaTeX Info: Redefining \% on input line 744.
+LaTeX Info: Redefining \. on input line 746.
+LaTeX Info: Redefining \% on input line 746.
  [61]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 770.
-LaTeX Info: Redefining \% on input line 770.
+LaTeX Info: Redefining \. on input line 772.
+LaTeX Info: Redefining \% on input line 772.
  [62]
-LaTeX Info: Redefining \. on input line 834.
-LaTeX Info: Redefining \% on input line 834.
+LaTeX Info: Redefining \. on input line 836.
+LaTeX Info: Redefining \% on input line 836.
 
 [63]
-<images/data/malo_wordclod1.png, id=1365, 1134.2375pt x 574.145pt>
+<images/data/malo_wordclod1.png, id=1367, 1134.2375pt x 574.145pt>
 File: images/data/malo_wordclod1.png Graphic file (type png)
 <use images/data/malo_wordclod1.png>
-Package pdftex.def Info: images/data/malo_wordclod1.png  used on input line 852
+Package pdftex.def Info: images/data/malo_wordclod1.png  used on input line 854
 .
 (pdftex.def)             Requested size: 1134.23474pt x 574.1436pt.
-LaTeX Info: Redefining \. on input line 879.
-LaTeX Info: Redefining \% on input line 879.
+LaTeX Info: Redefining \. on input line 881.
+LaTeX Info: Redefining \% on input line 881.
  [64 <./images/data/malo_wordclod1.png>]
-LaTeX Info: Redefining \. on input line 919.
-LaTeX Info: Redefining \% on input line 919.
+LaTeX Info: Redefining \. on input line 921.
+LaTeX Info: Redefining \% on input line 921.
  [65]
-<images/data/malo_wordclod2.png, id=1377, 1134.2375pt x 574.145pt>
+<images/data/malo_wordclod2.png, id=1379, 1134.2375pt x 574.145pt>
 File: images/data/malo_wordclod2.png Graphic file (type png)
 <use images/data/malo_wordclod2.png>
-Package pdftex.def Info: images/data/malo_wordclod2.png  used on input line 925
+Package pdftex.def Info: images/data/malo_wordclod2.png  used on input line 927
 .
 (pdftex.def)             Requested size: 1134.23474pt x 574.1436pt.
-LaTeX Info: Redefining \. on input line 952.
-LaTeX Info: Redefining \% on input line 952.
+LaTeX Info: Redefining \. on input line 954.
+LaTeX Info: Redefining \% on input line 954.
  [66 <./images/data/malo_wordclod2.png>]) (./chapters/05_nosupervisados.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1764,66 +1766,64 @@ LaTeX Info: Redefining \% on input line 1.
 ]
 Cap\'{\i }tulo 5.
 [69]
-LaTeX Info: Redefining \. on input line 89.
-LaTeX Info: Redefining \% on input line 89.
+LaTeX Info: Redefining \. on input line 85.
+LaTeX Info: Redefining \% on input line 85.
  [70]
 LaTeX Info: Redefining \. on input line 139.
 LaTeX Info: Redefining \% on input line 139.
  [71]
-<images/nosup/lda_topic1.png, id=1416, 779.16093pt x 231.11343pt>
+<images/nosup/lda_topic1.png, id=1420, 779.16093pt x 231.11343pt>
 File: images/nosup/lda_topic1.png Graphic file (type png)
 <use images/nosup/lda_topic1.png>
 Package pdftex.def Info: images/nosup/lda_topic1.png  used on input line 146.
 (pdftex.def)             Requested size: 779.15903pt x 231.11287pt.
-<images/nosup/lda_topic2.png, id=1418, 779.16093pt x 231.11343pt>
+<images/nosup/lda_topic2.png, id=1422, 779.16093pt x 231.11343pt>
 File: images/nosup/lda_topic2.png Graphic file (type png)
 <use images/nosup/lda_topic2.png>
 Package pdftex.def Info: images/nosup/lda_topic2.png  used on input line 155.
 (pdftex.def)             Requested size: 779.15903pt x 231.11287pt.
-<images/nosup/lda_topic3.png, id=1420, 813.79031pt x 195.73125pt>
+<images/nosup/lda_topic3.png, id=1424, 813.79031pt x 195.73125pt>
 File: images/nosup/lda_topic3.png Graphic file (type png)
 <use images/nosup/lda_topic3.png>
 Package pdftex.def Info: images/nosup/lda_topic3.png  used on input line 164.
 (pdftex.def)             Requested size: 813.78833pt x 195.73076pt.
-<images/nosup/lda_topic4.png, id=1422, 813.79031pt x 195.73125pt>
+LaTeX Info: Redefining \. on input line 170.
+LaTeX Info: Redefining \% on input line 170.
+ [72 <./images/nosup/lda_topic1.png (PNG copy)> <./images/nosup/lda_topic2.png 
+(PNG copy)>]
+<images/nosup/lda_topic4.png, id=1430, 813.79031pt x 195.73125pt>
 File: images/nosup/lda_topic4.png Graphic file (type png)
 <use images/nosup/lda_topic4.png>
 Package pdftex.def Info: images/nosup/lda_topic4.png  used on input line 173.
 (pdftex.def)             Requested size: 813.78833pt x 195.73076pt.
-<images/nosup/lda_topic5.png, id=1424, 813.79031pt x 195.73125pt>
+<images/nosup/lda_topic5.png, id=1432, 813.79031pt x 195.73125pt>
 File: images/nosup/lda_topic5.png Graphic file (type png)
 <use images/nosup/lda_topic5.png>
 Package pdftex.def Info: images/nosup/lda_topic5.png  used on input line 184.
 (pdftex.def)             Requested size: 813.78833pt x 195.73076pt.
-LaTeX Info: Redefining \. on input line 187.
-LaTeX Info: Redefining \% on input line 187.
- [72 <./images/nosup/lda_topic1.png (PNG copy)> <./images/nosup/lda_topic2.png 
-(PNG copy)>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 LaTeX Info: Redefining \. on input line 196.
 LaTeX Info: Redefining \% on input line 196.
  [73 <./images/nosup/lda_topic3.png (PNG copy)> <./images/nosup/lda_topic4.png 
 (PNG copy)> <./images/nosup/lda_topic5.png (PNG copy)>]
-<images/nosup/birch_topic1.png, id=1435, 846.91406pt x 331.2375pt>
+<images/nosup/birch_topic1.png, id=1439, 846.91406pt x 331.2375pt>
 File: images/nosup/birch_topic1.png Graphic file (type png)
 <use images/nosup/birch_topic1.png>
 Package pdftex.def Info: images/nosup/birch_topic1.png  used on input line 245.
 
 (pdftex.def)             Requested size: 846.912pt x 331.23668pt.
-<images/nosup/birch_topic2.png, id=1436, 846.91406pt x 331.2375pt>
+<images/nosup/birch_topic2.png, id=1440, 846.91406pt x 331.2375pt>
 File: images/nosup/birch_topic2.png Graphic file (type png)
 <use images/nosup/birch_topic2.png>
 Package pdftex.def Info: images/nosup/birch_topic2.png  used on input line 254.
 
 (pdftex.def)             Requested size: 846.912pt x 331.23668pt.
-<images/nosup/birch_topic3.png, id=1437, 846.91406pt x 577.40718pt>
+<images/nosup/birch_topic3.png, id=1441, 846.91406pt x 577.40718pt>
 File: images/nosup/birch_topic3.png Graphic file (type png)
 <use images/nosup/birch_topic3.png>
 Package pdftex.def Info: images/nosup/birch_topic3.png  used on input line 262.
 
 (pdftex.def)             Requested size: 846.912pt x 577.40578pt.
-<images/nosup/birch_topic4.png, id=1438, 846.91406pt x 411.78844pt>
+<images/nosup/birch_topic4.png, id=1442, 846.91406pt x 411.78844pt>
 File: images/nosup/birch_topic4.png Graphic file (type png)
 <use images/nosup/birch_topic4.png>
 Package pdftex.def Info: images/nosup/birch_topic4.png  used on input line 270.
@@ -1840,7 +1840,7 @@ LaTeX Info: Redefining \. on input line 289.
 LaTeX Info: Redefining \% on input line 289.
  [76 <./images/nosup/birch_topic3.png (PNG copy)> <./images/nosup/birch_topic4.
 png (PNG copy)>]
-<images/nosup/birch_topic5.png, id=1464, 846.91406pt x 411.78844pt>
+<images/nosup/birch_topic5.png, id=1468, 846.91406pt x 411.78844pt>
 File: images/nosup/birch_topic5.png Graphic file (type png)
 <use images/nosup/birch_topic5.png>
 Package pdftex.def Info: images/nosup/birch_topic5.png  used on input line 293.
@@ -1859,8 +1859,7 @@ LaTeX Info: Redefining \% on input line 438.
  [79]
 LaTeX Info: Redefining \. on input line 467.
 LaTeX Info: Redefining \% on input line 467.
- [80])
-(./chapters/06_supervisados.tex
+ [80]) (./chapters/06_supervisados.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [81]
@@ -1870,167 +1869,187 @@ LaTeX Info: Redefining \% on input line 1.
 
 ]
 Cap\'{\i }tulo 6.
+
+Underfull \hbox (badness 1748) in paragraph at lines 22--23
+[]\T1/cmr/m/n/12 Los \T1/cmr/m/it/12 no-te-books \T1/cmr/m/n/12 que co-men-ta-r
+e-mos en es-te ca-pí-tu-lo pue-den en-con-trar-se en Git-Hub
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+\T1/cmr/m/n/12 en [][]https://github.com/megmontero/topics-callcenter/tree/mast
+er/notebooks[][]. Mien-
+ []
+
+
+Underfull \hbox (badness 2707) in paragraph at lines 22--23
+\T1/cmr/m/n/12 tras que el có-di-go y do-cu-men-ta-ción del mó-du-lo \T1/cmr/m/
+it/12 mgmtfm \T1/cmr/m/n/12 po-de-mos en-con-trar-lo en:
+ []
+
 [83]
-<images/super/arq_cnn.png, id=1500, 1079.03125pt x 842.14626pt>
+<images/super/arq_cnn.png, id=1506, 1079.03125pt x 842.14626pt>
 File: images/super/arq_cnn.png Graphic file (type png)
 <use images/super/arq_cnn.png>
-Package pdftex.def Info: images/super/arq_cnn.png  used on input line 36.
+Package pdftex.def Info: images/super/arq_cnn.png  used on input line 38.
 (pdftex.def)             Requested size: 1079.02863pt x 842.14421pt.
 LaTeX Info: Redefining \. on input line 50.
 LaTeX Info: Redefining \% on input line 50.
  [84 <./images/super/arq_cnn.png>]
-LaTeX Info: Redefining \. on input line 97.
-LaTeX Info: Redefining \% on input line 97.
+LaTeX Info: Redefining \. on input line 92.
+LaTeX Info: Redefining \% on input line 92.
  [85]
-<images/super/arq_rnn1.png, id=1512, 282.05376pt x 549.05125pt>
+<images/super/arq_rnn1.png, id=1518, 282.05376pt x 549.05125pt>
 File: images/super/arq_rnn1.png Graphic file (type png)
 <use images/super/arq_rnn1.png>
-Package pdftex.def Info: images/super/arq_rnn1.png  used on input line 105.
+Package pdftex.def Info: images/super/arq_rnn1.png  used on input line 107.
 (pdftex.def)             Requested size: 282.05305pt x 549.04991pt.
-LaTeX Info: Redefining \. on input line 120.
-LaTeX Info: Redefining \% on input line 120.
+LaTeX Info: Redefining \. on input line 119.
+LaTeX Info: Redefining \% on input line 119.
  [86 <./images/super/arq_rnn1.png>]
-<images/super/arq_rnn2.png, id=1519, 350.30875pt x 646.415pt>
-File: images/super/arq_rnn2.png Graphic file (type png)
-<use images/super/arq_rnn2.png>
-Package pdftex.def Info: images/super/arq_rnn2.png  used on input line 163.
-(pdftex.def)             Requested size: 350.30789pt x 646.41342pt.
-LaTeX Info: Redefining \. on input line 174.
-LaTeX Info: Redefining \% on input line 174.
+LaTeX Info: Redefining \. on input line 160.
+LaTeX Info: Redefining \% on input line 160.
 
 [87]
-LaTeX Info: Redefining \. on input line 197.
-LaTeX Info: Redefining \% on input line 197.
+<images/super/arq_rnn2.png, id=1530, 350.30875pt x 646.415pt>
+File: images/super/arq_rnn2.png Graphic file (type png)
+<use images/super/arq_rnn2.png>
+Package pdftex.def Info: images/super/arq_rnn2.png  used on input line 165.
+(pdftex.def)             Requested size: 350.30789pt x 646.41342pt.
+LaTeX Info: Redefining \. on input line 190.
+LaTeX Info: Redefining \% on input line 190.
  [88 <./images/super/arq_rnn2.png>]
-<images/super/arq_dense.png, id=1530, 60.9477pt x 202.356pt>
+<images/super/arq_dense.png, id=1536, 60.9477pt x 202.356pt>
 File: images/super/arq_dense.png Graphic file (type png)
 <use images/super/arq_dense.png>
-Package pdftex.def Info: images/super/arq_dense.png  used on input line 238.
+Package pdftex.def Info: images/super/arq_dense.png  used on input line 240.
 (pdftex.def)             Requested size: 60.94753pt x 202.3555pt.
-LaTeX Info: Redefining \. on input line 252.
-LaTeX Info: Redefining \% on input line 252.
+LaTeX Info: Redefining \. on input line 243.
+LaTeX Info: Redefining \% on input line 243.
  [89]
-<images/super/arq_stack.png, id=1536, 1310.8975pt x 450.68375pt>
+LaTeX Info: Redefining \. on input line 259.
+LaTeX Info: Redefining \% on input line 259.
+ [90 <./images/super/arq_dense.png>]
+<images/super/arq_stack.png, id=1547, 1310.8975pt x 450.68375pt>
 File: images/super/arq_stack.png Graphic file (type png)
 <use images/super/arq_stack.png>
-Package pdftex.def Info: images/super/arq_stack.png  used on input line 285.
+Package pdftex.def Info: images/super/arq_stack.png  used on input line 287.
 (pdftex.def)             Requested size: 1310.89432pt x 450.68263pt.
-LaTeX Info: Redefining \. on input line 288.
-LaTeX Info: Redefining \% on input line 288.
- [90 <./images/super/arq_dense.png>]
-LaTeX Info: Redefining \. on input line 319.
-LaTeX Info: Redefining \% on input line 319.
+LaTeX Info: Redefining \. on input line 304.
+LaTeX Info: Redefining \% on input line 304.
  [91 <./images/super/arq_stack.png>]
-LaTeX Info: Redefining \. on input line 356.
-LaTeX Info: Redefining \% on input line 356.
+LaTeX Info: Redefining \. on input line 351.
+LaTeX Info: Redefining \% on input line 351.
  [92]
-LaTeX Info: Redefining \. on input line 396.
-LaTeX Info: Redefining \% on input line 396.
+LaTeX Info: Redefining \. on input line 387.
+LaTeX Info: Redefining \% on input line 387.
  [93]
-<images/super/opt_cnn.png, id=1558, 430.57246pt x 417.94699pt>
+<images/super/opt_cnn.png, id=1564, 430.57246pt x 417.94699pt>
 File: images/super/opt_cnn.png Graphic file (type png)
 <use images/super/opt_cnn.png>
-Package pdftex.def Info: images/super/opt_cnn.png  used on input line 416.
+Package pdftex.def Info: images/super/opt_cnn.png  used on input line 418.
 (pdftex.def)             Requested size: 430.5714pt x 417.94595pt.
-<images/super/opt_rnn_bin.png, id=1560, 428.83102pt x 385.29488pt>
+LaTeX Info: Redefining \. on input line 434.
+LaTeX Info: Redefining \% on input line 434.
+ [94]
+<images/super/opt_rnn_bin.png, id=1570, 428.83102pt x 385.29488pt>
 File: images/super/opt_rnn_bin.png Graphic file (type png)
 <use images/super/opt_rnn_bin.png>
-Package pdftex.def Info: images/super/opt_rnn_bin.png  used on input line 435.
+Package pdftex.def Info: images/super/opt_rnn_bin.png  used on input line 437.
 (pdftex.def)             Requested size: 428.82997pt x 385.29393pt.
-LaTeX Info: Redefining \. on input line 442.
-LaTeX Info: Redefining \% on input line 442.
- [94]
-LaTeX Info: Redefining \. on input line 446.
-LaTeX Info: Redefining \% on input line 446.
+LaTeX Info: Redefining \. on input line 444.
+LaTeX Info: Redefining \% on input line 444.
  [95 <./images/super/opt_cnn.png>]
-<images/super/opt_dense.png, id=1571, 428.39566pt x 60.07988pt>
+<images/super/opt_dense.png, id=1577, 428.39566pt x 60.07988pt>
 File: images/super/opt_dense.png Graphic file (type png)
 <use images/super/opt_dense.png>
-Package pdftex.def Info: images/super/opt_dense.png  used on input line 453.
+Package pdftex.def Info: images/super/opt_dense.png  used on input line 455.
 (pdftex.def)             Requested size: 428.3946pt x 60.07973pt.
-LaTeX Info: Redefining \. on input line 459.
-LaTeX Info: Redefining \% on input line 459.
+
+Underfull \vbox (badness 7685) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 458.
+LaTeX Info: Redefining \% on input line 458.
  [96 <./images/super/opt_rnn_bin.png>]
-<images/super/opt_multi.png, id=1578, 428.39566pt x 216.81pt>
+<images/super/opt_multi.png, id=1585, 428.39566pt x 216.81pt>
 File: images/super/opt_multi.png Graphic file (type png)
 <use images/super/opt_multi.png>
-Package pdftex.def Info: images/super/opt_multi.png  used on input line 469.
+Package pdftex.def Info: images/super/opt_multi.png  used on input line 471.
 (pdftex.def)             Requested size: 428.3946pt x 216.80946pt.
-LaTeX Info: Redefining \. on input line 479.
-LaTeX Info: Redefining \% on input line 479.
+LaTeX Info: Redefining \. on input line 477.
+LaTeX Info: Redefining \% on input line 477.
  [97 <./images/super/opt_dense.png> <./images/super/opt_multi.png>]
-<images/super/resumen_todos.png, id=1588, 1388.18625pt x 539.01375pt>
+<images/super/resumen_todos.png, id=1594, 1388.18625pt x 539.01375pt>
 File: images/super/resumen_todos.png Graphic file (type png)
 <use images/super/resumen_todos.png>
-Package pdftex.def Info: images/super/resumen_todos.png  used on input line 491
+Package pdftex.def Info: images/super/resumen_todos.png  used on input line 493
 .
 (pdftex.def)             Requested size: 1388.18288pt x 539.01242pt.
-<images/super/resumen_tiempo.png, id=1591, 1388.93906pt x 539.01375pt>
+<images/super/resumen_tiempo.png, id=1597, 1388.93906pt x 539.01375pt>
 File: images/super/resumen_tiempo.png Graphic file (type png)
 <use images/super/resumen_tiempo.png>
 Package pdftex.def Info: images/super/resumen_tiempo.png  used on input line 50
-2.
+4.
 (pdftex.def)             Requested size: 1388.93567pt x 539.01242pt.
-LaTeX Info: Redefining \. on input line 509.
-LaTeX Info: Redefining \% on input line 509.
+LaTeX Info: Redefining \. on input line 513.
+LaTeX Info: Redefining \% on input line 513.
  [98 <./images/super/resumen_todos.png (PNG copy)>]
-<images/super/resumen_bin.png, id=1597, 1388.18625pt x 539.01375pt>
+<images/super/resumen_bin.png, id=1603, 1388.18625pt x 539.01375pt>
 File: images/super/resumen_bin.png Graphic file (type png)
 <use images/super/resumen_bin.png>
-Package pdftex.def Info: images/super/resumen_bin.png  used on input line 520.
+Package pdftex.def Info: images/super/resumen_bin.png  used on input line 521.
 (pdftex.def)             Requested size: 1388.18288pt x 539.01242pt.
-<images/super/resumen_bestbin.png, id=1600, 1129.21875pt x 539.01375pt>
+<images/super/resumen_bestbin.png, id=1606, 1129.21875pt x 539.01375pt>
 File: images/super/resumen_bestbin.png Graphic file (type png)
 <use images/super/resumen_bestbin.png>
 Package pdftex.def Info: images/super/resumen_bestbin.png  used on input line 5
-29.
+30.
 (pdftex.def)             Requested size: 1129.216pt x 539.01242pt.
-LaTeX Info: Redefining \. on input line 535.
-LaTeX Info: Redefining \% on input line 535.
+LaTeX Info: Redefining \. on input line 536.
+LaTeX Info: Redefining \% on input line 536.
  [99 <./images/super/resumen_tiempo.png (PNG copy)> <./images/super/resumen_bin
 .png (PNG copy)>]
-<images/super/resumen_multi.png, id=1607, 1388.18625pt x 539.01375pt>
+<images/super/resumen_multi.png, id=1613, 1388.18625pt x 539.01375pt>
 File: images/super/resumen_multi.png Graphic file (type png)
 <use images/super/resumen_multi.png>
-Package pdftex.def Info: images/super/resumen_multi.png  used on input line 542
+Package pdftex.def Info: images/super/resumen_multi.png  used on input line 543
 .
 (pdftex.def)             Requested size: 1388.18288pt x 539.01242pt.
-LaTeX Info: Redefining \. on input line 549.
-LaTeX Info: Redefining \% on input line 549.
- [100 <./images/super/resumen_bestbin.png (PNG copy)> <./images/super/resumen_m
-ulti.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 555--556
+LaTeX Info: Redefining \. on input line 552.
+LaTeX Info: Redefining \% on input line 552.
+ [100 <./images/super/resumen_bestbin.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
 []\T1/cmr/m/n/12 El mo-de-lo que he-mos se-lec-cio-na-do es el me-jor mo-de-lo 
 del es-tu-dio
  []
 
 
-Underfull \hbox (badness 1629) in paragraph at lines 555--556
+Underfull \hbox (badness 1629) in paragraph at lines 556--557
 \T1/cmr/m/n/12 ``RNN_866_IVR_MULALL_W2V150QC_QN_BF'' y po-de-mos ver-lo en las 
 fi-gu-ra [][]6.9[][]
  []
 
-<images/super/mvp_mat1.png, id=1615, 511.9125pt x 451.6875pt>
+<images/super/mvp_mat1.png, id=1621, 511.9125pt x 451.6875pt>
 File: images/super/mvp_mat1.png Graphic file (type png)
 <use images/super/mvp_mat1.png>
-Package pdftex.def Info: images/super/mvp_mat1.png  used on input line 560.
+Package pdftex.def Info: images/super/mvp_mat1.png  used on input line 561.
 (pdftex.def)             Requested size: 511.91125pt x 451.68639pt.
-<images/super/mvp_mat2.png, id=1616, 504.88625pt x 451.6875pt>
+<images/super/mvp_mat2.png, id=1622, 504.88625pt x 451.6875pt>
 File: images/super/mvp_mat2.png Graphic file (type png)
 <use images/super/mvp_mat2.png>
-Package pdftex.def Info: images/super/mvp_mat2.png  used on input line 573.
+Package pdftex.def Info: images/super/mvp_mat2.png  used on input line 574.
 (pdftex.def)             Requested size: 504.885pt x 451.68639pt.
-LaTeX Info: Redefining \. on input line 576.
-LaTeX Info: Redefining \% on input line 576.
-[101 <./images/super/mvp_mat1.png>])
+LaTeX Info: Redefining \. on input line 583.
+LaTeX Info: Redefining \% on input line 583.
+[101 <./images/super/resumen_multi.png (PNG copy)>])
 LaTeX Info: Redefining \. on input line 489.
 LaTeX Info: Redefining \% on input line 489.
- [102 <./images/super/mvp_mat2.png>]
-[103
+ [102 <./images/super/mvp_mat1.png> <./images/super/mvp_mat2.png>] [103
 
-] [104] (./chapters/07_produccion.tex
+] [104]
+(./chapters/07_produccion.tex
 Cap\'{\i }tulo 7.
-<images/exp/streaminglayer_v1.png, id=1639, 2007.5pt x 869.2475pt>
+<images/exp/streaminglayer_v1.png, id=1645, 2007.5pt x 869.2475pt>
 File: images/exp/streaminglayer_v1.png Graphic file (type png)
 <use images/exp/streaminglayer_v1.png>
 Package pdftex.def Info: images/exp/streaminglayer_v1.png  used on input line 1
@@ -2051,7 +2070,7 @@ LaTeX Info: Redefining \% on input line 80.
 LaTeX Info: Redefining \. on input line 106.
 LaTeX Info: Redefining \% on input line 106.
  [109]
-<images/exp/micro-arch-v3.png, id=1671, 758.835pt x 370.38374pt>
+<images/exp/micro-arch-v3.png, id=1677, 758.835pt x 370.38374pt>
 File: images/exp/micro-arch-v3.png Graphic file (type png)
 <use images/exp/micro-arch-v3.png>
 Package pdftex.def Info: images/exp/micro-arch-v3.png  used on input line 111.
@@ -2084,7 +2103,7 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [116]
 Cap\'{\i }tulo 8.
-<images/serv/servicelayer_v1.png, id=1707, 2007.5pt x 869.2475pt>
+<images/serv/servicelayer_v1.png, id=1714, 2007.5pt x 869.2475pt>
 File: images/serv/servicelayer_v1.png Graphic file (type png)
 <use images/serv/servicelayer_v1.png>
 Package pdftex.def Info: images/serv/servicelayer_v1.png  used on input line 9.
@@ -2099,8 +2118,8 @@ Package pdftex.def Info: images/serv/servicelayer_v1.png  used on input line 9.
 (./_minted-TFM/default-pyg-prefix.pygstyle) (./_minted-TFM/default.pygstyle)
 (./_minted-TFM/5D363C072EF23C86E785826D68A415B579FC99532D23E31C4192323E5B281E3E
 .pygtex
-LaTeX Info: Redefining \. on input line 23.
-LaTeX Info: Redefining \% on input line 23.
+LaTeX Info: Redefining \. on input line 20.
+LaTeX Info: Redefining \% on input line 20.
  [118])
 \openout3 = `TFM.pyg'.
 
@@ -2109,16 +2128,16 @@ LaTeX Info: Redefining \% on input line 23.
 .pygtex
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 3.
-LaTeX Info: Redefining \. on input line 8.
-LaTeX Info: Redefining \% on input line 8.
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
  [119]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 44.
-LaTeX Info: Redefining \% on input line 44.
+LaTeX Info: Redefining \. on input line 42.
+LaTeX Info: Redefining \% on input line 42.
  [120])
-LaTeX Info: Redefining \. on input line 179.
-LaTeX Info: Redefining \% on input line 179.
+LaTeX Info: Redefining \. on input line 178.
+LaTeX Info: Redefining \% on input line 178.
 
 [121]
 \openout3 = `TFM.pyg'.
@@ -2126,66 +2145,66 @@ LaTeX Info: Redefining \% on input line 179.
 
 (./_minted-TFM/EC111D40050EBE92CA86D556B3ECEAFE79FC99532D23E31C4192323E5B281E3E
 .pygtex
-LaTeX Info: Redefining \. on input line 26.
-LaTeX Info: Redefining \% on input line 26.
+LaTeX Info: Redefining \. on input line 24.
+LaTeX Info: Redefining \% on input line 24.
  [122])
-LaTeX Info: Redefining \. on input line 249.
-LaTeX Info: Redefining \% on input line 249.
+LaTeX Info: Redefining \. on input line 247.
+LaTeX Info: Redefining \% on input line 247.
  [123]
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/AB0DBF0D3E6598CACCCAAC733BEE98840BC778E762F3CC214DDFC636B320B0BE
 .pygtex
-LaTeX Info: Redefining \. on input line 43.
-LaTeX Info: Redefining \% on input line 43.
+LaTeX Info: Redefining \. on input line 41.
+LaTeX Info: Redefining \% on input line 41.
  [124]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 87.
-LaTeX Info: Redefining \% on input line 87.
+LaTeX Info: Redefining \. on input line 84.
+LaTeX Info: Redefining \% on input line 84.
  [125])
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/AEA6DBC53DC9FA0B155785B1BD5AF9B30BC778E762F3CC214DDFC636B320B0BE
 .pygtex
-LaTeX Info: Redefining \. on input line 8.
-LaTeX Info: Redefining \% on input line 8.
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
  [126]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 39.
 LaTeX Info: Redefining \% on input line 39.
  [127])
-LaTeX Info: Redefining \. on input line 465.
-LaTeX Info: Redefining \% on input line 465.
+LaTeX Info: Redefining \. on input line 467.
+LaTeX Info: Redefining \% on input line 467.
 
 [128]
-<images/serv/CM-calls.png, id=1764, 1404.74812pt x 712.16063pt>
+<images/serv/CM-calls.png, id=1772, 1404.74812pt x 712.16063pt>
 File: images/serv/CM-calls.png Graphic file (type png)
 <use images/serv/CM-calls.png>
-Package pdftex.def Info: images/serv/CM-calls.png  used on input line 474.
+Package pdftex.def Info: images/serv/CM-calls.png  used on input line 476.
 (pdftex.def)             Requested size: 1404.7447pt x 712.15889pt.
-LaTeX Info: Redefining \. on input line 489.
-LaTeX Info: Redefining \% on input line 489.
+LaTeX Info: Redefining \. on input line 491.
+LaTeX Info: Redefining \% on input line 491.
  [129 <./images/serv/CM-calls.png>]
-<images/serv/wordcloud.png, id=1770, 703.12688pt x 339.51843pt>
+<images/serv/wordcloud.png, id=1778, 703.12688pt x 339.51843pt>
 File: images/serv/wordcloud.png Graphic file (type png)
 <use images/serv/wordcloud.png>
-Package pdftex.def Info: images/serv/wordcloud.png  used on input line 501.
+Package pdftex.def Info: images/serv/wordcloud.png  used on input line 503.
 (pdftex.def)             Requested size: 703.12515pt x 339.5176pt.
-<images/serv/CM-monitoring.png, id=1772, 1404.74812pt x 618.81187pt>
+<images/serv/CM-monitoring.png, id=1780, 1404.74812pt x 618.81187pt>
 File: images/serv/CM-monitoring.png Graphic file (type png)
 <use images/serv/CM-monitoring.png>
-Package pdftex.def Info: images/serv/CM-monitoring.png  used on input line 514.
+Package pdftex.def Info: images/serv/CM-monitoring.png  used on input line 516.
 
 (pdftex.def)             Requested size: 1404.7447pt x 618.81036pt.
-LaTeX Info: Redefining \. on input line 522.
-LaTeX Info: Redefining \% on input line 522.
+LaTeX Info: Redefining \. on input line 524.
+LaTeX Info: Redefining \% on input line 524.
  [130 <./images/serv/wordcloud.png>]
-LaTeX Info: Redefining \. on input line 531.
-LaTeX Info: Redefining \% on input line 531.
+LaTeX Info: Redefining \. on input line 533.
+LaTeX Info: Redefining \% on input line 533.
 
 [131 <./images/serv/cm-monitoring.png (PNG copy)>]
 \openout3 = `TFM.pyg'.
@@ -2201,22 +2220,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 57.
 LaTeX Info: Redefining \% on input line 57.
  [133])
-<images/serv/ml-factura.png, id=1791, 1404.74812pt x 599.99156pt>
+<images/serv/ml-factura.png, id=1799, 1404.74812pt x 599.99156pt>
 File: images/serv/ml-factura.png Graphic file (type png)
 <use images/serv/ml-factura.png>
-Package pdftex.def Info: images/serv/ml-factura.png  used on input line 644.
+Package pdftex.def Info: images/serv/ml-factura.png  used on input line 646.
 (pdftex.def)             Requested size: 1404.7447pt x 599.9901pt.
-LaTeX Info: Redefining \. on input line 650.
-LaTeX Info: Redefining \% on input line 650.
+LaTeX Info: Redefining \. on input line 652.
+LaTeX Info: Redefining \% on input line 652.
 
 [134]
-<images/serv/ml-total.png, id=1798, 1404.74812pt x 436.63126pt>
+<images/serv/ml-total.png, id=1806, 1404.74812pt x 436.63126pt>
 File: images/serv/ml-total.png Graphic file (type png)
 <use images/serv/ml-total.png>
-Package pdftex.def Info: images/serv/ml-total.png  used on input line 654.
+Package pdftex.def Info: images/serv/ml-total.png  used on input line 656.
 (pdftex.def)             Requested size: 1404.7447pt x 436.63019pt.
-LaTeX Info: Redefining \. on input line 664.
-LaTeX Info: Redefining \% on input line 664.
+LaTeX Info: Redefining \. on input line 666.
+LaTeX Info: Redefining \% on input line 666.
  [135 <./images/serv/ml-factura.png (PNG copy)> <./images/serv/ml-total.png (PN
 G copy)>]) (./chapters/09_contenedores.tex
 LaTeX Info: Redefining \. on input line 3.
@@ -2226,7 +2245,7 @@ Cap\'{\i }tulo 9.
 [137
 
 ]
-<images/cont/overview.png, id=1814, 772.05511pt x 579.92268pt>
+<images/cont/overview.png, id=1822, 772.05511pt x 579.92268pt>
 File: images/cont/overview.png Graphic file (type png)
 <use images/cont/overview.png>
 Package pdftex.def Info: images/cont/overview.png  used on input line 34.
@@ -2234,29 +2253,21 @@ Package pdftex.def Info: images/cont/overview.png  used on input line 34.
 LaTeX Info: Redefining \. on input line 41.
 LaTeX Info: Redefining \% on input line 41.
  [138 <./images/cont/overview.png>]
-
-Package natbib Warning: Citation `apendi:contenedores' on page 139 undefined on
- input line 41.
-
-
-Package natbib Warning: Citation `apendi:contenedores' on page 139 undefined on
- input line 48.
-
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/5F6CF63DDA3C923BDF4E50697D73E285B6B55232519687CD2914F4C8BF95C86B
 .pygtex
-LaTeX Info: Redefining \. on input line 23.
-LaTeX Info: Redefining \% on input line 23.
+LaTeX Info: Redefining \. on input line 22.
+LaTeX Info: Redefining \% on input line 22.
  [139]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 59.
-LaTeX Info: Redefining \% on input line 59.
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
  [140])
-LaTeX Info: Redefining \. on input line 149.
-LaTeX Info: Redefining \% on input line 149.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
 
 [141]
 \openout3 = `TFM.pyg'.
@@ -2264,51 +2275,48 @@ LaTeX Info: Redefining \% on input line 149.
 
 (./_minted-TFM/B649AB8B7DD04DE5EAE796F29CD9B5D6B6B55232519687CD2914F4C8BF95C86B
 .pygtex
-LaTeX Info: Redefining \. on input line 12.
-LaTeX Info: Redefining \% on input line 12.
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
  [142])
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/9397CB8B5ECA5075DC99D3780B12156FB6B55232519687CD2914F4C8BF95C86B
 .pygtex
-LaTeX Info: Redefining \. on input line 9.
-LaTeX Info: Redefining \% on input line 9.
+LaTeX Info: Redefining \. on input line 8.
+LaTeX Info: Redefining \% on input line 8.
  [143]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 44.
-LaTeX Info: Redefining \% on input line 44.
+LaTeX Info: Redefining \. on input line 43.
+LaTeX Info: Redefining \% on input line 43.
  [144]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 80.
-LaTeX Info: Redefining \% on input line 80.
+LaTeX Info: Redefining \. on input line 79.
+LaTeX Info: Redefining \% on input line 79.
  [145])
-LaTeX Info: Redefining \. on input line 325.
-LaTeX Info: Redefining \% on input line 325.
+LaTeX Info: Redefining \. on input line 324.
+LaTeX Info: Redefining \% on input line 324.
 
 [146]
-
-LaTeX Warning: Reference `anexo' on page 147 undefined on input line 340.
-
 \openout3 = `TFM.pyg'.
 
 
 (./_minted-TFM/9EA0E06FFA69627EE3A40C45D01A03FEB6B55232519687CD2914F4C8BF95C86B
 .pygtex
-LaTeX Info: Redefining \. on input line 17.
-LaTeX Info: Redefining \% on input line 17.
+LaTeX Info: Redefining \. on input line 16.
+LaTeX Info: Redefining \% on input line 16.
  [147]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 52.
-LaTeX Info: Redefining \% on input line 52.
+LaTeX Info: Redefining \. on input line 51.
+LaTeX Info: Redefining \% on input line 51.
  [148]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 88.
-LaTeX Info: Redefining \% on input line 88.
+LaTeX Info: Redefining \. on input line 87.
+LaTeX Info: Redefining \% on input line 87.
  [149])
 LaTeX Info: Redefining \. on input line 466.
 LaTeX Info: Redefining \% on input line 466.
@@ -2319,21 +2327,21 @@ LaTeX Info: Redefining \% on input line 466.
 
 (./_minted-TFM/D6CCC018C41C249E7C7DC277CAEC1ACBB6B55232519687CD2914F4C8BF95C86B
 .pygtex
-LaTeX Info: Redefining \. on input line 38.
-LaTeX Info: Redefining \% on input line 38.
+LaTeX Info: Redefining \. on input line 34.
+LaTeX Info: Redefining \% on input line 34.
  [151]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 74.
-LaTeX Info: Redefining \% on input line 74.
+LaTeX Info: Redefining \. on input line 70.
+LaTeX Info: Redefining \% on input line 70.
  [152])
-<images/cont/s2i.png, id=1882, 1033.61156pt x 563.85657pt>
+<images/cont/s2i.png, id=1894, 1033.61156pt x 563.85657pt>
 File: images/cont/s2i.png Graphic file (type png)
 <use images/cont/s2i.png>
-Package pdftex.def Info: images/cont/s2i.png  used on input line 565.
+Package pdftex.def Info: images/cont/s2i.png  used on input line 566.
 (pdftex.def)             Requested size: 1033.60904pt x 563.8552pt.
-LaTeX Info: Redefining \. on input line 578.
-LaTeX Info: Redefining \% on input line 578.
+LaTeX Info: Redefining \. on input line 574.
+LaTeX Info: Redefining \% on input line 574.
 
 [153]
 \openout3 = `TFM.pyg'.
@@ -2341,14 +2349,22 @@ LaTeX Info: Redefining \% on input line 578.
 
 (./_minted-TFM/503BF9755EB7DFEB9CC7CB860858E67CB6B55232519687CD2914F4C8BF95C86B
 .pygtex
-LaTeX Info: Redefining \. on input line 15.
-LaTeX Info: Redefining \% on input line 15.
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
  [154 <./images/cont/s2i.png (PNG copy)>])
-LaTeX Info: Redefining \. on input line 635.
-LaTeX Info: Redefining \% on input line 635.
+LaTeX Info: Redefining \. on input line 634.
+LaTeX Info: Redefining \% on input line 634.
  [155]
+Underfull \hbox (badness 8132) in paragraph at lines 640--641
+[]\T1/cmr/m/n/12 Todo el có-di-go de crea-ción de la ima-gen así co-mo el build
+ de \T1/cmr/m/it/12 Ten-sor-
+ []
 
-LaTeX Warning: Reference `anexo' on page 156 undefined on input line 639.
+
+Underfull \hbox (badness 2903) in paragraph at lines 640--641
+\T1/cmr/m/it/12 flow Ser-ving \T1/cmr/m/n/12 (prác-ti-ca-men-te idén-ti-co al a
+n-te-rior) pue-de en-con-trar-se en Git-Hub en:
+ []
 
 )
 LaTeX Info: Redefining \. on input line 495.
@@ -2357,7 +2373,7 @@ LaTeX Info: Redefining \% on input line 495.
 
 ] [158] (./chapters/10_mantenimiento.tex
 Cap\'{\i }tulo 10.
-<images/mant/devops.jpg, id=1912, 481.8pt x 260.975pt>
+<images/mant/devops.jpg, id=1925, 481.8pt x 260.975pt>
 File: images/mant/devops.jpg Graphic file (type jpg)
 <use images/mant/devops.jpg>
 Package pdftex.def Info: images/mant/devops.jpg  used on input line 20.
@@ -2368,7 +2384,7 @@ Package pdftex.def Info: images/mant/devops.jpg  used on input line 20.
 LaTeX Info: Redefining \. on input line 59.
 LaTeX Info: Redefining \% on input line 59.
  [160 <./images/mant/devops.jpg>]
-<images/mant/cmeficiencia.png, id=1924, 1410.0178pt x 533.74406pt>
+<images/mant/cmeficiencia.png, id=1938, 1410.0178pt x 533.74406pt>
 File: images/mant/cmeficiencia.png Graphic file (type png)
 <use images/mant/cmeficiencia.png>
 Package pdftex.def Info: images/mant/cmeficiencia.png  used on input line 75.
@@ -2376,7 +2392,7 @@ Package pdftex.def Info: images/mant/cmeficiencia.png  used on input line 75.
 LaTeX Info: Redefining \. on input line 83.
 LaTeX Info: Redefining \% on input line 83.
  [161 <./images/mant/cmeficiencia.png (PNG copy)>]
-<images/mant/cm-error.png, id=1931, 581.17125pt x 316.93407pt>
+<images/mant/cm-error.png, id=1944, 581.17125pt x 316.93407pt>
 File: images/mant/cm-error.png Graphic file (type png)
 <use images/mant/cm-error.png>
 Package pdftex.def Info: images/mant/cm-error.png  used on input line 90.
@@ -2406,7 +2422,7 @@ LaTeX Info: Redefining \. on input line 200.
 LaTeX Info: Redefining \% on input line 200.
 
 [165]
-<images/mant/cicd_v1.png, id=1952, 524.4393pt x 221.628pt>
+<images/mant/cicd_v1.png, id=1965, 524.4393pt x 221.628pt>
 File: images/mant/cicd_v1.png Graphic file (type png)
 <use images/mant/cicd_v1.png>
 Package pdftex.def Info: images/mant/cicd_v1.png  used on input line 206.
@@ -2414,13 +2430,13 @@ Package pdftex.def Info: images/mant/cicd_v1.png  used on input line 206.
 LaTeX Info: Redefining \. on input line 234.
 LaTeX Info: Redefining \% on input line 234.
  [166 <./images/mant/cicd_v1.png>]
-<images/mant/jenkins-stages.png, id=1968, 824.32968pt x 322.20375pt>
+<images/mant/jenkins-stages.png, id=1981, 824.32968pt x 322.20375pt>
 File: images/mant/jenkins-stages.png Graphic file (type png)
 <use images/mant/jenkins-stages.png>
 Package pdftex.def Info: images/mant/jenkins-stages.png  used on input line 242
 .
 (pdftex.def)             Requested size: 824.32767pt x 322.20296pt.
-<images/mant/tests_v2.png, id=1971, 1154.81438pt x 566.86781pt>
+<images/mant/tests_v2.png, id=1984, 1154.81438pt x 566.86781pt>
 File: images/mant/tests_v2.png Graphic file (type png)
 <use images/mant/tests_v2.png>
 Package pdftex.def Info: images/mant/tests_v2.png  used on input line 257.
@@ -2553,12 +2569,9 @@ y-[]step-[]explanation-[]44e9eb85bf21$[][]\T1/cmr/m/n/12 ,
 LaTeX Info: Redefining \. on input line 208.
 LaTeX Info: Redefining \% on input line 208.
 [179])
-
-Package natbib Warning: There were undefined citations.
-
 LaTeX Info: Redefining \. on input line 522.
 LaTeX Info: Redefining \% on input line 522.
-[180]
+ [180]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 522.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 522.
  (./TFM.aux
@@ -2569,18 +2582,14 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 522.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 522.
 Package rerunfilecheck Info: File `TFM.out' has not changed.
 (rerunfilecheck)             Checksum: 073C10AE20F6C262F9C8A6F68D9000A1;7979.
-
-
-LaTeX Warning: There were undefined references.
-
 runsystem(rm TFM.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 26408 strings out of 492623
- 476023 string characters out of 6135669
- 679545 words of memory out of 5000000
- 29109 multiletter control sequences out of 15000+600000
+ 26406 strings out of 492623
+ 476000 string characters out of 6135669
+ 679604 words of memory out of 5000000
+ 29107 multiletter control sequences out of 15000+600000
  26705 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  54i,13n,73p,1231b,837s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2607,10 +2616,10 @@ usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf
 e1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
 per/sftt1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pf
 b></usr/share/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb>
-Output written on TFM.pdf (202 pages, 13027856 bytes).
+Output written on TFM.pdf (202 pages, 13028835 bytes).
 PDF statistics:
- 2270 PDF objects out of 2487 (max. 8388607)
- 1909 compressed objects within 20 object streams
+ 2283 PDF objects out of 2487 (max. 8388607)
+ 1922 compressed objects within 20 object streams
  489 named destinations out of 1000 (max. 500000)
  1335 words of extra memory for PDF output out of 10000 (max. 10000000)
 
