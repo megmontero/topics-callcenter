@@ -23,7 +23,7 @@ class Optimize:
 
 
     def __init__(self, project="dummy", project_db="mgm_optuna", 
-        user_db="postgres", pass_db="postgres", host_db="172.0.0.1", direction= "maximize"):
+        user_db="postgres", pass_db="postgres", host_db="10.148.172.147", direction= "maximize"):
         """
         Constructor de la clase. Establece los parámetros para la inicialización  de OptKeras.
         
