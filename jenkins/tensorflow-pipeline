@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+    environment {
+        BRANCH="master"        
+   		PATH = "$PATH:$OC_PATH" 
+   		MODEL_NAME="bajafactura"
+   		OPENSHIFT_PROJECT="nbia-prod"
+		OPENSHIFT_URL = 'https://openshift:8443'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'http://bitbucket:7990/scm/ALOG/tf-s2i.git', branch: "${BRANCH}", credentialsId: 'bbAdmin'
+                script{ sh 'chmod 777 -R models/' }
+            }
+        }
+        stage('Login OpenShift') {
+            steps {
+                script {
+               		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ocp-user', usernameVariable: 'OPENSHIFT_NGBI_USERNAME', passwordVariable: 'OPENSHIFT_NGBI_PASSWORD']]) {
+                    	sh 'oc login $OPENSHIFT_URL --username=${OPENSHIFT_NGBI_USERNAME} --password=${OPENSHIFT_NGBI_PASSWORD} -n "${OPENSHIFT_PROJECT}"'
+               		}
+                }
+			}
+        } 
+        stage('Build Image') {
+            steps {
+                script {
+					try {
+						withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ocp-user', usernameVariable: 'OPENSHIFT_NGBI_USERNAME', passwordVariable: 'OPENSHIFT_NGBI_PASSWORD']]) {
+							sh 'oc start-build tf-bajafactura-model  --from-file=./models/${MODEL_NAME}  --follow -n "${OPENSHIFT_PROJECT}"'  
+						}
+					} catch (err) {
+						echo "Error al delpoy imagen"
+						throw new Exception("Error al delpoy imagen!")
+					}
+                }
+			}
+        } 
+    }
+    post {
+        always {
+          step([$class: 'Mailer',
+            notifyEveryUnstableBuild: true,
+            recipients: "manuel.gomezmontero@email",
+            sendToIndividuals: true])
+        }
+    }
+}

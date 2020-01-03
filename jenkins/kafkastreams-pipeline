@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+    environment {
+        BRANCH="master"        
+   		PATH = "$PATH:$OC_PATH" 
+   		APP_NAME="topicmodel"
+		APP_VERSION="1.0-SNAPSHOT-jar-with-dependencies"
+   		OPENSHIFT_PROJECT="nbia-prod"
+		OPENSHIFT_URL = 'https://openshift:8443'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'http://bitbucket:7990/scm/ALOG/calls-streams.git', branch: "${BRANCH}", credentialsId: 'bbAdmin'
+            }
+        }
+        stage('Tests') {
+            steps {
+                withMaven(jdk: 'Java1.8', maven: 'Maven-3.6.0', mavenSettingsConfig: 'nexus') {
+                    sh 'mvn test'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                withMaven(jdk: 'Java1.8', maven: 'Maven-3.6.0', mavenSettingsConfig: 'nexus') {
+                    sh '''
+                        ls -lrt;
+                        mvn clean package -Dmaven.test.skip=true
+                        ls -lrt */*;
+                    '''
+                }
+            }
+        }
+        stage('Login OpenShift') {
+            steps {
+                script {
+               		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ocp-user', usernameVariable: 'OPENSHIFT_NGBI_USERNAME', passwordVariable: 'OPENSHIFT_NGBI_PASSWORD']]) {
+                    	sh 'oc login $OPENSHIFT_URL --username=${OPENSHIFT_NGBI_USERNAME} --password=${OPENSHIFT_NGBI_PASSWORD} -n "${OPENSHIFT_PROJECT}"'
+               		}
+                }
+			}
+        } 
+        stage('Build Docker Image') {
+            steps {
+                script {
+					try {
+						withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ocp-user', usernameVariable: 'OPENSHIFT_NGBI_USERNAME', passwordVariable: 'OPENSHIFT_NGBI_PASSWORD']]) {
+							sh 'oc start-build topic-model-streaming --from-file=./target/$APP_NAME-$APP_VERSION.jar  --follow -n "${OPENSHIFT_PROJECT}"'  
+						}
+					} catch (err) {
+						echo "Error al delpoy imagen"
+						throw new Exception("Error al delpoy imagen!")
+					}
+                }
+			}
+        } 
+    }
+    post {
+        always {
+          step([$class: 'Mailer',
+            notifyEveryUnstableBuild: true,
+            recipients: "manuel.gomezmontero@email",
+            sendToIndividuals: true])
+        }
+    }
+}
