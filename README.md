@@ -21,7 +21,9 @@ El repositorio se encuentra estructurado del siguiente modo:
 
 - **latex/**:  Directorio con todo el código latex de la memoria. 
 - **notebooks/**: Directorio con notebooks de Jupyter.
-- **notebooks/html/**: Directorio con el export de algunos notebooks en HTML. 
-- **TFM borrador.pdf**: Última versión del borrador de la memoria.
-- **pecs/**: Entrega de las diferentes PECs.
-- **src/**: Distintos códigos fuente
+- **TFM.pdf**: Documentación del proyecto.
+- **src**: Distintos códigos fuente: Servicios Kafka Streams, Inyector y módulo mgmtfm.
+- **elk**: Información y ficheros para desplegar la capa de servicio.
+- **images**: Imágenes usadas para la propia documentación del repo.
+- **openshift**: Ficheros e información para el despliegue de la aplicación en Openshift.
+- **jenkins**: Pipelines e información para la configuración de Jenkins.
