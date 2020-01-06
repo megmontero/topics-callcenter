@@ -408,7 +408,7 @@ rayos, cobranzas, penalice]        |
 
     \end{Verbatim}
 
-Como podemos observar, el resultado obtenido no es coherente con lo que esperamos encontrar en las llamadas de un \textit{call center}. Aún así seguimos intentando sacar valor a nuestros datos e intentamos aplicar el mismo método a los bigramas que fueran candidatos a aportar información relevante. 
+Como podemos observar, el resultado obtenido no es coherente con lo que esperamos encontrar en las llamadas de un \textit{call center}, ya que aparecen palabras como rayos, campillos, \textit{cool}, etc. que nada tienen que ver con la actividad diaria de un \textit{call center}. Aún así seguimos intentando sacar valor a nuestros datos e intentamos aplicar el mismo método a los bigramas que fueran candidatos a aportar información relevante. 
 
 Con la siguiente función tratábamos de quedarnos con los bigramas relevantes: 
 \vspace{0.5cm}
@@ -438,7 +438,7 @@ Con la siguiente función tratábamos de quedarnos con los bigramas relevantes:
 \end{tcolorbox}
 
 
-El objetivo de esta función es quedarnos unicamente con los bigramas más representativos según su categoría gramatical. En nuestro caso seleccionamos las parejas Nombre-Nombre, Verbo-Nombre y Nombre-Adjetivo y además nos quedamos con la raíz de las palabras.
+El objetivo de esta función es quedarnos únicamente con los bigramas más representativos según su categoría gramatical. En nuestro caso, seleccionamos las parejas Nombre-Nombre, Verbo-Nombre y Nombre-Adjetivo y además nos quedamos con la raíz de las palabras.
           
 Una vez obtenidos los bigramas, realizamos el mismo proceso que seguimos para los \textit{tokens} obteniendo el siguiente resultado.
 
@@ -486,7 +486,7 @@ dirección carrer, sánchez equipo, precio regalo, vez barcelona, foco champion]
 
     \end{Verbatim}
 
-En este caso nos encontramos con algo más de sentido en los resultados que en los casos anteriores, sin embargo parece imposible distinguir temas concretos. En este momento desistimos seguir trabajando con estos datos, viendo que estábamos enfrentándonos a un claro problema de \textit{garbage-in-garbage-out} y que era imposible extraer valor con una calidad tan pobre.
+En este caso, nos encontramos con algo más de sentido en los resultados que en los casos anteriores, sin embargo parece imposible distinguir temas concretos. En este momento desistimos seguir trabajando con estos datos, viendo que estábamos enfrentándonos a un claro problema de \textit{garbage-in-garbage-out} y que era imposible extraer valor con una calidad tan pobre.
 
 
 

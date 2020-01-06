@@ -65,7 +65,7 @@ En la figura \ref{fig:arqcnn} podemos ver un ejemplo de un modelo de arquitectur
 Esta arquitectura podrá utilizarse para crear diferentes parámetros, en nuestro caso hemos jugado con los parámetros: 
 
 \begin{itemize}
-\item Número de capas Convolucionales 
+\item Número de capas convolucionales. 
 \item Tamaño de los \textit{kernels} que se aplicarán en cada capa.
 \item Número de \textit{kernels} que tendrá cada capa. 
 \item Valor de \textit{dropout}.
@@ -502,13 +502,30 @@ En la figura \ref{fig:resumen_todos} podemos ver todos los modelos ordenados por
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=1\textwidth]{images/super/resumen_tiempo}
-	\caption{Mediana de ejecución de todos los estudios}
+	\caption{Mediana de ejecución de las diferentes arquitecturas}
 	\label{fig:resumen_tiempo}
 \end{figure}
 
-Otro dato interesante es el tiempo de ejecución que requiere cada arquitectura. En la figura \ref{fig:resumen_tiempo} podemos ver la mediana de ejecución de todos los modelos, que nos servirá para hacernos una idea de la diferencia entre arquitecturas. Vemos que las arquitecturas con redes recurrentes son las más costosas de entrenar, mientras que las totalmente conectadas son las que menos tiempo han supuesto.
+Otro dato interesante es el tiempo de ejecución que requiere cada arquitectura. En la figura \ref{fig:resumen_tiempo} podemos ver la mediana de ejecución de todos los modelos, que nos servirá para hacernos una idea de la diferencia entre arquitecturas. Vemos que las arquitecturas con redes recurrentes son las más costosas de entrenar, mientras que las totalmente conectadas son las que menos tiempo han supuesto. En el cuadro \ref{tbl:resumen_tiempo} podemos observar el detalle sobre el tiempo de ejecución en formato tabular.
 
-
+\begin{table} 
+\label{tbl:resumen_tiempo}
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+\textbf{Modelo} &\textbf{ Mediana Tiempo Medio (mm:ss)} \\ 
+\hline 
+ Recurrente &   07:11 \\ 
+\hline 
+Recurrente Híbrido &  05:34 \\ 
+\hline 
+ Convolucional &  02:30 \\ 
+\hline 
+ Totalmente Conectado &  00:10\\ 
+\hline 
+\end{tabular}
+\caption{Mediana de ejecución de las diferentes arquitecturas} 
+\end{table}
 
 Dada la gran cantidad de modelos existentes vamos a hacer un primer filtro dependiendo de si estamos tratando la clasificación como binario o multiclase.
 
@@ -519,7 +536,7 @@ Dada la gran cantidad de modelos existentes vamos a hacer un primer filtro depen
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=1\textwidth]{images/super/resumen_bin}
-	\caption{Precisión de todos los modelos}
+	\caption{Precisión de los modelos binarios}
 	\label{fig:resumen_bin}
 \end{figure}
 
@@ -528,7 +545,7 @@ En la figura \ref{fig:resumen_bin}, vemos todos los modelos binarios entrenados 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=1\textwidth]{images/super/resumen_bestbin}
-	\caption{Precisión de todos los modelos}
+	\caption{Precisión por clase de modelos binarios}
 	\label{fig:resumen_bestbin}
 \end{figure}
 
@@ -541,7 +558,7 @@ Aunque hay algunos modelos multiclase realizados con otras arquitecturas, los ú
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=1\textwidth]{images/super/resumen_multi}
-	\caption{Precisión de todos los modelos}
+	\caption{Precisión de los modelos multiclase}
 	\label{fig:resumen_multi}
 \end{figure}
 
@@ -558,7 +575,7 @@ El modelo que hemos seleccionado es el mejor modelo del estudio ``RNN\_866\_IVR\
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.6\textwidth]{images/super/mvp_mat1}
+	\includegraphics[width=0.65\textwidth]{images/super/mvp_mat1}
 	\caption{Matriz de confusión datos balanceados}
 	\label{fig:mvp_mat1}
 \end{figure}
@@ -571,7 +588,7 @@ A continuación vamos a volver a medir la precisión del modelo usando tanto dat
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.6\textwidth]{images/super/mvp_mat2}
+	\includegraphics[width=0.65\textwidth]{images/super/mvp_mat2}
 	\caption{Matriz de confusión datos no balanceados}
 	\label{fig:mvp_mat2}
 \end{figure}

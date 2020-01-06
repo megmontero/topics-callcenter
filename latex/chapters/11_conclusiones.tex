@@ -84,7 +84,9 @@ Una vez finalizado el proyecto es el momento de abrir líneas de trabajos futuro
 
 
 \begin{itemize}
-	\item \textbf{Métricas Optimización}: Modificar las métricas usadas para la evaluación, usando por ejemplo F1-score que nos proporcionará una mejor medida de los casos clasificados incorrectamente que la métrica de precisión utilizada.
+	\item \textbf{Métricas Optimización}: Modificar las métricas usadas para la evaluación, usando por ejemplo F1-score que nos proporcionará una mejor medida de los casos clasificados incorrectamente que la métrica de precisión utilizada principalmente en casos de uso no balanceados.
+	
+	
 	\item \textbf{Etiquetas monitorización}: Como hemos visto a lo largo del documento, principalmente en el capítulo \ref{chapter:dataset}, las etiquetas que tienen más calidad son las de monitorización, aunque tenían el problema del escaso porcentaje de etiquetas de este tipo. En un futuro se espera que el porcentaje de llamadas etiquetadas de este tipo aumente, pudiéndose aplicar los modelos vistos a estos datos.
 	\item \textbf{Etiquetas de sistemas operacionales}: Una opción que no se ha abordado hasta ahora es la de etiquetar las llamadas en función de las operaciones hechas por los clientes tras las llamadas. Por ejemplo si han realizado un alta, si han realizado una baja, si han abierto una reclamación, etc. Estas acciones pueden consultarse directamente en los sistemas operacionales de la empresa.
 	\item \textbf{Llevar a producción modelo no supervisado}: Aunque se ha realizado un estudio no supervisado de las llamadas, este no se ha llevado a un entorno productivo. Puede ser muy interesante introducir un modelo no supervisado en nuestra arquitectura para tener en la capa de servicio una versión distinta a la de las etiquetas actuales. 
