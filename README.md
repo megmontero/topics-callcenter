@@ -1,5 +1,5 @@
 # Modelización de topics en llamadas al Call Center
-En este repositorio se encuentra el código del TFM "Modelización de topics en llamadas al Call Center". Este TFM consta de dos partes. Por un lado, el entrenamiento de modelos supervisados (mediante técnicas de *deep learning*) y modelos no supervisados. Posteriormente el paso de uno de estos modelos a producción y su utilización en Real Time con la arquitectura de la siguiente imagen.
+En este repositorio se encuentra el código del TFM "Modelización de topics en llamadas al Call Center" presentado en la UOC. Este TFM consta de dos partes. Por un lado, el entrenamiento de modelos supervisados (mediante técnicas de *deep learning*) y modelos no supervisados. Posteriormente el paso de uno de estos modelos a producción y su utilización en Real Time con la arquitectura de la siguiente imagen.
 
 ![Arquitectura kappa](images/kappa_v1.png "Arquitectura Kappa")
 
