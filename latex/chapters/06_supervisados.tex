@@ -29,9 +29,9 @@ A lo largo de esta sección vamos a describir las diferentes arquitecturas que h
 
 \subsection{Red neuronal convolucional}
 
-La primera aproximación a la hora de crear un modelo que nos permitiera clasificar llamadas, ha sido recurrir a las redes neuronales recurrentes (que ya introdujimos en el estado del arte, en el apartado \ref{section:arte:arqu:cnn}). 
+La primera aproximación a la hora de crear un modelo que nos permitiera clasificar llamadas, ha sido recurrir a las redes neuronales convolucionales (que ya introdujimos en el estado del arte, en el apartado \ref{section:arte:arqu:cnn}). 
 
-El objetivo principal que perseguimos al aplicar esta estructura era poder capturar la estructura local de las llamadas, de una forma similar al modo en el que se hace en el tratamiento de imágenes. Aplicar \textit{kernels} de diferentes tamaños a la imagen inicial podía servirnos para obtener de manera automática especies de N-Gramas  que capten patrones en las transcripciones de las llamadas. 
+El objetivo principal que perseguimos al aplicar esta estructura era poder capturar la estructura local de las llamadas, de una forma similar al modo en el que se hace en el tratamiento de imágenes. Aplicar \textit{kernels} de diferentes tamaños a la transcripción inicial podía servirnos para obtener de manera automática especies de N-Gramas  que capten patrones en las transcripciones de las llamadas. 
 
 \begin{figure}[!ht]
 	\centering
